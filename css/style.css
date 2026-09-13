@@ -5286,3 +5286,82 @@ body[data-current-page="me"] .daily-diary-card[data-page="me"] {
         padding-bottom: calc(70px + env(safe-area-inset-bottom)) !important;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   ✅ FIX: Modal Overlay Z-INDEX এবং Modal Bottom Padding
+========================================================= */
+
+/* ১. Modal Overlay কে nav bar এর উপরে রাখুন */
+.modal-overlay {
+    z-index: 99999 !important;
+}
+
+/* ২. Modal এর শেষের বাটনগুলো nav bar এ ঢাকা না পড়ে */
+.modal {
+    max-height: calc(100vh - 20px) !important;
+    padding-bottom: 0 !important;
+}
+
+/* ৩. Modal Body তে bottom padding দিন যাতে শেষ input দেখা যায় */
+.modal-body {
+    padding-bottom: 20px !important;
+}
+
+/* ৪. Modal Footer কে sticky করুন modal এর ভিতরে */
+.modal-footer {
+    position: sticky !important;
+    bottom: 0 !important;
+    z-index: 10 !important;
+    background: rgb(var(--surface)) !important;
+    padding: 12px 18px !important;
+    border-top: 1px solid rgb(var(--border)) !important;
+    margin-top: 0 !important;
+}
+
+/* ৫. Mobile এ modal কে nav bar এর উপরে থামান */
+@media (max-width: 768px) {
+    .modal-overlay {
+        padding-bottom: calc(70px + env(safe-area-inset-bottom)) !important;
+        align-items: flex-end !important;
+    }
+
+    .modal {
+        max-height: calc(100vh - 80px) !important;
+        border-radius: 20px 20px 0 0 !important;
+        margin-bottom: calc(70px + env(safe-area-inset-bottom)) !important;
+    }
+
+    .modal-body {
+        padding-bottom: 20px !important;
+        max-height: calc(100vh - 240px) !important;
+        overflow-y: auto !important;
+    }
+
+    .modal-footer {
+        padding: 12px 16px !important;
+        position: sticky !important;
+        bottom: 0 !important;
+        z-index: 10 !important;
+        background: rgb(var(--surface)) !important;
+        box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.08) !important;
+    }
+
+    .modal-footer button {
+        min-height: 40px !important;
+        font-size: 13px !important;
+    }
+}
