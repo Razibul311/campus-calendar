@@ -5299,175 +5299,144 @@ body[data-current-page="me"] .daily-diary-card[data-page="me"] {
 
 
 
-
 /* =========================================================
-   ✅ FIX: Modal Bottom Round Corners + Custom Alarm Switch
+   ✅ FINAL FIX: Modal Bottom Corners + Alarm Switch Width
 ========================================================= */
 
 /* =========================================================
-   ১. Modal এর ৪ দিকেই round corner
+   ১. Modal এর চারদিকে round corner — সব specificity override
 ========================================================= */
+body .modal-overlay .modal {
+    border-radius: 24px !important;
+    overflow: hidden !important;
+}
+
+body .modal-overlay .modal-header {
+    border-radius: 24px 24px 0 0 !important;
+}
+
+body .modal-overlay .modal-footer {
+    border-radius: 0 0 24px 24px !important;
+}
+
+/* Mobile specific — সব override */
 @media (max-width: 768px) {
-
-    .modal-overlay {
-        /* নিচে জায়গা — nav bar এর উপরে modal */
-        padding: 20px 16px 90px 16px !important;
-        align-items: flex-end !important;
-    }
-
-    .modal {
-        /* ✅ ৪ দিকেই round corner */
+    body .modal-overlay .modal {
         border-radius: 24px !important;
-        /* ✅ উপরে ও নিচে জায়গা কমাতে হবে না */
-        max-height: calc(100vh - 120px) !important;
-        /* ✅ Overflow hidden corners দেখানোর জন্য */
         overflow: hidden !important;
-        /* ✅ শ্যাডো সব দিকে */
-        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.30) !important;
-        /* ✅ কোনো margin নেই */
         margin: 0 !important;
+        max-height: calc(100vh - 120px) !important;
     }
 
-    /* Modal Body scrollable */
-    .modal-body {
-        max-height: calc(100vh - 300px) !important;
-        overflow-y: auto !important;
-        padding: 16px !important;
-    }
-
-    /* Modal Header এর উপরে radius */
-    .modal-header {
+    body .modal-overlay .modal-header {
         border-radius: 24px 24px 0 0 !important;
-        padding: 14px 18px !important;
     }
 
-    /* Modal Footer এর নিচে radius — ✅ নিচের corners round */
-    .modal-footer {
+    body .modal-overlay .modal-footer {
         border-radius: 0 0 24px 24px !important;
-        padding: 14px 18px !important;
         background: rgb(var(--surface)) !important;
-        border-top: 1px solid rgb(var(--border)) !important;
-        margin: 0 !important;
-        position: sticky !important;
-        bottom: 0 !important;
-        z-index: 10 !important;
-        box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.06) !important;
     }
 
-    .modal-footer button {
-        min-height: 42px !important;
-        font-size: 14px !important;
+    body .modal-overlay .modal-body {
+        border-radius: 0 !important;
     }
 }
 
 /* =========================================================
-   ২. Custom Alarm Toggle Switch
+   ২. Custom Alarm Switch — সঠিক width এবং shape
 ========================================================= */
 
-/* Alarm Header Container */
-.alarm-header {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 12px !important;
-    padding: 12px 0 !important;
-    margin-bottom: 8px !important;
-}
-
-.alarm-title-area {
-    flex: 1 !important;
-    min-width: 0 !important;
-}
-
-.alarm-title-area strong {
-    display: block !important;
-    font-size: 14px !important;
-    font-weight: 700 !important;
-    color: rgb(var(--text)) !important;
-    margin-bottom: 2px !important;
-}
-
-.alarm-title-area small {
-    display: block !important;
-    font-size: 11px !important;
-    color: rgb(var(--text-muted)) !important;
-    line-height: 1.3 !important;
-}
-
-/* Toggle Switch Label */
-.alarm-switch {
+/* Label কে সঠিক size দিন — সব override */
+body .alarm-switch,
+body .modal-body .alarm-switch,
+body .alarm-section .alarm-switch,
+body .alarm-header .alarm-switch {
     position: relative !important;
     display: inline-block !important;
     width: 52px !important;
     height: 30px !important;
+    min-width: 52px !important;
+    max-width: 52px !important;
+    flex: 0 0 52px !important;
     flex-shrink: 0 !important;
     cursor: pointer !important;
-    user-select: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* Hide default checkbox */
-.alarm-switch input {
+/* Checkbox hide */
+body .alarm-switch input[type="checkbox"] {
+    position: absolute !important;
     opacity: 0 !important;
     width: 0 !important;
     height: 0 !important;
-    position: absolute !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
 }
 
-/* Slider (background of the switch) */
-.alarm-switch .alarm-slider {
+/* Slider (switch track) */
+body .alarm-switch .alarm-slider {
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    background: rgb(var(--surface-soft)) !important;
-    border: 1.5px solid rgb(var(--border-strong)) !important;
+    width: 52px !important;
+    height: 30px !important;
+    background: rgb(203, 213, 225) !important;
+    border: none !important;
     border-radius: 999px !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.06) !important;
+    box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.10) !important;
+    display: block !important;
 }
 
-/* The circle knob */
-.alarm-switch .alarm-slider::before {
+/* Knob (circle) */
+body .alarm-switch .alarm-slider::before {
     content: "" !important;
     position: absolute !important;
-    height: 22px !important;
-    width: 22px !important;
+    height: 24px !important;
+    width: 24px !important;
     left: 3px !important;
-    bottom: 2.5px !important;
+    top: 3px !important;
+    bottom: auto !important;
     background: #ffffff !important;
     border-radius: 50% !important;
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.20) !important;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: block !important;
 }
 
-/* Hover state */
-.alarm-switch:hover .alarm-slider {
-    border-color: rgb(var(--primary)) !important;
+/* Hover */
+body .alarm-switch:hover .alarm-slider {
+    background: rgb(148, 163, 184) !important;
 }
 
 /* Checked state */
-.alarm-switch input:checked + .alarm-slider {
+body .alarm-switch input:checked + .alarm-slider {
     background: linear-gradient(135deg, rgb(13, 148, 136), rgb(8, 145, 178)) !important;
-    border-color: rgb(var(--primary)) !important;
-    box-shadow: 0 4px 12px rgba(13, 148, 136, 0.30) !important;
+    box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35) !important;
 }
 
-.alarm-switch input:checked + .alarm-slider::before {
+/* Checked knob — slide right */
+body .alarm-switch input:checked + .alarm-slider::before {
     transform: translateX(22px) !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
 }
 
-/* Focus state */
-.alarm-switch input:focus-visible + .alarm-slider {
-    outline: 2px solid rgb(var(--primary-ring)) !important;
+/* Focus */
+body .alarm-switch input:focus-visible + .alarm-slider {
+    outline: 2px solid rgb(13, 148, 136) !important;
     outline-offset: 2px !important;
 }
 
-/* Dark mode adjustments */
+/* Dark mode */
 body.dark .alarm-switch .alarm-slider {
-    background: rgb(var(--surface-soft)) !important;
-    border-color: rgb(var(--border-strong)) !important;
+    background: rgb(51, 65, 85) !important;
+}
+
+body.dark .alarm-switch:hover .alarm-slider {
+    background: rgb(71, 85, 105) !important;
 }
 
 body.dark .alarm-switch .alarm-slider::before {
@@ -5476,47 +5445,38 @@ body.dark .alarm-switch .alarm-slider::before {
 
 body.dark .alarm-switch input:checked + .alarm-slider {
     background: linear-gradient(135deg, rgb(45, 212, 191), rgb(20, 184, 166)) !important;
-    border-color: rgb(var(--primary)) !important;
 }
 
-/* Alarm settings hidden - keep as is */
-.alarm-settings.hidden {
-    display: none !important;
-}
-
-/* Alarm settings container */
-.alarm-settings {
+/* =========================================================
+   ৩. Alarm Header layout fix
+========================================================= */
+body .alarm-header {
     display: flex !important;
-    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: space-between !important;
     gap: 12px !important;
-    padding: 14px !important;
-    background: rgb(var(--surface-soft)) !important;
-    border-radius: 12px !important;
-    border: 1px solid rgb(var(--border-light)) !important;
-    margin-top: 8px !important;
-}
-
-/* Test Alarm Button */
-.alarm-test-btn {
+    padding: 12px 0 !important;
+    margin-bottom: 8px !important;
     width: 100% !important;
-    margin-top: 4px !important;
-    border-radius: 10px !important;
-    padding: 10px 16px !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    transition: all 0.2s ease !important;
 }
 
-.alarm-test-btn:hover {
-    transform: translateY(-1px) !important;
-    box-shadow: 0 6px 20px rgba(13, 148, 136, 0.20) !important;
+body .alarm-header .alarm-title-area {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
 }
 
-/* Alarm Section */
-.alarm-section {
-    padding: 16px !important;
-    border-radius: 14px !important;
-    background: rgb(var(--surface-soft)) !important;
-    border: 1px solid rgb(var(--border-light)) !important;
-    margin-top: 8px !important;
+body .alarm-header .alarm-title-area strong {
+    display: block !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: rgb(var(--text)) !important;
+    margin-bottom: 2px !important;
+    line-height: 1.3 !important;
+}
+
+body .alarm-header .alarm-title-area small {
+    display: block !important;
+    font-size: 11px !important;
+    color: rgb(var(--text-muted)) !important;
+    line-height: 1.3 !important;
 }
