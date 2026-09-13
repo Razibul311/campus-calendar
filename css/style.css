@@ -4948,11 +4948,6 @@ body.dark .study-report-empty {
 }
 
 
-
-
-
-
-
 /* =========================================================
    📱 PHONE LAYOUT — FORCE ORDER
    Mobile (up to 768px)
@@ -5299,6 +5294,50 @@ body[data-current-page="me"] .daily-diary-card[data-page="me"] {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =========================================================
    ✅ FINAL FIX: Modal Bottom Corners + Alarm Switch Width
 ========================================================= */
@@ -5630,5 +5669,57 @@ body .alarm-header .alarm-title-area small {
         position: relative !important;
         z-index: 2 !important;
         box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.06) !important;
+    }
+}
+/* =========================================================
+   ✅ FORCE FIX: Modal Body MUST Scroll
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Modal Body কে সরাসরি নিয়ন্ত্রণ করুন — body tag দিয়ে */
+    html body .modal-overlay .modal .modal-body,
+    html body #eventModal .modal-body,
+    html body #studyTaskModal .modal-body,
+    html body #detailsModal .modal-body {
+        flex: 1 1 0% !important;
+        flex-basis: 0% !important;
+        flex-grow: 1 !important;
+        flex-shrink: 1 !important;
+
+        min-height: 0 !important;
+        max-height: none !important;
+        height: auto !important;
+
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+
+        padding: 16px !important;
+        box-sizing: border-box !important;
+
+        display: block !important;
+        position: relative !important;
+    }
+
+    /* Modal কে fixed height দিন */
+    html body .modal-overlay .modal,
+    html body #eventModal .modal,
+    html body #studyTaskModal .modal,
+    html body #detailsModal .modal {
+        max-height: calc(100dvh - 100px - env(safe-area-inset-bottom)) !important;
+        height: calc(100dvh - 100px - env(safe-area-inset-bottom)) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+    }
+
+    /* Header এবং Footer shrink না করে */
+    html body .modal-overlay .modal .modal-header,
+    html body .modal-overlay .modal .modal-footer,
+    html body #eventModal .modal-header,
+    html body #eventModal .modal-footer {
+        flex: 0 0 auto !important;
+        flex-shrink: 0 !important;
     }
 }
