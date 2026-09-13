@@ -5913,3 +5913,333 @@ body.dark .alarm-switch input:checked + .alarm-slider {
         background: transparent !important;
     }
 }
+
+/* =========================================================
+   ✅ FINAL COMPLETE CSS FIX — HTML/JS অপরিবর্তিত
+   (Modal Scroll + Duplicate Text Hide + Nav + Switch)
+========================================================= */
+
+/* =========================================================
+   ১. DUPLICATE TEXT HIDE — HTML/JS পরিবর্তন ছাড়া
+========================================================= */
+
+/* Modal Header Title — শুধু প্রথমটা দেখাও */
+#detailsModalTitle,
+#modalTitle,
+#studyTaskModalTitle,
+#alarmTitle {
+    /* Duplicate হলে শুধু প্রথম text থাকবে */
+    display: block !important;
+    overflow: hidden !important;
+    max-height: 2em !important;
+    line-height: 1.4 !important;
+    /* একাধিক লাইন হলে লুকিয়ে যাবে */
+    text-overflow: ellipsis !important;
+}
+
+/* Close button — শুধু "×" দেখাও */
+.close-btn {
+    font-size: 0 !important;
+}
+
+.close-btn::after {
+    content: "×" !important;
+    font-size: 22px !important;
+    display: block !important;
+    line-height: 1 !important;
+    color: inherit !important;
+}
+
+/* Modal Footer Buttons — duplicate text hide */
+#closeDetailsBtn,
+#cancelEventBtn,
+#cancelStudyTaskBtn,
+#editDetailsBtn,
+#saveEventBtn,
+#saveStudyTaskBtn,
+#deleteBtn,
+#deleteStudyTaskBtn {
+    font-size: 0 !important;
+    position: relative !important;
+}
+
+#closeDetailsBtn::after {
+    content: "Close" !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    display: block !important;
+}
+
+#cancelEventBtn::after,
+#cancelStudyTaskBtn::after {
+    content: "Cancel" !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    display: block !important;
+}
+
+#editDetailsBtn::after {
+    content: "Edit" !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    display: block !important;
+}
+
+#saveEventBtn::after {
+    content: "Save Event" !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    display: block !important;
+}
+
+#saveStudyTaskBtn::after {
+    content: "Save Task" !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    display: block !important;
+}
+
+#deleteBtn::after {
+    content: "Delete" !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    display: block !important;
+}
+
+#deleteStudyTaskBtn::after {
+    content: "Delete" !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    display: block !important;
+}
+
+/* =========================================================
+   ২. ALARM SWITCH — সুন্দর toggle
+========================================================= */
+.alarm-switch {
+    position: relative !important;
+    display: inline-block !important;
+    width: 52px !important;
+    height: 30px !important;
+    min-width: 52px !important;
+    max-width: 52px !important;
+    flex-shrink: 0 !important;
+    cursor: pointer !important;
+}
+
+.alarm-switch input {
+    position: absolute !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    pointer-events: none !important;
+}
+
+.alarm-switch .alarm-slider {
+    position: absolute !important;
+    inset: 0 !important;
+    background: rgb(203, 213, 225) !important;
+    border-radius: 999px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.10) !important;
+}
+
+.alarm-switch .alarm-slider::before {
+    content: "" !important;
+    position: absolute !important;
+    height: 24px !important;
+    width: 24px !important;
+    left: 3px !important;
+    top: 3px !important;
+    background: #ffffff !important;
+    border-radius: 50% !important;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.alarm-switch input:checked + .alarm-slider {
+    background: linear-gradient(135deg, rgb(13, 148, 136), rgb(8, 145, 178)) !important;
+}
+
+.alarm-switch input:checked + .alarm-slider::before {
+    transform: translateX(22px) !important;
+}
+
+body.dark .alarm-switch .alarm-slider {
+    background: rgb(51, 65, 85) !important;
+}
+
+body.dark .alarm-switch .alarm-slider::before {
+    background: rgb(241, 245, 249) !important;
+}
+
+body.dark .alarm-switch input:checked + .alarm-slider {
+    background: linear-gradient(135deg, rgb(45, 212, 191), rgb(20, 184, 166)) !important;
+}
+
+.alarm-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    width: 100% !important;
+}
+
+.alarm-title-area {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+
+/* =========================================================
+   ৩. MOBILE MODAL — Scroll, Round Corners, Fixed Height
+========================================================= */
+@media (max-width: 768px) {
+
+    /* Overlay — nav bar এর উপরে জায়গা */
+    .modal-overlay {
+        display: flex !important;
+        align-items: flex-end !important;
+        padding: 12px 12px calc(80px + env(safe-area-inset-bottom)) 12px !important;
+        overflow: hidden !important;
+        z-index: 99999 !important;
+    }
+
+    /* Modal Container — Fixed height + flex column */
+    .modal-overlay .modal {
+        height: calc(100dvh - 110px) !important;
+        max-height: calc(100dvh - 110px) !important;
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+        border-radius: 24px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Header — Fixed top */
+    .modal-overlay .modal .modal-header {
+        flex: 0 0 auto !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+        border-radius: 24px 24px 0 0 !important;
+        background: rgb(var(--surface)) !important;
+    }
+
+    /* Footer — Fixed bottom, round corners */
+    .modal-overlay .modal .modal-footer {
+        flex: 0 0 auto !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+        border-radius: 0 0 24px 24px !important;
+        background: rgb(var(--surface)) !important;
+        border-top: 1px solid rgb(var(--border)) !important;
+        padding: 12px 16px !important;
+        box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.06) !important;
+    }
+
+    /* Body — MUST SCROLL */
+    .modal-overlay .modal .modal-body {
+        flex: 1 1 0% !important;
+        flex-grow: 1 !important;
+        flex-shrink: 1 !important;
+        flex-basis: 0% !important;
+
+        min-height: 0 !important;
+        max-height: none !important;
+        height: auto !important;
+
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        overscroll-behavior: contain !important;
+
+        display: block !important;
+        padding: 16px !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+    }
+
+    /* Modal body তে duplicate text duplication hide */
+    .modal-body label > span:empty {
+        display: none !important;
+    }
+
+    /* Footer button */
+    .modal-overlay .modal .modal-footer button {
+        min-height: 42px !important;
+        font-size: 13px !important;
+    }
+
+    /* Scrollbar */
+    .modal-overlay .modal .modal-body::-webkit-scrollbar {
+        width: 4px !important;
+    }
+
+    .modal-overlay .modal .modal-body::-webkit-scrollbar-thumb {
+        background: rgb(var(--primary)) !important;
+        border-radius: 4px !important;
+    }
+
+    .modal-overlay .modal .modal-body::-webkit-scrollbar-track {
+        background: transparent !important;
+    }
+}
+
+/* =========================================================
+   ৪. MOBILE BOTTOM NAVIGATION
+========================================================= */
+.mobile-bottom-nav {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-bottom-nav {
+        display: flex !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 9999 !important;
+        background: rgb(var(--surface)) !important;
+        border-top: 1px solid rgb(var(--border)) !important;
+        padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) !important;
+        justify-content: space-around !important;
+        align-items: center !important;
+        box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.08) !important;
+    }
+
+    .mobile-bottom-nav .mobile-nav-btn {
+        display: flex !important;
+        flex: 1 !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 2px !important;
+        background: transparent !important;
+        border: none !important;
+        color: rgb(var(--text-muted)) !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        padding: 6px 0 !important;
+        cursor: pointer !important;
+        min-height: 48px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .mobile-bottom-nav .mobile-nav-btn.active {
+        color: rgb(var(--primary)) !important;
+    }
+
+    .mobile-bottom-nav .mobile-nav-icon,
+    .mobile-bottom-nav .mobile-nav-label {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    body {
+        padding-bottom: calc(70px + env(safe-area-inset-bottom)) !important;
+    }
+}
