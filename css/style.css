@@ -4947,3 +4947,624 @@ body.dark .study-report-empty {
     color: rgb(var(--text-muted));
 }
 
+
+/* =========================================================
+   MOBILE RESPONSIVE FORCE FIX
+   Phone + Tablet + PC
+   সব screen size-এ perfect
+========================================================= */
+
+/* =========================================================
+   BASE - Small Mobile (up to 480px)
+========================================================= */
+
+@media (max-width: 480px) {
+
+    /* Global */
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Main container */
+    .container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Layout - Single column on mobile */
+    .layout {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .topbar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        padding: 12px 14px !important;
+    }
+
+    .brand h1 {
+        font-size: 17px !important;
+    }
+
+    .brand p {
+        font-size: 11px !important;
+    }
+
+    .header-actions {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+        justify-content: space-between !important;
+    }
+
+    .header-btn {
+        flex: 1 1 calc(33% - 4px) !important;
+        min-width: 0 !important;
+        padding: 8px 10px !important;
+        font-size: 12px !important;
+    }
+
+    /* =====================================================
+       DASHBOARD - Grid 2 columns
+    ===================================================== */
+
+    .dashboard {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    .stat-card {
+        padding: 10px 10px !important;
+        min-height: auto !important;
+    }
+
+    .stat-card span {
+        font-size: 10px !important;
+        line-height: 1.2 !important;
+    }
+
+    .stat-card strong {
+        font-size: 18px !important;
+        line-height: 1.1 !important;
+    }
+
+    .stat-card small {
+        font-size: 9px !important;
+        line-height: 1.2 !important;
+    }
+
+    /* =====================================================
+       TOOLBAR
+    ===================================================== */
+
+    .toolbar {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+    .toolbar input,
+    .toolbar select,
+    .toolbar button {
+        width: 100% !important;
+        padding: 10px !important;
+        font-size: 12px !important;
+    }
+
+    .toolbar #searchInput {
+        grid-column: 1 / -1 !important;
+    }
+
+    .toolbar #categoryFilter {
+        grid-column: 1 / -1 !important;
+    }
+
+    .toolbar #addEventBtn {
+        grid-column: 1 / -1 !important;
+    }
+
+    /* =====================================================
+       CALENDAR
+    ===================================================== */
+
+    .calendar-card {
+        padding: 10px !important;
+        border-radius: 12px !important;
+    }
+
+    .calendar-header {
+        flex-direction: column !important;
+        gap: 10px !important;
+        align-items: stretch !important;
+    }
+
+    .calendar-header h2 {
+        font-size: 16px !important;
+        text-align: center !important;
+    }
+
+    .calendar-header p {
+        font-size: 10px !important;
+        text-align: center !important;
+    }
+
+    .calendar-nav {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 10px !important;
+    }
+
+    .nav-btn {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 16px !important;
+    }
+
+    /* Calendar grid - 7 columns */
+    .calendar-grid {
+        display: grid !important;
+        grid-template-columns: repeat(7, 1fr) !important;
+        gap: 3px !important;
+        padding: 0 !important;
+        margin-top: 10px !important;
+    }
+
+    .calendar-cell,
+    .calendar-day {
+        min-height: 42px !important;
+        padding: 3px 2px !important;
+        font-size: 11px !important;
+        border-radius: 6px !important;
+    }
+
+    .calendar-cell .day-number,
+    .calendar-day .day-number {
+        font-size: 12px !important;
+        font-weight: 600 !important;
+    }
+
+    .calendar-cell .day-events,
+    .calendar-day .day-events {
+        font-size: 8px !important;
+    }
+
+    .calendar-weekday {
+        font-size: 10px !important;
+        padding: 4px 0 !important;
+    }
+
+    /* =====================================================
+       BANGLADESH HOLIDAYS
+    ===================================================== */
+
+    .bangladesh-holidays {
+        padding: 12px !important;
+    }
+
+    .bangladesh-holidays h3 {
+        font-size: 14px !important;
+    }
+
+    .holiday-list {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+    }
+
+    .holiday-item {
+        padding: 10px !important;
+        font-size: 12px !important;
+    }
+
+    /* =====================================================
+       STUDY TASKS CARD
+    ===================================================== */
+
+    .side-card {
+        padding: 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .section-header h3 {
+        font-size: 14px !important;
+    }
+
+    .section-header small {
+        font-size: 10px !important;
+    }
+
+    /* =====================================================
+       STUDY REPORT CARDS - Force full width
+    ===================================================== */
+
+    .study-report-cards,
+    .study-report-cards.daily-sidebar-cards,
+    .study-report-cards.weekly-sidebar-cards {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+    .study-report-card {
+        padding: 8px !important;
+        min-height: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    .study-report-card-label {
+        font-size: 10px !important;
+    }
+
+    .study-report-card strong {
+        font-size: 14px !important;
+    }
+
+    /* =====================================================
+       STUDY REPORT NAVIGATION
+    ===================================================== */
+
+    .study-report-navigation {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+    .study-report-nav-btn {
+        width: 100% !important;
+        padding: 8px !important;
+        font-size: 11px !important;
+    }
+
+    /* =====================================================
+       STUDY ANALYTICS GRID
+    ===================================================== */
+
+    .study-analytics-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+    .analytics-stat-card {
+        padding: 8px !important;
+        min-height: auto !important;
+    }
+
+    .analytics-stat-card span {
+        font-size: 9px !important;
+        line-height: 1.2 !important;
+    }
+
+    .analytics-stat-card strong {
+        font-size: 13px !important;
+    }
+
+    /* =====================================================
+       SUBJECT ANALYTICS
+    ===================================================== */
+
+    .study-analytics-highlight {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+        padding: 10px !important;
+    }
+
+    /* =====================================================
+       WEEKLY CHART
+    ===================================================== */
+
+    .weekly-study-chart {
+        display: grid !important;
+        grid-template-columns: repeat(7, 1fr) !important;
+        gap: 3px !important;
+        padding: 8px !important;
+        overflow-x: hidden !important;
+    }
+
+    .study-chart-column {
+        min-width: 0 !important;
+    }
+
+    .study-chart-value {
+        font-size: 8px !important;
+    }
+
+    .study-chart-day {
+        font-size: 9px !important;
+    }
+
+    /* =====================================================
+       SUBJECT BREAKDOWN
+    ===================================================== */
+
+    .study-subject-breakdown {
+        padding: 8px !important;
+    }
+
+    .study-report-subject-row {
+        font-size: 11px !important;
+    }
+
+    .study-report-subject-info strong {
+        font-size: 11px !important;
+    }
+
+    /* =====================================================
+       ALL BUTTONS - Consistent
+    ===================================================== */
+
+    .primary-btn,
+    .secondary-btn,
+    .header-btn {
+        padding: 9px 14px !important;
+        font-size: 12px !important;
+        border-radius: 8px !important;
+    }
+
+    /* =====================================================
+       MODAL
+    ===================================================== */
+
+    .modal {
+        width: 95% !important;
+        max-width: 95% !important;
+        padding: 14px !important;
+        margin: 10px !important;
+    }
+
+    .modal-header h2 {
+        font-size: 16px !important;
+    }
+
+    .modal-body {
+        padding: 10px 0 !important;
+    }
+
+    .form-row {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* =====================================================
+       STUDY TIMER PANEL
+    ===================================================== */
+
+    .study-timer-panel {
+        width: calc(100% - 20px) !important;
+        left: 10px !important;
+        right: 10px !important;
+        bottom: 10px !important;
+    }
+
+    .study-timer-display span {
+        font-size: 32px !important;
+    }
+
+    /* =====================================================
+       CGPA CALCULATOR
+    ===================================================== */
+
+    .cgpa-course-row {
+        grid-template-columns: 1fr !important;
+        gap: 6px !important;
+        padding: 8px !important;
+    }
+
+    .cgpa-result-row {
+        font-size: 12px !important;
+    }
+
+    /* =====================================================
+       DIARY
+    ===================================================== */
+
+    .daily-diary-card {
+        padding: 10px !important;
+    }
+
+    .diary-actions {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 6px !important;
+    }
+
+    /* =====================================================
+       LEGEND
+    ===================================================== */
+
+    .legend {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+        padding: 8px 0 !important;
+    }
+
+    .legend span {
+        font-size: 10px !important;
+        gap: 4px !important;
+    }
+
+    /* =====================================================
+       PROGRESS BARS
+    ===================================================== */
+
+    .progress-bar {
+        height: 8px !important;
+        border-radius: 4px !important;
+    }
+
+    .progress-fill {
+        height: 100% !important;
+    }
+}
+
+/* =========================================================
+   Extra Small Mobile (up to 360px)
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .dashboard {
+        grid-template-columns: 1fr !important;
+    }
+
+    .study-report-cards {
+        grid-template-columns: 1fr !important;
+    }
+
+    .study-analytics-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .calendar-cell,
+    .calendar-day {
+        min-height: 36px !important;
+        font-size: 10px !important;
+    }
+
+    .calendar-cell .day-number {
+        font-size: 11px !important;
+    }
+
+    .stat-card strong {
+        font-size: 16px !important;
+    }
+}
+
+/* =========================================================
+   Tablet (481px – 768px)
+========================================================= */
+
+@media (min-width: 481px) and (max-width: 768px) {
+
+    .container {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+    }
+
+    .dashboard {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    .calendar-cell,
+    .calendar-day {
+        min-height: 52px !important;
+    }
+
+    .study-analytics-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* =========================================================
+   FORCE - Prevent Horizontal Scroll
+========================================================= */
+
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+}
+
+img, table, pre, code {
+    max-width: 100% !important;
+}
+
+/* =========================================================
+   FORCE - All Cards Fit Screen
+========================================================= */
+
+.side-card,
+.calendar-card,
+.stat-card,
+.study-analytics-card,
+.bangladesh-holidays {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+/* =========================================================
+   FIX - Study Report Cards Not Cutting
+========================================================= */
+
+.study-report-cards > * {
+    min-width: 0 !important;
+    overflow: hidden !important;
+}
+
+.study-report-card strong {
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+}
+
+/* =========================================================
+   FIX - Study Analytics Section
+========================================================= */
+
+.study-analytics-section {
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+.study-analytics-highlight > div {
+    min-width: 0 !important;
+    overflow: hidden !important;
+}
+
+/* =========================================================
+   FIX - Charts not overflowing
+========================================================= */
+
+.weekly-study-chart,
+.monthly-study-trend,
+.subject-study-comparison {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+/* =========================================================
+   FIX - Study Timer Panel
+========================================================= */
+
+.study-timer-panel {
+    max-width: calc(100vw - 20px) !important;
+}
+
+/* =========================================================
+   FIX - Overall Progress Bar
+========================================================= */
+
+.progress-bar {
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+}
+
+.progress-fill {
+    min-width: 0 !important;
+    max-width: 100% !important;
+}
