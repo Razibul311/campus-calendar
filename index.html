@@ -62,7 +62,7 @@
 
 
 
-<body>
+<body data-current-page="home">
 
 
 
@@ -72,10 +72,6 @@
 
 <header class="topbar">
 
-    <!-- =====================================================
-         BRAND
-    ====================================================== -->
-
     <div class="brand">
 
         <div
@@ -84,8 +80,6 @@
         >
             📅
         </div>
-
-
 
         <div>
 
@@ -102,10 +96,6 @@
     </div>
 
 
-
-    <!-- =====================================================
-         HEADER ACTIONS
-    ======================================================= -->
 
     <div class="header-actions">
 
@@ -157,13 +147,9 @@
          DASHBOARD
     ======================================================= -->
 
-    <section class="dashboard">
+    <section class="dashboard" data-page="home">
 
 
-
-        <!-- =================================================
-             TODAY EVENTS
-        ================================================== -->
 
         <article class="stat-card">
 
@@ -183,12 +169,6 @@
 
 
 
-
-
-        <!-- =================================================
-             MONTH EVENTS
-        ================================================== -->
-
         <article class="stat-card">
 
             <span id="monthEventsLabel">
@@ -206,12 +186,6 @@
         </article>
 
 
-
-
-
-        <!-- =================================================
-             CLASSES
-        ================================================== -->
 
         <article class="stat-card">
 
@@ -231,12 +205,6 @@
 
 
 
-
-
-        <!-- =================================================
-             EXAMS
-        ================================================== -->
-
         <article class="stat-card">
 
             <span id="examsLabel">
@@ -254,12 +222,6 @@
         </article>
 
 
-
-
-
-        <!-- =================================================
-             ASSIGNMENT
-        ================================================== -->
 
         <article class="stat-card">
 
@@ -279,12 +241,6 @@
 
 
 
-
-
-        <!-- =================================================
-             PROJECT
-        ================================================== -->
-
         <article class="stat-card">
 
             <span id="projectLabel">
@@ -303,12 +259,6 @@
 
 
 
-
-
-        <!-- =================================================
-             PRESENTATION
-        ================================================== -->
-
         <article class="stat-card">
 
             <span id="presentationLabel">
@@ -326,12 +276,6 @@
         </article>
 
 
-
-
-
-        <!-- =================================================
-             PERSONAL
-        ================================================== -->
 
         <article class="stat-card">
 
@@ -359,7 +303,7 @@
          TOOLBAR
     ======================================================= -->
 
-    <section class="toolbar">
+    <section class="toolbar" data-page="home">
 
 
 
@@ -507,7 +451,7 @@
                  CALENDAR CARD
             ================================================== -->
 
-            <section class="calendar-card">
+            <section class="calendar-card" data-page="home">
 
 
 
@@ -655,7 +599,7 @@
                  BANGLADESH HOLIDAYS
             ================================================== -->
 
-            <section class="bangladesh-holidays">
+            <section class="bangladesh-holidays" data-page="home">
 
                 <h3 id="holidaysTitle">
                     Bangladesh Holidays
@@ -676,7 +620,7 @@
                  STUDY TASKS
             ================================================== -->
 
-            <section class="side-card study-task-card">
+            <section class="side-card study-task-card" data-page="study">
 
 <!-- =========================================================
      STUDY TIMER
@@ -686,10 +630,6 @@
     id="studyTimerPanel"
     class="study-timer-panel hidden"
 >
-
-    <!-- =====================================================
-         TIMER HEADER
-    ====================================================== -->
 
     <div class="study-timer-header">
 
@@ -720,10 +660,6 @@
     </div>
 
 
-
-    <!-- =====================================================
-         TIMER CONTENT
-    ====================================================== -->
 
     <div class="study-timer-content">
 
@@ -928,7 +864,7 @@
      FINAL STUDY ANALYTICS
 ========================================================= -->
 
-<section class="study-analytics-card">
+<section class="study-analytics-card" data-page="study">
 
     <div class="section-header">
 
@@ -1197,7 +1133,7 @@
                  QUICK ADD
             ================================================== -->
 
-            <section class="side-card">
+            <section class="side-card" data-page="home">
 
                 <h3 id="quickAddTitle">
                     Quick Add
@@ -1279,7 +1215,7 @@
                  UPCOMING EVENTS
             ================================================== -->
 
-            <section class="side-card">
+            <section class="side-card" data-page="home">
 
                 <div class="section-header">
 
@@ -1309,7 +1245,7 @@
                  PAST EVENTS
             ================================================== -->
 
-            <section class="side-card">
+            <section class="side-card" data-page="home">
 
                 <div class="section-header">
 
@@ -1362,7 +1298,7 @@
             CGPA CALCULATOR
         ================================================== -->
 
-        <section class="side-card cgpa-calculator-card">
+        <section class="side-card cgpa-calculator-card" data-page="me">
 
             <div class="section-header">
 
@@ -1512,7 +1448,7 @@
      DAILY DIARY / ডেইলি ডায়েরি
 ================================================== -->
 
-<section class="side-card daily-diary-card">
+<section class="side-card daily-diary-card" data-page="me">
 
     <!-- HEADER -->
     <div class="section-header">
@@ -1594,7 +1530,7 @@
                          DAILY STUDY REPORT — SIDEBAR
                     ================================================== -->
 
-                <section class="side-card daily-study-report-card">
+                <section class="side-card daily-study-report-card" data-page="study">
 
                     <!-- =================================================
                         DAILY REPORT HEADER
@@ -1718,7 +1654,7 @@
                     WEEKLY STUDY REPORT — SIDEBAR
                 ================================================== -->
 
-                <section class="side-card weekly-study-report-card">
+                <section class="side-card weekly-study-report-card" data-page="study">
 
                     <!-- =================================================
                         WEEKLY REPORT HEADER
@@ -1848,7 +1784,7 @@
 
                 </section>
                 <!-- Completed Subjects List -->
-                <div class="completed-subjects-container" id="completedSubjectsContainer" style="margin-top: 14px; padding-top: 14px; border-top: 1px solid rgb(var(--border));">
+                <div class="completed-subjects-container" id="completedSubjectsContainer" data-page="study" style="margin-top: 14px; padding-top: 14px; border-top: 1px solid rgb(var(--border));">
                     <h4 style="margin: 0 0 10px 0; font-size: 13px; font-weight: 600; color: rgb(var(--success)); display: flex; align-items: center; gap: 6px;">
                         🎉 Completed Subjects
                     </h4>
@@ -1883,10 +1819,6 @@
 
 
 
-        <!-- =====================================================
-             MODAL HEADER
-        ====================================================== -->
-
         <div class="modal-header">
 
             <h2 id="modalTitle">
@@ -1910,10 +1842,6 @@
 
 
 
-        <!-- =====================================================
-             EVENT FORM
-        ====================================================== -->
-
         <form id="eventForm">
 
             <div class="modal-body">
@@ -1926,10 +1854,6 @@
                 >
 
 
-
-                <!-- =================================================
-                     EVENT TITLE
-                ================================================== -->
 
                 <label>
 
@@ -1952,10 +1876,6 @@
 
 
 
-
-                <!-- =================================================
-                     DATE + CATEGORY
-                ================================================== -->
 
                 <div class="form-row">
 
@@ -2053,10 +1973,6 @@
 
 
 
-                <!-- =================================================
-                     START + END
-                ================================================== -->
-
                 <div class="form-row">
 
                     <label>
@@ -2097,10 +2013,6 @@
 
 
 
-                <!-- =================================================
-                     LOCATION
-                ================================================== -->
-
                 <label>
 
                     <span id="eventLocationLabel">
@@ -2122,10 +2034,6 @@
 
 
 
-                <!-- =================================================
-                     DESCRIPTION
-                ================================================== -->
-
                 <label>
 
                     <span id="eventDescriptionLabel">
@@ -2144,10 +2052,6 @@
 
 
 
-
-                <!-- =================================================
-                     CUSTOM ALARM
-                ================================================== -->
 
                 <div class="alarm-section">
 
@@ -2195,10 +2099,6 @@
 
 
 
-                        <!-- =================================================
-                             ALARM DATE
-                        ================================================== -->
-
                         <label>
 
                             <span id="alarmDateLabel">
@@ -2218,10 +2118,6 @@
 
 
 
-                        <!-- =================================================
-                             ALARM TIME
-                        ================================================== -->
-
                         <label>
 
                             <span id="alarmTimeLabel">
@@ -2240,10 +2136,6 @@
 
 
 
-
-                        <!-- =================================================
-                             ALARM SOUND
-                        ================================================== -->
 
                         <label>
 
@@ -2291,10 +2183,6 @@
 
 
 
-                        <!-- =================================================
-                             TEST ALARM
-                        ================================================== -->
-
                         <button
                             id="testAlarmBtn"
                             type="button"
@@ -2312,10 +2200,6 @@
 
 
 
-
-            <!-- =================================================
-                 EVENT MODAL FOOTER
-            ================================================== -->
 
             <div class="modal-footer">
 
@@ -2380,10 +2264,6 @@
 
 
 
-        <!-- =====================================================
-             STUDY TASK MODAL HEADER
-        ====================================================== -->
-
         <div class="modal-header">
 
             <h2 id="studyTaskModalTitle">
@@ -2407,10 +2287,6 @@
 
 
 
-        <!-- =====================================================
-             STUDY TASK FORM
-        ====================================================== -->
-
         <form id="studyTaskForm">
 
             <div class="modal-body">
@@ -2425,10 +2301,6 @@
 
 
 
-
-                <!-- =================================================
-                     TASK TITLE
-                ================================================== -->
 
                 <label>
 
@@ -2452,10 +2324,6 @@
 
 
 
-                <!-- =================================================
-                     SUBJECT
-                ================================================== -->
-
                 <label>
 
                     <span id="studyTaskSubjectLabel">
@@ -2474,10 +2342,6 @@
                 </label>
 
 
-
-                <!-- =================================================
-                     TARGET STUDY TIME - FIXED WITH TRANSLATION IDs
-                ================================================== -->
 
                 <div class="form-group">
 
@@ -2503,10 +2367,6 @@
 
 
 
-
-                <!-- =================================================
-                     START DATE + DEADLINE
-                ================================================== -->
 
                 <div class="form-row">
 
@@ -2550,10 +2410,6 @@
 
 
 
-                <!-- =================================================
-                     PRIORITY
-                ================================================== -->
-
                 <label>
 
                     <span id="studyTaskPriorityLabel">
@@ -2594,10 +2450,6 @@
 
 
 
-                <!-- =================================================
-                     PROGRESS
-                ================================================== -->
-
                 <label>
 
                     <span id="studyTaskProgressLabel">
@@ -2632,10 +2484,6 @@
 
 
 
-                <!-- =================================================
-                     NOTES
-                ================================================== -->
-
                 <label>
 
                     <span id="studyTaskNotesLabel">
@@ -2656,10 +2504,6 @@
 
 
 
-
-            <!-- =================================================
-                 STUDY TASK MODAL FOOTER
-            ================================================== -->
 
             <div class="modal-footer">
 
@@ -2906,6 +2750,42 @@ if ('serviceWorker' in navigator) {
     });
 }
 </script>
+
+
+
+
+
+<!-- =========================================================
+     MOBILE BOTTOM NAVIGATION — 3 PAGES
+========================================================= -->
+<nav class="mobile-bottom-nav" id="mobileBottomNav">
+    <button 
+        type="button" 
+        class="mobile-nav-btn active" 
+        data-page="home"
+    >
+        <span class="mobile-nav-icon">🏠</span>
+        <span class="mobile-nav-label">Home</span>
+    </button>
+
+    <button 
+        type="button" 
+        class="mobile-nav-btn" 
+        data-page="study"
+    >
+        <span class="mobile-nav-icon">📊</span>
+        <span class="mobile-nav-label">Study</span>
+    </button>
+
+    <button 
+        type="button" 
+        class="mobile-nav-btn" 
+        data-page="me"
+    >
+        <span class="mobile-nav-icon">👤</span>
+        <span class="mobile-nav-label">Me</span>
+    </button>
+</nav>
 
 </body>
 
