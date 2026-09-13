@@ -1660,14 +1660,9 @@ function setupEventListeners() {
     }
 
 
-    if (languageBtn) {
-
-        languageBtn.addEventListener(
-            "click",
-            toggleLanguage
-        );
-
-    }
+    // ✅ FIX: languageBtn listener removed from here
+    // কারণ Study Analytics JS ইতিমধ্যেই এখানে listener যোগ করে
+    // এবং সেটি window.toggleLanguage কেও কল করে।
 
 
     if (searchInput) {
@@ -1993,6 +1988,15 @@ function toggleLanguage() {
         LANGUAGE_STORAGE_KEY,
         state.language
     );
+
+
+    // ✅ FIX: Study Analytics কেও জানান যাতে সেটাও রিফ্রেশ হয়
+    if (typeof window.setAnalyticsLanguage === "function") {
+        window.setAnalyticsLanguage(state.language);
+    }
+    if (typeof window.forceRenderAnalytics === "function") {
+        window.forceRenderAnalytics();
+    }
 
 
     updateLanguageButton();
@@ -7109,6 +7113,14 @@ if (deleteSelectedPastEventsBtn) {
 
 
 /* =========================================================
+   ✅ EXPOSE toggleLanguage GLOBALLY
+   যাতে Study Analytics JS থেকে কল করা যায়
+========================================================= */
+
+window.toggleLanguage = toggleLanguage;
+
+
+/* =========================================================
    MOBILE 3-PAGE NAVIGATION SYSTEM
    Home / Study / Me page switcher
 ========================================================= */
@@ -7164,81 +7176,7 @@ if (deleteSelectedPastEventsBtn) {
 
 
 /* =========================================================
-   🔥🔥🔥 ULTIMATE PAGE NAV FIX
-   যদি উপরের সব fail করে, এটা কাজ করবে
+   ✅ REMOVED: ultimatePageNavFix
+   কারণ এই ফাংশনটি cloneNode() ব্যবহার করে সব লিসেনার মুছে দিচ্ছিল
+   এবং initMobilePageNav এর লিসেনারগুলোও নষ্ট করছিল।
 ========================================================= */
-
-(function ultimatePageNavFix() {
-    function run() {
-        var nav = document.getElementById('mobileBottomNav');
-        if (!nav) {
-            setTimeout(run, 500);
-            return;
-        }
-
-        var buttons = nav.querySelectorAll('.mobile-nav-btn');
-        if (buttons.length === 0) {
-            setTimeout(run, 500);
-            return;
-        }
-
-        // Remove all existing listeners by replacing nodes
-        buttons.forEach(function(btn) {
-            var fresh = btn.cloneNode(true);
-            btn.parentNode.replaceChild(fresh, btn);
-        });
-
-        // Get fresh buttons
-        var freshButtons = nav.querySelectorAll('.mobile-nav-btn');
-
-        // Add fresh event listeners
-        freshButtons.forEach(function(btn) {
-            btn.onclick = function(e) {
-                if (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-
-                var page = btn.getAttribute('data-page');
-                if (!page) return false;
-
-                // Update body attribute
-                document.body.setAttribute('data-current-page', page);
-
-                // Update button active states
-                freshButtons.forEach(function(b) {
-                    if (b.getAttribute('data-page') === page) {
-                        b.classList.add('active');
-                        b.style.color = '#2563eb';
-                    } else {
-                        b.classList.remove('active');
-                        b.style.color = '';
-                    }
-                });
-
-                // Force scroll top
-                setTimeout(function() {
-                    window.scrollTo(0, 0);
-                }, 10);
-
-                return false;
-            };
-        });
-
-        // Ensure body attribute is set
-        if (!document.body.getAttribute('data-current-page')) {
-            document.body.setAttribute('data-current-page', 'home');
-        }
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', run);
-    } else {
-        run();
-    }
-
-    // Also run after a delay to catch dynamic content
-    setTimeout(run, 500);
-    setTimeout(run, 1500);
-
-})();
