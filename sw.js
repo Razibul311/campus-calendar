@@ -3,7 +3,7 @@
    Offline caching & auto update
 ========================================================= */
 
-const CACHE_NAME = 'campus-calendar-v1.0.5';
+const CACHE_NAME = 'campus-calendar-v1.0.7';
 
 
 const PRECACHE_URLS = [
