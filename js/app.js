@@ -7380,3 +7380,70 @@ if (deleteSelectedPastEventsBtn) {
     );
 
 }
+
+
+/* =========================================================
+   MOBILE 3-PAGE NAVIGATION SYSTEM
+========================================================= */
+
+(function initMobilePageNav() {
+
+    const bottomNav = document.getElementById('mobileBottomNav');
+    if (!bottomNav) return;
+
+    const navButtons = bottomNav.querySelectorAll('.mobile-nav-btn');
+    const STORAGE_KEY = 'campusCalendarCurrentPage';
+
+    /* =====================================================
+       Set Active Page
+    ===================================================== */
+    function setActivePage(pageName) {
+        // Set body attribute
+        document.body.setAttribute('data-current-page', pageName);
+
+        // Update button states
+        navButtons.forEach(function(btn) {
+            if (btn.dataset.page === pageName) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Save to localStorage
+        try {
+            localStorage.setItem(STORAGE_KEY, pageName);
+        } catch (e) {}
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* =====================================================
+       Click Handler
+    ===================================================== */
+    navButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var pageName = btn.dataset.page;
+            if (pageName) {
+                setActivePage(pageName);
+            }
+        });
+    });
+
+    /* =====================================================
+       Restore Last Page
+    ===================================================== */
+    var lastPage = 'home';
+    try {
+        var saved = localStorage.getItem(STORAGE_KEY);
+        if (saved && ['home', 'study', 'me'].indexOf(saved) !== -1) {
+            lastPage = saved;
+        }
+    } catch (e) {}
+
+    setActivePage(lastPage);
+
+    console.log('Mobile page nav initialized. Current page:', lastPage);
+
+})();
