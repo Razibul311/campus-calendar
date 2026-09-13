@@ -5694,3 +5694,174 @@ img, table, pre, code {
    ⚠️ IMPORTANT - এই Block শেষে হবে
 ========================================================= */
 
+/* =========================================================
+   📱 MOBILE 3-PAGE LAYOUT + BOTTOM NAVIGATION
+========================================================= */
+
+/* Default hidden on PC */
+.mobile-bottom-nav {
+    display: none;
+}
+
+/* =========================================================
+   MOBILE (max-width: 768px)
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* =====================================================
+       BOTTOM NAVIGATION BAR
+    ===================================================== */
+    .mobile-bottom-nav {
+        display: flex !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 64px !important;
+        background: rgb(var(--surface, 255 255 255)) !important;
+        border-top: 1px solid rgb(var(--border)) !important;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08) !important;
+        z-index: 9999 !important;
+        padding: 4px 8px !important;
+        padding-bottom: calc(4px + env(safe-area-inset-bottom, 0px)) !important;
+        gap: 4px !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+
+    .mobile-nav-btn {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 2px !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 12px !important;
+        cursor: pointer !important;
+        color: rgb(var(--text-muted, 100 116 139)) !important;
+        font-family: inherit !important;
+        transition: all 0.2s ease !important;
+        padding: 6px !important;
+    }
+
+    .mobile-nav-btn:active {
+        transform: scale(0.94) !important;
+    }
+
+    .mobile-nav-icon {
+        font-size: 20px !important;
+        line-height: 1 !important;
+        transition: transform 0.2s ease !important;
+    }
+
+    .mobile-nav-label {
+        font-size: 10px !important;
+        font-weight: 600 !important;
+        line-height: 1 !important;
+        margin-top: 2px !important;
+    }
+
+    .mobile-nav-btn.active {
+        color: rgb(var(--primary, 37 99 235)) !important;
+        background: rgb(var(--primary, 37 99 235) / 0.1) !important;
+    }
+
+    .mobile-nav-btn.active .mobile-nav-icon {
+        transform: scale(1.1) !important;
+    }
+
+    /* =====================================================
+       PAGE SYSTEM
+       ===================================================== */
+
+    /* Hide all page sections by default */
+    [data-page] {
+        display: none !important;
+    }
+
+    /* Show active page sections */
+    body[data-current-page="home"] [data-page="home"],
+    body[data-current-page="study"] [data-page="study"],
+    body[data-current-page="me"] [data-page="me"] {
+        display: block !important;
+    }
+
+    /* =====================================================
+       LAYOUT — Flatten main + sidebar
+       ===================================================== */
+    .layout {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .layout > div,
+    .layout > aside {
+        display: contents !important;
+    }
+
+    /* =====================================================
+       BOTTOM NAV SPACE
+       ===================================================== */
+    .container {
+        padding-bottom: 90px !important;
+        padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    /* =====================================================
+       FULL WIDTH FOR ALL PAGE SECTIONS
+       ===================================================== */
+    [data-page] {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* =========================================================
+   EXTRA SMALL MOBILE (≤360px)
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .mobile-bottom-nav {
+        height: 60px !important;
+    }
+
+    .mobile-nav-icon {
+        font-size: 18px !important;
+    }
+
+    .mobile-nav-label {
+        font-size: 9px !important;
+    }
+}
+
+/* =========================================================
+   DARK MODE — Bottom Nav
+========================================================= */
+
+[data-theme="dark"] .mobile-bottom-nav,
+.dark .mobile-bottom-nav,
+body.dark .mobile-bottom-nav {
+    background: rgb(15 23 42) !important;
+    border-color: rgb(51 65 85) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .mobile-nav-btn,
+.dark .mobile-nav-btn,
+body.dark .mobile-nav-btn {
+    color: rgb(148 163 184) !important;
+}
+
+[data-theme="dark"] .mobile-nav-btn.active,
+.dark .mobile-nav-btn.active,
+body.dark .mobile-nav-btn.active {
+    color: rgb(96 165 250) !important;
+    background: rgb(37 99 235 / 0.15) !important;
+}
