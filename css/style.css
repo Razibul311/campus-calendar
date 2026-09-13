@@ -4951,7 +4951,6 @@ body.dark .study-report-empty {
 
 
 
-
 /* =========================================================
    📱 PHONE LAYOUT — FORCE ORDER
    Mobile (up to 768px)
@@ -4969,13 +4968,7 @@ body.dark .study-report-empty {
         width: 100% !important;
     }
 
-    /* Main column + Sidebar - both full width */
-    .layout > div,
-    .layout > aside {
-        display: contents !important;
-        /* "contents" দিলে parent element invisible হয়ে যায়
-           কিন্তু ভিতরের সব sections সরাসরি layout-এর child হয়ে যায় */
-    }
+    /* ✅ DELETED: display: contents block (কারণ এটা page switching নষ্ট করছিল) */
 
     /* =====================================================
        ORDER — আপনার চাওয়া sequence
@@ -5056,5 +5049,49 @@ body.dark .study-report-empty {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
+    }
+}
+
+/* =========================================================
+   ✅ PAGE SWITCHING FIX — MUST BE AT THE VERY END
+========================================================= */
+
+/* সব data-page এলিমেন্ট ডিফল্টভাবে লুকান */
+body[data-current-page] [data-page]:not(.layout):not(.sidebar) {
+    display: none;
+}
+
+/* Home page — শুধু home elements */
+body[data-current-page="home"] [data-page="home"] {
+    display: block;
+}
+
+body[data-current-page="home"] .dashboard[data-page="home"] {
+    display: grid;
+}
+
+body[data-current-page="home"] .toolbar[data-page="home"] {
+    display: flex;
+}
+
+/* Study page — শুধু study elements */
+body[data-current-page="study"] [data-page="study"] {
+    display: block;
+}
+
+/* Me page — শুধু me elements */
+body[data-current-page="me"] [data-page="me"] {
+    display: block;
+}
+
+/* Layout container সবসময় দৃশ্যমান */
+.layout {
+    display: grid;
+}
+
+@media (max-width: 768px) {
+    .layout {
+        display: flex !important;
+        flex-direction: column !important;
     }
 }
