@@ -5054,7 +5054,7 @@ body.dark .study-report-empty {
     }
 }
 /* =========================================================
-   ✅ PAGE SWITCHING FIX — FINAL CORRECT VERSION
+   ✅ PAGE SWITCHING FIX + LAYOUT FIX — FINAL
 ========================================================= */
 
 /* ১. সব data-page এলিমেন্ট ডিফল্টভাবে লুকান */
@@ -5095,11 +5095,71 @@ body[data-current-page="me"] .daily-diary-card[data-page="me"] {
 /* ৫. Layout container সবসময় দৃশ্যমান */
 .layout {
     display: grid;
+    grid-template-columns: minmax(0, 1fr) 315px;
+    gap: 18px;
+    align-items: start;
 }
 
+/* =========================================================
+   📱 MOBILE — Layout ভাঙা বন্ধ করুন
+========================================================= */
 @media (max-width: 768px) {
+
+    /* Layout কে mobile এ single column করা */
     .layout {
         display: flex !important;
         flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    /* ✅ CRITICAL: display: contents এর বদলে flex + column */
+    .layout > div,
+    .layout > aside {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    /* Calendar grid এ ৭ কলাম রাখুন — সব দিন একসাথে দেখানোর জন্য */
+    .calendar-grid {
+        grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+        gap: 3px !important;
+        padding: 4px !important;
+    }
+
+    /* প্রতিটি দিনের সাইজ ছোট করুন */
+    .day {
+        min-height: 70px !important;
+        padding: 4px 3px !important;
+    }
+
+    /* Calendar card কে ছোট করুন */
+    .calendar-card {
+        padding: 0 !important;
+    }
+
+    .calendar-header {
+        padding: 10px 12px !important;
+    }
+
+    .calendar-header h2 {
+        font-size: 16px !important;
+    }
+
+    /* সব section full width */
+    .calendar-card,
+    .bangladesh-holidays,
+    .side-card,
+    .study-task-card,
+    .study-analytics-card,
+    .cgpa-calculator-card,
+    .daily-diary-card,
+    .daily-study-report-card,
+    .weekly-study-report-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 }
