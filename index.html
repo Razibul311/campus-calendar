@@ -47,6 +47,80 @@
         href="css/study-task.css"
     >
 
+    <!-- ✅ ADDED: Mobile Bottom Nav CSS (inline) -->
+    <style>
+        .mobile-bottom-nav {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bottom-nav {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 999;
+                background: rgb(var(--surface));
+                border-top: 1px solid rgb(var(--border));
+                padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+                justify-content: space-around;
+                box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.08);
+            }
+
+            body.dark .mobile-bottom-nav {
+                background: rgb(var(--surface));
+                border-top-color: rgb(var(--border));
+                box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+            }
+
+            .mobile-nav-btn {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2px;
+                background: transparent;
+                border: none;
+                color: rgb(var(--text-muted));
+                font-size: 11px;
+                font-weight: 500;
+                padding: 6px 0;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .mobile-nav-btn:active {
+                transform: scale(0.95);
+            }
+
+            .mobile-nav-btn.active {
+                color: rgb(var(--primary));
+            }
+
+            .mobile-nav-btn.active .mobile-nav-icon {
+                transform: scale(1.15);
+            }
+
+            .mobile-nav-icon {
+                font-size: 20px;
+                line-height: 1;
+                transition: transform 0.2s ease;
+            }
+
+            .mobile-nav-label {
+                font-size: 10px;
+                font-weight: 600;
+                letter-spacing: 0.2px;
+            }
+
+            .container {
+                padding-bottom: calc(80px + env(safe-area-inset-bottom)) !important;
+            }
+        }
+    </style>
+
 
 
     <!-- =========================================================
