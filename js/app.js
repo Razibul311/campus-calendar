@@ -7161,3 +7161,84 @@ if (deleteSelectedPastEventsBtn) {
     console.log('Mobile page nav initialized. Current page:', lastPage);
 
 })();
+
+
+/* =========================================================
+   🔥🔥🔥 ULTIMATE PAGE NAV FIX
+   যদি উপরের সব fail করে, এটা কাজ করবে
+========================================================= */
+
+(function ultimatePageNavFix() {
+    function run() {
+        var nav = document.getElementById('mobileBottomNav');
+        if (!nav) {
+            setTimeout(run, 500);
+            return;
+        }
+
+        var buttons = nav.querySelectorAll('.mobile-nav-btn');
+        if (buttons.length === 0) {
+            setTimeout(run, 500);
+            return;
+        }
+
+        // Remove all existing listeners by replacing nodes
+        buttons.forEach(function(btn) {
+            var fresh = btn.cloneNode(true);
+            btn.parentNode.replaceChild(fresh, btn);
+        });
+
+        // Get fresh buttons
+        var freshButtons = nav.querySelectorAll('.mobile-nav-btn');
+
+        // Add fresh event listeners
+        freshButtons.forEach(function(btn) {
+            btn.onclick = function(e) {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+
+                var page = btn.getAttribute('data-page');
+                if (!page) return false;
+
+                // Update body attribute
+                document.body.setAttribute('data-current-page', page);
+
+                // Update button active states
+                freshButtons.forEach(function(b) {
+                    if (b.getAttribute('data-page') === page) {
+                        b.classList.add('active');
+                        b.style.color = '#2563eb';
+                    } else {
+                        b.classList.remove('active');
+                        b.style.color = '';
+                    }
+                });
+
+                // Force scroll top
+                setTimeout(function() {
+                    window.scrollTo(0, 0);
+                }, 10);
+
+                return false;
+            };
+        });
+
+        // Ensure body attribute is set
+        if (!document.body.getAttribute('data-current-page')) {
+            document.body.setAttribute('data-current-page', 'home');
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run);
+    } else {
+        run();
+    }
+
+    // Also run after a delay to catch dynamic content
+    setTimeout(run, 500);
+    setTimeout(run, 1500);
+
+})();
