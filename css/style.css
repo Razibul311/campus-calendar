@@ -5773,3 +5773,143 @@ body.dark .alarm-switch input:checked + .alarm-slider {
         background: transparent !important;
     }
 }
+
+
+
+
+/* =========================================================
+   ✅ ULTIMATE MODAL SCROLL FIX — Hard Override
+   এইটা সব CSS এর শেষে থাকবে
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* ============================================
+       ১. Modal এর parent chain এ min-height: 0
+    ============================================ */
+    html body .modal-overlay {
+        min-height: 0 !important;
+        max-height: 100vh !important;
+        max-height: 100dvh !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        overflow: hidden !important;
+    }
+
+    /* ============================================
+       ২. Modal — সব properties force
+    ============================================ */
+    html body .modal-overlay > .modal,
+    html body #eventModal > .modal,
+    html body #studyTaskModal > .modal,
+    html body #detailsModal > .modal,
+    html body #alarmModal > .modal {
+        /* Height — force */
+        height: calc(100dvh - 100px) !important;
+        max-height: calc(100dvh - 100px) !important;
+        min-height: 0 !important;
+
+        /* Flex container */
+        display: flex !important;
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+
+        /* Overflow */
+        overflow: hidden !important;
+
+        /* Position */
+        position: relative !important;
+    }
+
+    /* ============================================
+       ৩. Header & Footer — shrink হবে না
+    ============================================ */
+    html body .modal-overlay > .modal > .modal-header,
+    html body .modal-overlay > .modal > .modal-footer,
+    html body #eventModal > .modal > .modal-header,
+    html body #eventModal > .modal > .modal-footer,
+    html body #studyTaskModal > .modal > .modal-header,
+    html body #studyTaskModal > .modal > .modal-footer,
+    html body #detailsModal > .modal > .modal-header,
+    html body #detailsModal > .modal > .modal-footer {
+        flex: 0 0 auto !important;
+        flex-grow: 0 !important;
+        flex-shrink: 0 !important;
+        flex-basis: auto !important;
+        min-height: 0 !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* ============================================
+       ৪. ✅ Body — MUST SCROLL — সবচেয়ে force
+    ============================================ */
+    html body .modal-overlay > .modal > .modal-body,
+    html body #eventModal > .modal > .modal-body,
+    html body #studyTaskModal > .modal > .modal-body,
+    html body #detailsModal > .modal > .modal-body,
+    html body #alarmModal > .modal > .modal-body {
+        /* Flex — MUST SHRINK */
+        flex: 1 1 0% !important;
+        flex-grow: 1 !important;
+        flex-shrink: 1 !important;
+        flex-basis: 0% !important;
+
+        /* 🔑 সবচেয়ে গুরুত্বপূর্ণ */
+        min-height: 0 !important;
+        max-height: 100% !important;
+        height: auto !important;
+
+        /* Width */
+        width: 100% !important;
+
+        /* Overflow — force scroll */
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        overscroll-behavior: contain !important;
+
+        /* Display */
+        display: block !important;
+
+        /* Padding */
+        padding: 16px !important;
+        box-sizing: border-box !important;
+
+        /* Position */
+        position: relative !important;
+    }
+
+    /* ============================================
+       ৫. Body এর ভিতরের children — shrink করবে না
+    ============================================ */
+    html body .modal-overlay > .modal > .modal-body > * {
+        flex-shrink: 0 !important;
+        max-width: 100% !important;
+    }
+
+    /* ============================================
+       ৬. Alarm section — fixed height নয়
+    ============================================ */
+    html body .alarm-section {
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+    }
+
+    /* ============================================
+       ৭. Scrollbar
+    ============================================ */
+    html body .modal-body::-webkit-scrollbar {
+        width: 4px !important;
+    }
+
+    html body .modal-body::-webkit-scrollbar-thumb {
+        background: rgb(var(--primary)) !important;
+        border-radius: 4px !important;
+    }
+
+    html body .modal-body::-webkit-scrollbar-track {
+        background: transparent !important;
+    }
+}
