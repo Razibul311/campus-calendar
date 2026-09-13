@@ -1,9 +1,14 @@
+/* =========================================================
+   CAMPUS CALENDAR — COMPLETE STYLESHEET
+   Clean Version — 3-Page Mobile Layout
+========================================================= */
 
+/* =========================================================
+   01. DESIGN TOKENS — LIGHT MODE
+========================================================= */
 
 :root {
-    /* =========================================================
-       PRIMARY — TEAL (Complete Palette - RGB)
-    ========================================================= */
+    /* PRIMARY — TEAL */
     --primary: 13, 148, 136;
     --primary-hover: 15, 118, 110;
     --primary-dark: 17, 94, 89;
@@ -12,9 +17,7 @@
     --primary-subtle: 240, 253, 250;
     --primary-ring: 13, 148, 136;
 
-    /* =========================================================
-       ACCENT — INDIGO (Complete Palette - RGB)
-    ========================================================= */
+    /* ACCENT — INDIGO */
     --accent: 79, 70, 229;
     --accent-hover: 67, 56, 202;
     --accent-dark: 55, 48, 163;
@@ -22,45 +25,31 @@
     --accent-soft: 238, 242, 255;
     --accent-ring: 79, 70, 229;
 
-    /* =========================================================
-       SEMANTIC — SUCCESS (RGB)
-    ========================================================= */
+    /* SUCCESS */
     --success: 5, 150, 105;
     --success-soft: 236, 253, 245;
     --success-border: 167, 243, 208;
     --success-text: 6, 95, 70;
-    --success-ring: 5, 150, 105;
 
-    /* =========================================================
-       SEMANTIC — WARNING (RGB)
-    ========================================================= */
+    /* WARNING */
     --warning: 217, 119, 6;
     --warning-soft: 255, 251, 235;
     --warning-border: 252, 211, 77;
     --warning-text: 146, 64, 14;
-    --warning-ring: 217, 119, 6;
 
-    /* =========================================================
-       SEMANTIC — DANGER (RGB)
-    ========================================================= */
+    /* DANGER */
     --danger: 225, 29, 72;
     --danger-soft: 255, 241, 242;
     --danger-border: 254, 205, 211;
     --danger-text: 159, 18, 57;
-    --danger-ring: 225, 29, 72;
 
-    /* =========================================================
-       SEMANTIC — INFO (RGB)
-    ========================================================= */
+    /* INFO */
     --info: 2, 132, 199;
     --info-soft: 240, 249, 255;
     --info-border: 125, 211, 252;
     --info-text: 12, 74, 110;
-    --info-ring: 2, 132, 199;
 
-    /* =========================================================
-       BACKGROUND — RGB
-    ========================================================= */
+    /* BACKGROUND */
     --bg: 244, 246, 250;
     --bg-elevated: 255, 255, 255;
     --bg-warm: 250, 251, 252;
@@ -70,9 +59,7 @@
     --surface-hover: 241, 245, 249;
     --surface-elevated: 255, 255, 255;
 
-    /* =========================================================
-       TEXT — RGB
-    ========================================================= */
+    /* TEXT */
     --text: 15, 23, 42;
     --text-primary: 15, 23, 42;
     --text-secondary: 71, 85, 105;
@@ -80,34 +67,25 @@
     --text-faint: 148, 163, 184;
     --text-inverse: 255, 255, 255;
 
-    /* =========================================================
-       BORDER — RGB
-    ========================================================= */
+    /* BORDER */
     --border: 226, 232, 240;
     --border-strong: 203, 213, 225;
     --border-light: 241, 245, 249;
     --border-focus: 13, 148, 136;
 
-    /* =========================================================
-       TODAY — RGB
-    ========================================================= */
+    /* TODAY */
     --today-bg: 236, 253, 245;
     --today-border: 5, 150, 105;
     --today-text: 6, 95, 70;
 
-    /* =========================================================
-       HOLIDAY — WARM ROSE (RGB)
-    ========================================================= */
+    /* HOLIDAY */
     --holiday-bg: 255, 241, 242;
     --holiday-border: 251, 113, 133;
     --holiday-text: 225, 29, 72;
-    --holiday-soft: 255, 228, 230;
     --holiday-indicator-bg: 255, 241, 242;
     --holiday-indicator-border: 254, 205, 211;
 
-    /* =========================================================
-       EVENT CATEGORY COLORS — RGB
-    ========================================================= */
+    /* EVENT CATEGORIES */
     --class-color: 13, 148, 136;
     --exam-color: 225, 29, 72;
     --assignment-color: 124, 58, 237;
@@ -117,9 +95,7 @@
     --holiday-color: 219, 39, 119;
     --other-color: 100, 116, 139;
 
-    /* =========================================================
-       SHADOW — RGB (Alpha values handled in rgba())
-    ========================================================= */
+    /* SHADOWS */
     --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
     --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
     --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
@@ -128,9 +104,7 @@
     --shadow-2xl: 0 35px 70px rgba(15, 23, 42, 0.22);
     --shadow-glow: 0 4px 20px rgba(13, 148, 136, 0.15);
 
-    /* =========================================================
-       RADIUS
-    ========================================================= */
+    /* RADIUS */
     --radius-xs: 4px;
     --radius-sm: 8px;
     --radius-md: 12px;
@@ -139,18 +113,14 @@
     --radius-2xl: 24px;
     --radius-full: 9999px;
 
-    /* =========================================================
-       TRANSITIONS
-    ========================================================= */
+    /* TRANSITIONS */
     --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: 0.15s var(--ease-out);
     --transition: 0.25s var(--ease-in-out);
     --transition-slow: 0.4s var(--ease-in-out);
 
-    /* =========================================================
-       GRADIENT UTILITIES — Using RGB
-    ========================================================= */
+    /* GRADIENTS */
     --gradient-primary: linear-gradient(135deg, rgb(13, 148, 136) 0%, rgb(8, 145, 178) 100%);
     --gradient-accent: linear-gradient(135deg, rgb(79, 70, 229) 0%, rgb(124, 58, 237) 100%);
     --gradient-warm: linear-gradient(145deg, rgb(245, 158, 11) 0%, rgb(217, 119, 6) 100%);
@@ -160,29 +130,20 @@
     --gradient-topbar-dark: linear-gradient(145deg, rgb(4, 47, 46) 0%, rgb(19, 78, 74) 40%, rgb(22, 78, 99) 70%, rgb(15, 23, 42) 100%);
     --gradient-bg: linear-gradient(180deg, rgb(244, 246, 250) 0%, rgb(238, 242, 255) 100%);
 
-    /* =========================================================
-       BACKGROUND GRADIENT OVERLAYS — RGB
-    ========================================================= */
+    /* BACKGROUND OVERLAYS */
     --bg-gradient-1: radial-gradient(circle at 8% 0%, rgba(13, 148, 136, 0.055), transparent 26%);
     --bg-gradient-2: radial-gradient(circle at 92% 100%, rgba(79, 70, 229, 0.04), transparent 30%);
     --bg-gradient-3: radial-gradient(circle at 50% 50%, rgba(13, 148, 136, 0.025), transparent 50%);
 
-    /* =========================================================
-       CONTAINER WIDTHS
-    ========================================================= */
-    --container-sm: 640px;
-    --container-md: 768px;
-    --container-lg: 1024px;
-    --container-xl: 1280px;
+    /* CONTAINER */
     --container-2xl: 1440px;
 }
 
 /* =========================================================
-   02. DARK MODE — RGB VERSION
-   ========================================================= */
+   02. DARK MODE
+========================================================= */
 
 body.dark {
-    /* ---------- Primary Dark ---------- */
     --primary: 45, 212, 191;
     --primary-hover: 94, 234, 212;
     --primary-dark: 20, 184, 166;
@@ -191,7 +152,6 @@ body.dark {
     --primary-subtle: 4, 47, 46;
     --primary-ring: 45, 212, 191;
 
-    /* ---------- Accent Dark ---------- */
     --accent: 129, 140, 248;
     --accent-hover: 165, 180, 252;
     --accent-dark: 99, 102, 241;
@@ -199,17 +159,13 @@ body.dark {
     --accent-soft: 30, 27, 75;
     --accent-ring: 129, 140, 248;
 
-    /* ---------- Background Dark ---------- */
     --bg: 8, 14, 26;
     --bg-elevated: 13, 23, 40;
-    --bg-warm: 15, 26, 46;
-
     --surface: 17, 28, 45;
     --surface-soft: 22, 35, 55;
     --surface-hover: 27, 43, 66;
     --surface-elevated: 22, 35, 55;
 
-    /* ---------- Text Dark ---------- */
     --text: 241, 245, 249;
     --text-primary: 248, 250, 252;
     --text-secondary: 203, 213, 225;
@@ -217,13 +173,11 @@ body.dark {
     --text-faint: 100, 116, 139;
     --text-inverse: 15, 23, 42;
 
-    /* ---------- Border Dark ---------- */
     --border: 37, 53, 74;
     --border-strong: 51, 65, 85;
     --border-light: 29, 43, 62;
     --border-focus: 45, 212, 191;
 
-    /* ---------- Semantic Dark ---------- */
     --success: 52, 211, 153;
     --success-soft: 6, 78, 59;
     --success-border: 5, 150, 105;
@@ -244,20 +198,16 @@ body.dark {
     --info-border: 2, 132, 199;
     --info-text: 125, 211, 252;
 
-    /* ---------- Today Dark ---------- */
     --today-bg: 19, 78, 74;
     --today-border: 45, 212, 191;
     --today-text: 153, 246, 228;
 
-    /* ---------- Holiday Dark ---------- */
     --holiday-bg: 76, 5, 19;
     --holiday-border: 251, 113, 133;
     --holiday-text: 253, 164, 175;
-    --holiday-soft: 136, 19, 55;
     --holiday-indicator-bg: 76, 5, 19;
     --holiday-indicator-border: 136, 19, 55;
 
-    /* ---------- Shadow Dark ---------- */
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.30);
     --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
     --shadow: 0 8px 28px rgba(0, 0, 0, 0.40);
@@ -266,19 +216,16 @@ body.dark {
     --shadow-2xl: 0 40px 80px rgba(0, 0, 0, 0.70);
     --shadow-glow: 0 4px 25px rgba(45, 212, 191, 0.12);
 
-    /* ---------- Dark Background Gradients ---------- */
     --bg-gradient-1: radial-gradient(circle at 8% 0%, rgba(45, 212, 191, 0.06), transparent 26%);
     --bg-gradient-2: radial-gradient(circle at 92% 100%, rgba(129, 140, 248, 0.05), transparent 30%);
     --bg-gradient-3: radial-gradient(circle at 50% 50%, rgba(45, 212, 191, 0.03), transparent 50%);
     --gradient-bg: linear-gradient(180deg, rgb(8, 14, 26) 0%, rgb(13, 23, 40) 100%);
-
-    /* ---------- Gradients Dark ---------- */
     --gradient-topbar: var(--gradient-topbar-dark);
 }
 
 /* =========================================================
-   03. GLOBAL RESET & BODY — RGB
-   ========================================================= */
+   03. GLOBAL RESET
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -306,8 +253,7 @@ body {
         sans-serif;
 
     color: rgb(var(--text));
-    
-    /* Premium Multi-Layer Background — RGB */
+
     background:
         var(--bg-gradient-3),
         var(--bg-gradient-2),
@@ -324,7 +270,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Subtle Background Pattern Overlay */
 body::before {
     content: "";
     position: fixed;
@@ -342,10 +287,9 @@ body::before {
 }
 
 /* =========================================================
-   04. SCROLLBAR — RGB
-   ========================================================= */
+   04. SCROLLBAR
+========================================================= */
 
-/* Light Mode */
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -365,7 +309,6 @@ body::before {
     background: linear-gradient(180deg, rgb(var(--primary-hover)), rgb(var(--primary-dark)));
 }
 
-/* Dark Mode */
 body.dark::-webkit-scrollbar-track {
     background: rgb(30, 41, 59);
 }
@@ -374,13 +317,9 @@ body.dark::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, rgb(var(--primary)), rgb(var(--primary-dark)));
 }
 
-body.dark::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, rgb(var(--primary-dark)), rgb(var(--primary)));
-}
-
 /* =========================================================
-   05. FORM ELEMENTS — RGB
-   ========================================================= */
+   05. FORM ELEMENTS
+========================================================= */
 
 button,
 input,
@@ -419,8 +358,8 @@ textarea::placeholder {
 }
 
 /* =========================================================
-   06. TOPBAR — RGB
-   ========================================================= */
+   06. TOPBAR
+========================================================= */
 
 .topbar {
     position: relative;
@@ -464,18 +403,6 @@ textarea::placeholder {
     z-index: 0;
 }
 
-.topbar .deco-circle {
-    position: absolute;
-    width: 240px;
-    height: 240px;
-    bottom: -185px;
-    left: 34%;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.03);
-    pointer-events: none;
-    z-index: 0;
-}
-
 .brand {
     position: relative;
     z-index: 2;
@@ -514,7 +441,6 @@ textarea::placeholder {
     line-height: 1.2;
     font-weight: 700;
     letter-spacing: -0.3px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .brand p {
@@ -522,7 +448,6 @@ textarea::placeholder {
     font-size: clamp(10px, 1vw, 12px);
     line-height: 1.4;
     opacity: 0.75;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .header-actions {
@@ -554,7 +479,6 @@ textarea::placeholder {
     background: rgba(255, 255, 255, 0.14);
     border-color: rgba(255, 255, 255, 0.30);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .header-btn:active {
@@ -563,7 +487,7 @@ textarea::placeholder {
 
 /* =========================================================
    07. MAIN CONTAINER
-   ========================================================= */
+========================================================= */
 
 .container {
     width: 100%;
@@ -573,8 +497,8 @@ textarea::placeholder {
 }
 
 /* =========================================================
-   08. DASHBOARD — RESPONSIVE GRID
-   ========================================================= */
+   08. DASHBOARD
+========================================================= */
 
 .dashboard {
     display: grid;
@@ -584,8 +508,8 @@ textarea::placeholder {
 }
 
 /* =========================================================
-   09. STAT CARDS — RGB
-   ========================================================= */
+   09. STAT CARDS
+========================================================= */
 
 .stat-card {
     position: relative;
@@ -596,8 +520,6 @@ textarea::placeholder {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xs);
     transition: all var(--transition);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
 }
 
 .stat-card:hover {
@@ -605,36 +527,6 @@ textarea::placeholder {
     border-color: rgb(var(--primary));
     box-shadow: var(--shadow);
 }
-
-
-
-/* Stat Card 5 — Assignment (Same as Today's Events - Teal) */
-.stat-card:nth-child(5)::before {
-    background: linear-gradient(90deg, rgb(13, 148, 136), rgb(8, 145, 178));
-}
-.stat-card:nth-child(5) strong { color: rgb(13, 148, 136); }
-body.dark .stat-card:nth-child(5) strong { color: rgb(45, 212, 191); }
-
-/* Stat Card 6 — Project (Same as This Month - Indigo) */
-.stat-card:nth-child(6)::before {
-    background: linear-gradient(90deg, rgb(79, 70, 229), rgb(124, 58, 237));
-}
-.stat-card:nth-child(6) strong { color: rgb(79, 70, 229); }
-body.dark .stat-card:nth-child(6) strong { color: rgb(129, 140, 248); }
-
-/* Stat Card 7 — Presentation (Same as Classes - Amber) */
-.stat-card:nth-child(7)::before {
-    background: linear-gradient(90deg, rgb(245, 158, 11), rgb(217, 119, 6));
-}
-.stat-card:nth-child(7) strong { color: rgb(245, 158, 11); }
-body.dark .stat-card:nth-child(7) strong { color: rgb(251, 191, 36); }
-
-/* Stat Card 8 — Personal (Same as Exams - Rose) */
-.stat-card:nth-child(8)::before {
-    background: linear-gradient(90deg, rgb(225, 29, 72), rgb(251, 113, 133));
-}
-.stat-card:nth-child(8) strong { color: rgb(225, 29, 72); }
-body.dark .stat-card:nth-child(8) strong { color: rgb(251, 113, 133); }
 
 .stat-card::after {
     content: "";
@@ -649,145 +541,34 @@ body.dark .stat-card:nth-child(8) strong { color: rgb(251, 113, 133); }
     opacity: 0.5;
 }
 
-/* =========================================================
-   STAT CARDS — COLORED TOP BORDER + NUMBER
-   ========================================================= */
+/* Colored top borders */
+.stat-card:nth-child(1)::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, rgb(13, 148, 136), rgb(8, 145, 178)); }
+.stat-card:nth-child(2)::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, rgb(79, 70, 229), rgb(124, 58, 237)); }
+.stat-card:nth-child(3)::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, rgb(245, 158, 11), rgb(217, 119, 6)); }
+.stat-card:nth-child(4)::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, rgb(225, 29, 72), rgb(251, 113, 133)); }
+.stat-card:nth-child(5)::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, rgb(13, 148, 136), rgb(8, 145, 178)); }
+.stat-card:nth-child(6)::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, rgb(79, 70, 229), rgb(124, 58, 237)); }
+.stat-card:nth-child(7)::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, rgb(245, 158, 11), rgb(217, 119, 6)); }
+.stat-card:nth-child(8)::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, rgb(225, 29, 72), rgb(251, 113, 133)); }
 
-/* Stat Card 1 — Today's Events (Teal) */
-.stat-card:nth-child(1)::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, rgb(13, 148, 136), rgb(8, 145, 178));
-}
-.stat-card:nth-child(1) strong {
-    color: rgb(13, 148, 136);
-}
-body.dark .stat-card:nth-child(1) strong {
-    color: rgb(45, 212, 191);
-}
+.stat-card:nth-child(1) strong { color: rgb(13, 148, 136); }
+.stat-card:nth-child(2) strong { color: rgb(79, 70, 229); }
+.stat-card:nth-child(3) strong { color: rgb(245, 158, 11); }
+.stat-card:nth-child(4) strong { color: rgb(225, 29, 72); }
+.stat-card:nth-child(5) strong { color: rgb(13, 148, 136); }
+.stat-card:nth-child(6) strong { color: rgb(79, 70, 229); }
+.stat-card:nth-child(7) strong { color: rgb(245, 158, 11); }
+.stat-card:nth-child(8) strong { color: rgb(225, 29, 72); }
 
-/* Stat Card 2 — This Month (Indigo) */
-.stat-card:nth-child(2)::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, rgb(79, 70, 229), rgb(124, 58, 237));
-}
-.stat-card:nth-child(2) strong {
-    color: rgb(79, 70, 229);
-}
-body.dark .stat-card:nth-child(2) strong {
-    color: rgb(129, 140, 248);
-}
+body.dark .stat-card:nth-child(1) strong,
+body.dark .stat-card:nth-child(5) strong { color: rgb(45, 212, 191); }
+body.dark .stat-card:nth-child(2) strong,
+body.dark .stat-card:nth-child(6) strong { color: rgb(129, 140, 248); }
+body.dark .stat-card:nth-child(3) strong,
+body.dark .stat-card:nth-child(7) strong { color: rgb(251, 191, 36); }
+body.dark .stat-card:nth-child(4) strong,
+body.dark .stat-card:nth-child(8) strong { color: rgb(251, 113, 133); }
 
-/* Stat Card 3 — Classes (Amber) */
-.stat-card:nth-child(3)::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, rgb(245, 158, 11), rgb(217, 119, 6));
-}
-.stat-card:nth-child(3) strong {
-    color: rgb(245, 158, 11);
-}
-body.dark .stat-card:nth-child(3) strong {
-    color: rgb(251, 191, 36);
-}
-
-/* Stat Card 4 — Exams (Rose) */
-.stat-card:nth-child(4)::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, rgb(225, 29, 72), rgb(251, 113, 133));
-}
-.stat-card:nth-child(4) strong {
-    color: rgb(225, 29, 72);
-}
-body.dark .stat-card:nth-child(4) strong {
-    color: rgb(251, 113, 133);
-}
-
-/* Stat Card 5 — Assignment (Same as Today's Events - Teal) */
-.stat-card:nth-child(5)::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, rgb(13, 148, 136), rgb(8, 145, 178));
-}
-.stat-card:nth-child(5) strong {
-    color: rgb(13, 148, 136);
-}
-body.dark .stat-card:nth-child(5) strong {
-    color: rgb(45, 212, 191);
-}
-
-/* Stat Card 6 — Project (Same as This Month - Indigo) */
-.stat-card:nth-child(6)::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, rgb(79, 70, 229), rgb(124, 58, 237));
-}
-.stat-card:nth-child(6) strong {
-    color: rgb(79, 70, 229);
-}
-body.dark .stat-card:nth-child(6) strong {
-    color: rgb(129, 140, 248);
-}
-
-/* Stat Card 7 — Presentation (Same as Classes - Amber) */
-.stat-card:nth-child(7)::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, rgb(245, 158, 11), rgb(217, 119, 6));
-}
-.stat-card:nth-child(7) strong {
-    color: rgb(245, 158, 11);
-}
-body.dark .stat-card:nth-child(7) strong {
-    color: rgb(251, 191, 36);
-}
-
-/* Stat Card 8 — Personal (Same as Exams - Rose) */
-.stat-card:nth-child(8)::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, rgb(225, 29, 72), rgb(251, 113, 133));
-}
-.stat-card:nth-child(8) strong {
-    color: rgb(225, 29, 72);
-}
-body.dark .stat-card:nth-child(8) strong {
-    color: rgb(251, 113, 133);
-}
 .stat-card span,
 .stat-card small {
     display: block;
@@ -814,8 +595,8 @@ body.dark .stat-card:nth-child(8) strong {
 }
 
 /* =========================================================
-   10. TOOLBAR — RGB
-   ========================================================= */
+   10. TOOLBAR
+========================================================= */
 
 .toolbar {
     display: flex;
@@ -828,8 +609,6 @@ body.dark .stat-card:nth-child(8) strong {
     border: 1px solid rgb(var(--border));
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xs);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
 }
 
 .toolbar input,
@@ -841,9 +620,7 @@ body.dark .stat-card:nth-child(8) strong {
     outline: none;
     color: rgb(var(--text));
     background: rgb(var(--surface));
-    transition:
-        border-color var(--transition),
-        box-shadow var(--transition);
+    transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 .toolbar input {
@@ -858,8 +635,8 @@ body.dark .stat-card:nth-child(8) strong {
 }
 
 /* =========================================================
-   11. BUTTON SYSTEM — RGB
-   ========================================================= */
+   11. BUTTON SYSTEM
+========================================================= */
 
 .primary-btn,
 .secondary-btn,
@@ -890,7 +667,6 @@ body.dark .stat-card:nth-child(8) strong {
     border: none;
     color: #ffffff;
     background: var(--gradient-accent);
-    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.20);
 }
 
 .accent-btn:hover {
@@ -930,20 +706,19 @@ body.dark .stat-card:nth-child(8) strong {
 
 .ghost-btn:hover {
     background: rgb(var(--primary-soft));
-    transform: translateY(-1px);
 }
 
 /* =========================================================
-   12. HIDDEN
-   ========================================================= */
+   12. HIDDEN UTILITY
+========================================================= */
 
 .hidden {
     display: none !important;
 }
 
 /* =========================================================
-   13. MAIN LAYOUT — RESPONSIVE
-   ========================================================= */
+   13. LAYOUT
+========================================================= */
 
 .layout {
     display: grid;
@@ -953,8 +728,8 @@ body.dark .stat-card:nth-child(8) strong {
 }
 
 /* =========================================================
-   14. CALENDAR CARD — RGB
-   ========================================================= */
+   14. CALENDAR CARD
+========================================================= */
 
 .calendar-card {
     overflow: hidden;
@@ -962,8 +737,6 @@ body.dark .stat-card:nth-child(8) strong {
     border: 1px solid rgb(var(--border));
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
     transition: all var(--transition);
 }
 
@@ -972,8 +745,8 @@ body.dark .stat-card:nth-child(8) strong {
 }
 
 /* =========================================================
-   15. CALENDAR HEADER — RGB
-   ========================================================= */
+   15. CALENDAR HEADER
+========================================================= */
 
 .calendar-header {
     display: flex;
@@ -1028,8 +801,8 @@ body.dark .stat-card:nth-child(8) strong {
 }
 
 /* =========================================================
-   16. CALENDAR GRID — RGB
-   ========================================================= */
+   16. CALENDAR GRID
+========================================================= */
 
 .calendar-grid {
     display: grid;
@@ -1049,17 +822,16 @@ body.dark .stat-card:nth-child(8) strong {
     border-radius: 10px;
     font-size: clamp(9px, 0.8vw, 11px);
     font-weight: 700;
-    letter-spacing: 0.2px;
 }
 
-#calendarGrid>.weekday:nth-child(6),
-#calendarGrid>.weekday:nth-child(7) {
+#calendarGrid > .weekday:nth-child(6),
+#calendarGrid > .weekday:nth-child(7) {
     color: rgb(var(--danger));
 }
 
 /* =========================================================
-   17. CALENDAR DAY — RGB
-   ========================================================= */
+   17. CALENDAR DAY
+========================================================= */
 
 .day {
     position: relative;
@@ -1071,12 +843,8 @@ body.dark .stat-card:nth-child(8) strong {
     background: rgb(var(--surface));
     border: 1px solid rgb(var(--border));
     border-radius: 14px;
-    transition:
-        background var(--transition),
-        box-shadow var(--transition);
+    transition: background var(--transition), box-shadow var(--transition);
 }
-
-
 
 .day:hover {
     background: rgb(var(--surface-hover));
@@ -1090,10 +858,6 @@ body.dark .stat-card:nth-child(8) strong {
 .day.other-month {
     opacity: 0.42;
 }
-
-/* =========================================================
-   18. DAY NUMBER — RGB
-   ========================================================= */
 
 .day-number {
     width: 29px;
@@ -1116,34 +880,18 @@ body.dark .stat-card:nth-child(8) strong {
 }
 
 /* =========================================================
-   19. WEEKEND — RGB
-   ========================================================= */
-
-#calendarGrid>.day:nth-child(7n + 6),
-#calendarGrid>.day:nth-child(7n + 7) {
-    color: rgb(var(--danger));
-}
-
-/* =========================================================
-   20. BANGLA DATE — RGB
-   ========================================================= */
+   18. BANGLA DATE
+========================================================= */
 
 .bangla-day-number,
 .holiday-bangla-date {
     display: block;
     margin-top: 3px;
-    font-family:
-        "Noto Sans Bengali",
-        "Hind Siliguri",
-        "Nirmala UI",
-        "Segoe UI",
-        sans-serif;
+    font-family: "Noto Sans Bengali", "Hind Siliguri", "Nirmala UI", sans-serif;
     line-height: 1.35;
-    letter-spacing: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-font-smoothing: antialiased;
 }
 
 .bangla-day-number {
@@ -1159,33 +907,14 @@ body.dark .stat-card:nth-child(8) strong {
     font-weight: 650;
 }
 
-.day.today .bangla-day-number {
-    color: rgb(var(--primary-dark));
-    font-weight: 700;
-}
-
-.day.other-month .bangla-day-number {
-    color: rgb(var(--text-muted));
-    opacity: 0.75;
-}
-
 /* =========================================================
-   21. HOLIDAY DAY — RGB
-   ========================================================= */
+   19. HOLIDAY DAY
+========================================================= */
 
 .day.holiday-day {
     background: rgb(var(--holiday-bg));
     border-left: 3px solid rgb(var(--holiday-border));
-    border-radius: 14px;
 }
-
-.day.holiday-day:hover {
-    background: rgb(var(--holiday-bg));
-}
-
-/* =========================================================
-   22. HOLIDAY INDICATOR — RGB
-   ========================================================= */
 
 .holiday-indicator {
     display: block;
@@ -1205,8 +934,8 @@ body.dark .stat-card:nth-child(8) strong {
 }
 
 /* =========================================================
-   23. EVENTS — RGB
-   ========================================================= */
+   20. EVENTS
+========================================================= */
 
 .event {
     display: block;
@@ -1222,9 +951,7 @@ body.dark .stat-card:nth-child(8) strong {
     white-space: nowrap;
     text-overflow: ellipsis;
     box-shadow: 0 1px 3px rgba(15, 23, 42, 0.10);
-    transition:
-        transform var(--transition),
-        filter var(--transition);
+    transition: transform var(--transition), filter var(--transition);
 }
 
 .event:hover {
@@ -1232,35 +959,18 @@ body.dark .stat-card:nth-child(8) strong {
     filter: brightness(1.08);
 }
 
-/* Event Category Colors — RGB */
-.event.class {
-    background: linear-gradient(135deg, rgb(13, 148, 136), rgb(20, 184, 166));
-}
-.event.exam {
-    background: linear-gradient(135deg, rgb(225, 29, 72), rgb(244, 63, 94));
-}
-.event.assignment {
-    background: linear-gradient(135deg, rgb(124, 58, 237), rgb(139, 92, 246));
-}
-.event.project {
-    background: linear-gradient(135deg, rgb(245, 158, 11), rgb(251, 191, 36));
-}
-.event.presentation {
-    background: linear-gradient(135deg, rgb(8, 145, 178), rgb(6, 182, 212));
-}
-.event.personal {
-    background: linear-gradient(135deg, rgb(5, 150, 105), rgb(52, 211, 153));
-}
-.event.holiday {
-    background: linear-gradient(135deg, rgb(219, 39, 119), rgb(236, 72, 153));
-}
-.event.other {
-    background: linear-gradient(135deg, rgb(100, 116, 139), rgb(148, 163, 184));
-}
+.event.class { background: linear-gradient(135deg, rgb(13, 148, 136), rgb(20, 184, 166)); }
+.event.exam { background: linear-gradient(135deg, rgb(225, 29, 72), rgb(244, 63, 94)); }
+.event.assignment { background: linear-gradient(135deg, rgb(124, 58, 237), rgb(139, 92, 246)); }
+.event.project { background: linear-gradient(135deg, rgb(245, 158, 11), rgb(251, 191, 36)); }
+.event.presentation { background: linear-gradient(135deg, rgb(8, 145, 178), rgb(6, 182, 212)); }
+.event.personal { background: linear-gradient(135deg, rgb(5, 150, 105), rgb(52, 211, 153)); }
+.event.holiday { background: linear-gradient(135deg, rgb(219, 39, 119), rgb(236, 72, 153)); }
+.event.other { background: linear-gradient(135deg, rgb(100, 116, 139), rgb(148, 163, 184)); }
 
 /* =========================================================
-   24. LEGEND — RGB
-   ========================================================= */
+   21. LEGEND
+========================================================= */
 
 .legend {
     display: flex;
@@ -1285,7 +995,6 @@ body.dark .stat-card:nth-child(8) strong {
     height: 10px;
     flex-shrink: 0;
     border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .class-dot { background: rgb(13, 148, 136); }
@@ -1294,12 +1003,10 @@ body.dark .stat-card:nth-child(8) strong {
 .project-dot { background: rgb(245, 158, 11); }
 .presentation-dot { background: rgb(8, 145, 178); }
 .personal-dot { background: rgb(5, 150, 105); }
-.holiday-dot { background: rgb(219, 39, 119); }
-.other-dot { background: rgb(100, 116, 139); }
 
 /* =========================================================
-   25. BANGLADESH HOLIDAYS — RGB
-   ========================================================= */
+   22. BANGLADESH HOLIDAYS
+========================================================= */
 
 .bangladesh-holidays {
     width: 100%;
@@ -1310,8 +1017,6 @@ body.dark .stat-card:nth-child(8) strong {
     border: 1px solid rgb(var(--border));
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xs);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
 }
 
 .bangladesh-holidays h3 {
@@ -1320,10 +1025,6 @@ body.dark .stat-card:nth-child(8) strong {
     font-size: clamp(14px, 1.2vw, 17px);
     font-weight: 700;
 }
-
-/* =========================================================
-   26. HOLIDAY LIST — RGB
-   ========================================================= */
 
 .holiday-list {
     display: flex;
@@ -1334,9 +1035,6 @@ body.dark .stat-card:nth-child(8) strong {
     overflow-y: hidden;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: rgb(var(--primary)) rgb(var(--surface-soft));
-    overscroll-behavior-x: contain;
 }
 
 .holiday-item {
@@ -1346,28 +1044,13 @@ body.dark .stat-card:nth-child(8) strong {
     background: rgb(var(--surface-soft));
     border: 1px solid rgb(var(--border));
     border-radius: var(--radius-md);
-    transition:
-        transform var(--transition),
-        border-color var(--transition),
-        box-shadow var(--transition);
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
 .holiday-item:hover {
     transform: translateY(-2px);
     border-color: rgb(var(--primary));
     box-shadow: var(--shadow);
-}
-
-.holiday-icon {
-    width: 31px;
-    height: 31px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 8px;
-    border-radius: var(--radius-sm);
-    background: rgb(var(--holiday-indicator-bg));
-    font-size: 14px;
 }
 
 .holiday-date {
@@ -1390,20 +1073,6 @@ body.dark .stat-card:nth-child(8) strong {
     font-size: clamp(8px, 0.7vw, 10px);
 }
 
-.holiday-list::-webkit-scrollbar {
-    height: 5px;
-}
-
-.holiday-list::-webkit-scrollbar-track {
-    background: rgb(var(--surface-soft));
-    border-radius: 10px;
-}
-
-.holiday-list::-webkit-scrollbar-thumb {
-    background: rgb(var(--primary));
-    border-radius: 10px;
-}
-
 .holiday-empty {
     width: 100%;
     padding: 15px;
@@ -1413,8 +1082,8 @@ body.dark .stat-card:nth-child(8) strong {
 }
 
 /* =========================================================
-   27. SIDEBAR — RGB
-   ========================================================= */
+   23. SIDEBAR
+========================================================= */
 
 .sidebar {
     display: flex;
@@ -1428,11 +1097,7 @@ body.dark .stat-card:nth-child(8) strong {
     border: 1px solid rgb(var(--border));
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xs);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    transition:
-        box-shadow var(--transition),
-        border-color var(--transition);
+    transition: box-shadow var(--transition), border-color var(--transition);
 }
 
 .side-card:hover {
@@ -1447,8 +1112,8 @@ body.dark .stat-card:nth-child(8) strong {
 }
 
 /* =========================================================
-   28. QUICK ADD — RGB
-   ========================================================= */
+   24. QUICK ADD
+========================================================= */
 
 .quick-btn {
     display: block;
@@ -1477,8 +1142,8 @@ body.dark .stat-card:nth-child(8) strong {
 }
 
 /* =========================================================
-   29. UPCOMING EVENTS — RGB
-   ========================================================= */
+   25. UPCOMING EVENTS
+========================================================= */
 
 .upcoming-item {
     padding: 10px 0;
@@ -1521,10 +1186,6 @@ body.dark .stat-card:nth-child(8) strong {
     font-weight: 750;
 }
 
-body.dark .category-tag {
-    color: rgb(94, 234, 212);
-}
-
 .empty {
     padding: 15px 0;
     text-align: center;
@@ -1533,566 +1194,13 @@ body.dark .category-tag {
 }
 
 /* =========================================================
-   30. MODAL OVERLAY — RGB
-   ========================================================= */
-
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 15px calc(15px + env(safe-area-inset-bottom));
-    background: rgba(15, 23, 42, 0.60);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    animation: modalFadeIn 0.3s ease;
-}
-
-@keyframes modalFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.modal-overlay.active {
-    display: flex;
-}
-
-/* =========================================================
-   31. MODAL — RGB
-   ========================================================= */
-
-.modal {
-    width: 100%;
-    max-width: 540px;
-    max-height: 90vh;
-    overflow-y: auto;
-    color: rgb(var(--text));
-    background: rgb(var(--surface));
-    border: 1px solid rgb(var(--border));
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-2xl);
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-    animation: modalSlideUp 0.3s ease;
-}
-
-@keyframes modalSlideUp {
-    from {
-        transform: translateY(30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* =========================================================
-   32. MODAL HEADER — RGB
-   ========================================================= */
-
-.modal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 15px 18px;
-    border-bottom: 1px solid rgb(var(--border));
-}
-
-.modal-header h2 {
-    margin: 0;
-    font-size: clamp(16px, 1.4vw, 19px);
-    font-weight: 700;
-    color: rgb(var(--text));
-}
-
-/* =========================================================
-   33. CLOSE BUTTON — RGB
-   ========================================================= */
-
-.close-btn {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0;
-    border-radius: var(--radius-sm);
-    color: rgb(var(--text-muted));
-    background: transparent;
-    font-size: 22px;
-    transition: all var(--transition);
-}
-
-.close-btn:hover {
-    color: rgb(var(--danger));
-    background: rgb(var(--danger-soft));
-}
-
-/* =========================================================
-   34. MODAL BODY — RGB
-   ========================================================= */
-
-.modal-body {
-    padding: 18px;
-}
-
-.modal-body label {
-    display: block;
-    margin-bottom: 13px;
-    color: rgb(var(--text-secondary));
-    font-size: 11px;
-    font-weight: 650;
-}
-
-.modal-body input,
-.modal-body select,
-.modal-body textarea {
-    width: 100%;
-    margin-top: 6px;
-    padding: 10px 11px;
-    border: 1px solid rgb(var(--border));
-    border-radius: var(--radius-sm);
-    outline: none;
-    color: rgb(var(--text));
-    background: rgb(var(--surface));
-    transition:
-        border-color var(--transition),
-        box-shadow var(--transition);
-}
-
-.modal-body input:focus,
-.modal-body select:focus,
-.modal-body textarea:focus {
-    border-color: rgb(var(--primary));
-    box-shadow: 0 0 0 3px rgba(var(--primary-ring), 0.20);
-}
-
-.modal-body textarea {
-    min-height: 90px;
-    resize: vertical;
-}
-
-/* =========================================================
-   35. GLASS EFFECT UTILITY — RGB
-   ========================================================= */
-
-.glass {
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.10);
-}
-
-body.dark .glass {
-    background: rgba(0, 0, 0, 0.25);
-    border-color: rgba(255, 255, 255, 0.06);
-}
-
-/* =========================================================
-   36. GRADIENT UTILITY CLASSES — RGB
-   ========================================================= */
-
-.bg-gradient-primary { background: var(--gradient-primary); }
-.bg-gradient-accent { background: var(--gradient-accent); }
-.bg-gradient-warm { background: var(--gradient-warm); }
-.bg-gradient-success { background: var(--gradient-success); }
-.bg-gradient-danger { background: var(--gradient-danger); }
-
-.text-gradient-primary {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.text-gradient-accent {
-    background: var(--gradient-accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* =========================================================
-   37-48. RESPONSIVE & UTILITY — RGB (Unchanged)
-   ========================================================= */
-
-/* All responsive sections remain the same structure
-   but use rgb(var(--variable)) pattern */
-
-@media (min-width: 1281px) {
-    .container {
-        padding: 0 40px calc(30px + env(safe-area-inset-bottom));
-    }
-    .day {
-        min-height: 130px;
-    }
-    .dashboard {
-        gap: 16px;
-    }
-}
-
-@media (max-width: 1100px) {
-    .layout {
-        grid-template-columns: minmax(0, 1fr) 285px;
-    }
-    .day {
-        min-height: 105px;
-    }
-    .dashboard {
-        gap: 11px;
-    }
-}
-
-@media (max-width: 950px) {
-    .layout {
-        grid-template-columns: 1fr;
-    }
-    .sidebar {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        align-items: start;
-    }
-    .day {
-        min-height: 100px;
-    }
-    .dashboard {
-        gap: 10px;
-    }
-    .stat-card strong {
-        font-size: clamp(20px, 2.5vw, 26px);
-    }
-}
-
-@media (max-width: 700px) {
-    .dashboard {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .topbar {
-        align-items: flex-start;
-        padding: calc(14px + env(safe-area-inset-top)) 16px 14px;
-    }
-    .header-actions {
-        flex-wrap: wrap;
-        justify-content: flex-end;
-    }
-    .header-btn {
-        min-height: 34px;
-        padding: 6px 10px;
-        font-size: 11px;
-    }
-    .day {
-        min-height: 88px;
-        padding: 6px 4px;
-    }
-    .bangla-day-number,
-    .holiday-bangla-date {
-        font-size: 9px;
-        line-height: 1.3;
-        font-weight: 600;
-    }
-    .event {
-        font-size: 7.5px;
-        padding: 3px 4px;
-    }
-    .holiday-indicator {
-        font-size: 8px;
-        padding: 3px 4px;
-    }
-    .holiday-item {
-        flex: 0 0 190px;
-        min-width: 190px;
-    }
-    .sidebar {
-        grid-template-columns: 1fr;
-    }
-    .brand h1 {
-        font-size: clamp(16px, 2vw, 18px);
-    }
-    .logo {
-        width: 40px;
-        height: 40px;
-        font-size: 19px;
-    }
-}
-
-@media (max-width: 500px) {
-    .container {
-        margin: 14px auto;
-        padding: 0 12px calc(18px + env(safe-area-inset-bottom));
-    }
-    .topbar {
-        padding: calc(12px + env(safe-area-inset-top)) 12px 12px;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-    .brand {
-        gap: 8px;
-        flex: 1;
-        min-width: 0;
-    }
-    .logo {
-        width: 36px;
-        height: 36px;
-        font-size: 17px;
-        border-radius: 10px;
-    }
-    .brand h1 {
-        font-size: 15px;
-    }
-    .brand p {
-        display: none;
-    }
-    .header-actions {
-        gap: 4px;
-    }
-    .header-btn {
-        min-height: 32px;
-        padding: 5px 8px;
-        font-size: 10px;
-        border-radius: 6px;
-    }
-    .dashboard {
-        gap: 8px;
-    }
-    .stat-card {
-        padding: 12px 14px;
-    }
-    .stat-card span {
-        font-size: 9px;
-    }
-    .stat-card strong {
-        font-size: clamp(18px, 4vw, 22px);
-        margin: 6px 0 4px;
-    }
-    .stat-card small {
-        font-size: 8px;
-    }
-    .stat-card::after {
-        width: 60px;
-        height: 60px;
-        right: -30px;
-        bottom: -30px;
-    }
-    .toolbar {
-        padding: 10px 12px;
-    }
-    .toolbar input {
-        min-width: 100%;
-        flex: 1 1 100%;
-    }
-    .toolbar select,
-    .toolbar button {
-        flex: 1 1 calc(50% - 5px);
-        min-height: 38px;
-        font-size: 12px;
-    }
-    .calendar-header {
-        padding: 12px 14px;
-        flex-wrap: wrap;
-    }
-    .calendar-header h2 {
-        font-size: clamp(15px, 3.5vw, 17px);
-    }
-    .calendar-header p {
-        font-size: 8px;
-    }
-    .calendar-nav {
-        gap: 4px;
-    }
-    .nav-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 15px;
-    }
-    .day {
-        min-height: 76px;
-        padding: 4px 3px;
-    }
-    .day-number {
-        width: 23px;
-        height: 23px;
-        font-size: 10px;
-    }
-    .bangla-day-number,
-    .holiday-bangla-date {
-        font-size: 8.5px;
-        line-height: 1.25;
-        font-weight: 600;
-    }
-    .holiday-bangla-date {
-        font-weight: 650;
-    }
-    .weekday {
-        padding: 8px 2px;
-        font-size: 7.5px;
-    }
-    .event {
-        padding: 2px 4px;
-        font-size: 6.5px;
-        line-height: 1.2;
-        border-radius: 3px;
-    }
-    .holiday-indicator {
-        padding: 2px 4px;
-        font-size: 6.5px;
-        line-height: 1.2;
-        border-radius: 3px;
-    }
-    .legend {
-        gap: 5px;
-        padding: 8px 10px;
-    }
-    .legend span {
-        font-size: 7.5px;
-        gap: 3px;
-    }
-    .dot {
-        width: 8px;
-        height: 8px;
-    }
-    .holiday-item {
-        flex: 0 0 165px;
-        min-width: 165px;
-        padding: 10px 12px;
-    }
-    .holiday-name {
-        font-size: 11px;
-    }
-    .holiday-date {
-        font-size: 8px;
-    }
-    .modal-overlay {
-        align-items: flex-end;
-        padding: 0 0 env(safe-area-inset-bottom);
-    }
-    .modal {
-        max-height: 94vh;
-        border-radius: 20px 20px 0 0;
-        animation: modalSlideUpMobile 0.3s ease;
-    }
-    @keyframes modalSlideUpMobile {
-        from {
-            transform: translateY(40px);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
-    .modal-body {
-        padding: 14px 16px;
-    }
-    .modal-header {
-        padding: 12px 16px;
-    }
-    .modal-footer {
-        position: sticky;
-        bottom: 0;
-        z-index: 5;
-        padding: 10px 16px;
-        background: rgb(var(--surface));
-        border-top: 1px solid rgb(var(--border));
-        flex-wrap: wrap;
-    }
-    .modal-footer button {
-        min-height: 38px;
-        flex: 1;
-    }
-    .toast {
-        left: 12px;
-        right: 12px;
-        bottom: calc(16px + env(safe-area-inset-bottom));
-        max-width: none;
-        text-align: center;
-        font-size: 12px;
-        padding: 12px 16px;
-    }
-}
-
-@media (max-width: 360px) {
-    .brand h1 {
-        font-size: 13px;
-    }
-    .logo {
-        width: 32px;
-        height: 32px;
-        font-size: 15px;
-    }
-    .header-btn {
-        padding: 4px 6px;
-        font-size: 9px;
-        min-height: 28px;
-    }
-    .day {
-        min-height: 68px;
-        padding: 3px 2px;
-    }
-    .event {
-        padding: 2px 3px;
-        font-size: 5.5px;
-    }
-    .day-number {
-        width: 20px;
-        height: 20px;
-        font-size: 8.5px;
-    }
-    .bangla-day-number,
-    .holiday-bangla-date {
-        font-size: 7.5px;
-        line-height: 1.2;
-        font-weight: 600;
-    }
-    .holiday-indicator {
-        font-size: 5.5px;
-        padding: 2px 3px;
-    }
-    .weekday {
-        font-size: 6.5px;
-        padding: 6px 1px;
-    }
-    .stat-card {
-        padding: 10px 12px;
-    }
-    .stat-card strong {
-        font-size: 18px;
-    }
-    .toolbar input {
-        min-height: 36px;
-        font-size: 12px;
-    }
-    .nav-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 13px;
-    }
-    .calendar-header h2 {
-        font-size: 14px;
-    }
-    .container {
-        padding: 0 8px calc(14px + env(safe-area-inset-bottom));
-    }
-    .topbar {
-        padding: calc(10px + env(safe-area-inset-top)) 8px 10px;
-    }
-}
-
-/* =========================================================
-   49. PAST EVENTS — RGB
-   ========================================================= */
+   26. PAST EVENTS
+========================================================= */
 
 .past-event-item {
     position: relative;
     cursor: pointer;
     transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-.past-event-item:hover {
-    transform: translateY(-1px);
 }
 
 .past-event-top {
@@ -2131,16 +1239,12 @@ body.dark .glass {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-}
-
-.past-event-checkbox:hover .checkmark {
-    border-color: rgb(37, 99, 235);
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .past-event-checkbox input:checked + .checkmark {
-    background: rgb(37, 99, 235);
-    border-color: rgb(37, 99, 235);
+    background: rgb(var(--primary));
+    border-color: rgb(var(--primary));
 }
 
 .past-event-checkbox input:checked + .checkmark::after {
@@ -2153,12 +1257,6 @@ body.dark .glass {
     margin-top: -2px;
 }
 
-.past-event-top .upcoming-title {
-    flex: 1;
-    min-width: 0;
-    line-height: 1.4;
-}
-
 .past-badge {
     display: inline-flex;
     align-items: center;
@@ -2167,31 +1265,24 @@ body.dark .glass {
     border-radius: 999px;
     font-size: 10px;
     font-weight: 600;
-    line-height: 1.4;
     background: rgb(241, 245, 249);
     color: rgb(100, 116, 139);
-    vertical-align: middle;
 }
 
 .past-select-btn {
     border: 0;
     background: transparent;
-    color: rgb(37, 99, 235);
+    color: rgb(var(--primary));
     font-size: 12px;
     font-weight: 600;
     padding: 5px 8px;
     border-radius: 6px;
     cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: background 0.2s ease;
 }
 
 .past-select-btn:hover {
-    background: rgb(239, 246, 255);
-    color: rgb(29, 78, 216);
-}
-
-.past-select-btn:active {
-    transform: scale(0.97);
+    background: rgb(var(--primary-soft));
 }
 
 .past-events-actions {
@@ -2201,15 +1292,9 @@ body.dark .glass {
     gap: 10px;
     margin-top: 12px;
     padding: 10px 12px;
-    border-top: 1px solid rgb(226, 232, 240);
-    background: rgb(248, 250, 252);
+    border-top: 1px solid rgb(var(--border));
+    background: rgb(var(--surface-soft));
     border-radius: 8px;
-}
-
-#selectedPastCount {
-    font-size: 12px;
-    font-weight: 600;
-    color: rgb(71, 85, 105);
 }
 
 .delete-past-btn {
@@ -2221,7 +1306,7 @@ body.dark .glass {
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    transition: background 0.2s ease;
 }
 
 .delete-past-btn:hover {
@@ -2229,97 +1314,407 @@ body.dark .glass {
     color: rgb(185, 28, 28);
 }
 
-.delete-past-btn:active {
-    transform: scale(0.97);
+/* =========================================================
+   27. MODAL
+========================================================= */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 15px calc(15px + env(safe-area-inset-bottom));
+    background: rgba(15, 23, 42, 0.60);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: modalFadeIn 0.3s ease;
 }
 
-.past-event-item:has(.past-event-check:checked) {
-    background: rgb(248, 250, 252);
-    border-color: rgb(191, 219, 254);
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-/* Dark Mode Past Events */
-body.dark .past-event-checkbox .checkmark {
-    background: rgb(30, 41, 59);
-    border-color: rgb(71, 85, 105);
+.modal-overlay.active {
+    display: flex;
 }
 
-body.dark .past-event-checkbox:hover .checkmark {
-    border-color: rgb(96, 165, 250);
+.modal {
+    width: 100%;
+    max-width: 540px;
+    max-height: 90vh;
+    overflow-y: auto;
+    color: rgb(var(--text));
+    background: rgb(var(--surface));
+    border: 1px solid rgb(var(--border));
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-2xl);
+    animation: modalSlideUp 0.3s ease;
 }
 
-body.dark .past-event-checkbox input:checked + .checkmark {
-    background: rgb(59, 130, 246);
-    border-color: rgb(59, 130, 246);
+@keyframes modalSlideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
-body.dark .past-badge {
-    background: rgb(51, 65, 85);
-    color: rgb(203, 213, 225);
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 15px 18px;
+    border-bottom: 1px solid rgb(var(--border));
 }
 
-body.dark .past-select-btn {
-    color: rgb(96, 165, 250);
+.modal-header h2 {
+    margin: 0;
+    font-size: clamp(16px, 1.4vw, 19px);
+    font-weight: 700;
+    color: rgb(var(--text));
 }
 
-body.dark .past-select-btn:hover {
-    background: rgb(30, 58, 95);
-    color: rgb(147, 197, 253);
+.close-btn {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: var(--radius-sm);
+    color: rgb(var(--text-muted));
+    background: transparent;
+    font-size: 22px;
+    transition: all var(--transition);
 }
 
-body.dark .past-events-actions {
-    background: rgb(30, 41, 59);
-    border-top-color: rgb(51, 65, 85);
+.close-btn:hover {
+    color: rgb(var(--danger));
+    background: rgb(var(--danger-soft));
 }
 
-body.dark #selectedPastCount {
-    color: rgb(203, 213, 225);
+.modal-body {
+    padding: 18px;
 }
 
-body.dark .delete-past-btn {
-    background: rgb(69, 26, 26);
-    color: rgb(248, 113, 113);
+.modal-body label {
+    display: block;
+    margin-bottom: 13px;
+    color: rgb(var(--text-secondary));
+    font-size: 11px;
+    font-weight: 650;
 }
 
-body.dark .delete-past-btn:hover {
-    background: rgb(127, 29, 29);
-    color: rgb(254, 202, 202);
+.modal-body input,
+.modal-body select,
+.modal-body textarea {
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px 11px;
+    border: 1px solid rgb(var(--border));
+    border-radius: var(--radius-sm);
+    outline: none;
+    color: rgb(var(--text));
+    background: rgb(var(--surface));
+    transition: border-color var(--transition), box-shadow var(--transition);
 }
 
-body.dark .past-event-item:has(.past-event-check:checked) {
-    background: rgb(23, 37, 84);
-    border-color: rgb(30, 64, 175);
+.modal-body input:focus,
+.modal-body select:focus,
+.modal-body textarea:focus {
+    border-color: rgb(var(--primary));
+    box-shadow: 0 0 0 3px rgba(var(--primary-ring), 0.20);
 }
 
-@media (max-width: 600px) {
-    .past-events-actions {
-        padding: 9px 10px;
-        gap: 8px;
-    }
-    #selectedPastCount {
-        font-size: 11px;
-    }
-    .delete-past-btn {
-        padding: 7px 9px;
-        font-size: 11px;
-    }
-    .past-select-btn {
-        font-size: 11px;
-        padding: 5px 6px;
-    }
-    .past-event-checkbox {
-        width: 19px;
-        height: 19px;
-    }
-    .past-event-checkbox .checkmark {
-        width: 17px;
-        height: 17px;
-    }
+.modal-body textarea {
+    min-height: 90px;
+    resize: vertical;
 }
 
 /* =========================================================
-   50. CGPA CALCULATOR — RGB
-   ========================================================= */
+   28. STUDY REPORT SIDEBAR
+========================================================= */
+
+.section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.section-header > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.section-header h3 {
+    margin: 0;
+    font-size: clamp(15px, 1.2vw, 17px);
+    font-weight: 700;
+    color: rgb(var(--text));
+}
+
+.section-header small {
+    display: block;
+    font-size: 12px;
+    color: rgb(var(--text-muted));
+    margin-top: 2px;
+}
+
+.study-report-navigation {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.study-report-nav-btn {
+    min-height: 34px;
+    padding: 6px 14px;
+    border: 1px solid rgb(var(--border));
+    border-radius: var(--radius-sm);
+    background: rgb(var(--surface));
+    color: rgb(var(--text-secondary));
+    font-size: 12px;
+    font-weight: 500;
+    transition: all var(--transition);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex: 1;
+}
+
+.study-report-nav-btn:hover {
+    background: rgb(var(--surface-hover));
+    border-color: rgb(var(--primary));
+    color: rgb(var(--primary));
+    transform: translateY(-1px);
+}
+
+.study-report-nav-btn.active {
+    background: rgb(var(--primary));
+    border-color: rgb(var(--primary));
+    color: rgb(var(--text-inverse));
+    box-shadow: var(--shadow-glow);
+}
+
+.study-report-current-date {
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    background: rgb(var(--surface-soft));
+    border-radius: var(--radius-sm);
+    border: 1px solid rgb(var(--border-light));
+    text-align: center;
+}
+
+.study-report-current-date strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(var(--text));
+}
+
+.study-report-cards {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.daily-sidebar-cards,
+.weekly-sidebar-cards {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.study-report-card {
+    padding: 12px 14px;
+    background: rgb(var(--surface-soft));
+    border-radius: var(--radius-sm);
+    border: 1px solid rgb(var(--border-light));
+    transition: all var(--transition);
+}
+
+.study-report-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xs);
+}
+
+.study-report-card-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgb(var(--text-muted));
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.study-report-card strong {
+    display: block;
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 700;
+    color: rgb(var(--text));
+}
+
+.study-report-panel {
+    margin-top: 14px;
+}
+
+.study-report-panel h4 {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(var(--text-secondary));
+}
+
+.study-subject-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.study-report-subject-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.study-report-subject-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.study-report-subject-info span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgb(var(--text-secondary));
+}
+
+.study-report-subject-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.study-report-subject-info strong {
+    font-weight: 600;
+    color: rgb(var(--text));
+}
+
+.study-report-subject-bar {
+    width: 100%;
+    height: 5px;
+    background: rgb(var(--surface-soft));
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.study-report-subject-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.study-report-reset-btn {
+    width: 100%;
+    margin-top: 14px;
+    padding: 8px 16px;
+    border: 1px solid rgb(var(--danger-border));
+    border-radius: var(--radius-sm);
+    background: rgb(var(--danger-soft));
+    color: rgb(var(--danger));
+    font-size: 12px;
+    font-weight: 600;
+    transition: all var(--transition);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.study-report-reset-btn:hover {
+    background: rgb(254, 202, 202);
+    border-color: rgb(var(--danger));
+    transform: translateY(-1px);
+}
+
+.study-report-empty {
+    padding: 16px;
+    text-align: center;
+    color: rgb(var(--text-muted));
+    font-size: 12px;
+    background: rgb(var(--surface-soft));
+    border-radius: var(--radius-sm);
+    border: 1px dashed rgb(var(--border));
+}
+
+/* =========================================================
+   29. WEEKLY CHART
+========================================================= */
+
+#weeklyStudyChart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 120px;
+    padding: 8px 0;
+    gap: 6px;
+    border-bottom: 2px solid rgb(var(--border));
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+#weeklyStudyChart .study-chart-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap: 4px;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+#weeklyStudyChart .study-chart-value {
+    font-size: 9px;
+    color: rgb(var(--text-muted));
+    font-weight: 500;
+    min-height: 16px;
+}
+
+#weeklyStudyChart .study-chart-bar-area {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#weeklyStudyChart .study-chart-bar {
+    width: 100%;
+    max-width: 24px;
+    min-width: 6px;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    min-height: 3px;
+    background: linear-gradient(180deg, rgb(var(--accent)), rgb(var(--accent-light)));
+}
+
+#weeklyStudyChart .study-chart-day {
+    font-size: 9px;
+    color: rgb(var(--text-muted));
+    font-weight: 500;
+}
+
+/* =========================================================
+   30. CGPA CALCULATOR
+========================================================= */
 
 .cgpa-calculator-card {
     width: 100%;
@@ -2343,80 +1738,53 @@ body.dark .past-event-item:has(.past-event-check:checked) {
     width: 100%;
     min-width: 0;
     padding: 8px 9px;
-    border: 1px solid rgb(219, 226, 234);
+    border: 1px solid rgb(var(--border));
     border-radius: 7px;
-    background: rgb(248, 250, 252);
-    color: rgb(30, 41, 59);
+    background: rgb(var(--surface-soft));
+    color: rgb(var(--text));
     font-size: clamp(12px, 1vw, 14px);
     font-weight: 500;
     outline: none;
-    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-}
-
-.cgpa-course-row input::placeholder {
-    color: rgb(148, 163, 184);
-    font-weight: 400;
+    transition: all 0.2s ease;
 }
 
 .cgpa-course-row input:focus,
 .cgpa-course-row select:focus {
-    background: rgb(255, 255, 255);
-    border-color: rgb(59, 130, 246);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.10);
-}
-
-.cgpa-course-row input:hover,
-.cgpa-course-row select:hover {
-    border-color: rgb(184, 196, 209);
+    background: rgb(var(--surface));
+    border-color: rgb(var(--primary));
+    box-shadow: 0 0 0 3px rgba(var(--primary-ring), 0.10);
 }
 
 .cgpa-remove-btn {
     width: 32px;
     height: 32px;
     padding: 0;
-    border: 1px solid rgb(254, 202, 202);
+    border: 1px solid rgb(var(--danger-border));
     border-radius: 7px;
-    background: rgb(255, 245, 245);
-    color: rgb(220, 38, 38);
+    background: rgb(var(--danger-soft));
+    color: rgb(var(--danger));
     font-size: 18px;
     font-weight: 600;
-    line-height: 1;
     cursor: pointer;
-    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    transition: all 0.2s ease;
 }
 
 .cgpa-remove-btn:hover {
     background: rgb(254, 226, 226);
-    border-color: rgb(252, 165, 165);
     color: rgb(185, 28, 28);
-}
-
-.cgpa-remove-btn:active {
-    transform: scale(0.94);
 }
 
 .cgpa-add-btn {
     width: 100%;
     margin-top: 12px;
-    border-radius: 8px;
-    transition: transform 0.15s ease, box-shadow 0.2s ease;
-}
-
-.cgpa-add-btn:hover {
-    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.12);
-}
-
-.cgpa-add-btn:active {
-    transform: scale(0.98);
 }
 
 .cgpa-result {
     margin-top: 15px;
     padding: 14px;
     border-radius: 10px;
-    background: linear-gradient(135deg, rgb(248, 250, 252) 0%, rgb(241, 245, 249) 100%);
-    border: 1px solid rgb(226, 232, 240);
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    background: rgb(var(--surface-soft));
+    border: 1px solid rgb(var(--border));
 }
 
 .cgpa-result-row {
@@ -2429,14 +1797,13 @@ body.dark .past-event-item:has(.past-event-check:checked) {
 }
 
 .cgpa-result-row span {
-    color: rgb(100, 116, 139);
+    color: rgb(var(--text-muted));
     font-size: clamp(11px, 0.9vw, 13px);
     font-weight: 500;
 }
 
 .cgpa-result-row strong {
-    color: rgb(51, 65, 85);
-    font-size: clamp(12px, 1vw, 14px);
+    color: rgb(var(--text-secondary));
     font-weight: 650;
 }
 
@@ -2447,21 +1814,20 @@ body.dark .past-event-item:has(.past-event-check:checked) {
     gap: 12px;
     margin-top: 9px;
     padding-top: 11px;
-    border-top: 1px solid rgb(219, 226, 234);
+    border-top: 1px solid rgb(var(--border));
 }
 
 .cgpa-final span {
-    color: rgb(51, 65, 85);
+    color: rgb(var(--text-secondary));
     font-size: clamp(14px, 1.2vw, 16px);
     font-weight: 650;
 }
 
 .cgpa-final strong {
-    color: rgb(37, 99, 235);
+    color: rgb(var(--primary));
     font-size: clamp(24px, 2.5vw, 30px);
     font-weight: 750;
     letter-spacing: -0.5px;
-    text-shadow: 0 1px 1px rgba(37, 99, 235, 0.08);
 }
 
 .cgpa-actions {
@@ -2470,2555 +1836,169 @@ body.dark .past-event-item:has(.past-event-check:checked) {
     margin-top: 12px;
 }
 
-.cgpa-actions .primary-btn {
-    flex: 1;
-}
-
 .cgpa-actions .study-report-reset-btn {
-    flex: 0 0 auto;
+    flex: 1;
     margin-top: 0;
 }
 
-/* Dark Mode CGPA */
-body.dark .cgpa-course-row input,
-body.dark .cgpa-course-row select {
-    background: rgb(30, 41, 59);
-    border-color: rgb(51, 65, 85);
-    color: rgb(241, 245, 249);
+/* =========================================================
+   31. RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+    .layout {
+        grid-template-columns: minmax(0, 1fr) 285px;
+    }
 }
 
-body.dark .cgpa-course-row input::placeholder {
-    color: rgb(100, 116, 139);
+@media (max-width: 950px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+    }
 }
 
-body.dark .cgpa-course-row input:hover,
-body.dark .cgpa-course-row select:hover {
-    border-color: rgb(71, 85, 105);
+@media (max-width: 700px) {
+    .dashboard {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .topbar {
+        align-items: flex-start;
+        padding: calc(14px + env(safe-area-inset-top)) 16px 14px;
+    }
+    .sidebar {
+        grid-template-columns: 1fr;
+    }
 }
 
-body.dark .cgpa-course-row input:focus,
-body.dark .cgpa-course-row select:focus {
-    background: rgb(30, 41, 59);
-    border-color: rgb(96, 165, 250);
-    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.12);
-}
-
-body.dark .cgpa-remove-btn {
-    background: rgb(53, 26, 26);
-    border-color: rgb(95, 41, 41);
-    color: rgb(248, 113, 113);
-}
-
-body.dark .cgpa-remove-btn:hover {
-    background: rgb(74, 32, 32);
-    border-color: rgb(127, 29, 29);
-    color: rgb(252, 165, 165);
-}
-
-body.dark .cgpa-result {
-    background: linear-gradient(135deg, rgb(23, 32, 51) 0%, rgb(30, 41, 59) 100%);
-    border-color: rgb(51, 65, 85);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-body.dark .cgpa-result-row span {
-    color: rgb(148, 163, 184);
-}
-
-body.dark .cgpa-result-row strong {
-    color: rgb(226, 232, 240);
-}
-
-body.dark .cgpa-final {
-    border-top-color: rgb(51, 65, 85);
-}
-
-body.dark .cgpa-final span {
-    color: rgb(226, 232, 240);
-}
-
-body.dark .cgpa-final strong {
-    color: rgb(96, 165, 250);
-}
+/* =========================================================
+   32. RESPONSIVE — MOBILE (≤500px)
+========================================================= */
 
 @media (max-width: 500px) {
-    .cgpa-course-row {
-        grid-template-columns: 1fr 60px 70px 30px;
-        gap: 4px;
+    .container {
+        margin: 14px auto;
+        padding: 0 12px calc(18px + env(safe-area-inset-bottom));
     }
-    .cgpa-course-row input,
-    .cgpa-course-row select {
-        font-size: 12px;
-        padding: 7px 6px;
+    .topbar {
+        padding: calc(12px + env(safe-area-inset-top)) 12px 12px;
+        gap: 10px;
+        flex-wrap: wrap;
     }
-    .cgpa-remove-btn {
-        width: 30px;
-        height: 30px;
+    .brand {
+        gap: 8px;
+        flex: 1;
+        min-width: 0;
+    }
+    .logo {
+        width: 36px;
+        height: 36px;
         font-size: 17px;
     }
-    .cgpa-result {
-        padding: 12px;
+    .brand h1 {
+        font-size: 15px;
     }
-    .cgpa-final strong {
-        font-size: 22px;
+    .brand p {
+        display: none;
     }
-}
-
-/* Study Report Subject Colors - RGB Version */
-.study-report-subject-fill {
-    transition: width 0.6s ease;
-    border-radius: 4px;
-}
-
-.study-report-subject-row {
-    margin-bottom: 10px;
-}
-
-.study-report-subject-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 4px;
-    font-size: 14px;
-}
-
-.study-report-subject-dot {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-right: 8px;
-    vertical-align: middle;
-}
-
-.study-report-subject-bar {
-    width: 100%;
-    height: 8px;
-    background: #f1f5f9;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-/* Weekly Chart Colors */
-.study-chart-bar {
-    width: 100%;
-    background: linear-gradient(180deg, #6366f1, #818cf8);
-    border-radius: 4px 4px 0 0;
-    transition: height 0.5s ease;
-    min-height: 4px;
-}
-
-.study-chart-bar:hover {
-    opacity: 0.8;
-    transform: scaleY(1.02);
-    transform-origin: bottom;
-}
-
-.study-chart-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    gap: 6px;
-}
-
-.study-chart-value {
-    font-size: 11px;
-    color: #64748b;
-    font-weight: 500;
-}
-
-.study-chart-bar-area {
-    width: 100%;
-    height: 120px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 0 4px;
-}
-
-.study-chart-day {
-    font-size: 12px;
-    color: #94a3b8;
-    font-weight: 500;
-}
-
-/* Daily/Weekly Report Cards */
-.daily-report-card,
-.weekly-report-card {
-    background: white;
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    margin-bottom: 16px;
-}
-
-.report-stat-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 12px;
-    margin: 16px 0;
-}
-
-.report-stat-item {
-    text-align: center;
-    padding: 12px;
-    background: #f8fafc;
-    border-radius: 12px;
-}
-
-.report-stat-item .stat-value {
-    font-size: 24px;
-    font-weight: 700;
-    color: #1e293b;
-}
-
-.report-stat-item .stat-label {
-    font-size: 12px;
-    color: #94a3b8;
-    margin-top: 4px;
-}
-
-/* RGB Color Preview */
-.color-preview {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border-radius: 4px;
-    margin-right: 6px;
-    vertical-align: middle;
-}
-
-/* =========================================================
-   STUDY REPORT - SIDEBAR STYLES
-   ========================================================= */
-
-/* ---------- Section Container ---------- */
-.side-card {
-    background: rgb(var(--surface));
-    border: 1px solid rgb(var(--border));
-    border-radius: var(--radius-lg);
-    padding: 18px;
-    box-shadow: var(--shadow-xs);
-    transition: all var(--transition);
-}
-
-.side-card:hover {
-    box-shadow: var(--shadow-sm);
-}
-
-/* ---------- Section Header ---------- */
-.section-header {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 12px;
-}
-
-.section-header > div:first-child {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.section-header h3 {
-    margin: 0;
-    font-size: clamp(15px, 1.2vw, 17px);
-    font-weight: 700;
-    color: rgb(var(--text));
-}
-
-.section-header small {
-    display: block;
-    font-size: 12px;
-    color: rgb(var(--text-muted));
-    margin-top: 2px;
-}
-
-/* ---------- Navigation Buttons ---------- */
-.study-report-navigation {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.study-report-nav-btn {
-    min-height: 34px;
-    padding: 6px 14px;
-    border: 1px solid rgb(var(--border));
-    border-radius: var(--radius-sm);
-    background: rgb(var(--surface));
-    color: rgb(var(--text-secondary));
-    font-size: 12px;
-    font-weight: 500;
-    transition: all var(--transition);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    flex: 1;
-}
-
-.study-report-nav-btn:hover {
-    background: rgb(var(--surface-hover));
-    border-color: rgb(var(--primary));
-    color: rgb(var(--primary));
-    transform: translateY(-1px);
-}
-
-.study-report-nav-btn:active {
-    transform: scale(0.97);
-}
-
-.study-report-nav-btn.active {
-    background: rgb(var(--primary));
-    border-color: rgb(var(--primary));
-    color: #ffffff;
-    box-shadow: var(--shadow-glow);
-}
-
-.study-report-nav-btn.active:hover {
-    background: rgb(var(--primary-hover));
-    border-color: rgb(var(--primary-hover));
-}
-
-/* ---------- Current Date Display ---------- */
-.study-report-current-date {
-    padding: 8px 12px;
-    margin-bottom: 12px;
-    background: rgb(var(--surface-soft));
-    border-radius: var(--radius-sm);
-    border: 1px solid rgb(var(--border-light));
-    text-align: center;
-}
-
-.study-report-current-date strong {
-    font-size: 14px;
-    font-weight: 600;
-    color: rgb(var(--text));
-}
-
-/* ---------- Report Cards Grid ---------- */
-.study-report-cards {
-    display: grid;
-    gap: 8px;
-    margin-bottom: 14px;
-}
-
-.daily-sidebar-cards {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.weekly-sidebar-cards {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-/* ---------- Individual Report Card ---------- */
-.study-report-card {
-    padding: 12px 14px;
-    background: rgb(var(--surface-soft));
-    border-radius: var(--radius-sm);
-    border: 1px solid rgb(var(--border-light));
-    transition: all var(--transition);
-}
-
-.study-report-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-xs);
-}
-
-.study-report-card-label {
-    display: block;
-    font-size: 10px;
-    font-weight: 600;
-    color: rgb(var(--text-muted));
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    margin-bottom: 4px;
-}
-
-.study-report-card strong {
-    display: block;
-    font-size: clamp(20px, 2vw, 26px);
-    font-weight: 700;
-    color: rgb(var(--text));
-}
-
-/* ---------- Subject Breakdown ---------- */
-.study-report-panel {
-    margin-top: 14px;
-}
-
-.study-report-panel h4 {
-    margin: 0 0 10px 0;
-    font-size: 13px;
-    font-weight: 600;
-    color: rgb(var(--text-secondary));
-}
-
-.study-subject-breakdown {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.study-subject-breakdown-item {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-
-.study-subject-breakdown-item .subject-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-}
-
-.study-subject-breakdown-item .subject-name {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: rgb(var(--text-secondary));
-}
-
-.study-subject-breakdown-item .subject-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.study-subject-breakdown-item .subject-minutes {
-    font-weight: 600;
-    color: rgb(var(--text));
-}
-
-.study-subject-breakdown-item .subject-bar {
-    width: 100%;
-    height: 5px;
-    background: rgb(var(--surface-soft));
-    border-radius: var(--radius-full);
-    overflow: hidden;
-}
-
-.study-subject-breakdown-item .subject-bar-fill {
-    height: 100%;
-    border-radius: var(--radius-full);
-    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* ---------- Weekly Chart ---------- */
-#weeklyStudyChart {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    height: 120px;
-    padding: 8px 0;
-    gap: 6px;
-    border-bottom: 2px solid rgb(var(--border));
-    margin-bottom: 4px;
-    width: 100%;
-}
-
-#weeklyStudyChart .study-chart-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    gap: 4px;
-    height: 100%;
-    justify-content: flex-end;
-}
-
-#weeklyStudyChart .study-chart-value {
-    font-size: 9px;
-    color: rgb(var(--text-muted));
-    font-weight: 500;
-    min-height: 16px;
-}
-
-#weeklyStudyChart .study-chart-bar-area {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-}
-
-#weeklyStudyChart .study-chart-bar {
-    width: 100%;
-    max-width: 24px;
-    min-width: 6px;
-    border-radius: 4px 4px 0 0;
-    transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    min-height: 3px;
-    background: linear-gradient(180deg, rgb(var(--accent)), rgb(var(--accent-light)));
-}
-
-#weeklyStudyChart .study-chart-bar:hover {
-    filter: brightness(1.1);
-    transform: scaleY(1.02);
-    transform-origin: bottom;
-}
-
-#weeklyStudyChart .study-chart-day {
-    font-size: 9px;
-    color: rgb(var(--text-muted));
-    font-weight: 500;
-}
-
-/* ---------- Reset Button ---------- */
-.study-report-reset-btn {
-    width: 100%;
-    margin-top: 14px;
-    padding: 8px 16px;
-    border: 1px solid rgb(var(--danger-border));
-    border-radius: var(--radius-sm);
-    background: rgb(var(--danger-soft));
-    color: rgb(var(--danger));
-    font-size: 12px;
-    font-weight: 600;
-    transition: all var(--transition);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-}
-
-.study-report-reset-btn:hover {
-    background: rgb(254, 202, 202);
-    border-color: rgb(var(--danger));
-    transform: translateY(-1px);
-}
-
-.study-report-reset-btn:active {
-    transform: scale(0.97);
-}
-/* =========================================================
-   DARK MODE — STUDY REPORT (PURPLE THEME)
-   ========================================================= */
-
-/* ---------- Nav Buttons — Inactive (Visible) ---------- */
-body.dark .study-report-nav-btn:not(.active) {
-    background: rgba(30, 41, 59, 0.85);
-    border: 1px solid rgba(139, 92, 246, 0.4);
-    color: rgb(226, 232, 240);
-    font-weight: 600;
-}
-
-body.dark .study-report-nav-btn:not(.active):hover {
-    background: rgba(45, 55, 72, 0.95);
-    border-color: rgb(167, 139, 250);
-    color: rgb(255, 255, 255);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
-}
-
-/* ---------- Nav Buttons — Active (Purple Gradient) ---------- */
-body.dark .study-report-nav-btn.active {
-    background: linear-gradient(135deg, rgb(139, 92, 246), rgb(124, 58, 237));
-    border-color: rgb(167, 139, 250);
-    color: rgb(255, 255, 255);
-    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.45);
-    font-weight: 600;
-}
-
-body.dark .study-report-nav-btn.active:hover {
-    background: linear-gradient(135deg, rgb(167, 139, 250), rgb(139, 92, 246));
-    border-color: rgb(196, 181, 253);
-    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.55);
-}
-
-/* ---------- Current Date Display (Purple Tint) ---------- */
-body.dark .study-report-current-date {
-    background: rgba(139, 92, 246, 0.1);
-    border-color: rgba(167, 139, 250, 0.2);
-}
-
-body.dark .study-report-current-date strong {
-    color: rgb(196, 181, 253);
-}
-
-/* ---------- Report Cards (Purple Tint) ---------- */
-body.dark .study-report-card {
-    background: rgba(139, 92, 246, 0.08);
-    border-color: rgba(167, 139, 250, 0.15);
-}
-
-/* ---------- Reset Button ---------- */
-body.dark .study-report-reset-btn {
-    background: rgb(76, 5, 25);
-    border-color: rgb(136, 19, 55);
-    color: rgb(251, 113, 133);
-}
-
-body.dark .study-report-reset-btn:hover {
-    background: rgb(127, 29, 29);
-    border-color: rgb(251, 113, 133);
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 768px) {
-    .side-card {
-        padding: 14px;
+    .header-actions {
+        gap: 4px;
     }
-    
-    .study-report-navigation {
-        width: 100%;
-    }
-    
-    .study-report-nav-btn {
-        flex: 1;
-        justify-content: center;
-        font-size: 11px;
-        padding: 6px 10px;
+    .header-btn {
         min-height: 32px;
+        padding: 5px 8px;
+        font-size: 10px;
     }
-    
-    .daily-sidebar-cards,
-    .weekly-sidebar-cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
-    }
-    
-    .study-report-card strong {
-        font-size: 18px;
-    }
-    
-    #weeklyStudyChart {
-        height: 100px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar-area {
-        height: 60px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar {
-        max-width: 20px;
-        min-width: 4px;
-    }
-}
-
-@media (max-width: 500px) {
-    .side-card {
-        padding: 12px;
-    }
-    
-    .section-header {
+    .dashboard {
         gap: 8px;
     }
-    
-    .study-report-nav-btn {
+    .stat-card {
+        padding: 12px 14px;
+    }
+    .stat-card span {
+        font-size: 9px;
+    }
+    .stat-card strong {
+        font-size: clamp(18px, 4vw, 22px);
+    }
+    .stat-card small {
+        font-size: 8px;
+    }
+    .calendar-header {
+        padding: 12px 14px;
+        flex-wrap: wrap;
+    }
+    .calendar-header h2 {
+        font-size: clamp(15px, 3.5vw, 17px);
+    }
+    .day {
+        min-height: 76px;
+        padding: 4px 3px;
+    }
+    .day-number {
+        width: 23px;
+        height: 23px;
         font-size: 10px;
-        padding: 5px 8px;
-        min-height: 30px;
     }
-    
-    .study-report-cards {
-        gap: 5px;
+    .weekday {
+        padding: 8px 2px;
+        font-size: 7.5px;
     }
-    
-    .study-report-card {
-        padding: 10px 12px;
+    .event {
+        padding: 2px 4px;
+        font-size: 6.5px;
     }
-    
-    .study-report-card strong {
-        font-size: 16px;
+    .holiday-indicator {
+        padding: 2px 4px;
+        font-size: 6.5px;
     }
-    
-    .study-report-card-label {
-        font-size: 9px;
-    }
-    
-    .study-report-reset-btn {
-        font-size: 11px;
-        padding: 7px 12px;
-    }
-    
-    #weeklyStudyChart {
-        height: 85px;
-        gap: 4px;
-        padding: 6px 0;
-    }
-    
-    #weeklyStudyChart .study-chart-bar-area {
-        height: 50px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar {
-        max-width: 16px;
-        min-width: 3px;
-    }
-    
-    #weeklyStudyChart .study-chart-value {
-        font-size: 8px;
-        min-height: 14px;
-    }
-    
-    #weeklyStudyChart .study-chart-day {
-        font-size: 8px;
-    }
-}
-
-@media (max-width: 380px) {
-    .side-card {
-        padding: 10px;
-    }
-    
-    .study-report-nav-btn {
-        font-size: 9px;
-        padding: 4px 6px;
-        min-height: 28px;
-    }
-    
-    .study-report-card {
-        padding: 8px 10px;
-    }
-    
-    .study-report-card strong {
-        font-size: 14px;
-    }
-    
-    .study-report-card-label {
-        font-size: 8px;
-    }
-    
-    #weeklyStudyChart {
-        height: 70px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar-area {
-        height: 40px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar {
-        max-width: 12px;
-        min-width: 2px;
+    .holiday-item {
+        flex: 0 0 165px;
+        min-width: 165px;
     }
 }
 
 /* =========================================================
-   01. DESIGN TOKENS — PREMIUM COLOR SYSTEM (RGB ONLY)
-   ========================================================= */
-
-:root {
-    /* =========================================================
-       PRIMARY — TEAL (Complete Palette - RGB)
-    ========================================================= */
-    --primary: 13, 148, 136;
-    --primary-hover: 15, 118, 110;
-    --primary-dark: 17, 94, 89;
-    --primary-light: 45, 212, 191;
-    --primary-soft: 204, 251, 241;
-    --primary-subtle: 240, 253, 250;
-    --primary-ring: 13, 148, 136;
-
-    /* =========================================================
-       ACCENT — INDIGO (Complete Palette - RGB)
-    ========================================================= */
-    --accent: 79, 70, 229;
-    --accent-hover: 67, 56, 202;
-    --accent-dark: 55, 48, 163;
-    --accent-light: 129, 140, 248;
-    --accent-soft: 238, 242, 255;
-    --accent-ring: 79, 70, 229;
-
-    /* =========================================================
-       SEMANTIC — SUCCESS (RGB)
-    ========================================================= */
-    --success: 5, 150, 105;
-    --success-soft: 236, 253, 245;
-    --success-border: 167, 243, 208;
-    --success-text: 6, 95, 70;
-    --success-ring: 5, 150, 105;
-
-    /* =========================================================
-       SEMANTIC — WARNING (RGB)
-    ========================================================= */
-    --warning: 217, 119, 6;
-    --warning-soft: 255, 251, 235;
-    --warning-border: 252, 211, 77;
-    --warning-text: 146, 64, 14;
-    --warning-ring: 217, 119, 6;
-
-    /* =========================================================
-       SEMANTIC — DANGER (RGB)
-    ========================================================= */
-    --danger: 225, 29, 72;
-    --danger-soft: 255, 241, 242;
-    --danger-border: 254, 205, 211;
-    --danger-text: 159, 18, 57;
-    --danger-ring: 225, 29, 72;
-
-    /* =========================================================
-       SEMANTIC — INFO (RGB)
-    ========================================================= */
-    --info: 2, 132, 199;
-    --info-soft: 240, 249, 255;
-    --info-border: 125, 211, 252;
-    --info-text: 12, 74, 110;
-    --info-ring: 2, 132, 199;
-
-    /* =========================================================
-       BACKGROUND — RGB
-    ========================================================= */
-    --bg: 244, 246, 250;
-    --bg-elevated: 255, 255, 255;
-    --bg-warm: 250, 251, 252;
-
-    --surface: 255, 255, 255;
-    --surface-soft: 248, 250, 252;
-    --surface-hover: 241, 245, 249;
-    --surface-elevated: 255, 255, 255;
-
-    /* =========================================================
-       TEXT — RGB
-    ========================================================= */
-    --text: 15, 23, 42;
-    --text-primary: 15, 23, 42;
-    --text-secondary: 71, 85, 105;
-    --text-muted: 100, 116, 139;
-    --text-faint: 148, 163, 184;
-    --text-inverse: 255, 255, 255;
-
-    /* =========================================================
-       BORDER — RGB
-    ========================================================= */
-    --border: 226, 232, 240;
-    --border-strong: 203, 213, 225;
-    --border-light: 241, 245, 249;
-    --border-focus: 13, 148, 136;
-
-    /* =========================================================
-       TODAY — RGB
-    ========================================================= */
-    --today-bg: 236, 253, 245;
-    --today-border: 5, 150, 105;
-    --today-text: 6, 95, 70;
-
-    /* =========================================================
-       HOLIDAY — WARM ROSE (RGB)
-    ========================================================= */
-    --holiday-bg: 255, 241, 242;
-    --holiday-border: 251, 113, 133;
-    --holiday-text: 225, 29, 72;
-    --holiday-soft: 255, 228, 230;
-    --holiday-indicator-bg: 255, 241, 242;
-    --holiday-indicator-border: 254, 205, 211;
-
-    /* =========================================================
-       EVENT CATEGORY COLORS — RGB
-    ========================================================= */
-    --class-color: 13, 148, 136;
-    --exam-color: 225, 29, 72;
-    --assignment-color: 124, 58, 237;
-    --project-color: 245, 158, 11;
-    --presentation-color: 8, 145, 178;
-    --personal-color: 5, 150, 105;
-    --holiday-color: 219, 39, 119;
-    --other-color: 100, 116, 139;
-
-    /* =========================================================
-       SHADOW — RGB (Alpha values handled in rgba())
-    ========================================================= */
-    --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
-    --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
-    --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-    --shadow-lg: 0 18px 45px rgba(15, 23, 42, 0.12);
-    --shadow-xl: 0 25px 60px rgba(15, 23, 42, 0.18);
-    --shadow-2xl: 0 35px 70px rgba(15, 23, 42, 0.22);
-    --shadow-glow: 0 4px 20px rgba(13, 148, 136, 0.15);
-
-    /* =========================================================
-       RADIUS
-    ========================================================= */
-    --radius-xs: 4px;
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 20px;
-    --radius-2xl: 24px;
-    --radius-full: 9999px;
-
-    /* =========================================================
-       TRANSITIONS
-    ========================================================= */
-    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-fast: 0.15s var(--ease-out);
-    --transition: 0.25s var(--ease-in-out);
-    --transition-slow: 0.4s var(--ease-in-out);
-
-    /* =========================================================
-       GRADIENT UTILITIES — Using RGB
-    ========================================================= */
-    --gradient-primary: linear-gradient(135deg, rgb(13, 148, 136) 0%, rgb(8, 145, 178) 100%);
-    --gradient-accent: linear-gradient(135deg, rgb(79, 70, 229) 0%, rgb(124, 58, 237) 100%);
-    --gradient-warm: linear-gradient(145deg, rgb(245, 158, 11) 0%, rgb(217, 119, 6) 100%);
-    --gradient-success: linear-gradient(135deg, rgb(5, 150, 105) 0%, rgb(52, 211, 153) 100%);
-    --gradient-danger: linear-gradient(135deg, rgb(225, 29, 72) 0%, rgb(251, 113, 133) 100%);
-    --gradient-topbar: linear-gradient(145deg, rgb(13, 148, 136) 0%, rgb(8, 145, 178) 45%, rgb(15, 118, 110) 75%, rgb(17, 94, 89) 100%);
-    --gradient-topbar-dark: linear-gradient(145deg, rgb(4, 47, 46) 0%, rgb(19, 78, 74) 40%, rgb(22, 78, 99) 70%, rgb(15, 23, 42) 100%);
-    --gradient-bg: linear-gradient(180deg, rgb(244, 246, 250) 0%, rgb(238, 242, 255) 100%);
-
-    /* =========================================================
-       BACKGROUND GRADIENT OVERLAYS — RGB
-    ========================================================= */
-    --bg-gradient-1: radial-gradient(circle at 8% 0%, rgba(13, 148, 136, 0.055), transparent 26%);
-    --bg-gradient-2: radial-gradient(circle at 92% 100%, rgba(79, 70, 229, 0.04), transparent 30%);
-    --bg-gradient-3: radial-gradient(circle at 50% 50%, rgba(13, 148, 136, 0.025), transparent 50%);
-
-    /* =========================================================
-       CONTAINER WIDTHS
-    ========================================================= */
-    --container-sm: 640px;
-    --container-md: 768px;
-    --container-lg: 1024px;
-    --container-xl: 1280px;
-    --container-2xl: 1440px;
-}
-
-/* =========================================================
-   02. DARK MODE — RGB VERSION
-   ========================================================= */
-
-body.dark {
-    /* ---------- Primary Dark ---------- */
-    --primary: 45, 212, 191;
-    --primary-hover: 94, 234, 212;
-    --primary-dark: 20, 184, 166;
-    --primary-light: 153, 246, 228;
-    --primary-soft: 19, 78, 74;
-    --primary-subtle: 4, 47, 46;
-    --primary-ring: 45, 212, 191;
-
-    /* ---------- Accent Dark ---------- */
-    --accent: 129, 140, 248;
-    --accent-hover: 165, 180, 252;
-    --accent-dark: 99, 102, 241;
-    --accent-light: 199, 210, 254;
-    --accent-soft: 30, 27, 75;
-    --accent-ring: 129, 140, 248;
-
-    /* ---------- Background Dark ---------- */
-    --bg: 8, 14, 26;
-    --bg-elevated: 13, 23, 40;
-    --bg-warm: 15, 26, 46;
-
-    --surface: 17, 28, 45;
-    --surface-soft: 22, 35, 55;
-    --surface-hover: 27, 43, 66;
-    --surface-elevated: 22, 35, 55;
-
-    /* ---------- Text Dark ---------- */
-    --text: 241, 245, 249;
-    --text-primary: 248, 250, 252;
-    --text-secondary: 203, 213, 225;
-    --text-muted: 148, 163, 184;
-    --text-faint: 100, 116, 139;
-    --text-inverse: 15, 23, 42;
-
-    /* ---------- Border Dark ---------- */
-    --border: 37, 53, 74;
-    --border-strong: 51, 65, 85;
-    --border-light: 29, 43, 62;
-    --border-focus: 45, 212, 191;
-
-    /* ---------- Semantic Dark ---------- */
-    --success: 52, 211, 153;
-    --success-soft: 6, 78, 59;
-    --success-border: 5, 150, 105;
-    --success-text: 167, 243, 208;
-
-    --warning: 251, 191, 36;
-    --warning-soft: 69, 26, 3;
-    --warning-border: 217, 119, 6;
-    --warning-text: 252, 211, 77;
-
-    --danger: 251, 113, 133;
-    --danger-soft: 76, 5, 25;
-    --danger-border: 225, 29, 72;
-    --danger-text: 254, 205, 211;
-
-    --info: 56, 189, 248;
-    --info-soft: 8, 47, 73;
-    --info-border: 2, 132, 199;
-    --info-text: 125, 211, 252;
-
-    /* ---------- Today Dark ---------- */
-    --today-bg: 19, 78, 74;
-    --today-border: 45, 212, 191;
-    --today-text: 153, 246, 228;
-
-    /* ---------- Holiday Dark ---------- */
-    --holiday-bg: 76, 5, 19;
-    --holiday-border: 251, 113, 133;
-    --holiday-text: 253, 164, 175;
-    --holiday-soft: 136, 19, 55;
-    --holiday-indicator-bg: 76, 5, 19;
-    --holiday-indicator-border: 136, 19, 55;
-
-    /* ---------- Shadow Dark ---------- */
-    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.30);
-    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
-    --shadow: 0 8px 28px rgba(0, 0, 0, 0.40);
-    --shadow-lg: 0 20px 55px rgba(0, 0, 0, 0.50);
-    --shadow-xl: 0 30px 70px rgba(0, 0, 0, 0.60);
-    --shadow-2xl: 0 40px 80px rgba(0, 0, 0, 0.70);
-    --shadow-glow: 0 4px 25px rgba(45, 212, 191, 0.12);
-
-    /* ---------- Dark Background Gradients ---------- */
-    --bg-gradient-1: radial-gradient(circle at 8% 0%, rgba(45, 212, 191, 0.06), transparent 26%);
-    --bg-gradient-2: radial-gradient(circle at 92% 100%, rgba(129, 140, 248, 0.05), transparent 30%);
-    --bg-gradient-3: radial-gradient(circle at 50% 50%, rgba(45, 212, 191, 0.03), transparent 50%);
-    --gradient-bg: linear-gradient(180deg, rgb(8, 14, 26) 0%, rgb(13, 23, 40) 100%);
-
-    /* ---------- Gradients Dark ---------- */
-    --gradient-topbar: var(--gradient-topbar-dark);
-}
-
-/* =========================================================
-   03. STUDY REPORT SIDEBAR — COMPLETE
-   ========================================================= */
-
-/* ---------- Section Container ---------- */
-.side-card {
-    background: rgb(var(--surface));
-    border: 1px solid rgb(var(--border));
-    border-radius: var(--radius-lg);
-    padding: 18px;
-    box-shadow: var(--shadow-xs);
-    transition: all var(--transition);
-}
-
-.side-card:hover {
-    box-shadow: var(--shadow-sm);
-}
-
-/* ---------- Section Header ---------- */
-.section-header {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 12px;
-}
-
-.section-header > div:first-child {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.section-header h3 {
-    margin: 0;
-    font-size: clamp(15px, 1.2vw, 17px);
-    font-weight: 700;
-    color: rgb(var(--text));
-}
-
-.section-header small {
-    display: block;
-    font-size: 12px;
-    color: rgb(var(--text-muted));
-    margin-top: 2px;
-}
-
-/* ---------- Navigation Buttons ---------- */
-.study-report-navigation {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.study-report-nav-btn {
-    min-height: 34px;
-    padding: 6px 14px;
-    border: 1px solid rgb(var(--border));
-    border-radius: var(--radius-sm);
-    background: rgb(var(--surface));
-    color: rgb(var(--text-secondary));
-    font-size: 12px;
-    font-weight: 500;
-    transition: all var(--transition);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    flex: 1;
-}
-
-.study-report-nav-btn:hover {
-    background: rgb(var(--surface-hover));
-    border-color: rgb(var(--primary));
-    color: rgb(var(--primary));
-    transform: translateY(-1px);
-}
-
-.study-report-nav-btn:active {
-    transform: scale(0.97);
-}
-
-.study-report-nav-btn.active {
-    background: rgb(var(--primary));
-    border-color: rgb(var(--primary));
-    color: rgb(var(--text-inverse));
-    box-shadow: var(--shadow-glow);
-}
-
-.study-report-nav-btn.active:hover {
-    background: rgb(var(--primary-hover));
-    border-color: rgb(var(--primary-hover));
-}
-
-/* ---------- Current Date Display ---------- */
-.study-report-current-date {
-    padding: 8px 12px;
-    margin-bottom: 12px;
-    background: rgb(var(--surface-soft));
-    border-radius: var(--radius-sm);
-    border: 1px solid rgb(var(--border-light));
-    text-align: center;
-}
-
-.study-report-current-date strong {
-    font-size: 14px;
-    font-weight: 600;
-    color: rgb(var(--text));
-}
-
-/* ---------- Report Cards Grid ---------- */
-.study-report-cards {
-    display: grid;
-    gap: 8px;
-    margin-bottom: 14px;
-}
-
-.daily-sidebar-cards {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.weekly-sidebar-cards {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-/* ---------- Individual Report Card ---------- */
-.study-report-card {
-    padding: 12px 14px;
-    background: rgb(var(--surface-soft));
-    border-radius: var(--radius-sm);
-    border: 1px solid rgb(var(--border-light));
-    transition: all var(--transition);
-}
-
-.study-report-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-xs);
-}
-
-.study-report-card-label {
-    display: block;
-    font-size: 10px;
-    font-weight: 600;
-    color: rgb(var(--text-muted));
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    margin-bottom: 4px;
-}
-
-.study-report-card strong {
-    display: block;
-    font-size: clamp(20px, 2vw, 26px);
-    font-weight: 700;
-    color: rgb(var(--text));
-}
-
-/* ---------- Subject Breakdown ---------- */
-.study-report-panel {
-    margin-top: 14px;
-}
-
-.study-report-panel h4 {
-    margin: 0 0 10px 0;
-    font-size: 13px;
-    font-weight: 600;
-    color: rgb(var(--text-secondary));
-}
-
-.study-subject-breakdown {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.study-report-subject-row {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.study-report-subject-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-}
-
-.study-report-subject-info span {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: rgb(var(--text-secondary));
-}
-
-.study-report-subject-dot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    background: rgb(var(--primary));
-}
-
-.study-report-subject-info strong {
-    font-weight: 600;
-    color: rgb(var(--text));
-}
-
-.study-report-subject-bar {
-    width: 100%;
-    height: 5px;
-    background: rgb(var(--surface-soft));
-    border-radius: var(--radius-full);
-    overflow: hidden;
-}
-
-.study-report-subject-fill {
-    height: 100%;
-    border-radius: var(--radius-full);
-    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    background: rgb(var(--primary));
-}
-
-/* ---------- Weekly Chart ---------- */
-#weeklyStudyChart {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    height: 120px;
-    padding: 8px 0;
-    gap: 6px;
-    border-bottom: 2px solid rgb(var(--border));
-    margin-bottom: 4px;
-    width: 100%;
-}
-
-#weeklyStudyChart .study-chart-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    gap: 4px;
-    height: 100%;
-    justify-content: flex-end;
-}
-
-#weeklyStudyChart .study-chart-value {
-    font-size: 9px;
-    color: rgb(var(--text-muted));
-    font-weight: 500;
-    min-height: 16px;
-}
-
-#weeklyStudyChart .study-chart-bar-area {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-}
-
-#weeklyStudyChart .study-chart-bar {
-    width: 100%;
-    max-width: 24px;
-    min-width: 6px;
-    border-radius: 4px 4px 0 0;
-    transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    min-height: 3px;
-    background: linear-gradient(180deg, rgb(var(--accent)), rgb(var(--accent-light)));
-}
-
-#weeklyStudyChart .study-chart-bar:hover {
-    filter: brightness(1.1);
-    transform: scaleY(1.02);
-    transform-origin: bottom;
-}
-
-#weeklyStudyChart .study-chart-day {
-    font-size: 9px;
-    color: rgb(var(--text-muted));
-    font-weight: 500;
-}
-
-/* ---------- Reset Button ---------- */
-.study-report-reset-btn {
-    width: 100%;
-    margin-top: 14px;
-    padding: 8px 16px;
-    border: 1px solid rgb(var(--danger-border));
-    border-radius: var(--radius-sm);
-    background: rgb(var(--danger-soft));
-    color: rgb(var(--danger));
-    font-size: 12px;
-    font-weight: 600;
-    transition: all var(--transition);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-}
-
-.study-report-reset-btn:hover {
-    background: rgb(254, 202, 202);
-    border-color: rgb(var(--danger));
-    transform: translateY(-1px);
-}
-
-.study-report-reset-btn:active {
-    transform: scale(0.97);
-}
-
-/* =========================================================
-   04. STUDY REPORT SUBJECT COLORS — RGB CLASSES
-   ========================================================= */
-
-.study-report-subject-fill.color-1 { background: rgb(37, 99, 235); }
-.study-report-subject-fill.color-2 { background: rgb(22, 163, 74); }
-.study-report-subject-fill.color-3 { background: rgb(245, 158, 11); }
-.study-report-subject-fill.color-4 { background: rgb(220, 38, 38); }
-.study-report-subject-fill.color-5 { background: rgb(124, 58, 237); }
-.study-report-subject-fill.color-6 { background: rgb(8, 145, 178); }
-.study-report-subject-fill.color-7 { background: rgb(219, 39, 119); }
-.study-report-subject-fill.color-8 { background: rgb(234, 88, 12); }
-.study-report-subject-fill.color-9 { background: rgb(79, 70, 229); }
-.study-report-subject-fill.color-10 { background: rgb(5, 150, 105); }
-
-.study-report-subject-dot.color-1 { background: rgb(37, 99, 235); }
-.study-report-subject-dot.color-2 { background: rgb(22, 163, 74); }
-.study-report-subject-dot.color-3 { background: rgb(245, 158, 11); }
-.study-report-subject-dot.color-4 { background: rgb(220, 38, 38); }
-.study-report-subject-dot.color-5 { background: rgb(124, 58, 237); }
-.study-report-subject-dot.color-6 { background: rgb(8, 145, 178); }
-.study-report-subject-dot.color-7 { background: rgb(219, 39, 119); }
-.study-report-subject-dot.color-8 { background: rgb(234, 88, 12); }
-.study-report-subject-dot.color-9 { background: rgb(79, 70, 229); }
-.study-report-subject-dot.color-10 { background: rgb(5, 150, 105); }
-
-/* =========================================================
-   05. DARK MODE — STUDY REPORT SIDEBAR
-   ========================================================= */
-
-body.dark .side-card {
-    background: rgb(var(--surface));
-    border-color: rgb(var(--border));
-}
-
-body.dark .section-header h3 {
-    color: rgb(var(--text));
-}
-
-body.dark .section-header small {
-    color: rgb(var(--text-muted));
-}
-
-body.dark .study-report-nav-btn {
-    background: rgb(var(--surface));
-    border-color: rgb(var(--border));
-    color: rgb(var(--text-secondary));
-}
-
-body.dark .study-report-nav-btn:hover {
-    background: rgb(var(--surface-hover));
-    border-color: rgb(var(--primary));
-    color: rgb(var(--primary-light));
-}
-
-body.dark .study-report-nav-btn.active {
-    background: rgb(var(--primary));
-    border-color: rgb(var(--primary));
-    color: rgb(var(--text-inverse));
-}
-
-body.dark .study-report-nav-btn.active:hover {
-    background: rgb(var(--primary-hover));
-    border-color: rgb(var(--primary-hover));
-}
-
-body.dark .study-report-current-date {
-    background: rgb(var(--surface-soft));
-    border-color: rgb(var(--border-light));
-}
-
-body.dark .study-report-current-date strong {
-    color: rgb(var(--text));
-}
-
-body.dark .study-report-card {
-    background: rgb(var(--surface-soft));
-    border-color: rgb(var(--border-light));
-}
-
-body.dark .study-report-card-label {
-    color: rgb(var(--text-muted));
-}
-
-body.dark .study-report-card strong {
-    color: rgb(var(--text));
-}
-
-body.dark .study-report-panel h4 {
-    color: rgb(var(--text-secondary));
-}
-
-body.dark .study-report-subject-info span {
-    color: rgb(var(--text-secondary));
-}
-
-body.dark .study-report-subject-info strong {
-    color: rgb(var(--text));
-}
-
-body.dark .study-report-subject-bar {
-    background: rgb(var(--surface-soft));
-}
-
-body.dark #weeklyStudyChart {
-    border-bottom-color: rgb(var(--border));
-}
-
-body.dark #weeklyStudyChart .study-chart-value {
-    color: rgb(var(--text-muted));
-}
-
-body.dark #weeklyStudyChart .study-chart-day {
-    color: rgb(var(--text-muted));
-}
-
-body.dark .study-report-reset-btn {
-    background: rgb(76, 5, 25);
-    border-color: rgb(136, 19, 55);
-    color: rgb(251, 113, 133);
-}
-
-body.dark .study-report-reset-btn:hover {
-    background: rgb(127, 29, 29);
-    border-color: rgb(251, 113, 133);
-}
-
-/* =========================================================
-   06. RESPONSIVE — STUDY REPORT SIDEBAR
-   ========================================================= */
-
-@media (max-width: 768px) {
-    .side-card {
-        padding: 14px;
-    }
-    
-    .study-report-navigation {
-        width: 100%;
-    }
-    
-    .study-report-nav-btn {
-        flex: 1;
-        justify-content: center;
-        font-size: 11px;
-        padding: 6px 10px;
-        min-height: 32px;
-    }
-    
-    .daily-sidebar-cards,
-    .weekly-sidebar-cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
-    }
-    
-    .study-report-card strong {
-        font-size: 18px;
-    }
-    
-    #weeklyStudyChart {
-        height: 100px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar-area {
-        height: 60px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar {
-        max-width: 20px;
-        min-width: 4px;
-    }
-}
-
-@media (max-width: 500px) {
-    .side-card {
-        padding: 12px;
-    }
-    
-    .section-header {
-        gap: 8px;
-    }
-    
-    .study-report-nav-btn {
-        font-size: 10px;
-        padding: 5px 8px;
-        min-height: 30px;
-    }
-    
-    .study-report-cards {
-        gap: 5px;
-    }
-    
-    .study-report-card {
-        padding: 10px 12px;
-    }
-    
-    .study-report-card strong {
-        font-size: 16px;
-    }
-    
-    .study-report-card-label {
-        font-size: 9px;
-    }
-    
-    .study-report-reset-btn {
-        font-size: 11px;
-        padding: 7px 12px;
-    }
-    
-    #weeklyStudyChart {
-        height: 85px;
-        gap: 4px;
-        padding: 6px 0;
-    }
-    
-    #weeklyStudyChart .study-chart-bar-area {
-        height: 50px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar {
-        max-width: 16px;
-        min-width: 3px;
-    }
-    
-    #weeklyStudyChart .study-chart-value {
-        font-size: 8px;
-        min-height: 14px;
-    }
-    
-    #weeklyStudyChart .study-chart-day {
-        font-size: 8px;
-    }
-}
-
-@media (max-width: 380px) {
-    .side-card {
-        padding: 10px;
-    }
-    
-    .study-report-nav-btn {
-        font-size: 9px;
-        padding: 4px 6px;
-        min-height: 28px;
-    }
-    
-    .study-report-card {
-        padding: 8px 10px;
-    }
-    
-    .study-report-card strong {
-        font-size: 14px;
-    }
-    
-    .study-report-card-label {
-        font-size: 8px;
-    }
-    
-    #weeklyStudyChart {
-        height: 70px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar-area {
-        height: 40px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar {
-        max-width: 12px;
-        min-width: 2px;
-    }
-}
-
-/* =========================================================
-   07. STUDY REPORT — GLOBAL STYLES
-   ========================================================= */
-
-.study-report-empty {
-    padding: 16px;
-    text-align: center;
-    color: rgb(var(--text-muted));
-    font-size: 12px;
-    background: rgb(var(--surface-soft));
-    border-radius: var(--radius-sm);
-    border: 1px dashed rgb(var(--border));
-}
-
-body.dark .study-report-empty {
-    background: rgb(var(--surface-soft));
-    border-color: rgb(var(--border));
-    color: rgb(var(--text-muted));
-}
-
-/* =========================================================
-   08. STUDY REPORT — TRANSITIONS
-   ========================================================= */
-
-.study-report-nav-btn,
-.study-report-card,
-.study-report-reset-btn,
-.study-report-subject-fill,
-#weeklyStudyChart .study-chart-bar {
-    transition: all var(--transition);
-}
-
-/* =========================================================
-   09. STUDY REPORT — FOCUS STATES
-   ========================================================= */
-
-.study-report-nav-btn:focus-visible,
-.study-report-reset-btn:focus-visible {
-    outline: 2px solid rgb(var(--primary-ring));
-    outline-offset: 2px;
-}
-
-/* =========================================================
-   10. STUDY REPORT — PRINT
-   ========================================================= */
-
-@media print {
-    .side-card {
-        border: 1px solid rgb(203, 213, 225);
-        box-shadow: none;
-        break-inside: avoid;
-    }
-    
-    .study-report-nav-btn,
-    .study-report-reset-btn {
-        display: none !important;
-    }
-}
-
-/* =========================================================
-   STUDY REPORT SIDEBAR — DAILY & WEEKLY WITH RGB
-   ========================================================= */
-
-/* ---------- Section Container ---------- */
-.side-card {
-    background: rgb(var(--surface));
-    border: 1px solid rgb(var(--border));
-    border-radius: var(--radius-lg);
-    padding: 18px;
-    box-shadow: var(--shadow-xs);
-    transition: all var(--transition);
-}
-
-.side-card:hover {
-    box-shadow: var(--shadow-sm);
-}
-
-/* ---------- Daily Report Card ---------- */
-.daily-study-report-card {
-    background: rgb(var(--surface));
-    border: 1px solid rgb(var(--border));
-    border-radius: var(--radius-lg);
-    padding: 18px;
-    box-shadow: var(--shadow-xs);
-    transition: all var(--transition);
-}
-
-.daily-study-report-card:hover {
-    box-shadow: var(--shadow);
-    border-color: rgb(var(--primary));
-}
-
-/* ---------- Weekly Report Card ---------- */
-.weekly-study-report-card {
-    background: rgb(var(--surface));
-    border: 1px solid rgb(var(--border));
-    border-radius: var(--radius-lg);
-    padding: 18px;
-    box-shadow: var(--shadow-xs);
-    transition: all var(--transition);
-}
-
-.weekly-study-report-card:hover {
-    box-shadow: var(--shadow);
-    border-color: rgb(var(--accent));
-}
-
-/* ---------- Section Header ---------- */
-.section-header {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 12px;
-}
-
-.section-header > div:first-child {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.section-header h3 {
-    margin: 0;
-    font-size: clamp(15px, 1.2vw, 17px);
-    font-weight: 700;
-    color: rgb(var(--text));
-    letter-spacing: -0.3px;
-}
-
-.section-header small {
-    display: block;
-    font-size: 12px;
-    color: rgb(var(--text-muted));
-    margin-top: 2px;
-}
-
-/* ---------- Daily Report Header ---------- */
-.daily-study-report-card .section-header h3 {
-    color: rgb(var(--primary));
-    border-bottom: 2px solid rgba(var(--primary), 0.1);
-    padding-bottom: 6px;
-}
-
-/* ---------- Weekly Report Header ---------- */
-.weekly-study-report-card .section-header h3 {
-    color: rgb(var(--accent));
-    border-bottom: 2px solid rgba(var(--accent), 0.1);
-    padding-bottom: 6px;
-}
-
-/* ---------- Navigation Buttons ---------- */
-.study-report-navigation {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.study-report-nav-btn {
-    min-height: 34px;
-    padding: 6px 14px;
-    border: 1px solid rgb(var(--border));
-    border-radius: var(--radius-sm);
-    background: rgb(var(--surface));
-    color: rgb(var(--text-secondary));
-    font-size: 12px;
-    font-weight: 500;
-    transition: all var(--transition);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    flex: 1;
-}
-
-.study-report-nav-btn:hover {
-    background: rgb(var(--surface-hover));
-    border-color: rgb(var(--primary));
-    color: rgb(var(--primary));
-    transform: translateY(-1px);
-}
-
-.study-report-nav-btn:active {
-    transform: scale(0.97);
-}
-
-/* ---------- Daily Report Navigation ---------- */
-.daily-study-report-card .study-report-nav-btn.active {
-    background: rgb(var(--primary));
-    border-color: rgb(var(--primary));
-    color: rgb(var(--text-inverse));
-    box-shadow: var(--shadow-glow);
-}
-
-.daily-study-report-card .study-report-nav-btn.active:hover {
-    background: rgb(var(--primary-hover));
-    border-color: rgb(var(--primary-hover));
-}
-
-.daily-study-report-card .study-report-nav-btn:not(.active):hover {
-    border-color: rgb(var(--primary));
-    color: rgb(var(--primary));
-}
-
-/* ---------- Weekly Report Navigation ---------- */
-.weekly-study-report-card .study-report-nav-btn.active {
-    background: rgb(var(--accent));
-    border-color: rgb(var(--accent));
-    color: rgb(var(--text-inverse));
-    box-shadow: 0 4px 20px rgba(var(--accent), 0.2);
-}
-
-.weekly-study-report-card .study-report-nav-btn.active:hover {
-    background: rgb(var(--accent-hover));
-    border-color: rgb(var(--accent-hover));
-}
-
-.weekly-study-report-card .study-report-nav-btn:not(.active):hover {
-    border-color: rgb(var(--accent));
-    color: rgb(var(--accent));
-}
-
-/* ---------- Current Date Display ---------- */
-.study-report-current-date {
-    padding: 8px 12px;
-    margin-bottom: 12px;
-    border-radius: var(--radius-sm);
-    border: 1px solid rgb(var(--border-light));
-    text-align: center;
-}
-
-/* ---------- Daily Current Date ---------- */
-.daily-study-report-card .study-report-current-date {
-    background: rgba(var(--primary), 0.06);
-    border-color: rgba(var(--primary), 0.15);
-}
-
-.daily-study-report-card .study-report-current-date strong {
-    color: rgb(var(--primary-dark));
-}
-
-/* ---------- Weekly Current Date ---------- */
-.weekly-study-report-card .study-report-current-date {
-    background: rgba(var(--accent), 0.06);
-    border-color: rgba(var(--accent), 0.15);
-}
-
-.weekly-study-report-card .study-report-current-date strong {
-    color: rgb(var(--accent-dark));
-}
-
-.study-report-current-date strong {
-    font-size: 14px;
-    font-weight: 600;
-    color: rgb(var(--text));
-}
-
-/* ---------- Report Cards Grid ---------- */
-.study-report-cards {
-    display: grid;
-    gap: 8px;
-    margin-bottom: 14px;
-}
-
-.daily-sidebar-cards {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.weekly-sidebar-cards {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-/* ---------- Individual Report Card ---------- */
-.study-report-card {
-    padding: 12px 14px;
-    border-radius: var(--radius-sm);
-    border: 1px solid rgb(var(--border-light));
-    transition: all var(--transition);
-    position: relative;
-    overflow: hidden;
-}
-
-/* ---------- Daily Report Cards ---------- */
-.daily-study-report-card .study-report-card {
-    background: rgba(var(--primary-subtle), 0.3);
-    border-color: rgba(var(--primary), 0.08);
-}
-
-.daily-study-report-card .study-report-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-xs);
-    border-color: rgba(var(--primary), 0.2);
-}
-
-.daily-study-report-card .study-report-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, rgb(var(--primary)), rgb(var(--primary-light)));
-    opacity: 0;
-    transition: opacity var(--transition);
-}
-
-.daily-study-report-card .study-report-card:hover::before {
-    opacity: 1;
-}
-
-.daily-study-report-card .study-report-card strong {
-    color: rgb(var(--primary-dark));
-}
-
-/* ---------- Weekly Report Cards ---------- */
-.weekly-study-report-card .study-report-card {
-    background: rgba(var(--accent-soft), 0.3);
-    border-color: rgba(var(--accent), 0.08);
-}
-
-.weekly-study-report-card .study-report-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-xs);
-    border-color: rgba(var(--accent), 0.2);
-}
-
-.weekly-study-report-card .study-report-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, rgb(var(--accent)), rgb(var(--accent-light)));
-    opacity: 0;
-    transition: opacity var(--transition);
-}
-
-.weekly-study-report-card .study-report-card:hover::before {
-    opacity: 1;
-}
-
-.weekly-study-report-card .study-report-card strong {
-    color: rgb(var(--accent-dark));
-}
-
-/* ---------- Report Card Label ---------- */
-.study-report-card-label {
-    display: block;
-    font-size: 10px;
-    font-weight: 600;
-    color: rgb(var(--text-muted));
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    margin-bottom: 4px;
-}
-
-/* ---------- Report Card Value ---------- */
-.study-report-card strong {
-    display: block;
-    font-size: clamp(20px, 2vw, 26px);
-    font-weight: 700;
-    color: rgb(var(--text));
-}
-
-/* ---------- Subject Breakdown ---------- */
-.study-report-panel {
-    margin-top: 14px;
-}
-
-.study-report-panel h4 {
-    margin: 0 0 10px 0;
-    font-size: 13px;
-    font-weight: 600;
-    color: rgb(var(--text-secondary));
-}
-
-/* ---------- Daily Subject Breakdown ---------- */
-.daily-study-report-card .study-report-panel h4 {
-    color: rgb(var(--primary));
-}
-
-.daily-study-report-card .study-subject-breakdown .study-report-subject-dot {
-    background: rgb(var(--primary));
-}
-
-/* ---------- Weekly Subject Breakdown ---------- */
-.weekly-study-report-card .study-report-panel h4 {
-    color: rgb(var(--accent));
-}
-
-.weekly-study-report-card .study-subject-breakdown .study-report-subject-dot {
-    background: rgb(var(--accent));
-}
-
-.study-subject-breakdown {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.study-report-subject-row {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.study-report-subject-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-}
-
-.study-report-subject-info span {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: rgb(var(--text-secondary));
-}
-
-.study-report-subject-dot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.study-report-subject-info strong {
-    font-weight: 600;
-    color: rgb(var(--text));
-}
-
-.study-report-subject-bar {
-    width: 100%;
-    height: 5px;
-    background: rgb(var(--surface-soft));
-    border-radius: var(--radius-full);
-    overflow: hidden;
-}
-
-.study-report-subject-fill {
-    height: 100%;
-    border-radius: var(--radius-full);
-    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* ---------- Weekly Chart ---------- */
-#weeklyStudyChart {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    height: 120px;
-    padding: 8px 0;
-    gap: 6px;
-    border-bottom: 2px solid rgb(var(--border));
-    margin-bottom: 4px;
-    width: 100%;
-}
-
-/* ---------- Weekly Chart Container ---------- */
-.weekly-study-report-card #weeklyStudyChart {
-    border-bottom-color: rgba(var(--accent), 0.2);
-}
-
-#weeklyStudyChart .study-chart-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    gap: 4px;
-    height: 100%;
-    justify-content: flex-end;
-}
-
-#weeklyStudyChart .study-chart-value {
-    font-size: 9px;
-    color: rgb(var(--text-muted));
-    font-weight: 500;
-    min-height: 16px;
-}
-
-#weeklyStudyChart .study-chart-bar-area {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-}
-
-#weeklyStudyChart .study-chart-bar {
-    width: 100%;
-    max-width: 24px;
-    min-width: 6px;
-    border-radius: 4px 4px 0 0;
-    transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    min-height: 3px;
-}
-
-/* ---------- Weekly Chart Bar Colors ---------- */
-.weekly-study-report-card #weeklyStudyChart .study-chart-bar {
-    background: linear-gradient(180deg, rgb(var(--accent)), rgb(var(--accent-light)));
-}
-
-.daily-study-report-card #weeklyStudyChart .study-chart-bar {
-    background: linear-gradient(180deg, rgb(var(--primary)), rgb(var(--primary-light)));
-}
-
-#weeklyStudyChart .study-chart-bar:hover {
-    filter: brightness(1.1);
-    transform: scaleY(1.02);
-    transform-origin: bottom;
-}
-
-#weeklyStudyChart .study-chart-day {
-    font-size: 9px;
-    color: rgb(var(--text-muted));
-    font-weight: 500;
-}
-
-/* ---------- Reset Button ---------- */
-.study-report-reset-btn {
-    width: 100%;
-    margin-top: 14px;
-    padding: 8px 16px;
-    border: 1px solid rgb(var(--danger-border));
-    border-radius: var(--radius-sm);
-    background: rgb(var(--danger-soft));
-    color: rgb(var(--danger));
-    font-size: 12px;
-    font-weight: 600;
-    transition: all var(--transition);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-}
-
-/* ---------- Daily Reset Button ---------- */
-.daily-study-report-card .study-report-reset-btn {
-    border-color: rgba(var(--danger), 0.3);
-    background: rgba(var(--danger), 0.06);
-    color: rgb(var(--danger));
-}
-
-.daily-study-report-card .study-report-reset-btn:hover {
-    background: rgba(var(--danger), 0.12);
-    border-color: rgb(var(--danger));
-    transform: translateY(-1px);
-}
-
-/* ---------- Weekly Reset Button ---------- */
-.weekly-study-report-card .study-report-reset-btn {
-    border-color: rgba(var(--danger), 0.3);
-    background: rgba(var(--danger), 0.06);
-    color: rgb(var(--danger));
-}
-
-.weekly-study-report-card .study-report-reset-btn:hover {
-    background: rgba(var(--danger), 0.12);
-    border-color: rgb(var(--danger));
-    transform: translateY(-1px);
-}
-
-.study-report-reset-btn:active {
-    transform: scale(0.97);
-}
-
-/* =========================================================
-   SUBJECT COLOR CLASSES
-   ========================================================= */
-
-.study-report-subject-fill.color-1 { background: rgb(37, 99, 235); }
-.study-report-subject-fill.color-2 { background: rgb(22, 163, 74); }
-.study-report-subject-fill.color-3 { background: rgb(245, 158, 11); }
-.study-report-subject-fill.color-4 { background: rgb(220, 38, 38); }
-.study-report-subject-fill.color-5 { background: rgb(124, 58, 237); }
-.study-report-subject-fill.color-6 { background: rgb(8, 145, 178); }
-.study-report-subject-fill.color-7 { background: rgb(219, 39, 119); }
-.study-report-subject-fill.color-8 { background: rgb(234, 88, 12); }
-.study-report-subject-fill.color-9 { background: rgb(79, 70, 229); }
-.study-report-subject-fill.color-10 { background: rgb(5, 150, 105); }
-
-.study-report-subject-dot.color-1 { background: rgb(37, 99, 235); }
-.study-report-subject-dot.color-2 { background: rgb(22, 163, 74); }
-.study-report-subject-dot.color-3 { background: rgb(245, 158, 11); }
-.study-report-subject-dot.color-4 { background: rgb(220, 38, 38); }
-.study-report-subject-dot.color-5 { background: rgb(124, 58, 237); }
-.study-report-subject-dot.color-6 { background: rgb(8, 145, 178); }
-.study-report-subject-dot.color-7 { background: rgb(219, 39, 119); }
-.study-report-subject-dot.color-8 { background: rgb(234, 88, 12); }
-.study-report-subject-dot.color-9 { background: rgb(79, 70, 229); }
-.study-report-subject-dot.color-10 { background: rgb(5, 150, 105); }
-
-/* =========================================================
-   DARK MODE — DAILY & WEEKLY REPORTS (SAME PURPLE THEME)
-   ========================================================= */
-
-/* ---------- Report Cards Background ---------- */
-body.dark .daily-study-report-card,
-body.dark .weekly-study-report-card {
-    background: rgb(var(--surface));
-    border-color: rgb(var(--border));
-}
-
-/* ---------- Section Headers — Same Purple ---------- */
-body.dark .daily-study-report-card .section-header h3,
-body.dark .weekly-study-report-card .section-header h3 {
-    color: rgb(167, 139, 250);
-    border-bottom-color: rgba(139, 92, 246, 0.3);
-}
-
-/* ---------- Nav Buttons — Inactive ---------- */
-body.dark .study-report-nav-btn:not(.active) {
-    background: rgba(30, 41, 59, 0.85);
-    border: 1px solid rgba(139, 92, 246, 0.4);
-    color: rgb(226, 232, 240);
-    font-weight: 600;
-}
-
-body.dark .study-report-nav-btn:not(.active):hover {
-    background: rgba(45, 55, 72, 0.95);
-    border-color: rgb(167, 139, 250);
-    color: rgb(255, 255, 255);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
-}
-
-/* ---------- Nav Buttons — Active (Same Purple) ---------- */
-body.dark .daily-study-report-card .study-report-nav-btn.active,
-body.dark .weekly-study-report-card .study-report-nav-btn.active {
-    background: linear-gradient(135deg, rgb(139, 92, 246), rgb(124, 58, 237));
-    border-color: rgb(167, 139, 250);
-    color: rgb(255, 255, 255);
-    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
-    font-weight: 600;
-}
-
-body.dark .daily-study-report-card .study-report-nav-btn.active:hover,
-body.dark .weekly-study-report-card .study-report-nav-btn.active:hover {
-    background: linear-gradient(135deg, rgb(167, 139, 250), rgb(139, 92, 246));
-    border-color: rgb(196, 181, 253);
-    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
-}
-
-/* ---------- Current Date Display (Same Purple) ---------- */
-body.dark .daily-study-report-card .study-report-current-date,
-body.dark .weekly-study-report-card .study-report-current-date {
-    background: rgba(139, 92, 246, 0.1);
-    border-color: rgba(167, 139, 250, 0.2);
-}
-
-body.dark .daily-study-report-card .study-report-current-date strong,
-body.dark .weekly-study-report-card .study-report-current-date strong {
-    color: rgb(196, 181, 253);
-}
-
-/* ---------- Report Cards (Same Purple) ---------- */
-body.dark .daily-study-report-card .study-report-card,
-body.dark .weekly-study-report-card .study-report-card {
-    background: rgba(139, 92, 246, 0.08);
-    border-color: rgba(167, 139, 250, 0.15);
-}
-
-body.dark .daily-study-report-card .study-report-card strong,
-body.dark .weekly-study-report-card .study-report-card strong {
-    color: rgb(196, 181, 253);
-}
-
-/* ---------- Panel Headers (Same Purple) ---------- */
-body.dark .daily-study-report-card .study-report-panel h4,
-body.dark .weekly-study-report-card .study-report-panel h4 {
-    color: rgb(167, 139, 250);
-}
-
-/* ---------- Subject Info ---------- */
-body.dark .study-report-subject-info span {
-    color: rgb(var(--text-secondary));
-}
-
-body.dark .study-report-subject-info strong {
-    color: rgb(var(--text));
-}
-
-body.dark .study-report-subject-bar {
-    background: rgb(var(--surface-soft));
-}
-
-/* ---------- Weekly Chart ---------- */
-body.dark #weeklyStudyChart {
-    border-bottom-color: rgba(var(--border), 0.3);
-}
-
-body.dark .daily-study-report-card #weeklyStudyChart .study-chart-bar,
-body.dark .weekly-study-report-card #weeklyStudyChart .study-chart-bar {
-    background: linear-gradient(180deg, rgb(196, 181, 253), rgb(139, 92, 246));
-}
-
-/* ---------- Reset Button ---------- */
-body.dark .study-report-reset-btn {
-    background: rgb(76, 5, 25);
-    border-color: rgb(136, 19, 55);
-    color: rgb(251, 113, 133);
-}
-
-body.dark .study-report-reset-btn:hover {
-    background: rgb(127, 29, 29);
-    border-color: rgb(251, 113, 133);
-}
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 768px) {
-    .daily-study-report-card,
-    .weekly-study-report-card,
-    .side-card {
-        padding: 14px;
-    }
-    
-    .study-report-navigation {
-        width: 100%;
-    }
-    
-    .study-report-nav-btn {
-        flex: 1;
-        justify-content: center;
-        font-size: 11px;
-        padding: 6px 10px;
-        min-height: 32px;
-    }
-    
-    .daily-sidebar-cards,
-    .weekly-sidebar-cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
-    }
-    
-    .study-report-card strong {
-        font-size: 18px;
-    }
-    
-    #weeklyStudyChart {
-        height: 100px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar-area {
-        height: 60px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar {
-        max-width: 20px;
-        min-width: 4px;
-    }
-}
-
-@media (max-width: 500px) {
-    .daily-study-report-card,
-    .weekly-study-report-card,
-    .side-card {
-        padding: 12px;
-    }
-    
-    .section-header {
-        gap: 8px;
-    }
-    
-    .study-report-nav-btn {
-        font-size: 10px;
-        padding: 5px 8px;
-        min-height: 30px;
-    }
-    
-    .study-report-cards {
-        gap: 5px;
-    }
-    
-    .study-report-card {
-        padding: 10px 12px;
-    }
-    
-    .study-report-card strong {
-        font-size: 16px;
-    }
-    
-    .study-report-card-label {
-        font-size: 9px;
-    }
-    
-    .study-report-reset-btn {
-        font-size: 11px;
-        padding: 7px 12px;
-    }
-    
-    #weeklyStudyChart {
-        height: 85px;
-        gap: 4px;
-        padding: 6px 0;
-    }
-    
-    #weeklyStudyChart .study-chart-bar-area {
-        height: 50px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar {
-        max-width: 16px;
-        min-width: 3px;
-    }
-    
-    #weeklyStudyChart .study-chart-value {
-        font-size: 8px;
-        min-height: 14px;
-    }
-    
-    #weeklyStudyChart .study-chart-day {
-        font-size: 8px;
-    }
-}
-
-@media (max-width: 380px) {
-    .daily-study-report-card,
-    .weekly-study-report-card,
-    .side-card {
-        padding: 10px;
-    }
-    
-    .study-report-nav-btn {
-        font-size: 9px;
-        padding: 4px 6px;
-        min-height: 28px;
-    }
-    
-    .study-report-card {
-        padding: 8px 10px;
-    }
-    
-    .study-report-card strong {
-        font-size: 14px;
-    }
-    
-    .study-report-card-label {
-        font-size: 8px;
-    }
-    
-    #weeklyStudyChart {
-        height: 70px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar-area {
-        height: 40px;
-    }
-    
-    #weeklyStudyChart .study-chart-bar {
-        max-width: 12px;
-        min-width: 2px;
-    }
-}
-
-/* =========================================================
-   EMPTY STATE
-   ========================================================= */
-
-.study-report-empty {
-    padding: 16px;
-    text-align: center;
-    color: rgb(var(--text-muted));
-    font-size: 12px;
-    background: rgb(var(--surface-soft));
-    border-radius: var(--radius-sm);
-    border: 1px dashed rgb(var(--border));
-}
-
-body.dark .study-report-empty {
-    background: rgb(var(--surface-soft));
-    border-color: rgb(var(--border));
-    color: rgb(var(--text-muted));
-}
-
-
-/* =========================================================
-   MOBILE RESPONSIVE FORCE FIX
-   Phone + Tablet + PC
-   সব screen size-এ perfect
+   33. RESPONSIVE — EXTRA SMALL (≤360px)
 ========================================================= */
 
-/* =========================================================
-   BASE - Small Mobile (up to 480px)
-========================================================= */
-
-@media (max-width: 480px) {
-
-    /* Global */
-    * {
-        box-sizing: border-box;
+@media (max-width: 360px) {
+    .brand h1 {
+        font-size: 13px;
     }
-
-    body {
-        overflow-x: hidden;
+    .logo {
+        width: 32px;
+        height: 32px;
+        font-size: 15px;
     }
-
-    /* Main container */
+    .header-btn {
+        padding: 4px 6px;
+        font-size: 9px;
+    }
+    .day {
+        min-height: 68px;
+    }
     .container {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
+        padding: 0 8px calc(14px + env(safe-area-inset-bottom));
+    }
+}
+
+/* =========================================================
+   34. MOBILE FORCE FIX — SINGLE COLUMN
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .container {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
         width: 100% !important;
         max-width: 100% !important;
     }
-
-    /* Layout - Single column on mobile */
-    .layout {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-        width: 100% !important;
-    }
-
-    /* =====================================================
-       HEADER
-    ===================================================== */
-
-    .topbar {
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 10px !important;
-        padding: 12px 14px !important;
-    }
-
-    .brand h1 {
-        font-size: 17px !important;
-    }
-
-    .brand p {
-        font-size: 11px !important;
-    }
-
-    .header-actions {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        gap: 6px !important;
-        justify-content: space-between !important;
-    }
-
-    .header-btn {
-        flex: 1 1 calc(33% - 4px) !important;
-        min-width: 0 !important;
-        padding: 8px 10px !important;
-        font-size: 12px !important;
-    }
-
-    /* =====================================================
-       DASHBOARD - Grid 2 columns
-    ===================================================== */
 
     .dashboard {
         display: grid !important;
@@ -5028,28 +2008,20 @@ body.dark .study-report-empty {
     }
 
     .stat-card {
-        padding: 10px 10px !important;
-        min-height: auto !important;
+        padding: 10px !important;
     }
 
     .stat-card span {
         font-size: 10px !important;
-        line-height: 1.2 !important;
     }
 
     .stat-card strong {
         font-size: 18px !important;
-        line-height: 1.1 !important;
     }
 
     .stat-card small {
         font-size: 9px !important;
-        line-height: 1.2 !important;
     }
-
-    /* =====================================================
-       TOOLBAR
-    ===================================================== */
 
     .toolbar {
         display: grid !important;
@@ -5078,622 +2050,60 @@ body.dark .study-report-empty {
         grid-column: 1 / -1 !important;
     }
 
-    /* =====================================================
-       CALENDAR
-    ===================================================== */
-
-    .calendar-card {
-        padding: 10px !important;
-        border-radius: 12px !important;
-    }
-
-    .calendar-header {
-        flex-direction: column !important;
-        gap: 10px !important;
-        align-items: stretch !important;
-    }
-
-    .calendar-header h2 {
-        font-size: 16px !important;
-        text-align: center !important;
-    }
-
-    .calendar-header p {
-        font-size: 10px !important;
-        text-align: center !important;
-    }
-
-    .calendar-nav {
-        display: flex !important;
-        justify-content: center !important;
-        gap: 10px !important;
-    }
-
-    .nav-btn {
-        width: 38px !important;
-        height: 38px !important;
-        font-size: 16px !important;
-    }
-
-    /* Calendar grid - 7 columns */
     .calendar-grid {
-        display: grid !important;
-        grid-template-columns: repeat(7, 1fr) !important;
         gap: 3px !important;
         padding: 0 !important;
-        margin-top: 10px !important;
     }
 
-    .calendar-cell,
-    .calendar-day {
-        min-height: 42px !important;
-        padding: 3px 2px !important;
-        font-size: 11px !important;
-        border-radius: 6px !important;
-    }
-
-    .calendar-cell .day-number,
-    .calendar-day .day-number {
-        font-size: 12px !important;
-        font-weight: 600 !important;
-    }
-
-    .calendar-cell .day-events,
-    .calendar-day .day-events {
-        font-size: 8px !important;
-    }
-
-    .calendar-weekday {
-        font-size: 10px !important;
-        padding: 4px 0 !important;
-    }
-
-    /* =====================================================
-       BANGLADESH HOLIDAYS
-    ===================================================== */
-
-    .bangladesh-holidays {
-        padding: 12px !important;
-    }
-
-    .bangladesh-holidays h3 {
-        font-size: 14px !important;
-    }
-
-    .holiday-list {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 8px !important;
-    }
-
-    .holiday-item {
-        padding: 10px !important;
-        font-size: 12px !important;
-    }
-
-    /* =====================================================
-       STUDY TASKS CARD
-    ===================================================== */
-
-    .side-card {
-        padding: 12px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    .section-header h3 {
-        font-size: 14px !important;
-    }
-
-    .section-header small {
-        font-size: 10px !important;
-    }
-
-    /* =====================================================
-       STUDY REPORT CARDS - Force full width
-    ===================================================== */
-
-    .study-report-cards,
-    .study-report-cards.daily-sidebar-cards,
-    .study-report-cards.weekly-sidebar-cards {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 6px !important;
-        width: 100% !important;
-    }
-
-    .study-report-card {
-        padding: 8px !important;
-        min-height: auto !important;
-        box-sizing: border-box !important;
-    }
-
-    .study-report-card-label {
-        font-size: 10px !important;
-    }
-
-    .study-report-card strong {
-        font-size: 14px !important;
-    }
-
-    /* =====================================================
-       STUDY REPORT NAVIGATION
-    ===================================================== */
-
-    .study-report-navigation {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 6px !important;
-        width: 100% !important;
-    }
-
-    .study-report-nav-btn {
-        width: 100% !important;
-        padding: 8px !important;
-        font-size: 11px !important;
-    }
-
-    /* =====================================================
-       STUDY ANALYTICS GRID
-    ===================================================== */
-
-    .study-analytics-grid {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 6px !important;
-        width: 100% !important;
-    }
-
-    .analytics-stat-card {
-        padding: 8px !important;
-        min-height: auto !important;
-    }
-
-    .analytics-stat-card span {
-        font-size: 9px !important;
-        line-height: 1.2 !important;
-    }
-
-    .analytics-stat-card strong {
-        font-size: 13px !important;
-    }
-
-    /* =====================================================
-       SUBJECT ANALYTICS
-    ===================================================== */
-
-    .study-analytics-highlight {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 8px !important;
-        padding: 10px !important;
-    }
-
-    /* =====================================================
-       WEEKLY CHART
-    ===================================================== */
-
-    .weekly-study-chart {
-        display: grid !important;
-        grid-template-columns: repeat(7, 1fr) !important;
-        gap: 3px !important;
-        padding: 8px !important;
-        overflow-x: hidden !important;
-    }
-
-    .study-chart-column {
-        min-width: 0 !important;
-    }
-
-    .study-chart-value {
-        font-size: 8px !important;
-    }
-
-    .study-chart-day {
+    .weekday {
+        padding: 6px 2px !important;
         font-size: 9px !important;
     }
 
-    /* =====================================================
-       SUBJECT BREAKDOWN
-    ===================================================== */
-
-    .study-subject-breakdown {
-        padding: 8px !important;
-    }
-
-    .study-report-subject-row {
-        font-size: 11px !important;
-    }
-
-    .study-report-subject-info strong {
-        font-size: 11px !important;
-    }
-
-    /* =====================================================
-       ALL BUTTONS - Consistent
-    ===================================================== */
-
-    .primary-btn,
-    .secondary-btn,
-    .header-btn {
-        padding: 9px 14px !important;
-        font-size: 12px !important;
+    .day {
+        min-height: 56px !important;
+        padding: 4px 3px !important;
         border-radius: 8px !important;
     }
 
-    /* =====================================================
-       MODAL
-    ===================================================== */
-
-    .modal {
-        width: 95% !important;
-        max-width: 95% !important;
-        padding: 14px !important;
-        margin: 10px !important;
-    }
-
-    .modal-header h2 {
-        font-size: 16px !important;
-    }
-
-    .modal-body {
-        padding: 10px 0 !important;
-    }
-
-    .form-row {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 10px !important;
-    }
-
-    /* =====================================================
-       STUDY TIMER PANEL
-    ===================================================== */
-
-    .study-timer-panel {
-        width: calc(100% - 20px) !important;
-        left: 10px !important;
-        right: 10px !important;
-        bottom: 10px !important;
-    }
-
-    .study-timer-display span {
-        font-size: 32px !important;
-    }
-
-    /* =====================================================
-       CGPA CALCULATOR
-    ===================================================== */
-
-    .cgpa-course-row {
-        grid-template-columns: 1fr !important;
-        gap: 6px !important;
-        padding: 8px !important;
-    }
-
-    .cgpa-result-row {
-        font-size: 12px !important;
-    }
-
-    /* =====================================================
-       DIARY
-    ===================================================== */
-
-    .daily-diary-card {
-        padding: 10px !important;
-    }
-
-    .diary-actions {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 6px !important;
-    }
-
-    /* =====================================================
-       LEGEND
-    ===================================================== */
-
-    .legend {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        gap: 6px !important;
-        padding: 8px 0 !important;
-    }
-
-    .legend span {
-        font-size: 10px !important;
-        gap: 4px !important;
-    }
-
-    /* =====================================================
-       PROGRESS BARS
-    ===================================================== */
-
-    .progress-bar {
-        height: 8px !important;
-        border-radius: 4px !important;
-    }
-
-    .progress-fill {
-        height: 100% !important;
-    }
-}
-
-/* =========================================================
-   Extra Small Mobile (up to 360px)
-========================================================= */
-
-@media (max-width: 360px) {
-
-    .dashboard {
-        grid-template-columns: 1fr !important;
-    }
-
-    .study-report-cards {
-        grid-template-columns: 1fr !important;
-    }
-
-    .study-analytics-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .calendar-cell,
-    .calendar-day {
-        min-height: 36px !important;
-        font-size: 10px !important;
-    }
-
-    .calendar-cell .day-number {
+    .day-number {
+        width: 22px !important;
+        height: 22px !important;
         font-size: 11px !important;
     }
 
-    .stat-card strong {
-        font-size: 16px !important;
-    }
-}
-
-/* =========================================================
-   Tablet (481px – 768px)
-========================================================= */
-
-@media (min-width: 481px) and (max-width: 768px) {
-
-    .container {
-        padding-left: 14px !important;
-        padding-right: 14px !important;
+    .legend {
+        gap: 6px !important;
+        padding: 8px 10px !important;
     }
 
-    .dashboard {
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 10px !important;
+    .legend span {
+        font-size: 9px !important;
     }
 
-    .calendar-cell,
-    .calendar-day {
-        min-height: 52px !important;
+    .holiday-item {
+        flex: 0 0 180px !important;
+        min-width: 180px !important;
     }
 
-    .study-analytics-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-}
-
-/* =========================================================
-   FORCE - Prevent Horizontal Scroll
-========================================================= */
-
-html, body {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-}
-
-img, table, pre, code {
-    max-width: 100% !important;
-}
-
-/* =========================================================
-   FORCE - All Cards Fit Screen
-========================================================= */
-
-.side-card,
-.calendar-card,
-.stat-card,
-.study-analytics-card,
-.bangladesh-holidays {
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-}
-
-/* =========================================================
-   FIX - Study Report Cards Not Cutting
-========================================================= */
-
-.study-report-cards > * {
-    min-width: 0 !important;
-    overflow: hidden !important;
-}
-
-.study-report-card strong {
-    word-break: break-word !important;
-    overflow-wrap: anywhere !important;
-}
-
-/* =========================================================
-   FIX - Study Analytics Section
-========================================================= */
-
-.study-analytics-section {
-    width: 100% !important;
-    overflow: hidden !important;
-}
-
-.study-analytics-highlight > div {
-    min-width: 0 !important;
-    overflow: hidden !important;
-}
-
-/* =========================================================
-   FIX - Charts not overflowing
-========================================================= */
-
-.weekly-study-chart,
-.monthly-study-trend,
-.subject-study-comparison {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
-}
-
-/* =========================================================
-   FIX - Study Timer Panel
-========================================================= */
-
-.study-timer-panel {
-    max-width: calc(100vw - 20px) !important;
-}
-
-/* =========================================================
-   FIX - Overall Progress Bar
-========================================================= */
-
-.progress-bar {
-    width: 100% !important;
-    min-width: 0 !important;
-    overflow: hidden !important;
-}
-
-.progress-fill {
-    min-width: 0 !important;
-    max-width: 100% !important;
-}
-
-/* =========================================================
-   📱📱📱 MOBILE ORDER FIX - FINAL SECTION
-   Phone layout: Sections in correct order
-   ⚠️ এই Block সবশেষে থাকতে হবে - এটা ছাড়া order ঠিক হবে না
-========================================================= */
-
-@media (max-width: 768px) {
-
-    /* =====================================================
-       LAYOUT - Merge Main Column + Sidebar into 1 column
-    ===================================================== */
-    .layout {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 14px !important;
-        width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
+    /* Prevent horizontal scroll */
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
     }
 
-    /* Magic: parents invisible, children direct children of layout */
-    .layout > div,
-    .layout > aside {
-        display: contents !important;
-    }
-
-    /* =====================================================
-       SECTION ORDER - আপনার চাওয়া sequence
-       ===================================================== */
-
-    /* 1. Calendar */
-    .calendar-card {
-        order: 1 !important;
-    }
-
-    /* 2. Bangladesh Holidays */
-    .bangladesh-holidays {
-        order: 2 !important;
-    }
-
-    /* 3. Quick Add (Sidebar 1st section) */
-    .sidebar > .side-card:nth-child(1) {
-        order: 3 !important;
-    }
-
-    /* 4. Upcoming Events (Sidebar 2nd section) */
-    .sidebar > .side-card:nth-child(2) {
-        order: 4 !important;
-    }
-
-    /* 5. Past Events (Sidebar 3rd section) */
-    .sidebar > .side-card:nth-child(3) {
-        order: 5 !important;
-    }
-
-    /* 6. Study Tasks */
-    .study-task-card {
-        order: 6 !important;
-    }
-
-    /* 7. Study Analytics */
-    .study-analytics-card {
-        order: 7 !important;
-    }
-
-    /* 8. Daily Study Report */
-    .daily-study-report-card {
-        order: 8 !important;
-    }
-
-    /* 9. Weekly Study Report */
-    .weekly-study-report-card {
-        order: 9 !important;
-    }
-
-    /* 10. CGPA Calculator */
-    .cgpa-calculator-card {
-        order: 10 !important;
-    }
-
-    /* 11. Daily Diary */
-    .daily-diary-card {
-        order: 11 !important;
-    }
-
-    /* 12. Completed Subjects */
-    .completed-subjects-container {
-        order: 12 !important;
-    }
-
-    /* =====================================================
-       FULL WIDTH - সব section 100% width
-       ===================================================== */
-    .calendar-card,
-    .bangladesh-holidays,
     .side-card,
-    .study-task-card,
-    .study-analytics-card,
-    .cgpa-calculator-card,
-    .daily-diary-card,
-    .daily-study-report-card,
-    .weekly-study-report-card,
-    .completed-subjects-container,
-    .study-task-card,
-    .study-analytics-card {
-        width: 100% !important;
+    .calendar-card,
+    .stat-card,
+    .bangladesh-holidays {
         max-width: 100% !important;
-        min-width: 0 !important;
-        box-sizing: border-box !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-
-    /* =====================================================
-       SMOOTH SCROLL
-       ===================================================== */
-    html {
-        scroll-behavior: smooth;
+        overflow-x: hidden !important;
     }
 }
 
 /* =========================================================
-   ⚠️ IMPORTANT - এই Block শেষে হবে
-========================================================= */
-
-/* =========================================================
-   📱 MOBILE 3-PAGE LAYOUT + BOTTOM NAVIGATION
+   35. 📱📱📱 PAGE SYSTEM — 3-PAGE MOBILE LAYOUT
+   ⚠️⚠️⚠️ এই block সবার শেষে থাকতে হবে
 ========================================================= */
 
 /* Default hidden on PC */
@@ -5701,217 +2111,32 @@ img, table, pre, code {
     display: none;
 }
 
-/* =========================================================
-   MOBILE (max-width: 768px)
-========================================================= */
-
 @media (max-width: 768px) {
 
     /* =====================================================
        BOTTOM NAVIGATION BAR
-    ===================================================== */
+       ===================================================== */
     .mobile-bottom-nav {
         display: flex !important;
         position: fixed !important;
         bottom: 0 !important;
         left: 0 !important;
         right: 0 !important;
-        height: 64px !important;
-        background: rgb(var(--surface, 255 255 255)) !important;
-        border-top: 1px solid rgb(var(--border)) !important;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08) !important;
-        z-index: 9999 !important;
-        padding: 4px 8px !important;
-        padding-bottom: calc(4px + env(safe-area-inset-bottom, 0px)) !important;
-        gap: 4px !important;
-        -webkit-tap-highlight-color: transparent !important;
-    }
-
-    .mobile-nav-btn {
-        flex: 1 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 2px !important;
-        background: transparent !important;
-        border: none !important;
-        border-radius: 12px !important;
-        cursor: pointer !important;
-        color: rgb(var(--text-muted, 100 116 139)) !important;
-        font-family: inherit !important;
-        transition: all 0.2s ease !important;
-        padding: 6px !important;
-    }
-
-    .mobile-nav-btn:active {
-        transform: scale(0.94) !important;
-    }
-
-    .mobile-nav-icon {
-        font-size: 20px !important;
-        line-height: 1 !important;
-        transition: transform 0.2s ease !important;
-    }
-
-    .mobile-nav-label {
-        font-size: 10px !important;
-        font-weight: 600 !important;
-        line-height: 1 !important;
-        margin-top: 2px !important;
-    }
-
-    .mobile-nav-btn.active {
-        color: rgb(var(--primary, 37 99 235)) !important;
-        background: rgb(var(--primary, 37 99 235) / 0.1) !important;
-    }
-
-    .mobile-nav-btn.active .mobile-nav-icon {
-        transform: scale(1.1) !important;
-    }
-
-    /* =====================================================
-       PAGE SYSTEM
-       ===================================================== */
-
-    /* Hide all page sections by default */
-    [data-page] {
-        display: none !important;
-    }
-
-    /* Show active page sections */
-    body[data-current-page="home"] [data-page="home"],
-    body[data-current-page="study"] [data-page="study"],
-    body[data-current-page="me"] [data-page="me"] {
-        display: block !important;
-    }
-
-    /* =====================================================
-       LAYOUT — Flatten main + sidebar
-       ===================================================== */
-    .layout {
-        display: block !important;
-        width: 100% !important;
-        padding: 0 !important;
-    }
-
-    .layout > div,
-    .layout > aside {
-        display: contents !important;
-    }
-
-    /* =====================================================
-       BOTTOM NAV SPACE
-       ===================================================== */
-    .container {
-        padding-bottom: 90px !important;
-        padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px)) !important;
-    }
-
-    /* =====================================================
-       FULL WIDTH FOR ALL PAGE SECTIONS
-       ===================================================== */
-    [data-page] {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-}
-
-/* =========================================================
-   EXTRA SMALL MOBILE (≤360px)
-========================================================= */
-
-@media (max-width: 360px) {
-
-    .mobile-bottom-nav {
-        height: 60px !important;
-    }
-
-    .mobile-nav-icon {
-        font-size: 18px !important;
-    }
-
-    .mobile-nav-label {
-        font-size: 9px !important;
-    }
-}
-
-/* =========================================================
-   DARK MODE — Bottom Nav
-========================================================= */
-
-[data-theme="dark"] .mobile-bottom-nav,
-.dark .mobile-bottom-nav,
-body.dark .mobile-bottom-nav {
-    background: rgb(15 23 42) !important;
-    border-color: rgb(51 65 85) !important;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
-}
-
-[data-theme="dark"] .mobile-nav-btn,
-.dark .mobile-nav-btn,
-body.dark .mobile-nav-btn {
-    color: rgb(148 163 184) !important;
-}
-
-[data-theme="dark"] .mobile-nav-btn.active,
-.dark .mobile-nav-btn.active,
-body.dark .mobile-nav-btn.active {
-    color: rgb(96 165 250) !important;
-    background: rgb(37 99 235 / 0.15) !important;
-}
-
-/* =========================================================
-   🔥 BOTTOM NAV — FORCE FIX
-   শুধু Home দেখাচ্ছিল - এখন তিনটাই দেখাবে
-========================================================= */
-
-@media (max-width: 768px) {
-
-    /* Container - Force fixed at bottom */
-    body .mobile-bottom-nav,
-    html body .mobile-bottom-nav {
-        display: flex !important;
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        top: auto !important;
         width: 100vw !important;
-        max-width: 100vw !important;
         height: 64px !important;
-        min-height: 64px !important;
-        max-height: 64px !important;
         background: #ffffff !important;
         border-top: 1px solid #e2e8f0 !important;
         box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08) !important;
         z-index: 999999 !important;
         padding: 4px 8px !important;
         padding-bottom: calc(4px + env(safe-area-inset-bottom, 0px)) !important;
-        margin: 0 !important;
         gap: 4px !important;
         box-sizing: border-box !important;
-        overflow: hidden !important;
     }
 
-    /* Hide scrollbars */
-    body .mobile-bottom-nav::-webkit-scrollbar {
-        display: none !important;
-    }
-
-    /* Buttons - Force equal width */
-    body .mobile-bottom-nav .mobile-nav-btn,
-    html body .mobile-bottom-nav .mobile-nav-btn {
-        display: flex !important;
+    .mobile-nav-btn {
         flex: 1 1 0 !important;
-        flex-basis: 0 !important;
-        width: auto !important;
-        min-width: 0 !important;
-        max-width: none !important;
-        height: 100% !important;
+        display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
@@ -5930,176 +2155,122 @@ body.dark .mobile-nav-btn.active {
         outline: none !important;
     }
 
-    /* Icon */
-    body .mobile-bottom-nav .mobile-nav-icon,
-    html body .mobile-bottom-nav .mobile-nav-icon {
+    .mobile-nav-btn:active {
+        transform: scale(0.94) !important;
+    }
+
+    .mobile-nav-icon {
         display: block !important;
         font-size: 22px !important;
         line-height: 1 !important;
         transition: transform 0.2s ease !important;
-        flex-shrink: 0 !important;
     }
 
-    /* Label */
-    body .mobile-bottom-nav .mobile-nav-label,
-    html body .mobile-bottom-nav .mobile-nav-label {
+    .mobile-nav-label {
         display: block !important;
         font-size: 10px !important;
         font-weight: 600 !important;
         line-height: 1 !important;
         margin-top: 2px !important;
-        color: inherit !important;
         white-space: nowrap !important;
     }
 
-    /* Active state */
-    body .mobile-bottom-nav .mobile-nav-btn.active,
-    html body .mobile-bottom-nav .mobile-nav-btn.active {
+    .mobile-nav-btn.active {
         color: #2563eb !important;
         background: rgba(37, 99, 235, 0.1) !important;
     }
 
-    body .mobile-bottom-nav .mobile-nav-btn.active .mobile-nav-icon,
-    html body .mobile-bottom-nav .mobile-nav-btn.active .mobile-nav-icon {
+    .mobile-nav-btn.active .mobile-nav-icon {
         transform: scale(1.15) !important;
     }
 
-    /* Active tap */
-    body .mobile-bottom-nav .mobile-nav-btn:active,
-    html body .mobile-bottom-nav .mobile-nav-btn:active {
-        transform: scale(0.94) !important;
-    }
-
-    /* Content padding bottom - যাতে nav bar content ঢেকে না ফেলে */
-    body .container {
-        padding-bottom: 90px !important;
-    }
-}
-
-/* Dark Mode */
-[data-theme="dark"] body .mobile-bottom-nav,
-.dark body .mobile-bottom-nav,
-body.dark .mobile-bottom-nav {
-    background: #0f172a !important;
-    border-top-color: #334155 !important;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4) !important;
-}
-
-[data-theme="dark"] body .mobile-bottom-nav .mobile-nav-btn,
-.dark body .mobile-bottom-nav .mobile-nav-btn,
-body.dark .mobile-bottom-nav .mobile-nav-btn {
-    color: #94a3b8 !important;
-}
-
-[data-theme="dark"] body .mobile-bottom-nav .mobile-nav-btn.active,
-.dark body .mobile-bottom-nav .mobile-nav-btn.active,
-body.dark .mobile-bottom-nav .mobile-nav-btn.active {
-    color: #60a5fa !important;
-    background: rgba(37, 99, 235, 0.2) !important;
-}
-
-/* Extra Small Mobile */
-@media (max-width: 360px) {
-    body .mobile-bottom-nav,
-    html body .mobile-bottom-nav {
-        height: 60px !important;
-        min-height: 60px !important;
-        max-height: 60px !important;
-    }
-
-    body .mobile-bottom-nav .mobile-nav-icon,
-    html body .mobile-bottom-nav .mobile-nav-icon {
-        font-size: 20px !important;
-    }
-
-    body .mobile-bottom-nav .mobile-nav-label,
-    html body .mobile-bottom-nav .mobile-nav-label {
-        font-size: 9px !important;
-    }
-}
-/* =========================================================
-   🔥🔥🔥 PAGE SWITCHING — ULTIMATE FORCE FIX
-   এই CSS সব conflict override করবে
-========================================================= */
-
-@media (max-width: 768px) {
-
     /* =====================================================
-       STEP 1: সব section hide by default
-       !important দিয়ে override করছি
+       LAYOUT FLATTEN — Main + Sidebar একসাথে
        ===================================================== */
-
-    body[data-current-page] [data-page],
-    body[data-current-page] .dashboard,
-    body[data-current-page] .toolbar {
-        display: none !important;
-        visibility: hidden !important;
-        height: 0 !important;
-        overflow: hidden !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border: none !important;
-    }
-
-    /* =====================================================
-       STEP 2: HOME page — Calendar, Holidays, Quick Add, Upcoming, Past, Dashboard, Toolbar
-       ===================================================== */
-
-    body[data-current-page="home"] [data-page="home"],
-    body[data-current-page="home"] .dashboard,
-    body[data-current-page="home"] .toolbar {
-        display: block !important;
-        visibility: visible !important;
-        height: auto !important;
-        overflow: visible !important;
-    }
-
-    /* =====================================================
-       STEP 3: STUDY page
-       ===================================================== */
-
-    body[data-current-page="study"] [data-page="study"] {
-        display: block !important;
-        visibility: visible !important;
-        height: auto !important;
-        overflow: visible !important;
-    }
-
-    /* =====================================================
-       STEP 4: ME page
-       ===================================================== */
-
-    body[data-current-page="me"] [data-page="me"] {
-        display: block !important;
-        visibility: visible !important;
-        height: auto !important;
-        overflow: visible !important;
-    }
-
-    /* =====================================================
-       STEP 5: Bottom Nav সবসময় দৃশ্যমান
-       ===================================================== */
-
-    body .mobile-bottom-nav {
-        display: flex !important;
-        visibility: visible !important;
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        z-index: 999999 !important;
-        height: 64px !important;
-        background: #ffffff !important;
-        border-top: 1px solid #e2e8f0 !important;
-    }
-
-    /* Layout flatten — wrapper hide */
     .layout {
         display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
     .layout > div,
     .layout > aside {
         display: contents !important;
     }
+
+    /* =====================================================
+       ✅✅✅ PAGE SWITCHING — শুধু এই নিয়ম প্রযোজ্য
+       ===================================================== */
+
+    /* সব [data-page] এবং dashboard/toolbar hide */
+    [data-page],
+    .dashboard,
+    .toolbar {
+        display: none !important;
+    }
+
+    /* HOME page */
+    body[data-current-page="home"] [data-page="home"] {
+        display: block !important;
+    }
+
+    /* STUDY page */
+    body[data-current-page="study"] [data-page="study"] {
+        display: block !important;
+    }
+
+    /* ME page */
+    body[data-current-page="me"] [data-page="me"] {
+        display: block !important;
+    }
+
+    /* =====================================================
+       BOTTOM NAV SPACE — Content যাতে nav bar-এ ঢাকা না পড়ে
+       ===================================================== */
+    .container {
+        padding-bottom: 90px !important;
+        padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px)) !important;
+    }
 }
+
+/* =========================================================
+   36. DARK MODE — BOTTOM NAV
+========================================================= */
+
+body.dark .mobile-bottom-nav {
+    background: #0f172a !important;
+    border-top-color: #334155 !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark .mobile-nav-btn {
+    color: #94a3b8 !important;
+}
+
+body.dark .mobile-nav-btn.active {
+    color: #60a5fa !important;
+    background: rgba(37, 99, 235, 0.2) !important;
+}
+
+/* =========================================================
+   37. EXTRA SMALL MOBILE — Bottom Nav
+========================================================= */
+
+@media (max-width: 360px) {
+    .mobile-bottom-nav {
+        height: 60px !important;
+    }
+
+    .mobile-nav-icon {
+        font-size: 20px !important;
+    }
+
+    .mobile-nav-label {
+        font-size: 9px !important;
+    }
+}
+
+/* =========================================================
+   ✅ END OF STYLESHEET
+========================================================= */
