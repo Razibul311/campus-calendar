@@ -5462,3 +5462,95 @@ body.dark .alarm-switch input:checked + .alarm-slider {
         font-size: 14px !important;
     }
 }
+
+/* =========================================================
+   ✅ ULTIMATE FORCE FIX — Modal Body Scroll
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* ============================================
+       ১. Modal Container কে fixed height দিন
+    ============================================ */
+    body .modal-overlay .modal,
+    body #eventModal .modal,
+    body #studyTaskModal .modal,
+    body #detailsModal .modal {
+        height: calc(100vh - 100px) !important;
+        height: calc(100dvh - 100px) !important;
+        max-height: calc(100vh - 100px) !important;
+        max-height: calc(100dvh - 100px) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+    }
+
+    /* ============================================
+       ২. Header এবং Footer — Fixed
+    ============================================ */
+    body .modal-overlay .modal-header,
+    body #eventModal .modal-header,
+    body #studyTaskModal .modal-header,
+    body #detailsModal .modal-header {
+        flex: 0 0 auto !important;
+        flex-grow: 0 !important;
+        flex-shrink: 0 !important;
+        flex-basis: auto !important;
+    }
+
+    body .modal-overlay .modal-footer,
+    body #eventModal .modal-footer,
+    body #studyTaskModal .modal-footer,
+    body #detailsModal .modal-footer {
+        flex: 0 0 auto !important;
+        flex-grow: 0 !important;
+        flex-shrink: 0 !important;
+        flex-basis: auto !important;
+    }
+
+    /* ============================================
+       ৩. Modal Body — MUST SCROLL
+    ============================================ */
+    body .modal-overlay .modal .modal-body,
+    body .modal-overlay .modal-body,
+    body #eventModal .modal-body,
+    body #studyTaskModal .modal-body,
+    body #detailsModal .modal-body,
+    html body .modal-body {
+        flex: 1 1 0% !important;
+        flex-grow: 1 !important;
+        flex-shrink: 1 !important;
+        flex-basis: 0% !important;
+
+        min-height: 0 !important;
+        max-height: none !important;
+        height: auto !important;
+
+        overflow-y: scroll !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        overscroll-behavior: contain !important;
+
+        display: block !important;
+        position: relative !important;
+
+        padding: 16px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ============================================
+       ৪. Scrollbar style
+    ============================================ */
+    body .modal-overlay .modal-body::-webkit-scrollbar {
+        width: 4px !important;
+    }
+
+    body .modal-overlay .modal-body::-webkit-scrollbar-thumb {
+        background: rgb(var(--primary)) !important;
+        border-radius: 4px !important;
+    }
+
+    body .modal-overlay .modal-body::-webkit-scrollbar-track {
+        background: transparent !important;
+    }
+}
