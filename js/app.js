@@ -828,10 +828,6 @@ function getBanglaDate(
     gregorianDate
 ) {
 
-    /* =====================================================
-       VALIDATION
-    ===================================================== */
-
     if (
         !gregorianDate ||
         !(gregorianDate instanceof Date) ||
@@ -844,12 +840,6 @@ function getBanglaDate(
 
     }
 
-
-    /* =====================================================
-       REMOVE TIME
-
-       Prevent timezone/time calculation problems
-    ===================================================== */
 
     const date = new Date(
         gregorianDate.getFullYear(),
@@ -866,10 +856,6 @@ function getBanglaDate(
         date.getFullYear();
 
 
-    /* =====================================================
-       BANGLA NEW YEAR OF CURRENT GREGORIAN YEAR
-    ===================================================== */
-
     const newYear =
         getBanglaNewYearDate(
             year
@@ -879,14 +865,6 @@ function getBanglaDate(
     let banglaYear;
     let startYear;
 
-
-    /* =====================================================
-       BEFORE 14 APRIL
-
-       Example:
-       10 April 2026
-       = ২৬ চৈত্র ১৪৩২
-    ===================================================== */
 
     if (
         date < newYear
@@ -913,21 +891,11 @@ function getBanglaDate(
     }
 
 
-    /* =====================================================
-       BANGLA YEAR START DATE
-
-       Always 14 April
-    ===================================================== */
-
     const startDate =
         getBanglaNewYearDate(
             startYear
         );
 
-
-    /* =====================================================
-       DIFFERENCE IN DAYS
-    ===================================================== */
 
     const diffMilliseconds =
         date.getTime() -
@@ -946,38 +914,30 @@ function getBanglaDate(
         );
 
 
-    /* =====================================================
-       BANGLA MONTH LENGTHS
-    ===================================================== */
-
     const monthLengths = [
 
-        31, // বৈশাখ
-        31, // জ্যৈষ্ঠ
-        31, // আষাঢ়
-        31, // শ্রাবণ
-        31, // ভাদ্র
-        31, // আশ্বিন
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
 
-        30, // কার্তিক
-        30, // অগ্রহায়ণ
-        30, // পৌষ
-        30, // মাঘ
+        30,
+        30,
+        30,
+        30,
 
         isGregorianLeapYear(
             startYear + 1
         )
             ? 30
-            : 29, // ফাল্গুন
+            : 29,
 
-        30  // চৈত্র
+        30
 
     ];
 
-
-    /* =====================================================
-       FIND BANGLA MONTH
-    ===================================================== */
 
     let remainingDays =
         diffDays;
@@ -1010,10 +970,6 @@ function getBanglaDate(
     }
 
 
-    /* =====================================================
-       SAFETY CHECK
-    ===================================================== */
-
     if (
         monthIndex < 0
     ) {
@@ -1034,17 +990,9 @@ function getBanglaDate(
     }
 
 
-    /* =====================================================
-       BANGLA DAY
-    ===================================================== */
-
     const banglaDay =
         remainingDays + 1;
 
-
-    /* =====================================================
-       RETURN BANGLA DATE
-    ===================================================== */
 
     return {
 
@@ -1066,11 +1014,6 @@ function getBanglaDate(
 
 }
 
-
-/* =========================================================
-   FULL BANGLA DATE
-
-========================================================= */
 
 function formatBanglaDate(
     gregorianDate
@@ -1106,11 +1049,6 @@ function formatBanglaDate(
 }
 
 
-/* =========================================================
-   SHORT BANGLA DATE
-
-========================================================= */
-
 function formatBanglaShortDate(
     gregorianDate
 ) {
@@ -1140,11 +1078,6 @@ function formatBanglaShortDate(
 
 }
 
-
-/* =========================================================
-   BANGLA MONTH + YEAR
-
-========================================================= */
 
 function formatBanglaMonthYear(
     gregorianDate
@@ -1457,11 +1390,6 @@ function syncCurrentMonthWithToday() {
     const currentMonth =
         state.currentDate.getMonth();
 
-
-    /*
-     * নতুন বছর বা নতুন মাস হলে
-     * calendar automatically today's month দেখাবে
-     */
 
     if (
         todayYear !== currentYear ||
@@ -2768,10 +2696,6 @@ function renderCalendar() {
         state.currentDate.getMonth();
 
 
-    /* =====================================================
-       MONTH TITLE
-    ====================================================== */
-
     const title =
         document.getElementById(
             "monthTitle"
@@ -2784,19 +2708,9 @@ function renderCalendar() {
             state.language === "bn"
         ) {
 
-            /*
-               Use middle of month
-               to determine Bangla month.
-            */
-
             title.textContent =
                formatBanglaMonthYear(
 
-                    /*new Date(
-                        year,
-                        month,
-                        15
-                    )*/
                     state.currentDate
 
                 );
@@ -2813,10 +2727,6 @@ function renderCalendar() {
     }
 
 
-    /* =====================================================
-       MONTH SUBTITLE
-    ====================================================== */
-
     const subtitle =
         document.getElementById(
             "monthSubtitle"
@@ -2832,10 +2742,6 @@ function renderCalendar() {
 
     }
 
-
-    /* =====================================================
-       WEEKDAYS
-    ====================================================== */
 
     const weekdays =
         state.language === "bn"
@@ -2881,10 +2787,6 @@ function renderCalendar() {
     );
 
 
-    /* =====================================================
-       FIRST DAY
-    ====================================================== */
-
     const firstDay =
         new Date(
             year,
@@ -2892,10 +2794,6 @@ function renderCalendar() {
             1
         ).getDay();
 
-
-    /* =====================================================
-       DAYS IN CURRENT MONTH
-    ====================================================== */
 
     const daysInMonth =
         new Date(
@@ -2905,10 +2803,6 @@ function renderCalendar() {
         ).getDate();
 
 
-    /* =====================================================
-       DAYS IN PREVIOUS MONTH
-    ====================================================== */
-
     const daysInPreviousMonth =
         new Date(
             year,
@@ -2916,10 +2810,6 @@ function renderCalendar() {
             0
         ).getDate();
 
-
-    /* =====================================================
-       TOTAL CELLS
-    ====================================================== */
 
     const totalCells =
         Math.ceil(
@@ -2931,10 +2821,6 @@ function renderCalendar() {
 
         ) * 7;
 
-
-    /* =====================================================
-       CREATE DAYS
-    ====================================================== */
 
     for (
 
@@ -2952,10 +2838,6 @@ function renderCalendar() {
 
         let otherMonth = false;
 
-
-        /* =================================================
-           PREVIOUS MONTH
-        ================================================== */
 
         if (
             cell < firstDay
@@ -2980,10 +2862,6 @@ function renderCalendar() {
 
         }
 
-
-        /* =================================================
-           NEXT MONTH
-        ================================================== */
 
         else if (
 
@@ -3013,10 +2891,6 @@ function renderCalendar() {
         }
 
 
-        /* =================================================
-           CURRENT MONTH
-        ================================================== */
-
         else {
 
             dayNumber =
@@ -3034,10 +2908,6 @@ function renderCalendar() {
 
         }
 
-
-        /* =================================================
-           DAY ELEMENT
-        ================================================== */
 
         const day =
             document.createElement(
@@ -3060,10 +2930,6 @@ function renderCalendar() {
         }
 
 
-        /* =================================================
-           TODAY
-        ================================================== */
-
         if (
 
             isSameDate(
@@ -3080,12 +2946,6 @@ function renderCalendar() {
         }
 
 
-        /* =================================================
-           BANGLADESH WEEKEND
-           Friday = 5
-           Saturday = 6
-        ================================================== */
-
         if (
 
             cellDate.getDay() === 5 ||
@@ -3100,10 +2960,6 @@ function renderCalendar() {
 
         }
 
-
-        /* =================================================
-           CLICK DAY
-        ================================================== */
 
         day.addEventListener(
             "click",
@@ -3120,10 +2976,6 @@ function renderCalendar() {
             }
         );
 
-
-        /* =================================================
-           DAY NUMBER
-        ================================================== */
 
         const number =
             document.createElement(
@@ -3158,9 +3010,6 @@ function renderCalendar() {
             number
         );
 
-/* =================================================
-   HOLIDAY INDICATOR
-================================================= */
 
 const holiday = getHolidayForDate(
     cellDate
@@ -3204,9 +3053,6 @@ if (holiday) {
     );
 
 }
-        /* =================================================
-           BANGLA DATE
-        ================================================== */
 
         if (
             state.language === "bn"
@@ -3234,10 +3080,6 @@ if (holiday) {
 
         }
 
-
-        /* =================================================
-           EVENTS
-        ================================================== */
 
         const dateString =
             formatDate(
@@ -3534,11 +3376,6 @@ function parseDate(
 
 /* =========================================================
    EVENT STATUS
-   ---------------------------------------------------------
-   Determines whether an event is:
-   - upcoming
-   - ongoing
-   - past
 ========================================================= */
 
 function getEventStatus(event) {
@@ -3554,10 +3391,6 @@ function getEventStatus(event) {
     if (!eventDate) {
         return "past";
     }
-
-    /* =====================================================
-       FUTURE DATE
-    ===================================================== */
 
     const todayDate = new Date(
         today.getFullYear(),
@@ -3583,23 +3416,9 @@ function getEventStatus(event) {
         return "upcoming";
     }
 
-    /* =====================================================
-       PAST DATE
-    ===================================================== */
-
     if (eventDay < todayDate) {
         return "past";
     }
-
-    /* =====================================================
-       TODAY
-       -----------------------------------------------------
-       If no end time exists:
-       event remains active for today.
-
-       If end time exists:
-       check whether end time has passed.
-    ===================================================== */
 
     if (!event.end) {
         return "ongoing";
@@ -5090,10 +4909,6 @@ function renderPastEvents() {
         .slice(0, 10);
 
 
-    /* ---------------------------------------------------------
-       NO PAST EVENTS
-    --------------------------------------------------------- */
-
     if (!events.length) {
 
         container.innerHTML = `
@@ -5113,10 +4928,6 @@ function renderPastEvents() {
         return;
     }
 
-
-    /* ---------------------------------------------------------
-       RENDER PAST EVENTS
-    --------------------------------------------------------- */
 
     events.forEach(event => {
 
@@ -5227,10 +5038,6 @@ function renderPastEvents() {
         `;
 
 
-        /* -----------------------------------------------------
-           CHECKBOX
-        ----------------------------------------------------- */
-
         const checkbox =
             item.querySelector(
                 ".past-event-check"
@@ -5249,18 +5056,9 @@ function renderPastEvents() {
         );
 
 
-        /* -----------------------------------------------------
-           EVENT CLICK
-        ----------------------------------------------------- */
-
         item.addEventListener(
             "click",
             event => {
-
-                /*
-                 * Checkbox click হলে
-                 * Event details খুলবে না
-                 */
 
                 if (
                     event.target.closest(
@@ -5490,10 +5288,6 @@ function updateDashboard() {
         );
 
 
-    /* =====================================================
-       THIS MONTH EVENTS
-    ===================================================== */
-
     const monthEvents =
         filtered.filter(
             event => {
@@ -5526,10 +5320,6 @@ function updateDashboard() {
             }
         );
 
-
-    /* =====================================================
-       CATEGORY COUNTS
-    ===================================================== */
 
     const classes =
         monthEvents.filter(
@@ -5578,10 +5368,6 @@ function updateDashboard() {
                 "personal"
         );
 
-
-    /* =====================================================
-       UPDATE DASHBOARD
-    ===================================================== */
 
     setText(
         "todayCount",
@@ -5669,10 +5455,6 @@ function setText(
 
 const DEFAULT_HOLIDAYS_2026 = [
 
-    // =====================================================
-    // FEBRUARY
-    // =====================================================
-
     {
         date: "2026-02-04",
         title: "Shab-e-Barat",
@@ -5684,11 +5466,6 @@ const DEFAULT_HOLIDAYS_2026 = [
         title: "Shaheed Day & International Mother Language Day",
         titleBn: "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস"
     },
-
-
-    // =====================================================
-    // MARCH
-    // =====================================================
 
     {
         date: "2026-03-17",
@@ -5709,21 +5486,11 @@ const DEFAULT_HOLIDAYS_2026 = [
         titleBn: "স্বাধীনতা ও জাতীয় দিবস"
     },
 
-
-    // =====================================================
-    // APRIL
-    // =====================================================
-
     {
         date: "2026-04-14",
         title: "Bangla New Year (Pohela Boishakh)",
         titleBn: "বাংলা নববর্ষ (পহেলা বৈশাখ)"
     },
-
-
-    // =====================================================
-    // MAY
-    // =====================================================
 
     {
         date: "2026-05-01",
@@ -5738,21 +5505,11 @@ const DEFAULT_HOLIDAYS_2026 = [
         titleBn: "ঈদুল আজহার ছুটি"
     },
 
-
-    // =====================================================
-    // JUNE
-    // =====================================================
-
     {
         date: "2026-06-26",
         title: "Ashura",
         titleBn: "আশুরা"
     },
-
-
-    // =====================================================
-    // AUGUST
-    // =====================================================
 
     {
         date: "2026-08-05",
@@ -5766,21 +5523,11 @@ const DEFAULT_HOLIDAYS_2026 = [
         titleBn: "ঈদে মিলাদুন্নবী (সা.)"
     },
 
-
-    // =====================================================
-    // SEPTEMBER
-    // =====================================================
-
     {
         date: "2026-09-04",
         title: "Janmashtami",
         titleBn: "জন্মাষ্টমী"
     },
-
-
-    // =====================================================
-    // OCTOBER
-    // =====================================================
 
     {
         date: "2026-10-20",
@@ -5788,11 +5535,6 @@ const DEFAULT_HOLIDAYS_2026 = [
         title: "Durga Puja Holiday",
         titleBn: "দুর্গাপূজার ছুটি"
     },
-
-
-    // =====================================================
-    // DECEMBER
-    // =====================================================
 
     {
         date: "2026-12-16",
@@ -5813,10 +5555,6 @@ const BANGLADESH_HOLIDAYS =
     DEFAULT_HOLIDAYS_2026;
 
 
-/* =========================================================
-   GET HOLIDAY DATA
-========================================================= */
-
 function getHolidayData() {
 
     return Array.isArray(
@@ -5828,9 +5566,6 @@ function getHolidayData() {
         : [];
 
 }
-/* =========================================================
-   CHECK HOLIDAY FOR DATE
-========================================================= */
 
 function getHolidayForDate(date) {
 
@@ -5842,12 +5577,10 @@ function getHolidayForDate(date) {
             return false;
         }
 
-        /* Single-day holiday */
         if (!holiday.endDate) {
             return holiday.date === dateString;
         }
 
-        /* Multi-day holiday */
         return (
             dateString >= holiday.date &&
             dateString <= holiday.endDate
@@ -5856,10 +5589,6 @@ function getHolidayForDate(date) {
     }) || null;
 
 }
-
-/* =========================================================
-   RENDER HOLIDAYS
-========================================================= */
 
 function renderHolidays() {
 
@@ -5989,9 +5718,6 @@ function renderHolidays() {
 
 
             item.innerHTML = `
-
-             
-
 
                 <div class="holiday-date">
                     ${escapeHTML(
@@ -7384,6 +7110,7 @@ if (deleteSelectedPastEventsBtn) {
 
 /* =========================================================
    MOBILE 3-PAGE NAVIGATION SYSTEM
+   Home / Study / Me page switcher
 ========================================================= */
 
 (function initMobilePageNav() {
@@ -7394,14 +7121,9 @@ if (deleteSelectedPastEventsBtn) {
     const navButtons = bottomNav.querySelectorAll('.mobile-nav-btn');
     const STORAGE_KEY = 'campusCalendarCurrentPage';
 
-    /* =====================================================
-       Set Active Page
-    ===================================================== */
     function setActivePage(pageName) {
-        // Set body attribute
         document.body.setAttribute('data-current-page', pageName);
 
-        // Update button states
         navButtons.forEach(function(btn) {
             if (btn.dataset.page === pageName) {
                 btn.classList.add('active');
@@ -7410,18 +7132,13 @@ if (deleteSelectedPastEventsBtn) {
             }
         });
 
-        // Save to localStorage
         try {
             localStorage.setItem(STORAGE_KEY, pageName);
         } catch (e) {}
 
-        // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    /* =====================================================
-       Click Handler
-    ===================================================== */
     navButtons.forEach(function(btn) {
         btn.addEventListener('click', function() {
             var pageName = btn.dataset.page;
@@ -7431,9 +7148,6 @@ if (deleteSelectedPastEventsBtn) {
         });
     });
 
-    /* =====================================================
-       Restore Last Page
-    ===================================================== */
     var lastPage = 'home';
     try {
         var saved = localStorage.getItem(STORAGE_KEY);
@@ -7447,4 +7161,3 @@ if (deleteSelectedPastEventsBtn) {
     console.log('Mobile page nav initialized. Current page:', lastPage);
 
 })();
-
