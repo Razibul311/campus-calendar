@@ -6017,3 +6017,89 @@ body.dark .mobile-bottom-nav .mobile-nav-btn.active {
         font-size: 9px !important;
     }
 }
+/* =========================================================
+   🔥🔥🔥 PAGE SWITCHING — ULTIMATE FORCE FIX
+   এই CSS সব conflict override করবে
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* =====================================================
+       STEP 1: সব section hide by default
+       !important দিয়ে override করছি
+       ===================================================== */
+
+    body[data-current-page] [data-page],
+    body[data-current-page] .dashboard,
+    body[data-current-page] .toolbar {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    /* =====================================================
+       STEP 2: HOME page — Calendar, Holidays, Quick Add, Upcoming, Past, Dashboard, Toolbar
+       ===================================================== */
+
+    body[data-current-page="home"] [data-page="home"],
+    body[data-current-page="home"] .dashboard,
+    body[data-current-page="home"] .toolbar {
+        display: block !important;
+        visibility: visible !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* =====================================================
+       STEP 3: STUDY page
+       ===================================================== */
+
+    body[data-current-page="study"] [data-page="study"] {
+        display: block !important;
+        visibility: visible !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* =====================================================
+       STEP 4: ME page
+       ===================================================== */
+
+    body[data-current-page="me"] [data-page="me"] {
+        display: block !important;
+        visibility: visible !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* =====================================================
+       STEP 5: Bottom Nav সবসময় দৃশ্যমান
+       ===================================================== */
+
+    body .mobile-bottom-nav {
+        display: flex !important;
+        visibility: visible !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 999999 !important;
+        height: 64px !important;
+        background: #ffffff !important;
+        border-top: 1px solid #e2e8f0 !important;
+    }
+
+    /* Layout flatten — wrapper hide */
+    .layout {
+        display: block !important;
+    }
+
+    .layout > div,
+    .layout > aside {
+        display: contents !important;
+    }
+}
