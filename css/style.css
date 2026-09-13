@@ -3204,6 +3204,869 @@ body.dark .study-report-reset-btn:hover {
 }
 
 /* =========================================================
+   01. DESIGN TOKENS — PREMIUM COLOR SYSTEM (RGB ONLY)
+   ========================================================= */
+
+:root {
+    /* =========================================================
+       PRIMARY — TEAL (Complete Palette - RGB)
+    ========================================================= */
+    --primary: 13, 148, 136;
+    --primary-hover: 15, 118, 110;
+    --primary-dark: 17, 94, 89;
+    --primary-light: 45, 212, 191;
+    --primary-soft: 204, 251, 241;
+    --primary-subtle: 240, 253, 250;
+    --primary-ring: 13, 148, 136;
+
+    /* =========================================================
+       ACCENT — INDIGO (Complete Palette - RGB)
+    ========================================================= */
+    --accent: 79, 70, 229;
+    --accent-hover: 67, 56, 202;
+    --accent-dark: 55, 48, 163;
+    --accent-light: 129, 140, 248;
+    --accent-soft: 238, 242, 255;
+    --accent-ring: 79, 70, 229;
+
+    /* =========================================================
+       SEMANTIC — SUCCESS (RGB)
+    ========================================================= */
+    --success: 5, 150, 105;
+    --success-soft: 236, 253, 245;
+    --success-border: 167, 243, 208;
+    --success-text: 6, 95, 70;
+    --success-ring: 5, 150, 105;
+
+    /* =========================================================
+       SEMANTIC — WARNING (RGB)
+    ========================================================= */
+    --warning: 217, 119, 6;
+    --warning-soft: 255, 251, 235;
+    --warning-border: 252, 211, 77;
+    --warning-text: 146, 64, 14;
+    --warning-ring: 217, 119, 6;
+
+    /* =========================================================
+       SEMANTIC — DANGER (RGB)
+    ========================================================= */
+    --danger: 225, 29, 72;
+    --danger-soft: 255, 241, 242;
+    --danger-border: 254, 205, 211;
+    --danger-text: 159, 18, 57;
+    --danger-ring: 225, 29, 72;
+
+    /* =========================================================
+       SEMANTIC — INFO (RGB)
+    ========================================================= */
+    --info: 2, 132, 199;
+    --info-soft: 240, 249, 255;
+    --info-border: 125, 211, 252;
+    --info-text: 12, 74, 110;
+    --info-ring: 2, 132, 199;
+
+    /* =========================================================
+       BACKGROUND — RGB
+    ========================================================= */
+    --bg: 244, 246, 250;
+    --bg-elevated: 255, 255, 255;
+    --bg-warm: 250, 251, 252;
+
+    --surface: 255, 255, 255;
+    --surface-soft: 248, 250, 252;
+    --surface-hover: 241, 245, 249;
+    --surface-elevated: 255, 255, 255;
+
+    /* =========================================================
+       TEXT — RGB
+    ========================================================= */
+    --text: 15, 23, 42;
+    --text-primary: 15, 23, 42;
+    --text-secondary: 71, 85, 105;
+    --text-muted: 100, 116, 139;
+    --text-faint: 148, 163, 184;
+    --text-inverse: 255, 255, 255;
+
+    /* =========================================================
+       BORDER — RGB
+    ========================================================= */
+    --border: 226, 232, 240;
+    --border-strong: 203, 213, 225;
+    --border-light: 241, 245, 249;
+    --border-focus: 13, 148, 136;
+
+    /* =========================================================
+       TODAY — RGB
+    ========================================================= */
+    --today-bg: 236, 253, 245;
+    --today-border: 5, 150, 105;
+    --today-text: 6, 95, 70;
+
+    /* =========================================================
+       HOLIDAY — WARM ROSE (RGB)
+    ========================================================= */
+    --holiday-bg: 255, 241, 242;
+    --holiday-border: 251, 113, 133;
+    --holiday-text: 225, 29, 72;
+    --holiday-soft: 255, 228, 230;
+    --holiday-indicator-bg: 255, 241, 242;
+    --holiday-indicator-border: 254, 205, 211;
+
+    /* =========================================================
+       EVENT CATEGORY COLORS — RGB
+    ========================================================= */
+    --class-color: 13, 148, 136;
+    --exam-color: 225, 29, 72;
+    --assignment-color: 124, 58, 237;
+    --project-color: 245, 158, 11;
+    --presentation-color: 8, 145, 178;
+    --personal-color: 5, 150, 105;
+    --holiday-color: 219, 39, 119;
+    --other-color: 100, 116, 139;
+
+    /* =========================================================
+       SHADOW — RGB (Alpha values handled in rgba())
+    ========================================================= */
+    --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+    --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 18px 45px rgba(15, 23, 42, 0.12);
+    --shadow-xl: 0 25px 60px rgba(15, 23, 42, 0.18);
+    --shadow-2xl: 0 35px 70px rgba(15, 23, 42, 0.22);
+    --shadow-glow: 0 4px 20px rgba(13, 148, 136, 0.15);
+
+    /* =========================================================
+       RADIUS
+    ========================================================= */
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-2xl: 24px;
+    --radius-full: 9999px;
+
+    /* =========================================================
+       TRANSITIONS
+    ========================================================= */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: 0.15s var(--ease-out);
+    --transition: 0.25s var(--ease-in-out);
+    --transition-slow: 0.4s var(--ease-in-out);
+
+    /* =========================================================
+       GRADIENT UTILITIES — Using RGB
+    ========================================================= */
+    --gradient-primary: linear-gradient(135deg, rgb(13, 148, 136) 0%, rgb(8, 145, 178) 100%);
+    --gradient-accent: linear-gradient(135deg, rgb(79, 70, 229) 0%, rgb(124, 58, 237) 100%);
+    --gradient-warm: linear-gradient(145deg, rgb(245, 158, 11) 0%, rgb(217, 119, 6) 100%);
+    --gradient-success: linear-gradient(135deg, rgb(5, 150, 105) 0%, rgb(52, 211, 153) 100%);
+    --gradient-danger: linear-gradient(135deg, rgb(225, 29, 72) 0%, rgb(251, 113, 133) 100%);
+    --gradient-topbar: linear-gradient(145deg, rgb(13, 148, 136) 0%, rgb(8, 145, 178) 45%, rgb(15, 118, 110) 75%, rgb(17, 94, 89) 100%);
+    --gradient-topbar-dark: linear-gradient(145deg, rgb(4, 47, 46) 0%, rgb(19, 78, 74) 40%, rgb(22, 78, 99) 70%, rgb(15, 23, 42) 100%);
+    --gradient-bg: linear-gradient(180deg, rgb(244, 246, 250) 0%, rgb(238, 242, 255) 100%);
+
+    /* =========================================================
+       BACKGROUND GRADIENT OVERLAYS — RGB
+    ========================================================= */
+    --bg-gradient-1: radial-gradient(circle at 8% 0%, rgba(13, 148, 136, 0.055), transparent 26%);
+    --bg-gradient-2: radial-gradient(circle at 92% 100%, rgba(79, 70, 229, 0.04), transparent 30%);
+    --bg-gradient-3: radial-gradient(circle at 50% 50%, rgba(13, 148, 136, 0.025), transparent 50%);
+
+    /* =========================================================
+       CONTAINER WIDTHS
+    ========================================================= */
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1280px;
+    --container-2xl: 1440px;
+}
+
+/* =========================================================
+   02. DARK MODE — RGB VERSION
+   ========================================================= */
+
+body.dark {
+    /* ---------- Primary Dark ---------- */
+    --primary: 45, 212, 191;
+    --primary-hover: 94, 234, 212;
+    --primary-dark: 20, 184, 166;
+    --primary-light: 153, 246, 228;
+    --primary-soft: 19, 78, 74;
+    --primary-subtle: 4, 47, 46;
+    --primary-ring: 45, 212, 191;
+
+    /* ---------- Accent Dark ---------- */
+    --accent: 129, 140, 248;
+    --accent-hover: 165, 180, 252;
+    --accent-dark: 99, 102, 241;
+    --accent-light: 199, 210, 254;
+    --accent-soft: 30, 27, 75;
+    --accent-ring: 129, 140, 248;
+
+    /* ---------- Background Dark ---------- */
+    --bg: 8, 14, 26;
+    --bg-elevated: 13, 23, 40;
+    --bg-warm: 15, 26, 46;
+
+    --surface: 17, 28, 45;
+    --surface-soft: 22, 35, 55;
+    --surface-hover: 27, 43, 66;
+    --surface-elevated: 22, 35, 55;
+
+    /* ---------- Text Dark ---------- */
+    --text: 241, 245, 249;
+    --text-primary: 248, 250, 252;
+    --text-secondary: 203, 213, 225;
+    --text-muted: 148, 163, 184;
+    --text-faint: 100, 116, 139;
+    --text-inverse: 15, 23, 42;
+
+    /* ---------- Border Dark ---------- */
+    --border: 37, 53, 74;
+    --border-strong: 51, 65, 85;
+    --border-light: 29, 43, 62;
+    --border-focus: 45, 212, 191;
+
+    /* ---------- Semantic Dark ---------- */
+    --success: 52, 211, 153;
+    --success-soft: 6, 78, 59;
+    --success-border: 5, 150, 105;
+    --success-text: 167, 243, 208;
+
+    --warning: 251, 191, 36;
+    --warning-soft: 69, 26, 3;
+    --warning-border: 217, 119, 6;
+    --warning-text: 252, 211, 77;
+
+    --danger: 251, 113, 133;
+    --danger-soft: 76, 5, 25;
+    --danger-border: 225, 29, 72;
+    --danger-text: 254, 205, 211;
+
+    --info: 56, 189, 248;
+    --info-soft: 8, 47, 73;
+    --info-border: 2, 132, 199;
+    --info-text: 125, 211, 252;
+
+    /* ---------- Today Dark ---------- */
+    --today-bg: 19, 78, 74;
+    --today-border: 45, 212, 191;
+    --today-text: 153, 246, 228;
+
+    /* ---------- Holiday Dark ---------- */
+    --holiday-bg: 76, 5, 19;
+    --holiday-border: 251, 113, 133;
+    --holiday-text: 253, 164, 175;
+    --holiday-soft: 136, 19, 55;
+    --holiday-indicator-bg: 76, 5, 19;
+    --holiday-indicator-border: 136, 19, 55;
+
+    /* ---------- Shadow Dark ---------- */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.30);
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
+    --shadow: 0 8px 28px rgba(0, 0, 0, 0.40);
+    --shadow-lg: 0 20px 55px rgba(0, 0, 0, 0.50);
+    --shadow-xl: 0 30px 70px rgba(0, 0, 0, 0.60);
+    --shadow-2xl: 0 40px 80px rgba(0, 0, 0, 0.70);
+    --shadow-glow: 0 4px 25px rgba(45, 212, 191, 0.12);
+
+    /* ---------- Dark Background Gradients ---------- */
+    --bg-gradient-1: radial-gradient(circle at 8% 0%, rgba(45, 212, 191, 0.06), transparent 26%);
+    --bg-gradient-2: radial-gradient(circle at 92% 100%, rgba(129, 140, 248, 0.05), transparent 30%);
+    --bg-gradient-3: radial-gradient(circle at 50% 50%, rgba(45, 212, 191, 0.03), transparent 50%);
+    --gradient-bg: linear-gradient(180deg, rgb(8, 14, 26) 0%, rgb(13, 23, 40) 100%);
+
+    /* ---------- Gradients Dark ---------- */
+    --gradient-topbar: var(--gradient-topbar-dark);
+}
+
+/* =========================================================
+   03. STUDY REPORT SIDEBAR — COMPLETE
+   ========================================================= */
+
+/* ---------- Section Container ---------- */
+.side-card {
+    background: rgb(var(--surface));
+    border: 1px solid rgb(var(--border));
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    box-shadow: var(--shadow-xs);
+    transition: all var(--transition);
+}
+
+.side-card:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+/* ---------- Section Header ---------- */
+.section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.section-header > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.section-header h3 {
+    margin: 0;
+    font-size: clamp(15px, 1.2vw, 17px);
+    font-weight: 700;
+    color: rgb(var(--text));
+}
+
+.section-header small {
+    display: block;
+    font-size: 12px;
+    color: rgb(var(--text-muted));
+    margin-top: 2px;
+}
+
+/* ---------- Navigation Buttons ---------- */
+.study-report-navigation {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.study-report-nav-btn {
+    min-height: 34px;
+    padding: 6px 14px;
+    border: 1px solid rgb(var(--border));
+    border-radius: var(--radius-sm);
+    background: rgb(var(--surface));
+    color: rgb(var(--text-secondary));
+    font-size: 12px;
+    font-weight: 500;
+    transition: all var(--transition);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex: 1;
+}
+
+.study-report-nav-btn:hover {
+    background: rgb(var(--surface-hover));
+    border-color: rgb(var(--primary));
+    color: rgb(var(--primary));
+    transform: translateY(-1px);
+}
+
+.study-report-nav-btn:active {
+    transform: scale(0.97);
+}
+
+.study-report-nav-btn.active {
+    background: rgb(var(--primary));
+    border-color: rgb(var(--primary));
+    color: rgb(var(--text-inverse));
+    box-shadow: var(--shadow-glow);
+}
+
+.study-report-nav-btn.active:hover {
+    background: rgb(var(--primary-hover));
+    border-color: rgb(var(--primary-hover));
+}
+
+/* ---------- Current Date Display ---------- */
+.study-report-current-date {
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    background: rgb(var(--surface-soft));
+    border-radius: var(--radius-sm);
+    border: 1px solid rgb(var(--border-light));
+    text-align: center;
+}
+
+.study-report-current-date strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(var(--text));
+}
+
+/* ---------- Report Cards Grid ---------- */
+.study-report-cards {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.daily-sidebar-cards {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.weekly-sidebar-cards {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* ---------- Individual Report Card ---------- */
+.study-report-card {
+    padding: 12px 14px;
+    background: rgb(var(--surface-soft));
+    border-radius: var(--radius-sm);
+    border: 1px solid rgb(var(--border-light));
+    transition: all var(--transition);
+}
+
+.study-report-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xs);
+}
+
+.study-report-card-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgb(var(--text-muted));
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+}
+
+.study-report-card strong {
+    display: block;
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 700;
+    color: rgb(var(--text));
+}
+
+/* ---------- Subject Breakdown ---------- */
+.study-report-panel {
+    margin-top: 14px;
+}
+
+.study-report-panel h4 {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(var(--text-secondary));
+}
+
+.study-subject-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.study-report-subject-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.study-report-subject-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.study-report-subject-info span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgb(var(--text-secondary));
+}
+
+.study-report-subject-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: rgb(var(--primary));
+}
+
+.study-report-subject-info strong {
+    font-weight: 600;
+    color: rgb(var(--text));
+}
+
+.study-report-subject-bar {
+    width: 100%;
+    height: 5px;
+    background: rgb(var(--surface-soft));
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.study-report-subject-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    background: rgb(var(--primary));
+}
+
+/* ---------- Weekly Chart ---------- */
+#weeklyStudyChart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 120px;
+    padding: 8px 0;
+    gap: 6px;
+    border-bottom: 2px solid rgb(var(--border));
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+#weeklyStudyChart .study-chart-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap: 4px;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+#weeklyStudyChart .study-chart-value {
+    font-size: 9px;
+    color: rgb(var(--text-muted));
+    font-weight: 500;
+    min-height: 16px;
+}
+
+#weeklyStudyChart .study-chart-bar-area {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#weeklyStudyChart .study-chart-bar {
+    width: 100%;
+    max-width: 24px;
+    min-width: 6px;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    min-height: 3px;
+    background: linear-gradient(180deg, rgb(var(--accent)), rgb(var(--accent-light)));
+}
+
+#weeklyStudyChart .study-chart-bar:hover {
+    filter: brightness(1.1);
+    transform: scaleY(1.02);
+    transform-origin: bottom;
+}
+
+#weeklyStudyChart .study-chart-day {
+    font-size: 9px;
+    color: rgb(var(--text-muted));
+    font-weight: 500;
+}
+
+/* ---------- Reset Button ---------- */
+.study-report-reset-btn {
+    width: 100%;
+    margin-top: 14px;
+    padding: 8px 16px;
+    border: 1px solid rgb(var(--danger-border));
+    border-radius: var(--radius-sm);
+    background: rgb(var(--danger-soft));
+    color: rgb(var(--danger));
+    font-size: 12px;
+    font-weight: 600;
+    transition: all var(--transition);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.study-report-reset-btn:hover {
+    background: rgb(254, 202, 202);
+    border-color: rgb(var(--danger));
+    transform: translateY(-1px);
+}
+
+.study-report-reset-btn:active {
+    transform: scale(0.97);
+}
+
+/* =========================================================
+   04. STUDY REPORT SUBJECT COLORS — RGB CLASSES
+   ========================================================= */
+
+.study-report-subject-fill.color-1 { background: rgb(37, 99, 235); }
+.study-report-subject-fill.color-2 { background: rgb(22, 163, 74); }
+.study-report-subject-fill.color-3 { background: rgb(245, 158, 11); }
+.study-report-subject-fill.color-4 { background: rgb(220, 38, 38); }
+.study-report-subject-fill.color-5 { background: rgb(124, 58, 237); }
+.study-report-subject-fill.color-6 { background: rgb(8, 145, 178); }
+.study-report-subject-fill.color-7 { background: rgb(219, 39, 119); }
+.study-report-subject-fill.color-8 { background: rgb(234, 88, 12); }
+.study-report-subject-fill.color-9 { background: rgb(79, 70, 229); }
+.study-report-subject-fill.color-10 { background: rgb(5, 150, 105); }
+
+.study-report-subject-dot.color-1 { background: rgb(37, 99, 235); }
+.study-report-subject-dot.color-2 { background: rgb(22, 163, 74); }
+.study-report-subject-dot.color-3 { background: rgb(245, 158, 11); }
+.study-report-subject-dot.color-4 { background: rgb(220, 38, 38); }
+.study-report-subject-dot.color-5 { background: rgb(124, 58, 237); }
+.study-report-subject-dot.color-6 { background: rgb(8, 145, 178); }
+.study-report-subject-dot.color-7 { background: rgb(219, 39, 119); }
+.study-report-subject-dot.color-8 { background: rgb(234, 88, 12); }
+.study-report-subject-dot.color-9 { background: rgb(79, 70, 229); }
+.study-report-subject-dot.color-10 { background: rgb(5, 150, 105); }
+
+/* =========================================================
+   05. DARK MODE — STUDY REPORT SIDEBAR
+   ========================================================= */
+
+body.dark .side-card {
+    background: rgb(var(--surface));
+    border-color: rgb(var(--border));
+}
+
+body.dark .section-header h3 {
+    color: rgb(var(--text));
+}
+
+body.dark .section-header small {
+    color: rgb(var(--text-muted));
+}
+
+body.dark .study-report-nav-btn {
+    background: rgb(var(--surface));
+    border-color: rgb(var(--border));
+    color: rgb(var(--text-secondary));
+}
+
+body.dark .study-report-nav-btn:hover {
+    background: rgb(var(--surface-hover));
+    border-color: rgb(var(--primary));
+    color: rgb(var(--primary-light));
+}
+
+body.dark .study-report-nav-btn.active {
+    background: rgb(var(--primary));
+    border-color: rgb(var(--primary));
+    color: rgb(var(--text-inverse));
+}
+
+body.dark .study-report-nav-btn.active:hover {
+    background: rgb(var(--primary-hover));
+    border-color: rgb(var(--primary-hover));
+}
+
+body.dark .study-report-current-date {
+    background: rgb(var(--surface-soft));
+    border-color: rgb(var(--border-light));
+}
+
+body.dark .study-report-current-date strong {
+    color: rgb(var(--text));
+}
+
+body.dark .study-report-card {
+    background: rgb(var(--surface-soft));
+    border-color: rgb(var(--border-light));
+}
+
+body.dark .study-report-card-label {
+    color: rgb(var(--text-muted));
+}
+
+body.dark .study-report-card strong {
+    color: rgb(var(--text));
+}
+
+body.dark .study-report-panel h4 {
+    color: rgb(var(--text-secondary));
+}
+
+body.dark .study-report-subject-info span {
+    color: rgb(var(--text-secondary));
+}
+
+body.dark .study-report-subject-info strong {
+    color: rgb(var(--text));
+}
+
+body.dark .study-report-subject-bar {
+    background: rgb(var(--surface-soft));
+}
+
+body.dark #weeklyStudyChart {
+    border-bottom-color: rgb(var(--border));
+}
+
+body.dark #weeklyStudyChart .study-chart-value {
+    color: rgb(var(--text-muted));
+}
+
+body.dark #weeklyStudyChart .study-chart-day {
+    color: rgb(var(--text-muted));
+}
+
+body.dark .study-report-reset-btn {
+    background: rgb(76, 5, 25);
+    border-color: rgb(136, 19, 55);
+    color: rgb(251, 113, 133);
+}
+
+body.dark .study-report-reset-btn:hover {
+    background: rgb(127, 29, 29);
+    border-color: rgb(251, 113, 133);
+}
+
+/* =========================================================
+   06. RESPONSIVE — STUDY REPORT SIDEBAR
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .side-card {
+        padding: 14px;
+    }
+    
+    .study-report-navigation {
+        width: 100%;
+    }
+    
+    .study-report-nav-btn {
+        flex: 1;
+        justify-content: center;
+        font-size: 11px;
+        padding: 6px 10px;
+        min-height: 32px;
+    }
+    
+    .daily-sidebar-cards,
+    .weekly-sidebar-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    
+    .study-report-card strong {
+        font-size: 18px;
+    }
+    
+    #weeklyStudyChart {
+        height: 100px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar-area {
+        height: 60px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar {
+        max-width: 20px;
+        min-width: 4px;
+    }
+}
+
+@media (max-width: 500px) {
+    .side-card {
+        padding: 12px;
+    }
+    
+    .section-header {
+        gap: 8px;
+    }
+    
+    .study-report-nav-btn {
+        font-size: 10px;
+        padding: 5px 8px;
+        min-height: 30px;
+    }
+    
+    .study-report-cards {
+        gap: 5px;
+    }
+    
+    .study-report-card {
+        padding: 10px 12px;
+    }
+    
+    .study-report-card strong {
+        font-size: 16px;
+    }
+    
+    .study-report-card-label {
+        font-size: 9px;
+    }
+    
+    .study-report-reset-btn {
+        font-size: 11px;
+        padding: 7px 12px;
+    }
+    
+    #weeklyStudyChart {
+        height: 85px;
+        gap: 4px;
+        padding: 6px 0;
+    }
+    
+    #weeklyStudyChart .study-chart-bar-area {
+        height: 50px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar {
+        max-width: 16px;
+        min-width: 3px;
+    }
+    
+    #weeklyStudyChart .study-chart-value {
+        font-size: 8px;
+        min-height: 14px;
+    }
+    
+    #weeklyStudyChart .study-chart-day {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 380px) {
+    .side-card {
+        padding: 10px;
+    }
+    
+    .study-report-nav-btn {
+        font-size: 9px;
+        padding: 4px 6px;
+        min-height: 28px;
+    }
+    
+    .study-report-card {
+        padding: 8px 10px;
+    }
+    
+    .study-report-card strong {
+        font-size: 14px;
+    }
+    
+    .study-report-card-label {
+        font-size: 8px;
+    }
+    
+    #weeklyStudyChart {
+        height: 70px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar-area {
+        height: 40px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar {
+        max-width: 12px;
+        min-width: 2px;
+    }
+}
+
+/* =========================================================
    07. STUDY REPORT — GLOBAL STYLES
    ========================================================= */
 
@@ -4088,6 +4951,7 @@ body.dark .study-report-empty {
 
 
 
+
 /* =========================================================
    📱 PHONE LAYOUT — FORCE ORDER
    Mobile (up to 768px)
@@ -4192,81 +5056,5 @@ body.dark .study-report-empty {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
-    }
-}
-
-/* =========================================================
-   ✅ PAGE SWITCHING — Home / Study / Me  (NEW ADDITION)
-   এই অংশটুকু নতুন যোগ করা হয়েছে — উপরের কোনো লাইন বদলানো হয়নি
-========================================================= */
-
-/* সব data-page section ডিফল্টভাবে লুকানো */
-body[data-current-page] [data-page] {
-    display: none !important;
-}
-
-/* ---------- HOME page ---------- */
-body[data-current-page="home"] [data-page="home"] {
-    display: block !important;
-}
-
-body[data-current-page="home"] .dashboard[data-page="home"] {
-    display: grid !important;
-}
-
-body[data-current-page="home"] .toolbar[data-page="home"] {
-    display: flex !important;
-}
-
-body[data-current-page="home"] .calendar-card[data-page="home"],
-body[data-current-page="home"] .bangladesh-holidays[data-page="home"] {
-    display: block !important;
-}
-
-/* ---------- STUDY page ---------- */
-body[data-current-page="study"] [data-page="study"] {
-    display: block !important;
-}
-
-body[data-current-page="study"] .study-task-card[data-page="study"],
-body[data-current-page="study"] .study-analytics-card[data-page="study"],
-body[data-current-page="study"] .daily-study-report-card[data-page="study"],
-body[data-current-page="study"] .weekly-study-report-card[data-page="study"],
-body[data-current-page="study"] .completed-subjects-container[data-page="study"] {
-    display: block !important;
-}
-
-/* ---------- ME page ---------- */
-body[data-current-page="me"] [data-page="me"] {
-    display: block !important;
-}
-
-body[data-current-page="me"] .cgpa-calculator-card[data-page="me"],
-body[data-current-page="me"] .daily-diary-card[data-page="me"] {
-    display: block !important;
-}
-
-/* ---------- Layout containers সবসময় দৃশ্যমান ---------- */
-.topbar,
-.container,
-.layout,
-.sidebar,
-.mobile-bottom-nav {
-    display: block;
-}
-
-.layout {
-    display: grid !important;
-}
-
-.sidebar {
-    display: flex !important;
-    flex-direction: column !important;
-}
-
-@media (max-width: 768px) {
-    .layout {
-        display: flex !important;
-        flex-direction: column !important;
     }
 }
