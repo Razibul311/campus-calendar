@@ -2718,9 +2718,6 @@
 ></div>
 
 
-
-
-
 <!-- =========================================================
      JAVASCRIPT
 ========================================================= -->
@@ -2752,7 +2749,24 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-
+<!-- ✅ TEMPORARY: Language button fix -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var langBtn = document.getElementById("languageBtn");
+    if (langBtn) {
+        langBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // app.js এর toggleLanguage কল করুন
+            if (typeof window.toggleLanguage === "function") {
+                window.toggleLanguage();
+            }
+        });
+        console.log("✅ Language button listener added from HTML");
+    }
+});
+</script>
 
 
 <!-- =========================================================
