@@ -5568,3 +5568,129 @@ img, table, pre, code {
     min-width: 0 !important;
     max-width: 100% !important;
 }
+
+/* =========================================================
+   📱📱📱 MOBILE ORDER FIX - FINAL SECTION
+   Phone layout: Sections in correct order
+   ⚠️ এই Block সবশেষে থাকতে হবে - এটা ছাড়া order ঠিক হবে না
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* =====================================================
+       LAYOUT - Merge Main Column + Sidebar into 1 column
+    ===================================================== */
+    .layout {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Magic: parents invisible, children direct children of layout */
+    .layout > div,
+    .layout > aside {
+        display: contents !important;
+    }
+
+    /* =====================================================
+       SECTION ORDER - আপনার চাওয়া sequence
+       ===================================================== */
+
+    /* 1. Calendar */
+    .calendar-card {
+        order: 1 !important;
+    }
+
+    /* 2. Bangladesh Holidays */
+    .bangladesh-holidays {
+        order: 2 !important;
+    }
+
+    /* 3. Quick Add (Sidebar 1st section) */
+    .sidebar > .side-card:nth-child(1) {
+        order: 3 !important;
+    }
+
+    /* 4. Upcoming Events (Sidebar 2nd section) */
+    .sidebar > .side-card:nth-child(2) {
+        order: 4 !important;
+    }
+
+    /* 5. Past Events (Sidebar 3rd section) */
+    .sidebar > .side-card:nth-child(3) {
+        order: 5 !important;
+    }
+
+    /* 6. Study Tasks */
+    .study-task-card {
+        order: 6 !important;
+    }
+
+    /* 7. Study Analytics */
+    .study-analytics-card {
+        order: 7 !important;
+    }
+
+    /* 8. Daily Study Report */
+    .daily-study-report-card {
+        order: 8 !important;
+    }
+
+    /* 9. Weekly Study Report */
+    .weekly-study-report-card {
+        order: 9 !important;
+    }
+
+    /* 10. CGPA Calculator */
+    .cgpa-calculator-card {
+        order: 10 !important;
+    }
+
+    /* 11. Daily Diary */
+    .daily-diary-card {
+        order: 11 !important;
+    }
+
+    /* 12. Completed Subjects */
+    .completed-subjects-container {
+        order: 12 !important;
+    }
+
+    /* =====================================================
+       FULL WIDTH - সব section 100% width
+       ===================================================== */
+    .calendar-card,
+    .bangladesh-holidays,
+    .side-card,
+    .study-task-card,
+    .study-analytics-card,
+    .cgpa-calculator-card,
+    .daily-diary-card,
+    .daily-study-report-card,
+    .weekly-study-report-card,
+    .completed-subjects-container,
+    .study-task-card,
+    .study-analytics-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* =====================================================
+       SMOOTH SCROLL
+       ===================================================== */
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* =========================================================
+   ⚠️ IMPORTANT - এই Block শেষে হবে
+========================================================= */
+
