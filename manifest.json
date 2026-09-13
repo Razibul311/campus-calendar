@@ -1,0 +1,11 @@
+{
+  "name":"BD Student Calendar",
+  "short_name":"BD Calendar",
+  "description":"Free student-friendly calendar for Bangladesh",
+  "start_url":"index.html",
+  "display":"standalone",
+  "orientation":"portrait",
+  "background_color":"#f3f7f5",
+  "theme_color":"#006a4e",
+  "lang":"en"
+}

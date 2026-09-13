@@ -1,0 +1,10252 @@
+/* =========================================================
+   CAMPUS CALENDAR
+   STUDY TASK — PROFESSIONAL UI
+   English + বাংলা
+   Responsive / Dark Mode / Mobile
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL BOX SIZING
+   ========================================================= */
+
+.study-task-card *,
+.study-task-card *::before,
+.study-task-card *::after,
+.study-chart-container *,
+.study-chart-container *::before,
+.study-chart-container *::after,
+.study-task-item *,
+.study-task-item *::before,
+.study-task-item *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   STUDY TASK CARD
+   ========================================================= */
+
+.study-task-card {
+    width: 100%;
+    margin: 0;
+    padding: 18px;
+
+    overflow: hidden;
+
+    border: 1px solid var(
+        --border-color,
+        #e2e8f0
+    );
+
+    border-radius: 18px;
+
+    background: var(
+        --card-bg,
+        #ffffff
+    );
+
+    color: var(
+        --text-primary,
+        #0f172a
+    );
+
+    box-shadow:
+        0 1px 2px rgba(15, 23, 42, 0.04),
+        0 8px 24px rgba(15, 23, 42, 0.05);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.study-task-card .section-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin: 0 0 16px;
+}
+
+
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
+
+.study-task-card .section-header h2,
+.study-task-card .section-header h3 {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    color: var(
+        --text-primary,
+        #0f172a
+    );
+}
+
+
+/* =========================================================
+   STUDY PROGRESS SUMMARY
+   ========================================================= */
+
+.study-progress-summary {
+    width: 100%;
+
+    margin: 0 0 16px;
+    padding: 15px;
+
+    border: 1px solid var(
+        --border-color,
+        #e2e8f0
+    );
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--bg-secondary, #f8fafc),
+            var(--card-bg, #ffffff)
+        );
+}
+
+
+/* =========================================================
+   PROGRESS INFO
+   ========================================================= */
+
+.progress-info {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 9px;
+}
+
+
+.progress-info span {
+    min-width: 0;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: var(
+        --text-secondary,
+        #64748b
+    );
+}
+
+
+.progress-info strong {
+    flex-shrink: 0;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color: var(
+        --primary-color,
+        #2563eb
+    );
+}
+
+
+/* =========================================================
+   GENERIC PROGRESS BAR
+   ========================================================= */
+
+.progress-bar {
+    position: relative;
+
+    width: 100%;
+    height: 9px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: var(
+        --border-color,
+        #e2e8f0
+    );
+}
+
+
+.progress-fill {
+    width: 0;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #3b82f6
+        );
+
+    transition:
+        width 0.45s cubic-bezier(
+            0.4,
+            0,
+            0.2,
+            1
+        );
+}
+
+
+/* =========================================================
+   TASK LIST
+   ========================================================= */
+
+.study-task-list,
+#studyTasks {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   STUDY TASK ITEM
+   ========================================================= */
+
+.study-task-item {
+    position: relative;
+
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+
+    border: 1px solid var(
+        --border-color,
+        #e2e8f0
+    );
+
+    border-radius: 14px;
+
+    background: var(
+        --card-bg,
+        #ffffff
+    );
+
+    color: var(
+        --text-primary,
+        #0f172a
+    );
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.study-task-item:hover {
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(
+            37,
+            99,
+            235,
+            0.3
+        );
+
+    box-shadow:
+        0 8px 20px
+        rgba(
+            15,
+            23,
+            42,
+            0.07
+        );
+}
+
+
+/* =========================================================
+   TASK TOP
+   ========================================================= */
+
+.study-task-top {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   TASK TITLE
+   ========================================================= */
+
+.study-task-title {
+    min-width: 0;
+
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    line-height: 1.45;
+
+    color: var(
+        --text-primary,
+        #0f172a
+    );
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   SUBJECT
+   ========================================================= */
+
+.study-task-subject {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    max-width: 100%;
+
+    margin-top: 4px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: var(
+        --text-secondary,
+        #64748b
+    );
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+
+.study-task-subject::before {
+    content: "";
+
+    display: inline-block;
+
+    flex: 0 0 7px;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        var(
+            --subject-color,
+            #2563eb
+        );
+}
+
+
+/* =========================================================
+   PRIORITY BADGE
+   ========================================================= */
+
+.study-task-priority {
+    flex: 0 0 auto;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 22px;
+
+    padding: 3px 8px;
+
+    border-radius: 999px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+
+/* LOW */
+
+.study-task-priority.low {
+    background: #ecfdf3;
+
+    color: #15803d;
+
+    border: 1px solid #bbf7d0;
+}
+
+
+/* MEDIUM */
+
+.study-task-priority.medium {
+    background: #fffbeb;
+
+    color: #b45309;
+
+    border: 1px solid #fde68a;
+}
+
+
+/* HIGH */
+
+.study-task-priority.high {
+    background: #fef2f2;
+
+    color: #dc2626;
+
+    border: 1px solid #fecaca;
+}
+
+
+/* =========================================================
+   TASK META
+   ========================================================= */
+
+.study-task-start-date,
+.study-task-deadline {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 8px;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    color: var(
+        --text-secondary,
+        #64748b
+    );
+
+    overflow-wrap: anywhere;
+}
+
+
+.study-task-deadline.overdue {
+    color: #dc2626;
+
+    font-weight: 700;
+}
+
+
+.study-task-deadline.today {
+    color: #d97706;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TASK PROGRESS
+   ========================================================= */
+
+.study-task-progress {
+    width: 100%;
+
+    margin-top: 12px;
+}
+
+
+.study-task-progress-info {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    margin-bottom: 6px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    color: var(
+        --text-secondary,
+        #64748b
+    );
+}
+
+
+.study-task-progress .progress-bar {
+    height: 6px;
+}
+
+
+.study-task-progress .progress-fill {
+    background:
+        linear-gradient(
+            90deg,
+            #22c55e,
+            #16a34a
+        );
+}
+
+
+/* =========================================================
+   TASK STATUS
+   ========================================================= */
+
+.study-task-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 21px;
+
+    margin-top: 9px;
+
+    padding: 3px 8px;
+
+    border-radius: 999px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* NOT STARTED */
+
+.study-task-status.not-started {
+    background: #f1f5f9;
+
+    color: #475569;
+
+    border: 1px solid #e2e8f0;
+}
+
+
+/* IN PROGRESS */
+
+.study-task-status.in-progress {
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    border: 1px solid #bfdbfe;
+}
+
+
+/* COMPLETED */
+
+.study-task-status.completed {
+    background: #ecfdf5;
+
+    color: #151780;
+
+    border: 1px solid #bbf7d0;
+}
+
+
+/* =========================================================
+   COMPLETED TASK
+   ========================================================= */
+
+.study-task-item.completed {
+    opacity: 0.72;
+}
+
+
+.study-task-item.completed .study-task-title {
+    text-decoration: line-through;
+
+    text-decoration-thickness: 1px;
+}
+
+
+/* =========================================================
+   NOTES
+   ========================================================= */
+
+.study-task-notes {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 9px 10px;
+
+    border: 1px solid var(
+        --border-color,
+        #e2e8f0
+    );
+
+    border-radius: 9px;
+
+    background: var(
+        --bg-secondary,
+        #f8fafc
+    );
+
+    font-size: 11px;
+
+    line-height: 1.55;
+
+    color: var(
+        --text-secondary,
+        #64748b
+    );
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.study-task-actions {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 11px;
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+   ========================================================= */
+
+.study-task-action-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 29px;
+
+    padding: 5px 9px;
+
+    border: 1px solid var(
+        --border-color,
+        #e2e8f0
+    );
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: var(
+        --text-secondary,
+        #475569
+    );
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    line-height: 1.2;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.study-task-action-btn:hover {
+    transform: translateY(-1px);
+
+    background: var(
+        --bg-secondary,
+        #f8fafc
+    );
+
+    border-color: #cbd5e1;
+}
+
+
+.study-task-action-btn.delete {
+    color: #dc2626;
+}
+
+
+.study-task-action-btn.delete:hover {
+    background: #fef2f2;
+
+    border-color: #fecaca;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.study-task-card .empty-state {
+    width: 100%;
+
+    margin: 8px 0 0;
+
+    padding: 28px 15px;
+
+    border: 1px dashed var(
+        --border-color,
+        #cbd5e1
+    );
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    color: var(
+        --text-secondary,
+        #64748b
+    );
+}
+
+
+/* =========================================================
+   RANGE INPUT
+   ========================================================= */
+
+#studyTaskProgress {
+    display: block;
+
+    width: 100%;
+
+    height: 6px;
+
+    margin: 0;
+
+    accent-color: var(
+        --primary-color,
+        #2563eb
+    );
+
+    cursor: pointer;
+}
+
+
+#studyTaskProgress:focus-visible {
+    outline:
+        2px solid
+        var(
+            --primary-color,
+            #2563eb
+        );
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   PROGRESS VALUE
+   ========================================================= */
+
+.task-progress-value,
+#studyTaskProgressValue {
+    margin-top: 6px;
+
+    text-align: right;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: var(
+        --primary-color,
+        #2563eb
+    );
+}
+
+
+/* =========================================================
+   STUDY TASK MODAL
+   ========================================================= */
+
+#studyTaskModal .modal {
+    width:
+        min(
+            calc(100% - 32px),
+            600px
+        );
+
+    max-width: 600px;
+
+    border-radius: 18px;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+#studyTaskForm {
+    width: 100%;
+}
+
+
+#studyTaskForm label {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    margin-bottom: 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: var(
+        --text-primary,
+        #0f172a
+    );
+}
+
+
+/* =========================================================
+   FORM INPUTS
+   ========================================================= */
+
+#studyTaskForm input,
+#studyTaskForm select,
+#studyTaskForm textarea {
+    display: block;
+
+    width: 100%;
+
+    min-width: 0;
+
+    border: 1px solid var(
+        --border-color,
+        #cbd5e1
+    );
+
+    border-radius: 9px;
+
+    padding: 9px 10px;
+
+    background: var(
+        --card-bg,
+        #ffffff
+    );
+
+    color: var(
+        --text-primary,
+        #0f172a
+    );
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+#studyTaskForm input::placeholder,
+#studyTaskForm textarea::placeholder {
+    color: #94a3b8;
+
+    opacity: 1;
+}
+
+
+#studyTaskForm input:focus,
+#studyTaskForm select:focus,
+#studyTaskForm textarea:focus {
+    border-color:
+        var(
+            --primary-color,
+            #2563eb
+        );
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            37,
+            99,
+            235,
+            0.12
+        );
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+#studyTaskForm select {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   TEXTAREA
+   ========================================================= */
+
+#studyTaskForm textarea {
+    min-height: 95px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   STUDY CHART CONTAINER
+   ========================================================= */
+
+.study-chart-container {
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 18px;
+
+    border: 1px solid var(
+        --border-color,
+        #e2e8f0
+    );
+
+    border-radius: 18px;
+
+    background: var(
+        --card-bg,
+        #ffffff
+    );
+
+    box-shadow:
+        0 4px 16px
+        rgba(
+            15,
+            23,
+            42,
+            0.04
+        );
+}
+
+
+/* =========================================================
+   CHART HEADER
+   ========================================================= */
+
+.study-chart-container h4 {
+    margin: 0;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    color: var(
+        --text-primary,
+        #0f172a
+    );
+}
+
+
+/* =========================================================
+   PIE AREA
+   ========================================================= */
+
+.study-progress-chart {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+
+    margin: 18px 0;
+
+    padding: 5px 0;
+}
+
+
+/* =========================================================
+   PIE CHART
+   ========================================================= */
+
+.progress-pie {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 160px;
+
+    height: 160px;
+
+    min-width: 160px;
+
+    min-height: 160px;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    /*
+       JS can override:
+       element.style.background =
+       `conic-gradient(...)`
+    */
+
+    background:
+        conic-gradient(
+            #2563eb 0deg,
+            #2563eb 0deg,
+            #e2e8f0 0deg,
+            #e2e8f0 360deg
+        );
+
+    box-shadow:
+        0 8px 24px
+        rgba(
+            37,
+            99,
+            235,
+            0.12
+        );
+
+    transition:
+        transform 0.25s ease,
+        background 0.4s ease;
+
+    isolation: isolate;
+}
+
+
+.progress-pie:hover {
+    transform: scale(1.035);
+}
+
+
+/* =========================================================
+   PIE INNER CIRCLE
+   ========================================================= */
+
+.progress-pie::before {
+    content: "";
+
+    position: absolute;
+
+    width: 116px;
+
+    height: 116px;
+
+    border-radius: 50%;
+
+    background:
+        var(
+            --card-bg,
+            #ffffff
+        );
+
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(
+            148,
+            163,
+            184,
+            0.08
+        );
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   PIE CENTER
+   ========================================================= */
+
+.progress-pie-center {
+    position: relative;
+
+    z-index: 5;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+
+    text-align: center;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   PIE CENTER NUMBER
+   ========================================================= */
+
+.progress-pie-center strong {
+    display: block;
+
+    font-size: 27px;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    color:
+        var(
+            --text-primary,
+            #0f172a
+        );
+
+    text-shadow: none;
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   PIE CENTER LABEL
+   ========================================================= */
+
+.progress-pie-center span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    color:
+        var(
+            --text-secondary,
+            #64748b
+        );
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   CHART LEGEND
+   ========================================================= */
+
+.study-chart-legend,
+#studyPieLegend {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 9px 12px;
+
+    width: 100%;
+
+    margin-top: 10px;
+}
+
+
+/* =========================================================
+   OLD LEGEND ITEM
+   ========================================================= */
+
+.chart-legend-item {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    min-width: 0;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    color:
+        var(
+            --text-secondary,
+            #64748b
+        );
+}
+
+
+/* =========================================================
+   STUDY PIE LEGEND ITEM
+   ========================================================= */
+
+.study-pie-legend-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    min-width: 0;
+
+    padding: 5px 8px;
+
+    border: 1px solid var(
+        --border-color,
+        #e2e8f0
+    );
+
+    border-radius: 8px;
+
+    background:
+        var(
+            --card-bg,
+            #ffffff
+        );
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    color:
+        var(
+            --text-secondary,
+            #64748b
+        );
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.study-pie-legend-item:hover {
+    transform: translateY(-1px);
+
+    border-color: #cbd5e1;
+
+    background:
+        var(
+            --bg-secondary,
+            #f8fafc
+        );
+}
+
+
+/* =========================================================
+   LEGEND DOT
+   ========================================================= */
+
+.chart-legend-dot,
+.study-pie-legend-color {
+    display: inline-block;
+
+    flex: 0 0 9px;
+
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(
+            148,
+            163,
+            184,
+            0.08
+        );
+}
+
+
+/* =========================================================
+   STUDY PIE LEGEND COLOR
+   ========================================================= */
+
+.study-pie-legend-color {
+    background:
+        var(
+            --subject-color,
+            #2563eb
+        );
+}
+
+
+.study-pie-legend-color.remaining {
+    background: #94a3b8;
+}
+
+
+/* =========================================================
+   LEGEND NAME
+   ========================================================= */
+
+.study-pie-legend-name {
+    min-width: 0;
+
+    color:
+        var(
+            --text-secondary,
+            #475569
+        );
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   LEGEND PROGRESS
+   ========================================================= */
+
+.study-pie-legend-progress {
+    margin-left: auto;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    color:
+        var(
+            --primary-color,
+            #2563eb
+        );
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   REMAINING LEGEND
+   ========================================================= */
+
+.study-pie-legend-item.remaining {
+    border-color:
+        var(
+            --border-color,
+            #e2e8f0
+        );
+}
+
+
+.study-pie-legend-item.remaining
+.study-pie-legend-progress {
+    color:
+        var(
+            --text-secondary,
+            #64748b
+        );
+}
+
+
+/* =========================================================
+   OLD CHART LEGEND COLORS
+   ========================================================= */
+
+.chart-legend-dot.completed {
+    background: #1b22ad;
+}
+
+
+.chart-legend-dot.in-progress {
+    background: #f59e0b;
+}
+
+
+.chart-legend-dot.remaining {
+    background: #cbd5e1;
+}
+
+
+.chart-legend-dot.subject-color {
+    background:
+        var(
+            --subject-color,
+            #2563eb
+        );
+}
+
+
+/* =========================================================
+   LEGEND TEXT
+   ========================================================= */
+
+.chart-legend-item span:last-child {
+    min-width: 0;
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   SUBJECT INFORMATION
+   ========================================================= */
+
+.study-subject-pie-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                110px,
+                1fr
+            )
+        );
+
+    gap: 9px;
+
+    width: 100%;
+
+    margin-top: 15px;
+}
+
+
+/* =========================================================
+   SUBJECT CARD
+   ========================================================= */
+
+.study-subject-pie-item {
+    position: relative;
+
+    overflow: hidden;
+
+    min-width: 0;
+
+    padding: 10px;
+
+    border: 1px solid
+        var(
+            --border-color,
+            #e2e8f0
+        );
+
+    border-left: 4px solid
+        var(
+            --subject-color,
+            #2563eb
+        );
+
+    border-radius: 11px;
+
+    background:
+        var(
+            --bg-secondary,
+            #f8fafc
+        );
+
+    text-align: center;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.study-subject-pie-item:hover {
+    transform: translateY(-2px);
+
+    border-left-color:
+        var(
+            --subject-color,
+            #2563eb
+        );
+
+    box-shadow:
+        0 5px 14px
+        rgba(
+            15,
+            23,
+            42,
+            0.08
+        );
+}
+
+
+/* =========================================================
+   SUBJECT COLOR DOT
+   ========================================================= */
+
+.study-subject-pie-item::before {
+    content: "";
+
+    display: inline-block;
+
+    width: 8px;
+
+    height: 8px;
+
+    margin-right: 5px;
+
+    border-radius: 50%;
+
+    background:
+        var(
+            --subject-color,
+            #2563eb
+        );
+
+    vertical-align: middle;
+}
+
+
+/* =========================================================
+   SUBJECT TITLE
+   ========================================================= */
+
+.study-subject-pie-item strong {
+    display: block;
+
+    min-width: 0;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    color:
+        var(
+            --subject-color,
+            #2563eb
+        );
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   SUBJECT VALUE
+   ========================================================= */
+
+.study-subject-pie-item small {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    color:
+        var(
+            --text-secondary,
+            #64748b
+        );
+}
+
+
+/* =========================================================
+   SUBJECT COLOR SYSTEM
+   ========================================================= */
+
+:root {
+
+    --subject-color-1: #2563eb;
+
+    --subject-color-2: #16a34a;
+
+    --subject-color-3: #f59e0b;
+
+    --subject-color-4: #dc2626;
+
+    --subject-color-5: #7c3aed;
+
+    --subject-color-6: #0891b2;
+
+    --subject-color-7: #db2777;
+
+    --subject-color-8: #ea580c;
+
+    --subject-color-9: #4f46e5;
+
+    --subject-color-10: #059669;
+}
+
+
+/* =========================================================
+   SUBJECT COLOR CLASSES
+   ========================================================= */
+
+.study-subject-color-1 {
+    --subject-color:
+        var(--subject-color-1);
+}
+
+
+.study-subject-color-2 {
+    --subject-color:
+        var(--subject-color-2);
+}
+
+
+.study-subject-color-3 {
+    --subject-color:
+        var(--subject-color-3);
+}
+
+
+.study-subject-color-4 {
+    --subject-color:
+        var(--subject-color-4);
+}
+
+
+.study-subject-color-5 {
+    --subject-color:
+        var(--subject-color-5);
+}
+
+
+.study-subject-color-6 {
+    --subject-color:
+        var(--subject-color-6);
+}
+
+
+.study-subject-color-7 {
+    --subject-color:
+        var(--subject-color-7);
+}
+
+
+.study-subject-color-8 {
+    --subject-color:
+        var(--subject-color-8);
+}
+
+
+.study-subject-color-9 {
+    --subject-color:
+        var(--subject-color-9);
+}
+
+
+.study-subject-color-10 {
+    --subject-color:
+        var(--subject-color-10);
+}
+
+
+/* =========================================================
+   EMPTY CHART
+   ========================================================= */
+
+.study-chart-container .chart-empty {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+
+    min-height: 100px;
+
+    padding: 25px 10px;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    color:
+        var(
+            --text-secondary,
+            #64748b
+        );
+}
+
+
+/* =========================================================
+   CALENDAR / HOLIDAY / STUDY FLOW
+   ========================================================= */
+
+.calendar-section,
+.holiday-section,
+.study-task-card {
+    display: block;
+
+    width: 100%;
+
+    box-sizing: border-box;
+}
+
+
+.calendar-section {
+    margin-bottom: 18px;
+}
+
+
+.holiday-section {
+    margin-bottom: 18px;
+}
+
+
+.holiday-section + .study-task-card {
+    margin-top: 18px;
+}
+
+
+.study-task-card .study-chart-container {
+    width: 100%;
+
+    margin-top: 18px;
+
+    clear: both;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .study-task-card {
+        padding: 15px;
+
+        border-radius: 15px;
+    }
+
+
+    .study-task-card .section-header {
+        margin-bottom: 14px;
+    }
+
+
+    .study-task-item {
+        padding: 12px;
+    }
+
+
+    .study-task-title {
+        font-size: 13px;
+    }
+
+
+    .study-task-subject {
+        font-size: 11px;
+    }
+
+
+    .study-chart-container {
+        padding: 15px;
+
+        border-radius: 15px;
+    }
+
+
+    .progress-pie {
+        width: 145px;
+
+        height: 145px;
+
+        min-width: 145px;
+
+        min-height: 145px;
+    }
+
+
+    .progress-pie::before {
+        width: 103px;
+
+        height: 103px;
+    }
+
+
+    .study-chart-legend,
+    #studyPieLegend {
+        gap: 8px 10px;
+    }
+
+
+    .chart-legend-item,
+    .study-pie-legend-item {
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .study-task-card {
+        padding: 12px;
+
+        border-radius: 14px;
+    }
+
+
+    .study-task-card .section-header {
+        gap: 8px;
+    }
+
+
+    .study-task-card .section-header h2,
+    .study-task-card .section-header h3 {
+        font-size: 16px;
+    }
+
+
+    .study-progress-summary {
+        padding: 12px;
+    }
+
+
+    .study-task-item {
+        padding: 11px;
+
+        border-radius: 12px;
+    }
+
+
+    .study-task-top {
+        gap: 8px;
+    }
+
+
+    .study-task-priority {
+        padding: 3px 6px;
+
+        font-size: 9px;
+    }
+
+
+    .study-task-actions {
+        width: 100%;
+
+        justify-content: stretch;
+    }
+
+
+    .study-task-action-btn {
+        flex: 1 1 0;
+
+        min-height: 31px;
+    }
+
+
+    .study-chart-container {
+        margin-top: 14px;
+
+        padding: 13px;
+
+        border-radius: 14px;
+    }
+
+
+    .study-chart-container h4 {
+        font-size: 14px;
+    }
+
+
+    .progress-pie {
+        width: 132px;
+
+        height: 132px;
+
+        min-width: 132px;
+
+        min-height: 132px;
+    }
+
+
+    .progress-pie::before {
+        width: 93px;
+
+        height: 93px;
+    }
+
+
+    .progress-pie-center strong {
+        font-size: 22px;
+    }
+
+
+    .progress-pie-center span {
+        font-size: 10px;
+    }
+
+
+    .study-chart-legend,
+    #studyPieLegend {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+
+        gap: 8px;
+
+        justify-items: stretch;
+    }
+
+
+    .chart-legend-item,
+    .study-pie-legend-item {
+        width: 100%;
+
+        font-size: 10px;
+    }
+
+
+    .study-pie-legend-item {
+        padding: 5px 6px;
+    }
+
+
+    .study-pie-legend-progress {
+        font-size: 9px;
+    }
+
+
+    .study-subject-pie-info {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+    }
+
+
+    .study-subject-pie-item {
+        padding: 9px 7px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .study-task-card {
+        padding: 10px;
+    }
+
+
+    .study-task-item {
+        padding: 10px;
+    }
+
+
+    .study-task-top {
+        flex-direction: column;
+    }
+
+
+    .study-task-priority {
+        align-self: flex-start;
+    }
+
+
+    .study-chart-legend,
+    #studyPieLegend {
+        grid-template-columns: 1fr;
+    }
+
+
+    .study-subject-pie-info {
+        grid-template-columns: 1fr;
+    }
+
+
+    .study-task-actions {
+        flex-direction: column;
+    }
+
+
+    .study-task-action-btn {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+.dark-mode .study-task-card,
+body.dark .study-task-card {
+
+    background: #0f172a;
+
+    border-color: #334155;
+
+    color: #f8fafc;
+
+    box-shadow:
+        0 8px 24px
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+}
+
+
+/* =========================================================
+   DARK — SECTION TITLE
+   ========================================================= */
+
+.dark-mode .study-task-card .section-header h2,
+.dark-mode .study-task-card .section-header h3,
+body.dark .study-task-card .section-header h2,
+body.dark .study-task-card .section-header h3 {
+
+    color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   DARK — SUMMARY
+   ========================================================= */
+
+.dark-mode .study-progress-summary,
+body.dark .study-progress-summary {
+
+    background:
+        linear-gradient(
+            135deg,
+            #1e293b,
+            #0f172a
+        );
+
+    border-color: #334155;
+}
+
+
+/* =========================================================
+   DARK — PROGRESS INFO
+   ========================================================= */
+
+.dark-mode .progress-info span,
+body.dark .progress-info span {
+
+    color: #cbd5e1 !important;
+}
+
+
+.dark-mode .progress-info strong,
+body.dark .progress-info strong {
+
+    color: #93c5fd !important;
+}
+
+
+/* =========================================================
+   DARK — TASK ITEM
+   ========================================================= */
+
+.dark-mode .study-task-item,
+body.dark .study-task-item {
+
+    background: #0f172a;
+
+    border-color: #334155;
+
+    color: #f8fafc;
+}
+
+
+.dark-mode .study-task-item:hover,
+body.dark .study-task-item:hover {
+
+    background: #111c31;
+
+    border-color: #475569;
+}
+
+
+/* =========================================================
+   DARK — TASK TITLE
+   ========================================================= */
+
+.dark-mode .study-task-title,
+body.dark .study-task-title {
+
+    color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   DARK — TASK SUBJECT
+   ========================================================= */
+
+.dark-mode .study-task-subject,
+body.dark .study-task-subject {
+
+    color: #cbd5e1 !important;
+}
+
+
+/* =========================================================
+   DARK — NOTES
+   ========================================================= */
+
+.dark-mode .study-task-notes,
+body.dark .study-task-notes {
+
+    background: #1e293b;
+
+    border-color: #334155;
+
+    color: #cbd5e1;
+}
+
+
+/* =========================================================
+   DARK — ACTION BUTTON
+   ========================================================= */
+
+.dark-mode .study-task-action-btn,
+body.dark .study-task-action-btn {
+
+    background: transparent;
+
+    border-color: #334155;
+
+    color: #cbd5e1;
+}
+
+
+.dark-mode .study-task-action-btn:hover,
+body.dark .study-task-action-btn:hover {
+
+    background: #1e293b;
+
+    border-color: #475569;
+}
+
+
+.dark-mode .study-task-action-btn.delete,
+body.dark .study-task-action-btn.delete {
+
+    color: #f87171;
+}
+
+
+.dark-mode .study-task-action-btn.delete:hover,
+body.dark .study-task-action-btn.delete:hover {
+
+    background: #3f1d1d;
+
+    border-color: #7f1d1d;
+}
+
+
+/* =========================================================
+   DARK — CHART CONTAINER
+   ========================================================= */
+
+.dark-mode .study-chart-container,
+body.dark .study-chart-container {
+
+    background: #0f172a;
+
+    border-color: #334155;
+
+    box-shadow:
+        0 8px 24px
+        rgba(
+            0,
+            0,
+            0,
+            0.20
+        );
+}
+
+
+/* =========================================================
+   DARK — CHART TITLE
+   ========================================================= */
+
+.dark-mode .study-chart-container h4,
+body.dark .study-chart-container h4 {
+
+    color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   DARK — PIE INNER CIRCLE
+   IMPORTANT:
+   Keeps center area dark but gives
+   very high text contrast.
+   ========================================================= */
+
+.dark-mode .progress-pie::before,
+body.dark .progress-pie::before {
+
+    background: #111827 !important;
+
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        ),
+        0 0 0 1px
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        );
+}
+
+
+/* =========================================================
+   DARK — PIE CENTER NUMBER
+   ========================================================= */
+
+.dark-mode .progress-pie-center strong,
+body.dark .progress-pie-center strong {
+
+    color: #ffffff !important;
+
+    font-size: 27px;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    opacity: 1 !important;
+
+    text-shadow:
+        0 1px 3px
+        rgba(
+            0,
+            0,
+            0,
+            0.70
+        );
+}
+
+
+/* =========================================================
+   DARK — PIE CENTER LABEL
+   ========================================================= */
+
+.dark-mode .progress-pie-center span,
+body.dark .progress-pie-center span {
+
+    color: #e2e8f0 !important;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    opacity: 1 !important;
+
+    text-shadow:
+        0 1px 2px
+        rgba(
+            0,
+            0,
+            0,
+            0.60
+        );
+}
+
+
+/* =========================================================
+   DARK — PIE CHART
+   ========================================================= */
+
+.dark-mode .progress-pie,
+body.dark .progress-pie {
+
+    box-shadow:
+        0 8px 28px
+        rgba(
+            0,
+            0,
+            0,
+            0.35
+        );
+}
+
+
+/* =========================================================
+   DARK — PIE LEGEND ITEM
+   ========================================================= */
+
+.dark-mode .study-pie-legend-item,
+body.dark .study-pie-legend-item {
+
+    background: #111827 !important;
+
+    border-color: #334155 !important;
+
+    color: #e2e8f0 !important;
+}
+
+
+.dark-mode .study-pie-legend-item:hover,
+body.dark .study-pie-legend-item:hover {
+
+    background: #1e293b !important;
+
+    border-color: #475569 !important;
+}
+
+
+/* =========================================================
+   DARK — PIE LEGEND NAME
+   ========================================================= */
+
+.dark-mode .study-pie-legend-name,
+body.dark .study-pie-legend-name {
+
+    color: #f1f5f9 !important;
+
+    font-weight: 600;
+
+    opacity: 1 !important;
+}
+
+
+/* =========================================================
+   DARK — PIE LEGEND PERCENTAGE
+   ========================================================= */
+
+.dark-mode .study-pie-legend-progress,
+body.dark .study-pie-legend-progress {
+
+    color: #93c5fd !important;
+
+    font-weight: 800;
+
+    opacity: 1 !important;
+}
+
+
+/* =========================================================
+   DARK — REMAINING PERCENTAGE
+   ========================================================= */
+
+.dark-mode
+.study-pie-legend-item.remaining
+.study-pie-legend-progress,
+
+body.dark
+.study-pie-legend-item.remaining
+.study-pie-legend-progress {
+
+    color: #cbd5e1 !important;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DARK — REMAINING COLOR DOT
+   ========================================================= */
+
+.dark-mode .study-pie-legend-color.remaining,
+body.dark .study-pie-legend-color.remaining {
+
+    background: #64748b !important;
+}
+
+
+.dark-mode .chart-legend-dot.remaining,
+body.dark .chart-legend-dot.remaining {
+
+    background: #64748b !important;
+}
+
+
+/* =========================================================
+   DARK — OLD LEGEND TEXT
+   ========================================================= */
+
+.dark-mode .chart-legend-item,
+body.dark .chart-legend-item {
+
+    color: #cbd5e1 !important;
+}
+
+
+/* =========================================================
+   DARK — SUBJECT INFORMATION CARDS
+   ========================================================= */
+
+.dark-mode .study-subject-pie-item,
+body.dark .study-subject-pie-item {
+
+    background: #111827 !important;
+
+    border-color: #334155 !important;
+
+    border-left-color:
+        var(
+            --subject-color,
+            #60a5fa
+        );
+}
+
+
+/* =========================================================
+   DARK — SUBJECT NAME
+   ========================================================= */
+
+.dark-mode .study-subject-pie-item strong,
+body.dark .study-subject-pie-item strong {
+
+    color:
+        var(
+            --subject-color,
+            #60a5fa
+        ) !important;
+
+    font-weight: 700;
+
+    text-shadow:
+        0 1px 2px
+        rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+}
+
+
+/* =========================================================
+   DARK — SUBJECT VALUE
+   ========================================================= */
+
+.dark-mode .study-subject-pie-item small,
+body.dark .study-subject-pie-item small {
+
+    color: #e2e8f0 !important;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   DARK — SUBJECT CARD HOVER
+   ========================================================= */
+
+.dark-mode .study-subject-pie-item:hover,
+body.dark .study-subject-pie-item:hover {
+
+    background: #172033 !important;
+
+    border-left-color:
+        var(
+            --subject-color,
+            #60a5fa
+        );
+
+    box-shadow:
+        0 5px 16px
+        rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+}
+
+
+/* =========================================================
+   DARK — FORM
+   ========================================================= */
+
+.dark-mode #studyTaskForm label,
+body.dark #studyTaskForm label {
+
+    color: #e2e8f0;
+}
+
+
+.dark-mode #studyTaskForm input,
+.dark-mode #studyTaskForm select,
+.dark-mode #studyTaskForm textarea,
+body.dark #studyTaskForm input,
+body.dark #studyTaskForm select,
+body.dark #studyTaskForm textarea {
+
+    background: #0f172a;
+
+    border-color: #334155;
+
+    color: #f8fafc;
+}
+
+
+.dark-mode #studyTaskForm input::placeholder,
+.dark-mode #studyTaskForm textarea::placeholder,
+body.dark #studyTaskForm input::placeholder,
+body.dark #studyTaskForm textarea::placeholder {
+
+    color: #64748b;
+}
+
+
+/* =========================================================
+   DARK — EMPTY STATE
+   ========================================================= */
+
+.dark-mode .study-task-card .empty-state,
+body.dark .study-task-card .empty-state {
+
+    border-color: #475569;
+
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   DARK — PROGRESS BAR
+   ========================================================= */
+
+.dark-mode .progress-bar,
+body.dark .progress-bar {
+
+    background: #334155;
+}
+
+
+/* =========================================================
+   DARK — RANGE
+   ========================================================= */
+
+.dark-mode #studyTaskProgress,
+body.dark #studyTaskProgress {
+
+    accent-color: #60a5fa;
+}
+
+
+.dark-mode #studyTaskProgressValue,
+body.dark #studyTaskProgressValue {
+
+    color: #93c5fd !important;
+}
+
+
+/* =========================================================
+   PIE ANIMATION
+   ========================================================= */
+
+@keyframes studyPieChartAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(0.88);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+    }
+}
+
+
+.progress-pie {
+
+    animation:
+        studyPieChartAppear
+        0.4s
+        cubic-bezier(
+            0.2,
+            0.8,
+            0.2,
+            1
+        );
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.progress-pie:focus-visible {
+
+    outline:
+        3px solid
+        var(
+            --primary-color,
+            #2563eb
+        );
+
+    outline-offset: 4px;
+}
+
+
+.study-task-action-btn:focus-visible {
+
+    outline:
+        2px solid
+        var(
+            --primary-color,
+            #2563eb
+        );
+
+    outline-offset: 2px;
+}
+
+
+.study-task-item:focus-within {
+
+    border-color:
+        rgba(
+            37,
+            99,
+            235,
+            0.4
+        );
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .study-task-item,
+    .study-task-action-btn,
+    .progress-pie,
+    .progress-fill,
+    .study-subject-pie-item,
+    .study-pie-legend-item {
+
+        transition: none;
+
+        animation: none;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+
+    .study-task-item:hover,
+    .study-task-action-btn:hover,
+    .progress-pie:hover,
+    .study-subject-pie-item:hover,
+    .study-pie-legend-item:hover {
+
+        transform: none;
+    }
+}
+
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+
+    .study-task-actions {
+
+        display: none !important;
+    }
+
+
+    .study-task-card,
+    .study-chart-container,
+    .study-task-item {
+
+        box-shadow: none;
+
+        break-inside: avoid;
+    }
+
+
+    .progress-pie {
+
+        animation: none;
+    }
+}
+
+
+/* =========================================================
+   FINAL DARK MODE OVERRIDES
+   These are intentionally at the end so that
+   no earlier rule can reduce readability.
+   ========================================================= */
+
+
+/* Center number */
+
+.dark-mode .progress-pie .progress-pie-center strong,
+body.dark .progress-pie .progress-pie-center strong {
+
+    color: #ffffff !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+}
+
+
+/* Center label */
+
+.dark-mode .progress-pie .progress-pie-center span,
+body.dark .progress-pie .progress-pie-center span {
+
+    color: #e2e8f0 !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+}
+
+
+/* Subject names */
+
+.dark-mode .study-pie-legend-name,
+body.dark .study-pie-legend-name {
+
+    color: #ffffff !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+}
+
+
+/* Subject percentages */
+
+.dark-mode .study-pie-legend-progress,
+body.dark .study-pie-legend-progress {
+
+    color: #93c5fd !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+}
+
+
+/* Subject card names */
+
+.dark-mode .study-subject-pie-item strong,
+body.dark .study-subject-pie-item strong {
+
+    color:
+        var(
+            --subject-color,
+            #60a5fa
+        ) !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+}
+
+
+/* Subject card values */
+
+.dark-mode .study-subject-pie-item small,
+body.dark .study-subject-pie-item small {
+
+    color: #e2e8f0 !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+}
+
+
+/* Remaining */
+
+.dark-mode
+.study-pie-legend-item.remaining
+.study-pie-legend-progress,
+
+body.dark
+.study-pie-legend-item.remaining
+.study-pie-legend-progress {
+
+    color: #cbd5e1 !important;
+}
+/* =========================================================
+   SUBJECT-WISE PIE LABELS
+   ========================================================= */
+
+.progress-pie {
+    position: relative;
+}
+
+
+/* ---------------------------------------------------------
+   LABEL CONTAINER
+--------------------------------------------------------- */
+
+.study-pie-labels {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+}
+
+
+/* ---------------------------------------------------------
+   INDIVIDUAL SUBJECT LABEL
+--------------------------------------------------------- */
+
+.study-pie-subject-label {
+    position: absolute;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    min-height: 32px;
+
+    padding: 3px 4px;
+
+    transform:
+        translate(-50%, -50%);
+
+    text-align: center;
+
+    line-height: 1.1;
+
+    border-radius: 6px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.75),
+        0 0 3px rgba(0, 0, 0, 0.45);
+
+    background:
+        rgba(0, 0, 0, 0.18);
+
+    backdrop-filter:
+        blur(2px);
+
+    -webkit-backdrop-filter:
+        blur(2px);
+
+    box-shadow:
+        0 1px 4px
+        rgba(0, 0, 0, 0.18);
+
+    overflow: hidden;
+}
+
+
+/* ---------------------------------------------------------
+   SUBJECT NAME
+--------------------------------------------------------- */
+
+.study-pie-subject-label-name {
+    display: block;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+}
+
+
+/* ---------------------------------------------------------
+   SUBJECT PERCENTAGE
+--------------------------------------------------------- */
+
+.study-pie-subject-label-value {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    color: #ffffff;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   LARGE PIE
+   ========================================================= */
+
+@media (min-width: 769px) {
+
+    .study-pie-subject-label {
+        width: 62px;
+    }
+
+    .study-pie-subject-label-name {
+        font-size: 9px;
+    }
+
+    .study-pie-subject-label-value {
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .study-pie-subject-label {
+        width: 52px;
+
+        min-height: 30px;
+
+        padding: 3px;
+    }
+
+    .study-pie-subject-label-name {
+        font-size: 8px;
+    }
+
+    .study-pie-subject-label-value {
+        font-size: 9px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .study-pie-subject-label {
+        width: 46px;
+
+        min-height: 27px;
+
+        padding: 2px;
+    }
+
+    .study-pie-subject-label-name {
+        font-size: 7px;
+    }
+
+    .study-pie-subject-label-value {
+        font-size: 8px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .study-pie-subject-label {
+        width: 42px;
+
+        min-height: 25px;
+    }
+
+    .study-pie-subject-label-name {
+        font-size: 6.5px;
+    }
+
+    .study-pie-subject-label-value {
+        font-size: 7px;
+    }
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+.dark-mode .study-pie-subject-label,
+body.dark .study-pie-subject-label {
+
+    color: #ffffff !important;
+
+    background:
+        rgba(0, 0, 0, 0.28);
+
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.95),
+        0 0 4px rgba(0, 0, 0, 0.75);
+
+    box-shadow:
+        0 1px 5px
+        rgba(0, 0, 0, 0.45);
+}
+
+
+.dark-mode .study-pie-subject-label-name,
+body.dark .study-pie-subject-label-name {
+
+    color: #ffffff !important;
+
+    font-weight: 800;
+}
+
+
+.dark-mode .study-pie-subject-label-value,
+body.dark .study-pie-subject-label-value {
+
+    color: #ffffff !important;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .study-pie-subject-label {
+        transition: none;
+    }
+}
+
+/* =========================================================
+   STUDY REPORTS
+   Daily Study Report + Weekly Study Report
+   Campus Calendar
+   Responsive / Dark Mode / Mobile
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+.study-reports-section,
+.study-report-card,
+.study-report-summary,
+.study-report-list,
+.study-report-chart,
+.study-report-stat {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN REPORT SECTION
+   ========================================================= */
+
+.study-reports-section {
+    width: 100%;
+    margin-top: 24px;
+    padding: 0;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.study-reports-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.study-reports-header-content {
+    min-width: 0;
+}
+
+.study-reports-title {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text-color, #111827);
+}
+
+.study-reports-subtitle {
+    margin: 5px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted-text, #64748b);
+}
+
+/* =========================================================
+   REPORT TABS
+   ========================================================= */
+
+.study-report-tabs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.study-report-tab {
+    flex: 1; /* এইটা যোগ করুন */
+
+    border: 0;
+    outline: none;
+    cursor: pointer;
+
+    min-height: 38px;
+    padding: 8px 15px;
+
+    border-radius: 9px;
+
+    background: transparent;
+    color: var(--muted-text, #64748b);
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.study-report-tab:hover {
+    color: var(--text-color, #111827);
+}
+
+.study-report-tab:active {
+    transform: scale(0.97);
+}
+
+.study-report-tab.active {
+    background: var(--card-bg, #ffffff);
+    color: var(--primary-color, #2563eb);
+
+    box-shadow:
+        0 2px 7px rgba(15, 23, 42, 0.08);
+}
+
+/* =========================================================
+   REPORT CARD
+   ========================================================= */
+
+.study-report-card {
+    width: 100%;
+
+    padding: 20px;
+
+    border: 1px solid
+        var(--border-color, #e2e8f0);
+
+    border-radius: 16px;
+
+    background:
+        var(--card-bg, #ffffff);
+
+    box-shadow:
+        0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================================
+   REPORT PANEL
+   ========================================================= */
+
+.study-report-panel {
+    display: none;
+}
+
+.study-report-panel.active {
+    display: block;
+}
+
+
+/* =========================================================
+   REPORT TOP
+   ========================================================= */
+
+.study-report-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 20px;
+}
+
+.study-report-heading {
+    min-width: 0;
+}
+
+.study-report-heading h3 {
+    margin: 0;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    color:
+        var(--text-color, #111827);
+}
+
+.study-report-heading p {
+    margin: 5px 0 0;
+
+    font-size: 12px;
+    line-height: 1.5;
+
+    color:
+        var(--muted-text, #64748b);
+}
+
+
+/* =========================================================
+   DATE SELECTOR
+   ========================================================= */
+
+.study-report-date-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    flex-shrink: 0;
+}
+
+.study-report-date-wrapper label {
+    font-size: 12px;
+    font-weight: 600;
+
+    color:
+        var(--muted-text, #64748b);
+}
+
+.study-report-date {
+    height: 38px;
+
+    padding: 7px 10px;
+
+    border: 1px solid
+        var(--border-color, #cbd5e1);
+
+    border-radius: 9px;
+
+    background:
+        var(--input-bg, #ffffff);
+
+    color:
+        var(--text-color, #111827);
+
+    font-family: inherit;
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.study-report-date:focus {
+    border-color:
+        var(--primary-color, #2563eb);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37, 99, 235, 0.12);
+}
+
+
+/* =========================================================
+   SUMMARY GRID
+   ========================================================= */
+
+.study-report-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   SUMMARY STAT
+   ========================================================= */
+
+.study-report-stat {
+    min-width: 0;
+
+    padding: 15px;
+
+    border: 1px solid
+        var(--border-color, #e2e8f0);
+
+    border-radius: 12px;
+
+    background:
+        var(--card-secondary-bg, #f8fafc);
+}
+
+.study-report-stat-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    color:
+        var(--muted-text, #64748b);
+}
+
+.study-report-stat-value {
+    display: block;
+
+    font-size: 22px;
+    line-height: 1.15;
+
+    font-weight: 750;
+
+    color:
+        var(--text-color, #111827);
+}
+
+.study-report-stat-description {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    color:
+        var(--muted-text, #64748b);
+}
+
+
+/* =========================================================
+   STAT ICON
+   ========================================================= */
+
+.study-report-stat-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    margin-bottom: 10px;
+
+    border-radius: 9px;
+
+    font-size: 17px;
+
+    background:
+        rgba(37, 99, 235, 0.10);
+
+    color:
+        var(--primary-color, #2563eb);
+}
+
+
+/* =========================================================
+   PROGRESS SECTION
+   ========================================================= */
+
+.study-report-progress-section {
+    margin-top: 4px;
+    margin-bottom: 22px;
+}
+
+.study-report-progress-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 8px;
+}
+
+.study-report-progress-title {
+    font-size: 13px;
+    font-weight: 650;
+
+    color:
+        var(--text-color, #111827);
+}
+
+.study-report-progress-value {
+    font-size: 13px;
+    font-weight: 700;
+
+    color:
+        var(--primary-color, #2563eb);
+}
+
+.study-report-progress-track {
+    width: 100%;
+    height: 9px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+        var(--progress-bg, #e5e7eb);
+}
+
+.study-report-progress-fill {
+    height: 100%;
+
+    width: 0%;
+
+    border-radius: inherit;
+
+    background:
+        var(--primary-color, #2563eb);
+
+    transition:
+        width 0.35s ease;
+}
+
+
+/* =========================================================
+   REPORT CONTENT GRID
+   ========================================================= */
+
+.study-report-content {
+    display: grid;
+
+    grid-template-columns:
+        minmax(260px, 0.85fr)
+        minmax(320px, 1.15fr);
+
+    gap: 18px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   CHART CONTAINER
+   ========================================================= */
+
+.study-report-chart {
+    position: relative;
+
+    min-height: 300px;
+
+    padding: 18px;
+
+    border: 1px solid
+        var(--border-color, #e2e8f0);
+
+    border-radius: 14px;
+
+    background:
+        var(--card-secondary-bg, #f8fafc);
+}
+
+.study-report-chart-title {
+    margin: 0 0 15px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color:
+        var(--text-color, #111827);
+}
+
+
+/* =========================================================
+   CANVAS
+   ========================================================= */
+
+.study-report-chart canvas {
+    display: block;
+
+    width: 100% !important;
+    max-width: 100%;
+
+    min-height: 230px;
+}
+
+
+/* =========================================================
+   CHART EMPTY STATE
+   ========================================================= */
+
+.study-report-chart-empty {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 230px;
+
+    text-align: center;
+
+    padding: 25px;
+
+    color:
+        var(--muted-text, #64748b);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   REPORT LIST
+   ========================================================= */
+
+.study-report-list-container {
+    min-width: 0;
+
+    padding: 18px;
+
+    border: 1px solid
+        var(--border-color, #e2e8f0);
+
+    border-radius: 14px;
+
+    background:
+        var(--card-secondary-bg, #f8fafc);
+}
+
+.study-report-list-title {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 14px;
+}
+
+.study-report-list-title h4 {
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color:
+        var(--text-color, #111827);
+}
+
+.study-report-list-count {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 28px;
+    height: 24px;
+
+    padding: 3px 8px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(37, 99, 235, 0.10);
+
+    color:
+        var(--primary-color, #2563eb);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   REPORT ITEMS
+   ========================================================= */
+
+.study-report-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    max-height: 300px;
+
+    overflow-y: auto;
+
+    padding-right: 3px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.study-report-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.study-report-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.study-report-list::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+
+    background:
+        var(--border-color, #cbd5e1);
+}
+
+
+/* =========================================================
+   SINGLE REPORT ITEM
+   ========================================================= */
+
+.study-report-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px;
+
+    border: 1px solid
+        var(--border-color, #e2e8f0);
+
+    border-radius: 11px;
+
+    background:
+        var(--card-bg, #ffffff);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.study-report-item:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 10px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================================
+   SUBJECT / CATEGORY DOT
+   ========================================================= */
+
+.study-report-item-dot {
+    width: 10px;
+    height: 10px;
+
+    min-width: 10px;
+
+    border-radius: 50%;
+
+    background:
+        var(--study-subject-color, #2563eb);
+}
+
+
+/* =========================================================
+   ITEM CONTENT
+   ========================================================= */
+
+.study-report-item-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.study-report-item-title {
+    margin: 0;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-size: 13px;
+    font-weight: 650;
+
+    color:
+        var(--text-color, #111827);
+}
+
+.study-report-item-meta {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    color:
+        var(--muted-text, #64748b);
+}
+
+
+/* =========================================================
+   ITEM PROGRESS
+   ========================================================= */
+
+.study-report-item-progress {
+    width: 75px;
+
+    flex-shrink: 0;
+}
+
+.study-report-item-progress-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 5px;
+
+    margin-bottom: 4px;
+
+    font-size: 10px;
+}
+
+.study-report-item-progress-label {
+    color:
+        var(--muted-text, #64748b);
+}
+
+.study-report-item-progress-value {
+    font-weight: 700;
+
+    color:
+        var(--text-color, #111827);
+}
+
+.study-report-item-progress-track {
+    width: 100%;
+    height: 5px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+        var(--progress-bg, #e5e7eb);
+}
+
+.study-report-item-progress-fill {
+    width: 0%;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        var(--study-subject-color, #2563eb);
+}
+
+
+/* =========================================================
+   EMPTY REPORT
+   ========================================================= */
+
+.study-report-empty {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 170px;
+
+    padding: 25px;
+
+    text-align: center;
+}
+
+.study-report-empty-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    margin-bottom: 10px;
+
+    border-radius: 50%;
+
+    background:
+        var(--card-secondary-bg, #f1f5f9);
+
+    font-size: 22px;
+}
+
+.study-report-empty-title {
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 650;
+
+    color:
+        var(--text-color, #111827);
+}
+
+.study-report-empty-text {
+    margin: 5px 0 0;
+
+    max-width: 300px;
+
+    font-size: 12px;
+    line-height: 1.5;
+
+    color:
+        var(--muted-text, #64748b);
+}
+
+
+/* =========================================================
+   WEEK NAVIGATION
+   ========================================================= */
+
+.study-week-navigation {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 16px;
+}
+
+.study-week-navigation button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border: 1px solid
+        var(--border-color, #cbd5e1);
+
+    border-radius: 8px;
+
+    background:
+        var(--card-bg, #ffffff);
+
+    color:
+        var(--text-color, #111827);
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.study-week-navigation button:hover {
+    border-color:
+        var(--primary-color, #2563eb);
+
+    color:
+        var(--primary-color, #2563eb);
+}
+
+.study-week-range {
+    flex: 1;
+
+    text-align: center;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    color:
+        var(--text-color, #111827);
+}
+
+
+/* =========================================================
+   WEEKLY DAY GRID
+   ========================================================= */
+
+.study-week-days {
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, minmax(0, 1fr));
+
+    gap: 7px;
+
+    margin-bottom: 18px;
+}
+
+.study-week-day {
+    min-width: 0;
+
+    padding: 10px 5px;
+
+    text-align: center;
+
+    border: 1px solid
+        var(--border-color, #e2e8f0);
+
+    border-radius: 9px;
+
+    background:
+        var(--card-bg, #ffffff);
+}
+
+.study-week-day-name {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    color:
+        var(--muted-text, #64748b);
+}
+
+.study-week-day-date {
+    display: block;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color:
+        var(--text-color, #111827);
+}
+
+.study-week-day-hours {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    color:
+        var(--primary-color, #2563eb);
+}
+
+.study-week-day.today {
+    border-color:
+        var(--primary-color, #2563eb);
+
+    background:
+        rgba(37, 99, 235, 0.06);
+}
+
+.study-week-day.active {
+    box-shadow:
+        inset 0 -3px 0
+        var(--primary-color, #2563eb);
+}
+
+
+/* =========================================================
+   WEEKLY SUBJECT BREAKDOWN
+   ========================================================= */
+
+.study-week-subjects {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+.study-week-subject {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px;
+
+    border: 1px solid
+        var(--border-color, #e2e8f0);
+
+    border-radius: 10px;
+
+    background:
+        var(--card-bg, #ffffff);
+}
+
+.study-week-subject-color {
+    width: 10px;
+    height: 10px;
+
+    min-width: 10px;
+
+    border-radius: 50%;
+
+    background:
+        var(--study-subject-color, #2563eb);
+}
+
+.study-week-subject-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.study-week-subject-name {
+    display: block;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-size: 12px;
+    font-weight: 650;
+
+    color:
+        var(--text-color, #111827);
+}
+
+.study-week-subject-meta {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 10px;
+
+    color:
+        var(--muted-text, #64748b);
+}
+
+.study-week-subject-hours {
+    flex-shrink: 0;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    color:
+        var(--text-color, #111827);
+}
+
+
+/* =========================================================
+   REPORT FOOTER
+   ========================================================= */
+
+.study-report-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-top: 18px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid
+        var(--border-color, #e2e8f0);
+}
+
+.study-report-footer-text {
+    margin: 0;
+
+    font-size: 11px;
+
+    color:
+        var(--muted-text, #64748b);
+}
+
+.study-report-refresh {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    min-height: 34px;
+
+    padding: 7px 12px;
+
+    border: 1px solid
+        var(--border-color, #cbd5e1);
+
+    border-radius: 8px;
+
+    background:
+        var(--card-bg, #ffffff);
+
+    color:
+        var(--text-color, #111827);
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+
+    transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.study-report-refresh:hover {
+    border-color:
+        var(--primary-color, #2563eb);
+
+    color:
+        var(--primary-color, #2563eb);
+}
+
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+body.dark-mode .study-report-card,
+.dark .study-report-card {
+    background:
+        var(--card-bg, #111827);
+
+    border-color:
+        var(--border-color, #334155);
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.18);
+}
+
+body.dark-mode .study-report-title,
+.dark .study-report-title {
+    color: #f8fafc;
+}
+
+body.dark-mode .study-report-stat,
+.dark .study-report-stat,
+body.dark-mode .study-report-chart,
+.dark .study-report-chart,
+body.dark-mode .study-report-list-container,
+.dark .study-report-list-container {
+    background:
+        #0f172a;
+
+    border-color:
+        #334155;
+}
+
+body.dark-mode .study-report-item,
+.dark .study-report-item,
+body.dark-mode .study-week-day,
+.dark .study-week-day,
+body.dark-mode .study-week-subject,
+.dark .study-week-subject {
+    background:
+        #111827;
+
+    border-color:
+        #334155;
+}
+
+body.dark-mode .study-report-tab,
+.dark .study-report-tab {
+    color:
+        #94a3b8;
+}
+
+body.dark-mode .study-report-tab.active,
+.dark .study-report-tab.active {
+    background:
+        #1e293b;
+
+    color:
+        #60a5fa;
+}
+
+body.dark-mode .study-report-date,
+.dark .study-report-date,
+body.dark-mode .study-report-refresh,
+.dark .study-report-refresh {
+    background:
+        #111827;
+
+    color:
+        #f8fafc;
+
+    border-color:
+        #475569;
+}
+
+body.dark-mode .study-report-progress-track,
+.dark .study-report-progress-track,
+body.dark-mode .study-report-item-progress-track,
+.dark .study-report-item-progress-track {
+    background:
+        #334155;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .study-report-summary {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .study-report-content {
+        grid-template-columns:
+            1fr;
+    }
+
+    .study-report-chart {
+        min-height: 280px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .study-reports-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .study-report-tabs {
+        width: 100%;
+    }
+
+    .study-report-tab {
+        flex: 1;
+    }
+
+    .study-report-top {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .study-report-date-wrapper {
+        width: 100%;
+    }
+
+    .study-report-date {
+        flex: 1;
+    }
+
+    .study-week-subjects {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+
+    .study-reports-section {
+        margin-top: 18px;
+    }
+
+    .study-reports-title {
+        font-size: 18px;
+    }
+
+    .study-reports-subtitle {
+        font-size: 12px;
+    }
+
+    .study-report-card {
+        padding: 14px;
+        border-radius: 13px;
+    }
+
+    .study-report-summary {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+    }
+
+    .study-report-stat {
+        padding: 12px;
+    }
+
+    .study-report-stat-value {
+        font-size: 19px;
+    }
+
+    .study-report-stat-label {
+        font-size: 10px;
+    }
+
+    .study-report-stat-description {
+        font-size: 10px;
+    }
+
+    .study-report-content {
+        gap: 12px;
+    }
+
+    .study-report-chart,
+    .study-report-list-container {
+        padding: 13px;
+    }
+
+    .study-report-chart {
+        min-height: 260px;
+    }
+
+    .study-report-chart canvas {
+        min-height: 205px;
+    }
+
+    .study-report-list {
+        max-height: 260px;
+    }
+
+    .study-report-item {
+        padding: 10px;
+        gap: 9px;
+    }
+
+    .study-report-item-title {
+        font-size: 12px;
+    }
+
+    .study-report-item-progress {
+        width: 60px;
+    }
+
+    .study-week-days {
+        gap: 4px;
+    }
+
+    .study-week-day {
+        padding: 8px 3px;
+        border-radius: 7px;
+    }
+
+    .study-week-day-name {
+        font-size: 8px;
+    }
+
+    .study-week-day-date {
+        font-size: 12px;
+    }
+
+    .study-week-day-hours {
+        font-size: 8px;
+    }
+
+    .study-report-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .study-report-summary {
+        grid-template-columns:
+            1fr;
+    }
+
+    .study-report-tabs {
+        gap: 4px;
+        padding: 4px;
+    }
+
+    .study-report-tab {
+        padding: 7px 8px;
+        font-size: 11px;
+    }
+
+    .study-week-day-name {
+        font-size: 7px;
+    }
+
+    .study-week-day-date {
+        font-size: 11px;
+    }
+
+    .study-week-day-hours {
+        font-size: 7px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .study-report-tab,
+    .study-report-item,
+    .study-report-refresh,
+    .study-report-progress-fill {
+        transition: none;
+    }
+
+}
+/* =========================================================
+   DAILY REPORT DATE NAVIGATION
+   ========================================================= */
+
+.study-report-date-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    gap: 10px;
+}
+
+.study-report-nav-btn {
+    flex: 0 0 auto;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    outline: none;
+
+    border-radius: 10px;
+
+    background: var(--primary-color, #2563eb);
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 24px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.study-report-nav-btn:hover {
+    box-shadow:
+        0 4px 10px rgba(37, 99, 235, 0.20);
+}
+
+.study-report-nav-btn:active {
+    transform: scale(0.94);
+}
+
+.study-report-current-date {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    min-height: 38px;
+
+    padding: 8px 12px;
+
+    border-radius: 10px;
+
+    background: var(--card-bg, #ffffff);
+    color: var(--text-color, #111827);
+
+    text-align: center;
+}
+
+.study-report-current-date strong {
+    font-size: 14px;
+    font-weight: 700;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* =========================================================
+   STUDY REPORT TABS - HORIZONTAL
+========================================================= */
+
+.study-report-tabs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+/* Individual Tab Button */
+
+.study-report-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 90px;
+    height: 40px;
+
+    padding: 8px 18px;
+
+    border: 1px solid var(--border-color, #d1d5db);
+    border-radius: 8px;
+
+    background: var(--card-bg, #ffffff);
+    color: var(--text-color, #374151);
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Hover */
+
+.study-report-tab:hover {
+    transform: translateY(-1px);
+}
+
+/* Active Tab */
+
+.study-report-tab.active {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+}
+
+/* =========================================================
+   STUDY REPORT HEADER
+========================================================= */
+
+.study-report-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .study-report-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .study-report-tabs {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .study-report-tab {
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+/* =========================================================
+   FINAL FIX — STUDY REPORT HEADER + TABS
+========================================================= */
+
+/* Main Study Report Header */
+.study-report-header {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   STUDY REPORT TABS
+========================================================= */
+
+.study-report-tabs {
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    width: auto !important;
+
+    flex: 0 0 auto;
+
+    flex-wrap: nowrap;
+
+    padding: 4px;
+
+    border: 1px solid
+        var(--border-color, #e2e8f0);
+
+    border-radius: 10px;
+
+    background:
+        var(--card-secondary-bg, #f8fafc);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TAB BUTTON
+========================================================= */
+
+.study-report-tab {
+    display: inline-flex !important;
+
+    flex: 0 0 auto !important;
+
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+
+    width: auto !important;
+
+    min-width: 85px;
+
+    height: 38px;
+
+    padding: 8px 16px;
+
+    margin: 0;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color:
+        var(--muted-text, #64748b);
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* =========================================================
+   TAB HOVER
+========================================================= */
+
+.study-report-tab:hover {
+    background:
+        rgba(37, 99, 235, 0.08);
+
+    color:
+        var(--primary-color, #2563eb);
+}
+
+
+/* =========================================================
+   ACTIVE TAB
+========================================================= */
+
+.study-report-tab.active {
+    background:
+        var(--primary-color, #2563eb);
+
+    color: #ffffff;
+
+    box-shadow:
+        0 2px 6px
+        rgba(37, 99, 235, 0.20);
+}
+
+
+/* =========================================================
+   ACTIVE HOVER
+========================================================= */
+
+.study-report-tab.active:hover {
+    background:
+        var(--primary-color, #2563eb);
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   MOBILE — KEEP TABS HORIZONTAL
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .study-report-header {
+        display: flex !important;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 14px;
+    }
+
+
+    .study-report-tabs {
+        display: flex !important;
+
+        flex-direction: row !important;
+
+        justify-content: center;
+
+        align-items: center;
+
+        width: 100% !important;
+
+        flex-wrap: nowrap;
+
+        box-sizing: border-box;
+    }
+
+
+    .study-report-tab {
+        flex: 1 1 0 !important;
+
+        width: auto !important;
+
+        min-width: 0;
+
+        max-width: none;
+
+        height: 38px;
+
+        padding: 8px 12px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .study-report-tabs {
+        gap: 5px;
+
+        padding: 3px;
+    }
+
+
+    .study-report-tab {
+        min-width: 0;
+
+        height: 36px;
+
+        padding: 7px 8px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark .study-report-tabs,
+body.dark-mode .study-report-tabs,
+.dark .study-report-tabs {
+
+    background: #0f172a;
+
+    border-color: #334155;
+}
+
+
+body.dark .study-report-tab,
+body.dark-mode .study-report-tab,
+.dark .study-report-tab {
+
+    color: #94a3b8;
+}
+
+
+body.dark .study-report-tab:hover,
+body.dark-mode .study-report-tab:hover,
+.dark .study-report-tab:hover {
+
+    background: #1e293b;
+
+    color: #60a5fa;
+}
+
+
+body.dark .study-report-tab.active,
+body.dark-mode .study-report-tab.active,
+.dark .study-report-tab.active {
+
+    background: #2563eb;
+
+    color: #ffffff;
+}
+/* =========================================================
+   STUDY TIMER
+========================================================= */
+
+.study-timer-panel {
+
+    margin: 16px 0;
+
+    padding: 18px;
+
+    border: 1px solid #dbe3ef;
+
+    border-radius: 14px;
+
+    background: #f8fafc;
+
+    text-align: center;
+
+}
+
+
+.study-timer-panel.hidden {
+
+    display: none;
+
+}
+
+
+.study-timer-task {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.study-timer-task span {
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+}
+
+
+.study-timer-task small {
+
+    color: #64748b;
+
+}
+
+
+.study-timer-display {
+
+    margin: 12px 0;
+
+}
+
+
+#studyTimerDisplay {
+
+    font-size: 38px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    font-variant-numeric: tabular-nums;
+
+}
+
+
+.study-timer-actions {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.study-start-btn {
+
+    border: none;
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+}
+
+
+body.dark .study-timer-panel {
+
+    background: #1e293b;
+
+    border-color: #334155;
+
+}
+
+
+body.dark .study-timer-task small {
+
+    color: #94a3b8;
+
+}
+/* =========================================================
+   STUDY TIMER — VISIBLE ON SCREEN
+========================================================= */
+
+.study-timer-panel {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 20px;
+
+    transform: translateX(-50%);
+
+    width: min(
+        520px,
+        calc(100% - 30px)
+    );
+
+    z-index: 99999;
+
+    padding: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #dbeafe;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 40px rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+
+}
+
+
+/* =========================================================
+   HIDDEN
+========================================================= */
+
+.study-timer-panel.hidden {
+
+    display: none !important;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.study-timer-header {
+
+    display: flex;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+.study-timer-header h3 {
+
+    margin: 0;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    color: #1e293b;
+
+}
+
+
+.study-timer-header p {
+
+    margin: 5px 0 0;
+
+    font-size: 14px;
+
+    color: #64748b;
+
+}
+
+
+/* =========================================================
+   TIMER DISPLAY
+========================================================= */
+
+.study-timer-display {
+
+    margin: 15px 0;
+
+    text-align: center;
+
+    font-size: 46px;
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-variant-numeric:
+        tabular-nums;
+
+    color: #2563eb;
+
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.study-timer-actions {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+}
+
+
+.study-timer-actions button {
+
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 11px 18px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+#pauseStudyTimerBtn {
+
+    background: #e2e8f0;
+
+    color: #1e293b;
+
+}
+
+
+#finishStudyTimerBtn {
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark .study-timer-panel {
+
+    background: #1e293b;
+
+    border-color: #334155;
+
+}
+
+
+body.dark .study-timer-header h3 {
+
+    color: #f8fafc;
+
+}
+
+
+body.dark .study-timer-header p {
+
+    color: #94a3b8;
+
+}
+
+
+body.dark .study-timer-display {
+
+    color: #60a5fa;
+
+}
+
+
+body.dark #pauseStudyTimerBtn {
+
+    background: #334155;
+
+    color: #f8fafc;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .study-timer-panel {
+
+        bottom: 10px;
+
+        width: calc(100% - 20px);
+
+        padding: 16px;
+
+    }
+
+
+    .study-timer-display {
+
+        font-size: 36px;
+
+    }
+
+
+    .study-timer-actions {
+
+        flex-direction: column;
+
+    }
+
+
+    .study-timer-actions button {
+
+        width: 100%;
+
+    }
+
+}
+/* =========================================================
+   STUDY REPORT RESET BUTTON
+========================================================= */
+
+.study-report-reset-btn {
+
+    border: 1px solid #bfdbfe;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    padding: 8px 13px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.study-report-reset-btn:hover {
+
+    background: #dbeafe;
+
+    border-color: #93c5fd;
+
+    transform: translateY(-1px);
+
+}
+
+
+.study-report-reset-btn:active {
+
+    transform: scale(0.97);
+
+}
+/* =========================================================
+   DARK MODE — STUDY REPORT RESET
+========================================================= */
+
+body.dark .study-report-reset-btn {
+
+    background: #172554;
+
+    border-color: #1d4ed8;
+
+    color: #93c5fd;
+
+}
+
+body.dark .study-report-reset-btn:hover {
+
+    background: #1e3a8a;
+
+    border-color: #2563eb;
+
+}
+
+
+/* =========================================================
+   MOBILE — STUDY REPORT RESET
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .study-report-reset-btn {
+
+        width: 100%;
+
+        padding: 10px;
+
+    }
+
+}
+
+
+/* =========================================================
+   STUDY TIMER — MINIMIZE BUTTON
+========================================================= */
+
+.study-timer-minimize-btn {
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #dbeafe;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    border-radius: 8px;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+.study-timer-minimize-btn:hover {
+
+    background: #dbeafe;
+
+    border-color: #93c5fd;
+
+    transform: translateY(-1px);
+
+}
+
+.study-timer-minimize-btn:active {
+
+    transform: scale(0.94);
+
+}
+
+
+/* =========================================================
+   MINIMIZED TIMER
+========================================================= */
+
+.study-timer-panel.minimized {
+
+    width: auto;
+
+    min-width: 180px;
+
+}
+
+.study-timer-panel.minimized
+.study-timer-content {
+
+    display: none;
+
+}
+
+.study-timer-panel.minimized
+.study-timer-header {
+
+    margin-bottom: 0;
+
+}
+
+
+/* =========================================================
+   DARK MODE — TIMER MINIMIZE
+========================================================= */
+
+body.dark .study-timer-minimize-btn {
+
+    background: #172554;
+
+    border-color: #1e3a8a;
+
+    color: #93c5fd;
+
+}
+
+body.dark .study-timer-minimize-btn:hover {
+
+    background: #1e3a8a;
+
+}
+
+
+/* =========================================================
+   STUDY TIMER — CANCEL BUTTON
+========================================================= */
+
+.study-timer-cancel-btn {
+
+    border: 1px solid #cbd5e1;
+
+    background: #f8fafc;
+
+    color: #64748b;
+
+    padding: 8px 13px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+.study-timer-cancel-btn:hover {
+
+    background: #f1f5f9;
+
+    border-color: #94a3b8;
+
+    color: #475569;
+
+}
+
+.study-timer-cancel-btn:active {
+
+    transform: scale(0.97);
+
+}
+
+
+/* =========================================================
+   DARK MODE — TIMER CANCEL
+========================================================= */
+
+body.dark .study-timer-cancel-btn {
+
+    background: #1e293b;
+
+    border-color: #475569;
+
+    color: #94a3b8;
+
+}
+
+body.dark .study-timer-cancel-btn:hover {
+
+    background: #334155;
+
+    border-color: #64748b;
+
+    color: #cbd5e1;
+
+}
+
+
+/* =========================================================
+   STUDY REPORT NAVIGATION
+========================================================= */
+
+.study-report-navigation {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+}
+
+
+/* =========================================================
+   NAVIGATION BUTTON
+========================================================= */
+
+.study-report-nav-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    min-height: 42px;
+
+    min-width: 112px;
+
+    padding: 9px 16px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    border-radius: 8px;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+
+}
+
+
+/* =========================================================
+   ACTIVE / HOVER
+========================================================= */
+
+.study-report-nav-btn:hover {
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================================================
+   DISABLED STATE
+========================================================= */
+
+.study-report-nav-btn:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+/* =========================================================
+   CURRENT REPORT DATE
+========================================================= */
+
+.study-report-current-date {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    margin: 12px 0 16px;
+
+}
+
+
+/* =========================================================
+   MOBILE — REPORT NAVIGATION
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .study-report-navigation {
+
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 7px;
+
+        margin-top: 10px;
+
+    }
+
+    .study-report-nav-btn {
+
+        flex: 1;
+
+        min-width: 0;
+
+        min-height: 40px;
+
+        padding: 8px 10px;
+
+        font-size: 12px;
+
+    }
+
+}
+
+
+/* =========================================================
+   STUDY ANALYTICS
+========================================================= */
+
+.study-analytics-card {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background:
+        var(--card-bg, #ffffff);
+
+    border:
+        1px solid
+        var(--border-color, #e5e7eb);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.05);
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.study-analytics-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+}
+
+.study-analytics-header h3 {
+
+    margin: 0;
+
+}
+
+.study-analytics-header p {
+
+    margin: 5px 0 0;
+
+    font-size: 13px;
+
+    opacity: 0.65;
+
+}
+
+
+/* =========================================================
+   REFRESH BUTTON
+========================================================= */
+
+.study-analytics-refresh {
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid
+        var(--border-color, #e5e7eb);
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+    transition: 0.2s;
+
+}
+
+.study-analytics-refresh:hover {
+
+    transform: rotate(90deg);
+
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.study-analytics-tabs {
+
+    display: flex;
+
+    gap: 6px;
+
+    margin: 18px 0;
+
+    padding: 5px;
+
+    overflow-x: auto;
+
+    border-radius: 12px;
+
+    background:
+        var(--secondary-bg, #f3f4f6);
+
+}
+
+.study-analytics-tab {
+
+    flex: 1;
+
+    min-width: 80px;
+
+    padding: 9px 12px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+}
+
+.study-analytics-tab.active {
+
+    background:
+        var(--card-bg, #ffffff);
+
+    box-shadow:
+        0 2px 8px
+        rgba(0, 0, 0, 0.08);
+
+}
+
+
+/* =========================================================
+   PANELS
+========================================================= */
+
+.study-analytics-panel {
+
+    display: none;
+
+}
+
+.study-analytics-panel.active {
+
+    display: block;
+
+}
+
+.study-analytics-period {
+
+    margin-bottom: 15px;
+
+    font-size: 13px;
+
+    opacity: 0.65;
+
+}
+
+
+/* =========================================================
+   STAT GRID
+========================================================= */
+
+.study-analytics-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 12px;
+
+}
+
+.study-analytics-stat {
+
+    min-height: 120px;
+
+    padding: 16px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        var(--border-color, #e5e7eb);
+
+    background:
+        var(--secondary-bg, #f8fafc);
+
+}
+
+.study-analytics-stat > span {
+
+    font-size: 22px;
+
+}
+
+.study-analytics-stat small {
+
+    font-size: 12px;
+
+    opacity: 0.7;
+
+}
+
+.study-analytics-stat strong {
+
+    font-size: 23px;
+
+}
+
+
+/* =========================================================
+   HIGHLIGHT
+========================================================= */
+
+.study-analytics-highlight {
+
+    margin-top: 14px;
+
+    margin-bottom: 15px;
+
+    padding: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    border-radius: 14px;
+
+    background:
+        var(--secondary-bg, #f8fafc);
+
+    border:
+        1px solid
+        var(--border-color, #e5e7eb);
+
+}
+
+.study-analytics-highlight > span {
+
+    font-size: 25px;
+
+}
+
+.study-analytics-highlight small {
+
+    display: block;
+
+    font-size: 12px;
+
+    opacity: 0.65;
+
+}
+
+.study-analytics-highlight strong {
+
+    display: block;
+
+    margin-top: 3px;
+
+}
+
+
+/* =========================================================
+   HIGHLIGHTS — HORIZONTAL
+========================================================= */
+
+.study-analytics-highlight > div {
+
+    flex: 1;
+
+    min-width: 180px;
+
+    padding: 16px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        var(--border-color, #e5e7eb);
+
+}
+
+.study-analytics-highlight span {
+
+    display: block;
+
+    font-size: 13px;
+
+    opacity: .7;
+
+}
+
+.study-analytics-highlight strong {
+
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 17px;
+
+}
+
+
+/* =========================================================
+   SUBJECT SUMMARY
+========================================================= */
+
+.study-analytics-subject-summary {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+}
+
+.study-analytics-subject-summary
+.study-analytics-highlight {
+
+    margin-top: 0;
+
+}
+
+
+/* =========================================================
+   FINAL ANALYTICS SECTION
+========================================================= */
+
+.study-analytics-section {
+
+    margin-top: 20px;
+
+}
+
+.study-analytics-section h4 {
+
+    margin-bottom: 12px;
+
+}
+
+
+/* =========================================================
+   ANALYTICS GRID
+========================================================= */
+
+.study-analytics-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(150px, 1fr)
+        );
+
+    gap: 12px;
+
+}
+
+
+/* =========================================================
+   ANALYTICS STAT CARD
+========================================================= */
+
+.analytics-stat-card {
+
+    padding: 16px;
+
+    border-radius: 14px;
+
+    background:
+        var(--card-bg, #ffffff);
+
+    border:
+        1px solid
+        var(--border-color, #e5e7eb);
+
+}
+
+.analytics-stat-card span {
+
+    display: block;
+
+    font-size: 13px;
+
+    opacity: .7;
+
+    margin-bottom: 7px;
+
+}
+
+.analytics-stat-card strong {
+
+    display: block;
+
+    font-size: 21px;
+
+}
+
+
+/* =========================================================
+   SUBJECT TABLE
+========================================================= */
+
+.study-subject-table-wrapper {
+
+    margin-top: 15px;
+
+    overflow-x: auto;
+
+}
+
+.study-subject-table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 600px;
+
+}
+
+.study-subject-table th,
+.study-subject-table td {
+
+    padding: 12px;
+
+    text-align: left;
+
+    border-bottom:
+        1px solid
+        var(--border-color, #e5e7eb);
+
+}
+
+.study-subject-table th {
+
+    font-size: 12px;
+
+    opacity: 0.7;
+
+}
+
+.study-subject-time {
+
+    font-weight: 600;
+
+}
+
+.study-subject-progress {
+
+    min-width: 100px;
+
+}
+
+.study-subject-progress-track {
+
+    height: 7px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: #e5e7eb;
+
+}
+
+.study-subject-progress-fill {
+
+    height: 100%;
+
+    border-radius: inherit;
+
+}
+
+
+/* =========================================================
+   SUBJECT ANALYTICS — PROGRESS BAR
+   TEAL / CYAN THEME
+========================================================= */
+
+.study-analytics-subject-row {
+
+    padding: 13px 0;
+
+    border-bottom:
+        1px solid
+        var(--border-color, #e5e7eb);
+
+}
+
+.study-analytics-subject-info {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+}
+
+.study-analytics-subject-meta {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 12px;
+
+    opacity: .7;
+
+    margin-top: 5px;
+
+}
+
+.study-analytics-subject-bar {
+
+    height: 7px;
+
+    margin-top: 8px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: #e2e8f0;
+
+}
+
+.study-analytics-subject-bar div {
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #06b6d4,
+            #14b8a6
+        );
+
+    transition:
+        width 0.4s ease;
+
+}
+
+
+/* =========================================================
+   CHART CARDS
+========================================================= */
+
+
+.study-analytics-chart-card {
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+/* Dark Mode */
+body.dark .study-analytics-chart-card,
+body.dark-mode .study-analytics-chart-card,
+.dark .study-analytics-chart-card {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+.study-analytics-chart-card h4 {
+    margin: 0 0 18px;
+}
+
+
+/* =========================================================
+   CHART GRID
+========================================================= */
+
+.study-analytics-chart-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 15px;
+
+}
+
+.study-analytics-chart-grid
+.study-analytics-chart-card {
+
+    margin-bottom: 0;
+
+}
+
+
+/* =========================================================
+   WEEKLY BAR CHART
+========================================================= */
+
+.study-weekly-chart {
+
+    height: 230px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 10px;
+
+    padding: 10px 4px;
+
+}
+
+.study-chart-bar-wrapper {
+
+    flex: 1;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 6px;
+
+}
+
+.study-chart-bar {
+
+    width: min(42px, 70%);
+
+    min-height: 2px;
+
+    border-radius:
+        7px 7px 3px 3px;
+
+    background:
+        var(--accent-color, #6366f1);
+
+    transition:
+        height 0.3s;
+
+}
+
+.study-chart-value {
+
+    font-size: 10px;
+
+    opacity: 0.7;
+
+}
+
+.study-chart-label {
+
+    font-size: 11px;
+
+    opacity: 0.75;
+
+}
+
+
+/* =========================================================
+   FINAL WEEKLY STUDY CHART
+========================================================= */
+
+.weekly-study-chart {
+
+    height: 220px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+}
+
+.study-chart-column {
+
+    flex: 1;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+}
+
+.study-chart-column .study-chart-value {
+
+    font-size: 10px;
+
+    margin-bottom: 5px;
+
+    min-height: 14px;
+
+}
+
+.study-chart-column .study-chart-bar {
+
+    width: 70%;
+
+    min-height: 3px;
+
+    border-radius:
+        7px 7px 2px 2px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+}
+
+.study-chart-column span {
+
+    margin-top: 7px;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   MONTHLY LINE / TREND
+========================================================= */
+
+.study-monthly-chart {
+
+    height: 230px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 5px;
+
+    overflow-x: auto;
+
+    padding: 10px 3px;
+
+}
+
+.study-monthly-point-wrapper {
+
+    min-width: 34px;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+}
+
+.study-monthly-point {
+
+    width: 12px;
+
+    height: 12px;
+
+    border-radius: 50%;
+
+    background:
+        var(--accent-color, #6366f1);
+
+}
+
+.study-monthly-column {
+
+    width: 3px;
+
+    flex: 1;
+
+    max-height: 180px;
+
+    background:
+        var(--accent-color, #6366f1);
+
+    opacity: 0.35;
+
+}
+
+.study-monthly-label {
+
+    margin-top: 6px;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   MONTHLY STUDY TREND
+========================================================= */
+
+.monthly-study-trend {
+
+    height: 180px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 2px;
+
+    overflow-x: auto;
+
+}
+
+.study-trend-column {
+
+    flex: 1;
+
+    min-width: 8px;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: flex-end;
+
+}
+
+.study-trend-bar {
+
+    width: 100%;
+
+    min-height: 2px;
+
+    border-radius:
+        4px 4px 0 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #22c55e,
+            #16a34a
+        );
+
+}
+
+
+/* =========================================================
+   SUBJECT PIE
+========================================================= */
+
+.study-subject-pie {
+
+    width: 210px;
+
+    height: 210px;
+
+    margin: 10px auto 20px;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            #e5e7eb 0deg 360deg
+        );
+
+    position: relative;
+
+}
+
+.study-subject-pie::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 27%;
+
+    border-radius: 50%;
+
+    background:
+        var(--card-bg, #ffffff);
+
+}
+
+
+/* =========================================================
+   SUBJECT DISTRIBUTION PIE
+========================================================= */
+
+.study-pie-wrapper {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+
+}
+
+.subject-distribution-pie {
+
+    width: 210px;
+
+    height: 210px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    position: relative;
+
+}
+
+.subject-distribution-pie::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 28%;
+
+    border-radius: 50%;
+
+    background:
+        var(--card-bg, #ffffff);
+
+}
+
+
+/* =========================================================
+   SUBJECT PIE LEGEND
+========================================================= */
+
+.study-subject-pie-legend {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+}
+
+.study-subject-pie-legend-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 12px;
+
+}
+
+.study-subject-pie-legend-color {
+
+    width: 10px;
+
+    height: 10px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+}
+
+.study-subject-pie-legend-value {
+
+    margin-left: auto;
+
+    font-weight: 600;
+
+}
+
+.subject-distribution-legend {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+.study-pie-legend-row {
+
+    display: grid;
+
+    grid-template-columns:
+        12px
+        1fr
+        auto;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 13px;
+
+}
+
+.study-pie-dot {
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+}
+
+
+/* =========================================================
+   SUBJECT COMPARISON
+   TEAL / CYAN THEME
+========================================================= */
+
+.study-subject-comparison {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+.subject-study-comparison {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+.study-comparison-row {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(90px, 140px)
+        1fr
+        60px;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+.study-comparison-name {
+
+    font-size: 13px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+.study-comparison-track {
+
+    height: 9px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: #e2e8f0;
+
+}
+
+.study-comparison-fill {
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #14b8a6,
+            #06b6d4
+        );
+
+    transition:
+        width 0.4s ease;
+
+}
+
+.study-comparison-value {
+
+    text-align: right;
+
+    font-size: 12px;
+
+    opacity: .8;
+
+}
+
+
+/* =========================================================
+   STREAK
+========================================================= */
+
+.study-streak-card {
+
+    margin-top: 15px;
+
+    padding: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        var(--border-color, #e5e7eb);
+
+}
+
+.study-streak-icon {
+
+    font-size: 30px;
+
+}
+
+.study-streak-card small {
+
+    display: block;
+
+    font-size: 12px;
+
+    opacity: 0.65;
+
+}
+
+.study-streak-card strong {
+
+    font-size: 20px;
+
+}
+
+
+/* =========================================================
+   DARK MODE — STUDY ANALYTICS
+========================================================= */
+
+body.dark .study-analytics-card {
+
+    background:
+        var(--card-bg, #0f172a);
+
+    border-color:
+        var(--border-color, #334155);
+
+}
+
+body.dark .study-analytics-stat {
+
+    background: #1e293b;
+
+    border-color: #334155;
+
+}
+
+body.dark .analytics-stat-card {
+
+    background: #1e293b;
+
+    border-color: #334155;
+
+}
+
+body.dark .study-analytics-chart-card {
+
+    background: #1e293b;
+
+    border-color: #334155;
+
+}
+
+body.dark .study-analytics-highlight {
+
+    background: #1e293b;
+
+    border-color: #334155;
+
+}
+
+body.dark .study-analytics-highlight > div {
+
+    background: #1e293b;
+
+    border-color: #334155;
+
+}
+
+body.dark .study-analytics-tabs {
+
+    background: #1e293b;
+
+}
+
+body.dark .study-analytics-tab.active {
+
+    background: #334155;
+
+}
+
+body.dark .study-subject-pie::after,
+body.dark .subject-distribution-pie::after {
+
+    background:
+        var(--card-bg, #0f172a);
+
+}
+
+body.dark .study-analytics-subject-bar,
+body.dark .study-comparison-track {
+
+    background: #334155;
+
+}
+
+body.dark .study-streak-card {
+
+    background: #1e293b;
+
+    border-color: #334155;
+
+}
+
+
+/* =========================================================
+   DARK MODE — SUBJECT ANALYTICS COLORS
+========================================================= */
+
+body.dark .study-analytics-subject-bar div {
+
+    background:
+        linear-gradient(
+            90deg,
+            #22d3ee,
+            #2dd4bf
+        );
+
+}
+
+body.dark .study-comparison-fill {
+
+    background:
+        linear-gradient(
+            90deg,
+            #2dd4bf,
+            #22d3ee
+        );
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — 800px
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .study-analytics-stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .study-analytics-chart-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — 600px
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .study-analytics-card {
+
+        padding: 14px;
+
+    }
+
+    .study-analytics-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .study-analytics-stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 8px;
+
+    }
+
+    .study-analytics-stat {
+
+        min-height: 105px;
+
+        padding: 12px;
+
+    }
+
+    .study-analytics-stat strong {
+
+        font-size: 19px;
+
+    }
+
+    .study-analytics-subject-summary {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .study-pie-wrapper {
+
+        flex-direction: column;
+
+    }
+
+    .subject-distribution-pie {
+
+        width: 180px;
+
+        height: 180px;
+
+    }
+
+    .study-comparison-row {
+
+        grid-template-columns:
+            80px
+            1fr
+            45px;
+
+        gap: 8px;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — 500px
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .study-analytics-card {
+
+        padding: 14px;
+
+    }
+
+    .study-analytics-stats {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 8px;
+
+    }
+
+    .study-analytics-stat {
+
+        min-height: 105px;
+
+        padding: 12px;
+
+    }
+
+    .study-analytics-stat strong {
+
+        font-size: 19px;
+
+    }
+
+    .study-analytics-subject-summary {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+/* =========================================================
+   WEEKLY STUDY CHART - FIXED
+   ========================================================= */
+
+
+
+/* চার্ট কন্টেইনার */
+
+#weeklyStudyChart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 200px;
+    padding: 10px 0;
+    gap: 4px;
+    width: 100%;
+
+    /* ✅ Light Mode: সাদা background */
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+
+/* প্রতিটি কলাম */
+#weeklyStudyChart .study-chart-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    justify-content: flex-end;
+    min-width: 0;
+}
+
+/* ভ্যালু টেক্সট (শীর্ষে) */
+#weeklyStudyChart .study-chart-value {
+    font-size: 10px;
+    color: #6b7280;
+    margin-bottom: 4px;
+    min-height: 20px;
+    text-align: center;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* বার এরিয়া */
+#weeklyStudyChart .study-chart-bar-area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 20px;
+}
+
+/* মূল বার - গ্রেডিয়েন্ট রঙ */
+#weeklyStudyChart .study-chart-bar {
+    width: 70%;
+    max-width: 40px;
+    min-width: 8px;
+    min-height: 2px;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.3s ease;
+    /* গ্রেডিয়েন্ট রঙ - নিচ থেকে উপরে */
+    background: linear-gradient(
+        180deg,
+        #6366f1,
+        #8b5cf6
+    );
+}
+
+/* বার হোভার ইফেক্ট */
+#weeklyStudyChart .study-chart-bar:hover {
+    opacity: 0.8;
+    transform: scaleY(1.03);
+    transform-origin: bottom;
+}
+
+/* লেবেল (নিচের দিনের নাম) */
+#weeklyStudyChart .study-chart-label {
+    font-size: 11px;
+    color: #6b7280;
+    margin-top: 6px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* =========================================================
+   DARK MODE - WEEKLY CHART
+   ========================================================= */
+
+/*body.dark #weeklyStudyChart .study-chart-value,
+body.dark-mode #weeklyStudyChart .study-chart-value,
+.dark #weeklyStudyChart .study-chart-value {
+    color: #9ca3af;
+}
+
+body.dark #weeklyStudyChart .study-chart-label,
+body.dark-mode #weeklyStudyChart .study-chart-label,
+.dark #weeklyStudyChart .study-chart-label {
+    color: #9ca3af;
+}
+
+body.dark #weeklyStudyChart .study-chart-bar,
+body.dark-mode #weeklyStudyChart .study-chart-bar,
+.dark #weeklyStudyChart .study-chart-bar {
+    background: linear-gradient(
+        180deg,
+        #818cf8,
+        #a78bfa
+    );
+}*/
+
+/* =========================================================
+   RESPONSIVE - WEEKLY CHART
+   ========================================================= */
+
+@media (max-width: 600px) {
+    #weeklyStudyChart {
+        height: 170px;
+        gap: 3px;
+        padding: 8px 0;
+    }
+    
+    #weeklyStudyChart .study-chart-value {
+        font-size: 9px;
+        min-height: 16px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar {
+        max-width: 30px;
+        min-width: 6px;
+    }
+    
+    #weeklyStudyChart .study-chart-label {
+        font-size: 10px;
+        margin-top: 4px;
+    }
+}
+
+@media (max-width: 400px) {
+    #weeklyStudyChart {
+        height: 150px;
+        gap: 2px;
+    }
+    
+    #weeklyStudyChart .study-chart-value {
+        font-size: 8px;
+        min-height: 14px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar {
+        max-width: 24px;
+        min-width: 4px;
+        min-height: 1px;
+    }
+    
+    #weeklyStudyChart .study-chart-label {
+        font-size: 8px;
+        margin-top: 3px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    #weeklyStudyChart .study-chart-bar {
+        transition: none;
+    }
+}
+/* =========================================================
+   SUBJECT DELETE BUTTON
+   ========================================================= */
+
+.study-analytics-subject-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--card-bg, #ffffff);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.study-analytics-subject-row:hover {
+    background: var(--hover-bg, #f8fafc);
+    border-color: var(--primary-color, #6366f1);
+}
+
+.study-analytics-subject-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.study-analytics-subject-info strong {
+    font-weight: 600;
+    color: var(--text-primary, #1e293b);
+}
+
+.study-analytics-subject-info span {
+    color: var(--text-secondary, #64748b);
+    font-size: 0.85rem;
+}
+
+.study-analytics-subject-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 0.8rem;
+    color: var(--text-secondary, #64748b);
+}
+
+.study-analytics-subject-bar {
+    flex: 1;
+    min-width: 80px;
+    height: 6px;
+    background: var(--bar-bg, #e5e7eb);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.study-analytics-subject-bar div {
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #22c55e);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+/* =========================================================
+   DELETE BUTTON
+   ========================================================= */
+
+.study-subject-delete-btn {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: #94a3b8;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    opacity: 0.4;
+}
+
+.study-subject-delete-btn:hover {
+    background: #fee2e2;
+    color: #ef4444;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.study-subject-delete-btn:active {
+    transform: scale(0.9);
+}
+
+/* Dark mode support */
+.dark .study-analytics-subject-row {
+    background: var(--card-bg-dark, #1e293b);
+    border-color: var(--border-color-dark, #334155);
+}
+
+.dark .study-analytics-subject-row:hover {
+    background: var(--hover-bg-dark, #2d3748);
+}
+
+.dark .study-analytics-subject-info strong {
+    color: var(--text-primary-dark, #f1f5f9);
+}
+
+.dark .study-subject-delete-btn:hover {
+    background: #451a1a;
+    color: #f87171;
+}
+/* =========================================================
+   STUDY ANALYTICS - COMPLETE CSS WITH DARK MODE FIXES
+   ========================================================= */
+
+/* =========================================================
+   SUBJECT DISTRIBUTION - BIGGER & CENTERED
+   ========================================================= */
+
+.study-pie-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 16px 0;
+    width: 100%;
+}
+
+/* BIGGER PIE CHART - CENTERED */
+.subject-distribution-pie {
+    width: 220px !important;
+    height: 220px !important;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+    margin: 0 auto;
+}
+
+/* LEGEND - Grid Layout */
+.subject-distribution-legend {
+    width: 100%;
+    max-width: 500px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 6px 16px;
+    padding: 8px 0;
+    margin: 0 auto;
+}
+
+.study-pie-legend-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    font-size: 0.9rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+}
+
+.study-pie-legend-row:hover {
+    background: #f1f5f9;
+    border-color: #6366f1;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.1);
+}
+
+.study-pie-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.study-pie-subject-name {
+    flex: 1;
+    color: #1e293b;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.study-pie-legend-row strong {
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 600;
+    min-width: 45px;
+    text-align: right;
+}
+
+/* DELETE BUTTONS */
+.study-subject-delete-btn {
+    width: 26px;
+    height: 26px;
+    border: none;
+    background: transparent;
+    color: #94a3b8;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    opacity: 0.3;
+}
+
+.study-subject-delete-btn:hover {
+    background: #fee2e2;
+    color: #ef4444;
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+/* SUBJECT COMPARISON */
+.study-comparison-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.study-comparison-row:hover {
+    background: #f1f5f9;
+}
+
+.study-comparison-name {
+    min-width: 80px;
+    font-weight: 500;
+    color: #1e293b;
+    font-size: 0.85rem;
+}
+
+.study-comparison-track {
+    flex: 1;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.study-comparison-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #22c55e);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.study-comparison-value {
+    min-width: 60px;
+    text-align: right;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+/* =========================================================
+   STUDY ANALYTICS CARDS
+   ========================================================= */
+
+.study-analytics-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: background 0.3s ease, border-color 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.study-analytics-section {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e7eb;
+    transition: border-color 0.3s ease;
+}
+
+.study-analytics-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.study-analytics-section h3,
+.study-analytics-section h4 {
+    color: #1e293b;
+    font-weight: 600;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+/* STAT CARDS */
+.analytics-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+}
+
+.analytics-stat-card {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 12px 14px;
+    border: 1px solid #e5e7eb;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.analytics-stat-card .label {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.analytics-stat-card .value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-top: 2px;
+    transition: color 0.3s ease;
+}
+
+/* HIGHLIGHTS */
+.study-analytics-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.study-analytics-highlight {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.study-analytics-highlight .label {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.study-analytics-highlight .value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-top: 2px;
+    transition: color 0.3s ease;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .subject-distribution-pie {
+        width: 180px !important;
+        height: 180px !important;
+    }
+    
+    .subject-distribution-legend {
+        grid-template-columns: 1fr 1fr;
+        gap: 4px 10px;
+    }
+    
+    .study-pie-legend-row {
+        font-size: 0.8rem;
+        padding: 4px 10px;
+    }
+    
+    .study-pie-dot {
+        width: 14px;
+        height: 14px;
+    }
+
+    .analytics-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .study-analytics-highlights {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .study-analytics-card {
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .subject-distribution-pie {
+        width: 150px !important;
+        height: 150px !important;
+    }
+    
+    .subject-distribution-legend {
+        grid-template-columns: 1fr;
+    }
+
+    .analytics-stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+
+    .study-analytics-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .analytics-stat-card {
+        padding: 10px;
+    }
+
+    .analytics-stat-card .value {
+        font-size: 0.95rem;
+    }
+
+    .study-analytics-card {
+        padding: 10px;
+        border-radius: 10px;
+    }
+}
+
+/* =========================================================
+   DARK MODE - COMPLETE FIXES
+   ========================================================= */
+
+/* Dark Mode - Main Container */
+.dark .study-analytics-card {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.dark .study-analytics-section {
+    border-bottom-color: #334155;
+}
+
+.dark .study-analytics-section h3,
+.dark .study-analytics-section h4 {
+    color: #f1f5f9;
+}
+
+/* Dark Mode - Stat Cards */
+.dark .analytics-stat-card {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+.dark .analytics-stat-card .label {
+    color: #94a3b8;
+}
+
+.dark .analytics-stat-card .value {
+    color: #f1f5f9;
+}
+
+/* Dark Mode - Highlights */
+.dark .study-analytics-highlight {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+.dark .study-analytics-highlight .label {
+    color: #94a3b8;
+}
+
+.dark .study-analytics-highlight .value {
+    color: #f1f5f9;
+}
+
+/* Dark Mode - Legend */
+.dark .study-pie-legend-row {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+.dark .study-pie-legend-row:hover {
+    background: #2d3748;
+    border-color: #6366f1;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+}
+
+.dark .study-pie-subject-name {
+    color: #f1f5f9;
+}
+
+.dark .study-pie-legend-row strong {
+    color: #94a3b8;
+}
+
+/* Dark Mode - Comparison */
+.dark .study-comparison-row {
+    border-bottom-color: #334155;
+}
+
+.dark .study-comparison-row:hover {
+    background: #2d3748;
+}
+
+.dark .study-comparison-name {
+    color: #f1f5f9;
+}
+
+.dark .study-comparison-track {
+    background: #334155;
+}
+
+.dark .study-comparison-value {
+    color: #94a3b8;
+}
+
+/* Dark Mode - Delete Buttons */
+.dark .study-subject-delete-btn {
+    color: #64748b;
+    opacity: 0.5;
+}
+
+.dark .study-subject-delete-btn:hover {
+    background: #451a1a;
+    color: #f87171;
+    opacity: 1;
+}
+
+/* Dark Mode - Empty State */
+.dark .empty-state {
+    color: #94a3b8 !important;
+}
+
+/* =========================================================
+   DARK MODE - SUBJECT ANALYTICS (FIXED)
+   ========================================================= */
+
+/* Subject Analytics Container */
+.dark #studySubjectAnalytics {
+    background: transparent;
+}
+
+/* Subject Row - Dark Mode */
+.dark .study-analytics-subject-row {
+    background: #0f172a !important;
+    border-bottom-color: #334155 !important;
+    border-radius: 8px !important;
+    margin-bottom: 4px !important;
+    padding: 12px 14px !important;
+}
+
+.dark .study-analytics-subject-row:hover {
+    background: #2d3748 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Subject Name - Dark Mode */
+.dark .study-analytics-subject-info strong {
+    color: #f1f5f9 !important;
+    font-size: 0.95rem !important;
+}
+
+.dark .study-analytics-subject-info span {
+    color: #94a3b8 !important;
+}
+
+/* Subject Meta - Dark Mode */
+.dark .study-analytics-subject-meta span {
+    background: #1e293b !important;
+    color: #94a3b8 !important;
+    padding: 2px 10px !important;
+    border-radius: 12px !important;
+}
+
+/* Subject Bar - Dark Mode */
+.dark .study-analytics-subject-bar {
+    background: #334155 !important;
+}
+
+/* Select All Container - Dark Mode */
+.dark .study-analytics-select-all-container {
+    background: #0f172a !important;
+    border-color: #334155 !important;
+}
+
+.dark .study-analytics-select-all-container label {
+    color: #f1f5f9 !important;
+}
+
+/* Selected Count - Dark Mode */
+.dark #selectedCount {
+    color: #94a3b8 !important;
+}
+
+/* Delete Selected Button - Dark Mode */
+.dark .study-delete-selected-btn {
+    background: #ef4444 !important;
+    color: white !important;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3) !important;
+}
+
+.dark .study-delete-selected-btn:hover {
+    background: #dc2626 !important;
+    box-shadow: 0 2px 12px rgba(239, 68, 68, 0.5) !important;
+}
+
+/* Checkbox - Dark Mode */
+.dark input[type="checkbox"] {
+    accent-color: #6366f1;
+    background: #0f172a !important;
+    border: 2px solid #334155 !important;
+    border-radius: 4px !important;
+    width: 18px !important;
+    height: 18px !important;
+    cursor: pointer !important;
+}
+
+.dark input[type="checkbox"]:checked {
+    background: #6366f1 !important;
+    border-color: #6366f1 !important;
+}
+
+.dark input[type="checkbox"]:hover {
+    border-color: #818cf8 !important;
+}
+/* =========================================================
+   DARK MODE - SUBJECT COMPARISON (FIXED)
+   ========================================================= */
+
+/* Comparison Container */
+.dark #subjectStudyComparison {
+    background: transparent;
+}
+
+/* Comparison Row - Dark Mode */
+.dark .study-comparison-row {
+    background: rgb(15, 23, 42) !important;
+    border-bottom-color: rgb(51, 65, 85) !important;
+    border-radius: 8px !important;
+    padding: 10px 14px !important;
+    margin-bottom: 4px !important;
+}
+
+.dark .study-comparison-row:hover {
+    background: rgb(45, 55, 72) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Comparison Name - Dark Mode - FIXED FOR BETTER VISIBILITY */
+.dark .study-comparison-name {
+    color: rgb(255, 255, 255) !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Comparison Track - Dark Mode */
+.dark .study-comparison-track {
+    background: rgb(51, 65, 85) !important;
+    height: 10px !important;
+    border-radius: 6px !important;
+}
+
+/* Comparison Fill - Dark Mode */
+.dark .study-comparison-fill {
+    border-radius: 6px !important;
+}
+
+/* Comparison Value - Dark Mode */
+.dark .study-comparison-value {
+    color: rgb(226, 232, 240) !important;
+    font-weight: 600 !important;
+}
+
+/* =========================================================
+   DARK MODE - GENERAL FIXES
+   ========================================================= */
+
+/* Scrollbar - Dark Mode */
+.dark ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: rgb(15, 23, 42);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: rgb(51, 65, 85);
+    border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: rgb(71, 85, 105);
+}
+
+/* General Text - Dark Mode */
+.dark {
+    color-scheme: dark;
+}
+
+.dark body,
+.dark .study-analytics-wrapper,
+.dark .study-tasks-wrapper,
+.dark .study-report-wrapper {
+    background: rgb(15, 23, 42);
+}
+
+.dark p,
+.dark span,
+.dark div:not([class*="bg-"]):not([class*="text-"]) {
+    color: rgb(226, 232, 240);
+}
+
+.dark .text-muted,
+.dark .text-secondary {
+    color: rgb(148, 163, 184) !important;
+}
+
+/* Chart Labels - Dark Mode */
+.dark .study-chart-label {
+    color: rgb(148, 163, 184) !important;
+}
+
+.dark .study-chart-value {
+    color: rgb(148, 163, 184) !important;
+}
+
+/* Chart Card Headers - Dark Mode */
+.dark .study-chart-card h3,
+.dark .study-chart-card h4,
+.dark .study-chart-card h5 {
+    color: rgb(255, 255, 255) !important;
+}
+
+/* Toast - Dark Mode */
+.dark #toast {
+    color: rgb(255, 255, 255) !important;
+}
+
+/* Chart Bars Empty - Dark Mode */
+.dark .study-chart-bar {
+    background: rgb(51, 65, 85) !important;
+}
+
+/* Study Analytics Section Title - Dark Mode */
+.dark .study-analytics-section .section-title {
+    color: rgb(255, 255, 255) !important;
+}
+
+/* Highlight Labels - Dark Mode */
+.dark .study-analytics-highlight .highlight-label {
+    color: rgb(148, 163, 184) !important;
+}
+
+.dark .study-analytics-highlight .highlight-value {
+    color: rgb(255, 255, 255) !important;
+}
+
+/* Study Analytics Stats - Dark Mode */
+.dark .analytics-stat-card .stat-label {
+    color: rgb(148, 163, 184) !important;
+}
+
+.dark .analytics-stat-card .stat-value {
+    color: rgb(255, 255, 255) !important;
+}
+
+/* Subject Distribution Legend - Dark Mode */
+.dark .subject-distribution-legend {
+    background: transparent !important;
+}
+
+/* Empty State Text - Dark Mode */
+.dark .empty-state {
+    color: rgb(148, 163, 184) !important;
+}
+
+/* =========================================================
+   DARK MODE - SUBJECT DISTRIBUTION PIE CHART LEGEND - FIXED
+   ========================================================= */
+
+/* Subject Name - Dark Mode - MAXIMUM VISIBILITY */
+.dark .study-pie-legend-row .study-pie-subject-name {
+    color: rgb(255, 255, 255) !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+    letter-spacing: 0.3px !important;
+}
+
+.dark .study-pie-legend-row strong {
+    color: rgb(226, 232, 240) !important;
+    font-weight: 600 !important;
+}
+
+.dark .study-pie-legend-row .study-subject-delete-btn {
+    color: rgb(148, 163, 184) !important;
+}
+
+.dark .study-pie-legend-row .study-subject-delete-btn:hover {
+    background: rgb(69, 26, 26) !important;
+    color: rgb(248, 113, 113) !important;
+}
+
+/* =========================================================
+   DARK MODE - PIE CHART
+   ========================================================= */
+
+.dark .subject-distribution-pie {
+    box-shadow: 0 4px 24px rgba(99, 102, 241, 0.15) !important;
+}
+
+/* =========================================================
+   DARK MODE - SUBJECT ANALYTICS HEADER
+   ========================================================= */
+
+.dark #analyticsMostStudiedSubject,
+.dark #analyticsLeastStudiedSubject {
+    color: rgb(255, 255, 255) !important;
+}
+
+.dark .study-analytics-highlight .highlight-label {
+    color: rgb(148, 163, 184) !important;
+}
+
+/* =========================================================
+   DARK MODE - BUTTONS IN ANALYTICS
+   ========================================================= */
+
+.dark .study-subject-delete-btn {
+    background: transparent !important;
+    border: none !important;
+    color: rgb(148, 163, 184) !important;
+}
+
+.dark .study-subject-delete-btn:hover {
+    background: rgb(69, 26, 26) !important;
+    color: rgb(248, 113, 113) !important;
+}
+
+
+
+
+
+/* =========================================================
+   DARK MODE - SELECT ALL CHECKBOX CONTAINER
+   ========================================================= */
+
+.dark .study-analytics-select-all-container {
+    background: rgb(15, 23, 42) !important;
+    border-color: rgb(51, 65, 85) !important;
+    border-radius: 10px !important;
+}
+
+.dark .study-analytics-select-all-container label {
+    color: rgb(255, 255, 255) !important;
+}
+
+.dark #selectedCount {
+    color: rgb(148, 163, 184) !important;
+}
+
+/* =========================================================
+   DARK MODE - INPUT PLACEHOLDERS
+   ========================================================= */
+
+.dark ::placeholder {
+    color: rgb(100, 116, 139) !important;
+}
+
+/* =========================================================
+   DARK MODE - SELECT DROPDOWN
+   ========================================================= */
+
+.dark select option {
+    background: rgb(30, 41, 59) !important;
+    color: rgb(255, 255, 255) !important;
+}
+
+/* =========================================================
+   DARK MODE - RANGE INPUT
+   ========================================================= */
+
+.dark input[type="range"] {
+    accent-color: rgb(99, 102, 241);
+    background: rgb(51, 65, 85) !important;
+}
+
+/* =========================================================
+   DARK MODE - SCROLLABLE CONTAINER
+   ========================================================= */
+
+.dark .study-tasks-container::-webkit-scrollbar-thumb {
+    background: rgb(51, 65, 85);
+}
+
+.dark .study-tasks-container::-webkit-scrollbar-thumb:hover {
+    background: rgb(71, 85, 105);
+}
+
+
+/* =========================================================
+   DARK MODE - SUBJECT DISTRIBUTION LEGEND (FIXED)
+   ========================================================= */
+
+/* Legend Container - Dark Mode */
+.dark .subject-distribution-legend {
+    background: transparent !important;
+}
+
+/* Legend Row - Dark Mode */
+.dark .study-pie-legend-row {
+    background: rgb(30, 41, 59) !important;
+    border-color: rgb(51, 65, 85) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+    padding: 10px 14px !important;
+    border-radius: 8px !important;
+    margin-bottom: 4px !important;
+}
+
+.dark .study-pie-legend-row:hover {
+    background: rgb(45, 55, 72) !important;
+    border-color: rgb(99, 102, 241) !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Subject Name - Dark Mode - MAXIMUM VISIBILITY */
+.dark .study-pie-legend-row .study-pie-subject-name {
+    color: rgb(255, 255, 255) !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Percentage - Dark Mode */
+.dark .study-pie-legend-row strong {
+    color: rgb(226, 232, 240) !important;
+    font-weight: 600 !important;
+}
+
+/* Delete Button - Dark Mode */
+.dark .study-pie-legend-row .study-subject-delete-btn {
+    color: rgb(148, 163, 184) !important;
+    opacity: 0.6 !important;
+}
+
+.dark .study-pie-legend-row .study-subject-delete-btn:hover {
+    background: rgb(69, 26, 26) !important;
+    color: rgb(248, 113, 113) !important;
+    opacity: 1 !important;
+}
+
+/* Dot - Dark Mode */
+.dark .study-pie-dot {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Empty State - Dark Mode */
+.dark .empty-state {
+    color: rgb(148, 163, 184) !important;
+}
+
+/* =========================================================
+   DARK MODE - SUBJECT COMPARISON (FIXED FOR VISIBILITY)
+   ========================================================= */
+
+.dark .study-comparison-row {
+    background: rgb(15, 23, 42) !important;
+    border-bottom-color: rgb(51, 65, 85) !important;
+    border-radius: 8px !important;
+    padding: 10px 14px !important;
+    margin-bottom: 4px !important;
+}
+
+.dark .study-comparison-row:hover {
+    background: rgb(45, 55, 72) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Subject Name - Dark Mode - MAXIMUM VISIBILITY */
+.dark .study-comparison-name {
+    color: rgb(255, 255, 255) !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Comparison Track - Dark Mode */
+.dark .study-comparison-track {
+    background: rgb(51, 65, 85) !important;
+    height: 10px !important;
+    border-radius: 6px !important;
+}
+
+/* Comparison Value - Dark Mode */
+.dark .study-comparison-value {
+    color: rgb(226, 232, 240) !important;
+    font-weight: 600 !important;
+}
+
+/* =========================================================
+   DARK MODE - SUBJECT ANALYTICS ROWS (FIXED)
+   ========================================================= */
+
+.dark .study-analytics-subject-row {
+    background: rgb(15, 23, 42) !important;
+    border-bottom-color: rgb(51, 65, 85) !important;
+    border-radius: 8px !important;
+    margin-bottom: 4px !important;
+    padding: 12px 14px !important;
+}
+
+.dark .study-analytics-subject-row:hover {
+    background: rgb(45, 55, 72) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .study-analytics-subject-info strong {
+    color: rgb(255, 255, 255) !important;
+    font-size: 0.95rem !important;
+}
+
+.dark .study-analytics-subject-info span {
+    color: rgb(148, 163, 184) !important;
+}
+
+.dark .study-analytics-subject-meta span {
+    background: rgb(30, 41, 59) !important;
+    color: rgb(226, 232, 240) !important;
+    padding: 2px 10px !important;
+    border-radius: 12px !important;
+}
+
+.dark .study-analytics-subject-bar {
+    background: rgb(51, 65, 85) !important;
+}
+
+/* =========================================================
+   DARK MODE - SELECT ALL CONTAINER (FIXED)
+   ========================================================= */
+
+.dark .study-analytics-select-all-container {
+    background: rgb(15, 23, 42) !important;
+    border-color: rgb(51, 65, 85) !important;
+}
+
+.dark .study-analytics-select-all-container label {
+    color: rgb(255, 255, 255) !important;
+}
+
+.dark #selectedCount {
+    color: rgb(148, 163, 184) !important;
+}
+
+/* =========================================================
+   STUDY TASK PROGRESS CHART - BIGGER SIZE
+   ========================================================= */
+
+/* Study Progress Container - Bigger */
+.study-progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px 0;
+    flex-wrap: wrap;
+}
+
+/* Bigger Pie Chart */
+.study-progress-pie-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+}
+
+#studyProgressPie {
+    width: 180px !important;
+    height: 180px !important;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 24px rgba(99, 102, 241, 0.2);
+    margin: 0 auto;
+}
+
+/* Center Text on Pie */
+.study-pie-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+}
+
+.study-pie-center .percent {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(30, 41, 59);
+    line-height: 1;
+}
+
+.study-pie-center .label {
+    font-size: 0.75rem;
+    color: rgb(100, 116, 139);
+    font-weight: 500;
+}
+
+/* Progress Stats - Bigger */
+.study-progress-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 180px;
+}
+
+.study-progress-stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.study-progress-stat .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.study-progress-stat .stat-label {
+    color: rgb(100, 116, 139);
+    font-weight: 500;
+}
+
+.study-progress-stat .stat-value {
+    margin-left: auto;
+    font-weight: 600;
+    color: rgb(30, 41, 59);
+}
+
+/* =========================================================
+   DARK MODE - STUDY PROGRESS CHART
+   ========================================================= */
+
+.dark .study-pie-center .percent {
+    color: rgb(255, 255, 255);
+}
+
+.dark .study-pie-center .label {
+    color: rgb(148, 163, 184);
+}
+
+.dark .study-progress-stat .stat-label {
+    color: rgb(148, 163, 184);
+}
+
+.dark .study-progress-stat .stat-value {
+    color: rgb(255, 255, 255);
+}
+
+.dark #studyProgressPie {
+    box-shadow: 0 4px 24px rgba(99, 102, 241, 0.15);
+}
+
+/* =========================================================
+   OVERALL PROGRESS BAR - NEW COLOR
+   ========================================================= */
+
+/* Overall Progress Container */
+.study-overall-progress {
+    margin-top: 16px;
+    padding: 16px 20px;
+    background: rgb(248, 250, 252);
+    border-radius: 12px;
+    border: 1px solid rgb(226, 232, 240);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.study-overall-progress .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.study-overall-progress .progress-header span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgb(71, 85, 105);
+}
+
+.study-overall-progress .progress-header strong {
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgb(30, 41, 59);
+}
+
+/* Overall Progress Bar - Gradient Color */
+.study-overall-progress .progress-bar {
+    width: 100%;
+    height: 10px;
+    background: rgb(229, 231, 235);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.study-overall-progress .progress-fill {
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.6s ease;
+    background: linear-gradient(90deg, rgb(99, 102, 241), rgb(34, 197, 94), rgb(6, 182, 212));
+    background-size: 200% 100%;
+    animation: progressGradient 3s ease infinite;
+}
+
+@keyframes progressGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Different progress bar colors based on percentage */
+.study-overall-progress .progress-fill.low {
+    background: linear-gradient(90deg, rgb(239, 68, 68), rgb(245, 158, 11));
+}
+
+.study-overall-progress .progress-fill.medium {
+    background: linear-gradient(90deg, rgb(245, 158, 11), rgb(34, 197, 94));
+}
+
+.study-overall-progress .progress-fill.high {
+    background: linear-gradient(90deg, rgb(34, 197, 94), rgb(6, 182, 212));
+}
+
+.study-overall-progress .progress-fill.complete {
+    background: linear-gradient(90deg, rgb(34, 197, 94), rgb(5, 150, 105));
+}
+
+/* Dark Mode - Overall Progress */
+.dark .study-overall-progress {
+    background: rgb(15, 23, 42);
+    border-color: rgb(51, 65, 85);
+}
+
+.dark .study-overall-progress .progress-header span {
+    color: rgb(148, 163, 184);
+}
+
+.dark .study-overall-progress .progress-header strong {
+    color: rgb(255, 255, 255);
+}
+
+.dark .study-overall-progress .progress-bar {
+    background: rgb(51, 65, 85);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN - MOBILE, TABLET, LAPTOP, PC
+   ========================================================= */
+
+/* Mobile Devices (Portrait & Landscape) - Up to 480px */
+@media only screen and (max-width: 480px) {
+    .study-progress-container {
+        gap: 20px;
+        padding: 15px 0;
+        flex-direction: column;
+    }
+
+    .study-progress-pie-wrapper {
+        width: 140px;
+        height: 140px;
+    }
+
+    #studyProgressPie {
+        width: 140px !important;
+        height: 140px !important;
+    }
+
+    .study-pie-center .percent {
+        font-size: 1.5rem;
+    }
+
+    .study-pie-center .label {
+        font-size: 0.65rem;
+    }
+
+    .study-progress-stats {
+        min-width: 140px;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .study-progress-stat {
+        font-size: 0.8rem;
+    }
+
+    .study-progress-stat .dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .study-overall-progress {
+        padding: 12px 14px;
+        margin-top: 12px;
+    }
+
+    .study-overall-progress .progress-header span {
+        font-size: 0.75rem;
+    }
+
+    .study-overall-progress .progress-header strong {
+        font-size: 0.85rem;
+    }
+
+    .study-overall-progress .progress-bar {
+        height: 8px;
+    }
+
+    .dark .study-comparison-row,
+    .dark .study-analytics-subject-row,
+    .dark .study-pie-legend-row {
+        padding: 8px 10px !important;
+        border-radius: 6px !important;
+    }
+
+    .dark .study-comparison-name,
+    .dark .study-pie-legend-row .study-pie-subject-name {
+        font-size: 0.85rem !important;
+    }
+
+    .dark .study-comparison-value {
+        font-size: 0.8rem !important;
+    }
+
+    .dark .study-analytics-subject-info strong {
+        font-size: 0.85rem !important;
+    }
+
+    .dark .study-analytics-select-all-container {
+        padding: 8px 10px !important;
+        border-radius: 8px !important;
+    }
+
+    .dark .study-analytics-select-all-container label {
+        font-size: 0.85rem !important;
+    }
+
+    .study-progress-stat .stat-label {
+        font-size: 0.75rem;
+    }
+
+    .study-progress-stat .stat-value {
+        font-size: 0.8rem;
+    }
+
+    .study-analytics-wrapper,
+    .study-tasks-wrapper,
+    .study-report-wrapper {
+        padding: 8px !important;
+    }
+}
+
+/* Tablet Devices - 481px to 768px */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .study-progress-container {
+        gap: 30px;
+        padding: 18px 0;
+    }
+
+    .study-progress-pie-wrapper {
+        width: 160px;
+        height: 160px;
+    }
+
+    #studyProgressPie {
+        width: 160px !important;
+        height: 160px !important;
+    }
+
+    .study-pie-center .percent {
+        font-size: 1.75rem;
+    }
+
+    .study-pie-center .label {
+        font-size: 0.7rem;
+    }
+
+    .study-progress-stats {
+        min-width: 160px;
+    }
+
+    .study-progress-stat {
+        font-size: 0.85rem;
+    }
+
+    .study-overall-progress {
+        padding: 14px 16px;
+    }
+
+    .study-overall-progress .progress-header span {
+        font-size: 0.8rem;
+    }
+
+    .study-overall-progress .progress-header strong {
+        font-size: 0.9rem;
+    }
+
+    .dark .study-comparison-row,
+    .dark .study-analytics-subject-row,
+    .dark .study-pie-legend-row {
+        padding: 9px 12px !important;
+    }
+
+    .dark .study-comparison-name,
+    .dark .study-pie-legend-row .study-pie-subject-name {
+        font-size: 0.9rem !important;
+    }
+
+    .dark .study-analytics-subject-info strong {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Laptops & Small Desktops - 769px to 1024px */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .study-progress-container {
+        gap: 35px;
+    }
+
+    .study-progress-pie-wrapper {
+        width: 170px;
+        height: 170px;
+    }
+
+    #studyProgressPie {
+        width: 170px !important;
+        height: 170px !important;
+    }
+
+    .study-pie-center .percent {
+        font-size: 1.85rem;
+    }
+
+    .study-progress-stats {
+        min-width: 170px;
+    }
+
+    .study-overall-progress {
+        padding: 15px 18px;
+    }
+}
+
+/* Large Desktops & PC - 1025px and above */
+@media only screen and (min-width: 1025px) {
+    .study-progress-container {
+        gap: 40px;
+        padding: 20px 0;
+    }
+
+    .study-progress-pie-wrapper {
+        width: 180px;
+        height: 180px;
+    }
+
+    #studyProgressPie {
+        width: 180px !important;
+        height: 180px !important;
+    }
+
+    .study-pie-center .percent {
+        font-size: 2rem;
+    }
+
+    .study-progress-stats {
+        min-width: 180px;
+    }
+
+    .study-overall-progress {
+        padding: 16px 20px;
+    }
+}
+
+/* Dark Mode Scrollbar for All Devices */
+.dark ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: rgb(15, 23, 42);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: rgb(51, 65, 85);
+    border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: rgb(71, 85, 105);
+}
+
+/* Firefox Scrollbar */
+.dark * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(51, 65, 85) rgb(15, 23, 42);
+}
+
+/* Print Styles - Optional */
+@media print {
+    .dark body,
+    .dark .study-analytics-wrapper,
+    .dark .study-tasks-wrapper,
+    .dark .study-report-wrapper {
+        background: white !important;
+    }
+    
+    .dark .study-comparison-row,
+    .dark .study-analytics-subject-row,
+    .dark .study-pie-legend-row {
+        background: rgb(248, 250, 252) !important;
+        border: 1px solid rgb(226, 232, 240) !important;
+    }
+    
+    .dark .study-comparison-name,
+    .dark .study-analytics-subject-info strong,
+    .dark .study-pie-legend-row .study-pie-subject-name {
+        color: rgb(30, 41, 59) !important;
+    }
+}
+/* =========================================================
+   FINAL FIX - WEEKLY CHART LIGHT MODE BACKGROUND
+   ========================================================= */
+
+body:not(.dark):not(.dark-mode) #weeklyStudyChart {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+/* Dark Mode (already working) */
+body.dark #weeklyStudyChart,
+body.dark-mode #weeklyStudyChart,
+.dark #weeklyStudyChart {
+    background: rgba(15, 23, 42, 0.3) !important;
+    border: 1px solid rgba(51, 65, 85, 0.2) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   DAILY DIARY — COMPLETE CSS
+   ✅ Mobile + Tablet + Desktop
+   ✅ Bright Mode + Dark Mode
+   ✅ Save & Delete Buttons — Same Size
+   ✅ Warning-Free Version
+========================================================= */
+
+/* =========================================================
+   BASE (Mobile First)
+========================================================= */
+
+.daily-diary-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.daily-diary-card .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.daily-diary-card .section-header h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(var(--text));
+    line-height: 1.3;
+}
+
+.daily-diary-card .section-header small {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+    color: rgb(var(--text-muted));
+    line-height: 1.3;
+}
+
+.diary-icon-btn {
+    background: transparent;
+    border: 1px solid rgb(var(--border));
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgb(var(--text));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.diary-icon-btn:hover {
+    border-color: rgb(var(--primary, 37 99 235));
+    background: rgb(var(--primary, 37 99 235) / 0.08);
+    transform: scale(1.05);
+}
+
+.diary-icon-btn:active {
+    transform: scale(0.95);
+}
+
+/* =========================================================
+   SEARCH BOX
+========================================================= */
+
+.diary-search-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+    background: rgb(var(--surface-2, 245 247 250));
+    border-radius: 10px;
+    border: 1px solid rgb(var(--border));
+    animation: diarySlideDown 0.2s ease;
+}
+
+@keyframes diarySlideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.diary-search-box input {
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 8px;
+    border: 1px solid rgb(var(--border));
+    background: rgb(var(--surface));
+    color: rgb(var(--text));
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.diary-search-box input:focus {
+    border-color: rgb(var(--primary, 37 99 235));
+    box-shadow: 0 0 0 3px rgb(var(--primary, 37 99 235) / 0.12);
+}
+
+.diary-search-results {
+    max-height: 200px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.diary-search-results::-webkit-scrollbar {
+    width: 6px;
+}
+
+.diary-search-results::-webkit-scrollbar-thumb {
+    background: rgb(var(--border));
+    border-radius: 3px;
+}
+
+.diary-search-item {
+    padding: 8px 10px;
+    background: rgb(var(--surface));
+    border-radius: 6px;
+    cursor: pointer;
+    border-left: 3px solid rgb(var(--primary, 37 99 235));
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.diary-search-item:hover {
+    background: rgb(var(--primary, 37 99 235) / 0.08);
+    transform: translateX(2px);
+}
+
+.diary-search-item:active {
+    transform: translateX(2px) scale(0.98);
+}
+
+.diary-search-item strong {
+    display: block;
+    color: rgb(var(--primary, 37 99 235));
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.diary-search-item p {
+    margin: 0;
+    color: rgb(var(--text-muted));
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   DATE NAVIGATION
+========================================================= */
+
+.diary-date-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px;
+    background: linear-gradient(
+        135deg,
+        rgb(var(--primary, 37 99 235) / 0.1),
+        rgb(var(--primary, 37 99 235) / 0.03)
+    );
+    border-radius: 10px;
+    border: 1px solid rgb(var(--primary, 37 99 235) / 0.15);
+}
+
+.diary-nav-btn {
+    background: rgb(var(--surface));
+    border: 1px solid rgb(var(--border));
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 12px;
+    color: rgb(var(--text));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.diary-nav-btn:hover {
+    background: rgb(var(--primary, 37 99 235));
+    color: white;
+    border-color: rgb(var(--primary, 37 99 235));
+    transform: scale(1.05);
+}
+
+.diary-nav-btn:active {
+    transform: scale(0.95);
+}
+
+.diary-current-date {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+}
+
+.diary-current-date strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgb(var(--text));
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+/* =========================================================
+   TODAY BUTTON
+========================================================= */
+
+.diary-today-btn {
+    width: 100%;
+    padding: 9px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================================
+   MOOD SELECTOR
+========================================================= */
+
+.diary-mood-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: rgb(var(--surface-2, 245 247 250));
+    border-radius: 8px;
+    border: 1px solid rgb(var(--border));
+    flex-wrap: wrap;
+}
+
+.diary-mood-row > span {
+    font-size: 12px;
+    color: rgb(var(--text-muted));
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.diary-moods {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.mood-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 3px 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 1;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mood-btn:hover {
+    transform: scale(1.2);
+    background: rgb(var(--primary, 37 99 235) / 0.1);
+}
+
+.mood-btn:active {
+    transform: scale(0.95);
+}
+
+.mood-btn.active {
+    background: rgb(var(--primary, 37 99 235));
+    border-color: rgb(var(--primary, 37 99 235));
+    box-shadow: 0 2px 8px rgb(var(--primary, 37 99 235) / 0.4);
+    transform: scale(1.1);
+}
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.diary-textarea {
+    width: 100%;
+    min-height: 150px;
+    max-height: 400px;
+    resize: vertical;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgb(var(--border));
+    background: rgb(var(--surface-2, 245 247 250));
+    color: rgb(var(--text));
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.7;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.diary-textarea:focus {
+    border-color: rgb(var(--primary, 37 99 235));
+    box-shadow: 0 0 0 3px rgb(var(--primary, 37 99 235) / 0.12);
+    background: rgb(var(--surface));
+}
+
+.diary-textarea::placeholder {
+    color: rgb(var(--text-muted));
+    font-style: italic;
+}
+
+/* =========================================================
+   INFO BAR
+========================================================= */
+
+.diary-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: rgb(var(--text-muted));
+    padding: 0 4px;
+    min-height: 16px;
+    gap: 8px;
+}
+
+#diarySavedIndicator {
+    color: rgb(var(--success, 22 163 74));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    white-space: nowrap;
+}
+
+#diarySavedIndicator.show {
+    opacity: 1;
+    animation: diarySavedPulse 0.4s ease;
+}
+
+@keyframes diarySavedPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* =========================================================
+   ACTION BUTTONS — SAME SIZE (Save + Delete)
+========================================================= */
+
+.diary-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+}
+
+.diary-actions .primary-btn,
+.diary-actions .study-report-reset-btn {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Save Button — সবুজ gradient */
+.diary-actions .primary-btn {
+    background: linear-gradient(
+        135deg,
+        rgb(16 185 129),
+        rgb(5 150 105)
+    );
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 14px rgb(16 185 129 / 0.35);
+}
+
+.diary-actions .primary-btn:hover {
+    box-shadow: 0 6px 18px rgb(16 185 129 / 0.45);
+    transform: translateY(-1px);
+}
+
+.diary-actions .primary-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgb(16 185 129 / 0.35);
+}
+
+/* Delete Button — হালকা নীল */
+.diary-actions .study-report-reset-btn {
+    background: rgb(239 246 255);
+    color: rgb(37 99 235);
+    border: 1px solid rgb(191 219 254);
+    box-shadow: 0 2px 8px rgb(37 99 235 / 0.08);
+}
+
+.diary-actions .study-report-reset-btn:hover {
+    background: rgb(219 234 254);
+    border-color: rgb(147 197 253);
+    transform: translateY(-1px);
+}
+
+.diary-actions .study-report-reset-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 4px rgb(37 99 235 / 0.15);
+}
+
+/* =========================================================
+   HIDDEN STATE
+========================================================= */
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================================================
+   📱 MOBILE — Small (≤480px)
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .daily-diary-card {
+        gap: 8px;
+        padding: 0;
+    }
+
+    .daily-diary-card .section-header h3 {
+        font-size: 14px;
+    }
+
+    .daily-diary-card .section-header small {
+        font-size: 10px;
+    }
+
+    .diary-icon-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 13px;
+    }
+
+    .diary-date-nav {
+        padding: 8px;
+    }
+
+    .diary-nav-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 11px;
+    }
+
+    .diary-current-date strong {
+        font-size: 12px;
+    }
+
+    .diary-mood-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding: 8px;
+    }
+
+    .diary-moods {
+        justify-content: flex-start;
+        width: 100%;
+        gap: 3px;
+    }
+
+    .mood-btn {
+        font-size: 15px;
+        padding: 3px 5px;
+    }
+
+    .diary-textarea {
+        min-height: 120px;
+        font-size: 13px;
+        padding: 10px 12px;
+        line-height: 1.6;
+    }
+
+    .diary-actions {
+        gap: 6px;
+    }
+
+    .diary-actions .primary-btn,
+    .diary-actions .study-report-reset-btn {
+        height: 42px;
+        font-size: 13px;
+        padding: 0 10px;
+        border-radius: 9px;
+    }
+
+    .diary-info {
+        font-size: 10px;
+    }
+
+    .diary-search-item strong {
+        font-size: 10px;
+    }
+
+    .diary-search-item p {
+        font-size: 10px;
+    }
+}
+
+/* =========================================================
+   📱 MOBILE — Extra Small (≤360px)
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .daily-diary-card .section-header h3 {
+        font-size: 13px;
+    }
+
+    .diary-mood-row > span {
+        font-size: 11px;
+    }
+
+    .mood-btn {
+        font-size: 14px;
+        padding: 2px 4px;
+    }
+
+    .diary-textarea {
+        min-height: 100px;
+        font-size: 12px;
+    }
+
+    .diary-current-date strong {
+        font-size: 11px;
+    }
+
+    .diary-actions .primary-btn,
+    .diary-actions .study-report-reset-btn {
+        height: 40px;
+        font-size: 12px;
+        gap: 4px;
+    }
+}
+
+/* =========================================================
+   📱 TABLET (481px – 768px)
+========================================================= */
+
+@media (min-width: 481px) and (max-width: 768px) {
+
+    .daily-diary-card {
+        gap: 12px;
+    }
+
+    .daily-diary-card .section-header h3 {
+        font-size: 16px;
+    }
+
+    .daily-diary-card .section-header small {
+        font-size: 12px;
+    }
+
+    .diary-icon-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
+    }
+
+    .diary-date-nav {
+        padding: 12px;
+    }
+
+    .diary-nav-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 13px;
+    }
+
+    .diary-current-date strong {
+        font-size: 14px;
+    }
+
+    .mood-btn {
+        font-size: 18px;
+        padding: 4px 8px;
+    }
+
+    .diary-textarea {
+        min-height: 180px;
+        font-size: 14px;
+        padding: 14px 16px;
+        line-height: 1.75;
+    }
+
+    .diary-actions {
+        gap: 10px;
+    }
+
+    .diary-actions .primary-btn,
+    .diary-actions .study-report-reset-btn {
+        height: 46px;
+        font-size: 15px;
+        padding: 0 16px;
+    }
+
+    .diary-info {
+        font-size: 12px;
+    }
+
+    .diary-search-box input {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+}
+
+/* =========================================================
+   💻 DESKTOP / PC (769px and up)
+========================================================= */
+
+@media (min-width: 769px) {
+
+    .daily-diary-card {
+        gap: 12px;
+    }
+
+    .daily-diary-card .section-header h3 {
+        font-size: 15px;
+    }
+
+    .daily-diary-card .section-header small {
+        font-size: 11px;
+    }
+
+    .diary-icon-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
+    }
+
+    .diary-date-nav {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .diary-nav-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 13px;
+    }
+
+    .diary-current-date strong {
+        font-size: 14px;
+    }
+
+    .mood-btn {
+        font-size: 17px;
+        padding: 4px 7px;
+    }
+
+    .mood-btn:hover {
+        transform: scale(1.25);
+    }
+
+    .diary-textarea {
+        min-height: 180px;
+        max-height: 500px;
+        font-size: 14px;
+        padding: 14px 16px;
+        line-height: 1.75;
+    }
+
+    .diary-actions {
+        gap: 10px;
+    }
+
+    .diary-actions .primary-btn,
+    .diary-actions .study-report-reset-btn {
+        height: 46px;
+        font-size: 14px;
+        padding: 0 18px;
+    }
+
+    .diary-actions .primary-btn:hover,
+    .diary-actions .study-report-reset-btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .diary-info {
+        font-size: 12px;
+    }
+
+    .diary-search-box input {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+
+    /* Custom scrollbar for PC */
+    .diary-textarea::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .diary-textarea::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .diary-textarea::-webkit-scrollbar-thumb {
+        background: rgb(var(--border));
+        border-radius: 4px;
+    }
+
+    .diary-textarea::-webkit-scrollbar-thumb:hover {
+        background: rgb(var(--primary, 37 99 235) / 0.5);
+    }
+}
+
+/* =========================================================
+   🖥️ LARGE DESKTOP (1200px and up)
+========================================================= */
+
+@media (min-width: 1200px) {
+
+    .daily-diary-card .section-header h3 {
+        font-size: 16px;
+    }
+
+    .diary-current-date strong {
+        font-size: 15px;
+    }
+
+    .diary-textarea {
+        min-height: 200px;
+        font-size: 14px;
+    }
+
+    .mood-btn {
+        font-size: 18px;
+    }
+}
+
+/* =========================================================
+   🌞 BRIGHT MODE (Default)
+========================================================= */
+
+[data-theme="light"] .daily-diary-card,
+:root:not([data-theme="dark"]) .daily-diary-card {
+    color: rgb(15, 23, 42);
+}
+
+[data-theme="light"] .diary-textarea,
+:root:not([data-theme="dark"]) .diary-textarea {
+    background: rgb(248, 250, 252);
+    border-color: rgb(226, 232, 240);
+    color: rgb(15, 23, 42);
+}
+
+[data-theme="light"] .diary-textarea:focus,
+:root:not([data-theme="dark"]) .diary-textarea:focus {
+    background: rgb(255, 255, 255);
+    border-color: rgb(var(--primary, 37 99 235));
+    box-shadow: 0 0 0 3px rgb(var(--primary, 37 99 235) / 0.12);
+}
+
+[data-theme="light"] .diary-textarea::placeholder,
+:root:not([data-theme="dark"]) .diary-textarea::placeholder {
+    color: rgb(148, 163, 184);
+}
+
+/* =========================================================
+   🌙 DARK MODE
+========================================================= */
+
+[data-theme="dark"] .daily-diary-card .section-header h3,
+.dark .daily-diary-card .section-header h3,
+body.dark .daily-diary-card .section-header h3 {
+    color: rgb(226, 232, 240);
+}
+
+[data-theme="dark"] .daily-diary-card .section-header small,
+.dark .daily-diary-card .section-header small,
+body.dark .daily-diary-card .section-header small {
+    color: rgb(148, 163, 184);
+}
+
+[data-theme="dark"] .diary-icon-btn,
+.dark .diary-icon-btn,
+body.dark .diary-icon-btn {
+    background: rgb(30, 41, 59);
+    border-color: rgb(51, 65, 85);
+    color: rgb(226, 232, 240);
+}
+
+[data-theme="dark"] .diary-icon-btn:hover,
+.dark .diary-icon-btn:hover,
+body.dark .diary-icon-btn:hover {
+    background: rgb(var(--primary, 37 99 235) / 0.2);
+    border-color: rgb(var(--primary, 37 99 235));
+}
+
+[data-theme="dark"] .diary-search-box,
+.dark .diary-search-box,
+body.dark .diary-search-box {
+    background: rgb(30, 41, 59);
+    border-color: rgb(51, 65, 85);
+}
+
+[data-theme="dark"] .diary-search-box input,
+.dark .diary-search-box input,
+body.dark .diary-search-box input {
+    background: rgb(15, 23, 42);
+    border-color: rgb(51, 65, 85);
+    color: rgb(226, 232, 240);
+}
+
+[data-theme="dark"] .diary-search-box input:focus,
+.dark .diary-search-box input:focus,
+body.dark .diary-search-box input:focus {
+    border-color: rgb(var(--primary, 37 99 235));
+    background: rgb(15, 23, 42);
+}
+
+[data-theme="dark"] .diary-search-item,
+.dark .diary-search-item,
+body.dark .diary-search-item {
+    background: rgb(15, 23, 42);
+    border-color: rgb(51, 65, 85);
+}
+
+[data-theme="dark"] .diary-search-item:hover,
+.dark .diary-search-item:hover,
+body.dark .diary-search-item:hover {
+    background: rgb(var(--primary, 37 99 235) / 0.2);
+}
+
+[data-theme="dark"] .diary-search-item strong,
+.dark .diary-search-item strong,
+body.dark .diary-search-item strong {
+    color: rgb(96, 165, 250);
+}
+
+[data-theme="dark"] .diary-search-item p,
+.dark .diary-search-item p,
+body.dark .diary-search-item p {
+    color: rgb(148, 163, 184);
+}
+
+[data-theme="dark"] .diary-date-nav,
+.dark .diary-date-nav,
+body.dark .diary-date-nav {
+    background: linear-gradient(
+        135deg,
+        rgb(var(--primary, 37 99 235) / 0.18),
+        rgb(var(--primary, 37 99 235) / 0.05)
+    );
+    border-color: rgb(var(--primary, 37 99 235) / 0.3);
+}
+
+[data-theme="dark"] .diary-nav-btn,
+.dark .diary-nav-btn,
+body.dark .diary-nav-btn {
+    background: rgb(30, 41, 59);
+    border-color: rgb(51, 65, 85);
+    color: rgb(226, 232, 240);
+}
+
+[data-theme="dark"] .diary-nav-btn:hover,
+.dark .diary-nav-btn:hover,
+body.dark .diary-nav-btn:hover {
+    background: rgb(var(--primary, 37 99 235));
+    color: white;
+    border-color: rgb(var(--primary, 37 99 235));
+}
+
+[data-theme="dark"] .diary-current-date strong,
+.dark .diary-current-date strong,
+body.dark .diary-current-date strong {
+    color: rgb(226, 232, 240);
+}
+
+[data-theme="dark"] .diary-mood-row,
+.dark .diary-mood-row,
+body.dark .diary-mood-row {
+    background: rgb(30, 41, 59);
+    border-color: rgb(51, 65, 85);
+}
+
+[data-theme="dark"] .diary-mood-row > span,
+.dark .diary-mood-row > span,
+body.dark .diary-mood-row > span {
+    color: rgb(148, 163, 184);
+}
+
+[data-theme="dark"] .mood-btn:hover,
+.dark .mood-btn:hover,
+body.dark .mood-btn:hover {
+    background: rgb(var(--primary, 37 99 235) / 0.25);
+}
+
+[data-theme="dark"] .mood-btn.active,
+.dark .mood-btn.active,
+body.dark .mood-btn.active {
+    background: rgb(var(--primary, 37 99 235));
+    box-shadow: 0 2px 12px rgb(var(--primary, 37 99 235) / 0.6);
+}
+
+[data-theme="dark"] .diary-textarea,
+.dark .diary-textarea,
+body.dark .diary-textarea {
+    background: rgb(30, 41, 59);
+    border-color: rgb(51, 65, 85);
+    color: rgb(226, 232, 240);
+}
+
+[data-theme="dark"] .diary-textarea:focus,
+.dark .diary-textarea:focus,
+body.dark .diary-textarea:focus {
+    background: rgb(15, 23, 42);
+    border-color: rgb(var(--primary, 37 99 235));
+    box-shadow: 0 0 0 3px rgb(var(--primary, 37 99 235) / 0.25);
+}
+
+[data-theme="dark"] .diary-textarea::placeholder,
+.dark .diary-textarea::placeholder,
+body.dark .diary-textarea::placeholder {
+    color: rgb(100, 116, 139);
+}
+
+[data-theme="dark"] .diary-info,
+.dark .diary-info,
+body.dark .diary-info {
+    color: rgb(148, 163, 184);
+}
+
+[data-theme="dark"] #diarySavedIndicator,
+.dark #diarySavedIndicator,
+body.dark #diarySavedIndicator {
+    color: rgb(74, 222, 128);
+}
+
+[data-theme="dark"] .diary-actions .study-report-reset-btn,
+.dark .diary-actions .study-report-reset-btn,
+body.dark .diary-actions .study-report-reset-btn {
+    background: rgb(30 41 59);
+    color: rgb(96 165 250);
+    border-color: rgb(51 65 85);
+}
+
+[data-theme="dark"] .diary-actions .study-report-reset-btn:hover,
+.dark .diary-actions .study-report-reset-btn:hover,
+body.dark .diary-actions .study-report-reset-btn:hover {
+    background: rgb(37 99 235 / 0.2);
+    border-color: rgb(96 165 250);
+}
+
+[data-theme="dark"] .diary-textarea::-webkit-scrollbar-thumb,
+.dark .diary-textarea::-webkit-scrollbar-thumb,
+body.dark .diary-textarea::-webkit-scrollbar-thumb {
+    background: rgb(51, 65, 85);
+}
+
+[data-theme="dark"] .diary-textarea::-webkit-scrollbar-thumb:hover,
+.dark .diary-textarea::-webkit-scrollbar-thumb:hover,
+body.dark .diary-textarea::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--primary, 37 99 235) / 0.6);
+}
+
+/* =========================================================
+   🎨 THEME TRANSITION (Smooth switch)
+========================================================= */
+
+.daily-diary-card,
+.diary-textarea,
+.diary-search-box,
+.diary-date-nav,
+.diary-mood-row,
+.diary-nav-btn,
+.diary-icon-btn,
+.mood-btn,
+.diary-search-item,
+.diary-actions .primary-btn,
+.diary-actions .study-report-reset-btn {
+    transition: background-color 0.25s ease,
+                border-color 0.25s ease,
+                color 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+/* =========================================================
+   ♿ ACCESSIBILITY — Reduced Motion
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .daily-diary-card *,
+    .daily-diary-card *::before,
+    .daily-diary-card *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================================
+   🖨️ PRINT STYLE
+========================================================= */
+
+@media print {
+    .diary-icon-btn,
+    .diary-nav-btn,
+    .diary-today-btn,
+    .diary-mood-row,
+    .diary-actions,
+    .diary-search-box {
+        display: none !important;
+    }
+
+    .diary-textarea {
+        border: 1px solid #000;
+        background: white;
+        color: black;
+        min-height: auto;
+    }
+}
+/* =========================================================
+   🔥🔥🔥 FINAL FORCE FIX — BUTTONS POSITION
+   Save & Delete — Same Width, Same Height
+========================================================= */
+
+.daily-diary-card .diary-actions,
+.diary-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 48px !important;
+    gap: 8px !important;
+    width: 100% !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+}
+
+.daily-diary-card .diary-actions > button,
+.diary-actions > button,
+.diary-actions .primary-btn,
+.diary-actions .study-report-reset-btn,
+.daily-diary-card .diary-actions .primary-btn,
+.daily-diary-card .diary-actions .study-report-reset-btn {
+    /* Reset all sizing */
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+
+    /* Remove default button padding that breaks alignment */
+    padding: 0 8px !important;
+    margin: 0 !important;
+
+    /* Layout */
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: none !important;
+    flex-basis: auto !important;
+    align-self: stretch !important;
+
+    /* Text */
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+
+    /* Box */
+    border-radius: 10px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    gap: 6px !important;
+
+    /* Interaction */
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease,
+                background-color 0.15s ease, border-color 0.15s ease !important;
+}
+
+/* Save Button — সবুজ */
+.daily-diary-card .diary-actions .primary-btn,
+.diary-actions .primary-btn {
+    background: linear-gradient(135deg, rgb(16 185 129), rgb(5 150 105)) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgb(16 185 129 / 0.35) !important;
+}
+
+/* Delete Button — হালকা নীল */
+.daily-diary-card .diary-actions .study-report-reset-btn,
+.diary-actions .study-report-reset-btn {
+    background: rgb(239 246 255) !important;
+    color: rgb(37 99 235) !important;
+    border: 1px solid rgb(191 219 254) !important;
+    box-shadow: 0 2px 8px rgb(37 99 235 / 0.08) !important;
+}
+
+/* Hover — both */
+.daily-diary-card .diary-actions .primary-btn:hover,
+.diary-actions .primary-btn:hover {
+    box-shadow: 0 6px 16px rgb(16 185 129 / 0.45) !important;
+    transform: translateY(-1px) !important;
+}
+
+.daily-diary-card .diary-actions .study-report-reset-btn:hover,
+.diary-actions .study-report-reset-btn:hover {
+    background: rgb(219 234 254) !important;
+    border-color: rgb(147 197 253) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Active — both */
+.daily-diary-card .diary-actions .primary-btn:active,
+.diary-actions .primary-btn:active,
+.daily-diary-card .diary-actions .study-report-reset-btn:active,
+.diary-actions .study-report-reset-btn:active {
+    transform: translateY(1px) !important;
+}
+
+/* =========================================================
+   📱 Responsive Force Fix
+========================================================= */
+
+@media (max-width: 480px) {
+    .daily-diary-card .diary-actions,
+    .diary-actions {
+        grid-template-rows: 44px !important;
+        gap: 6px !important;
+    }
+
+    .daily-diary-card .diary-actions > button,
+    .diary-actions > button,
+    .diary-actions .primary-btn,
+    .diary-actions .study-report-reset-btn {
+        min-height: 44px !important;
+        max-height: 44px !important;
+        font-size: 13px !important;
+        border-radius: 9px !important;
+        gap: 4px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .daily-diary-card .diary-actions,
+    .diary-actions {
+        grid-template-rows: 42px !important;
+    }
+
+    .daily-diary-card .diary-actions > button,
+    .diary-actions > button,
+    .diary-actions .primary-btn,
+    .diary-actions .study-report-reset-btn {
+        min-height: 42px !important;
+        max-height: 42px !important;
+        font-size: 12px !important;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .daily-diary-card .diary-actions,
+    .diary-actions {
+        grid-template-rows: 46px !important;
+        gap: 10px !important;
+    }
+
+    .daily-diary-card .diary-actions > button,
+    .diary-actions > button,
+    .diary-actions .primary-btn,
+    .diary-actions .study-report-reset-btn {
+        min-height: 46px !important;
+        max-height: 46px !important;
+        font-size: 15px !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .daily-diary-card .diary-actions,
+    .diary-actions {
+        grid-template-rows: 46px !important;
+        gap: 10px !important;
+    }
+
+    .daily-diary-card .diary-actions > button,
+    .diary-actions > button,
+    .diary-actions .primary-btn,
+    .diary-actions .study-report-reset-btn {
+        min-height: 46px !important;
+        max-height: 46px !important;
+        font-size: 14px !important;
+    }
+}
+
+/* Dark Mode */
+[data-theme="dark"] .daily-diary-card .diary-actions .study-report-reset-btn,
+.dark .daily-diary-card .diary-actions .study-report-reset-btn,
+body.dark .daily-diary-card .diary-actions .study-report-reset-btn {
+    background: rgb(30 41 59) !important;
+    color: rgb(96 165 250) !important;
+    border-color: rgb(51 65 85) !important;
+}
+
+[data-theme="dark"] .daily-diary-card .diary-actions .study-report-reset-btn:hover,
+.dark .daily-diary-card .diary-actions .study-report-reset-btn:hover,
+body.dark .daily-diary-card .diary-actions .study-report-reset-btn:hover {
+    background: rgb(37 99 235 / 0.2) !important;
+    border-color: rgb(96 165 250) !important;
+}
