@@ -5554,3 +5554,87 @@ body.dark .alarm-switch input:checked + .alarm-slider {
         background: transparent !important;
     }
 }
+
+/* =========================================================
+   ✅ REAL FIX: Modal Body Scroll — flex item হিসাবে
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Modal container — fixed height */
+    body .modal-overlay .modal,
+    body #eventModal .modal,
+    body #studyTaskModal .modal,
+    body #detailsModal .modal {
+        height: calc(100dvh - 120px) !important;
+        max-height: calc(100dvh - 120px) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+    }
+
+    /* Header & Footer — fixed */
+    body .modal-overlay .modal-header,
+    body #eventModal .modal-header,
+    body #studyTaskModal .modal-header,
+    body #detailsModal .modal-header,
+    body .modal-overlay .modal-footer,
+    body #eventModal .modal-footer,
+    body #studyTaskModal .modal-footer,
+    body #detailsModal .modal-footer {
+        flex: 0 0 auto !important;
+        flex-grow: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* =========================================================
+       ✅ Modal Body — FLEX ITEM হিসাবে (display: block না!)
+    ========================================================= */
+    body .modal-overlay .modal .modal-body,
+    body #eventModal .modal-body,
+    body #studyTaskModal .modal-body,
+    body #detailsModal .modal-body {
+        /* ✅ Flex item — grow/shrink */
+        flex: 1 1 0% !important;
+        flex-grow: 1 !important;
+        flex-shrink: 1 !important;
+        flex-basis: 0% !important;
+
+        /* ✅ MUST HAVE — flex item scroll করার জন্য */
+        min-height: 0 !important;
+        max-height: none !important;
+
+        /* ✅ Overflow */
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+
+        /* ✅ display: flex দেওয়া হলো যাতে ভিতরের content সহজে layout হয় */
+        display: block !important;
+
+        padding: 16px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* =========================================================
+       ✅ Modal Body এর চিলড্রেন — inline যাতে flex আচরণ না করে
+    ========================================================= */
+    body .modal-overlay .modal-body > * {
+        max-width: 100% !important;
+    }
+
+    /* Form labels & inputs */
+    body .modal-overlay .modal-body > label,
+    body .modal-overlay .modal-body > .form-row,
+    body .modal-overlay .modal-body > .form-group,
+    body .modal-overlay .modal-body > .alarm-section {
+        display: block !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Footer buttons */
+    body .modal-overlay .modal-footer button {
+        min-height: 42px !important;
+        font-size: 14px !important;
+    }
+}
