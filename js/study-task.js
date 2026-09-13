@@ -169,9 +169,35 @@ let studyTaskInitialized = false;
 
 // =========================================================
 // LANGUAGE DETECTION - IMPROVED
+// ✅ ADDED: localStorage FIRST, তারপর বাকি সব
 // =========================================================
 
 function getStudyTaskLanguage() {
+
+    // ✅ ADDED: localStorage কে প্রথম priority দেওয়া হচ্ছে
+    try {
+        const keys = [
+            "bdStudentCalendarLanguage",
+            "campusCalendarLanguage",
+            "campusCalendarLang",
+            "language",
+            "currentLanguage",
+            "currentLang",
+            "studyAnalyticsLanguage"
+        ];
+        for (const key of keys) {
+            const value = localStorage.getItem(key);
+            if (!value) continue;
+            const lang = String(value).trim().toLowerCase();
+            if (lang === "bn" || lang === "bangla" || lang === "bengali" || lang.startsWith("bn-")) {
+                return "bn";
+            }
+            if (lang === "en" || lang === "english" || lang.startsWith("en-")) {
+                return "en";
+            }
+        }
+    } catch (error) {}
+
     try {
         if (typeof currentLanguage !== 'undefined' && currentLanguage) {
             const value = String(currentLanguage).trim().toLowerCase();
@@ -204,29 +230,6 @@ function getStudyTaskLanguage() {
             html.getAttribute("lang")
         ];
         for (const value of values) {
-            if (!value) continue;
-            const lang = String(value).trim().toLowerCase();
-            if (lang === "bn" || lang === "bangla" || lang === "bengali" || lang.startsWith("bn-")) {
-                return "bn";
-            }
-            if (lang === "en" || lang === "english" || lang.startsWith("en-")) {
-                return "en";
-            }
-        }
-    } catch (error) {}
-
-    try {
-        const keys = [
-            "bdStudentCalendarLanguage",
-            "campusCalendarLanguage",
-            "campusCalendarLang",
-            "language",
-            "currentLanguage",
-            "currentLang",
-            "studyAnalyticsLanguage"
-        ];
-        for (const key of keys) {
-            const value = localStorage.getItem(key);
             if (!value) continue;
             const lang = String(value).trim().toLowerCase();
             if (lang === "bn" || lang === "bangla" || lang === "bengali" || lang.startsWith("bn-")) {
@@ -1860,13 +1863,22 @@ function forceUpdateStudyTaskLanguage() {
 
 // =========================================================
 // LANGUAGE CHANGE LISTENERS - OPTIMIZED
+// ✅ ADDED: languageChanged event এ immediate + delayed কল
 // =========================================================
 
 function setupLanguageChangeListeners() {
+
+    // ✅ ADDED: languageChanged event শুনুন (Calendar JS dispatch করে)
     document.addEventListener("languageChanged", function(e) {
+
+        // Immediate refresh
+        forceUpdateStudyTaskLanguage();
+
+        // Delayed refresh (backup)
         setTimeout(function() {
             forceUpdateStudyTaskLanguage();
         }, 50);
+
     });
 
     document.addEventListener("click", function(event) {
@@ -2000,6 +2012,9 @@ document.addEventListener("visibilitychange", function() {
 
 // =========================================================
 // GLOBAL EXPORT
+// ✅ ADDED: window.forceUpdateStudyTaskLanguage already
+// exposed, এবং Calendar JS থেকে window.toggleLanguage
+// কল হলে languageChanged event dispatch হবে
 // =========================================================
 
 window.studyTasks = studyTasks;
