@@ -5058,3 +5058,98 @@ body.dark .study-report-empty {
         box-sizing: border-box !important;
     }
 }
+
+
+/* =========================================================
+   PAGE SWITCHING SYSTEM — Home / Study / Me
+   data-current-page এর উপর ভিত্তি করে section দেখানো/লুকানো
+========================================================= */
+
+/* ডিফল্ট: সব পেজ-স্পেসিফিক section লুকানো */
+[data-page] {
+    display: none !important;
+}
+
+/* Home পেজ সক্রিয় হলে */
+body[data-current-page="home"] [data-page="home"] {
+    display: block !important;
+}
+
+/* Study পেজ সক্রিয় হলে */
+body[data-current-page="study"] [data-page="study"] {
+    display: block !important;
+}
+
+/* Me পেজ সক্রিয় হলে */
+body[data-current-page="me"] [data-page="me"] {
+    display: block !important;
+}
+
+/* Dashboard, toolbar, calendar ইত্যাদি home পেজে grid/flex হিসেবে দেখাতে হবে */
+body[data-current-page="home"] .dashboard[data-page="home"] {
+    display: grid !important;
+}
+
+body[data-current-page="home"] .toolbar[data-page="home"] {
+    display: flex !important;
+}
+
+body[data-current-page="home"] .sidebar .side-card[data-page="home"] {
+    display: block !important;
+}
+
+/* Study পেজে study-task-card, study-analytics-card দেখাতে হবে */
+body[data-current-page="study"] .study-task-card[data-page="study"] {
+    display: block !important;
+}
+
+body[data-current-page="study"] .study-analytics-card[data-page="study"] {
+    display: block !important;
+}
+
+body[data-current-page="study"] .daily-study-report-card[data-page="study"] {
+    display: block !important;
+}
+
+body[data-current-page="study"] .weekly-study-report-card[data-page="study"] {
+    display: block !important;
+}
+
+body[data-current-page="study"] .completed-subjects-container[data-page="study"] {
+    display: block !important;
+}
+
+/* Me পেজে cgpa-calculator-card, daily-diary-card দেখাতে হবে */
+body[data-current-page="me"] .cgpa-calculator-card[data-page="me"] {
+    display: block !important;
+}
+
+body[data-current-page="me"] .daily-diary-card[data-page="me"] {
+    display: block !important;
+}
+
+/* layout এবং container সবসময় দেখাতে হবে (তাদের data-page নেই) */
+.layout,
+.container,
+.sidebar,
+.topbar,
+.mobile-bottom-nav {
+    display: block;
+}
+
+.layout {
+    display: grid !important;
+}
+
+.sidebar {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* মোবাইলে layout flex column */
+@media (max-width: 768px) {
+    .layout {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+}
