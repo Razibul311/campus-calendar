@@ -7447,3 +7447,100 @@ if (deleteSelectedPastEventsBtn) {
     console.log('Mobile page nav initialized. Current page:', lastPage);
 
 })();
+
+
+/* =========================================================
+   MOBILE 3-PAGE NAVIGATION SYSTEM
+========================================================= */
+
+(function initMobilePageNav() {
+    'use strict';
+
+    // Console check
+    console.log('Initializing mobile page nav...');
+
+    // =====================================================
+    // DOM Elements
+    // =====================================================
+    var bottomNav = document.getElementById('mobileBottomNav');
+
+    if (!bottomNav) {
+        console.warn('Bottom nav not found - skipping');
+        return;
+    }
+
+    var navButtons = bottomNav.querySelectorAll('.mobile-nav-btn');
+    var STORAGE_KEY = 'campusCalendarCurrentPage';
+
+    console.log('Found', navButtons.length, 'navigation buttons');
+
+    // =====================================================
+    // Core Function - Set Active Page
+    // =====================================================
+    function setActivePage(pageName) {
+        console.log('Switching to page:', pageName);
+
+        // 1. Update body attribute
+        document.body.setAttribute('data-current-page', pageName);
+
+        // 2. Update button states
+        for (var i = 0; i < navButtons.length; i++) {
+            var btn = navButtons[i];
+            if (btn.getAttribute('data-page') === pageName) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        }
+
+        // 3. Save to localStorage
+        try {
+            localStorage.setItem(STORAGE_KEY, pageName);
+        } catch (e) {
+            console.warn('Could not save page state:', e);
+        }
+
+        // 4. Scroll to top
+        try {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (e) {
+            window.scrollTo(0, 0);
+        }
+    }
+
+    // =====================================================
+    // Attach Click Handlers
+    // =====================================================
+    for (var i = 0; i < navButtons.length; i++) {
+        (function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                var pageName = btn.getAttribute('data-page');
+                console.log('Button clicked:', pageName);
+
+                if (pageName) {
+                    setActivePage(pageName);
+                }
+            });
+        })(navButtons[i]);
+    }
+
+    // =====================================================
+    // Restore Last Page on Load
+    // =====================================================
+    var lastPage = 'home';
+    try {
+        var saved = localStorage.getItem(STORAGE_KEY);
+        if (saved && ['home', 'study', 'me'].indexOf(saved) !== -1) {
+            lastPage = saved;
+        }
+    } catch (e) {}
+
+    setActivePage(lastPage);
+
+    console.log('Mobile page nav initialized ✓');
+    console.log('Current page:', lastPage);
+
+})();
