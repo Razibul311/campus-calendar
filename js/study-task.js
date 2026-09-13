@@ -2031,3 +2031,174 @@ window.getDailyStudyReport = getDailyStudyReport;
 window.getWeeklyStudyReport = getWeeklyStudyReport;
 window.hexToRgb = hexToRgb;
 window.hexToRgbString = hexToRgbString;
+
+/* =========================================================
+   ✅ ADDED: PAGE SWITCHING FIX
+   Home / Study / Me পেজ সুইচিং ঠিকমতো কাজ করার জন্য
+========================================================= */
+
+(function pageSwitchingFix() {
+
+    // ---------- CSS Inject ----------
+    function injectPageSwitchingCSS() {
+        if (document.getElementById('page-switching-style')) {
+            return;
+        }
+
+        var style = document.createElement('style');
+        style.id = 'page-switching-style';
+        style.textContent = `
+            /* ১. প্রথমে সব data-page এলিমেন্ট লুকান */
+            body[data-current-page] [data-page] {
+                display: none !important;
+            }
+
+            /* ২. Home page — শুধু home elements দেখান */
+            body[data-current-page="home"] [data-page="home"] {
+                display: block !important;
+            }
+
+            body[data-current-page="home"] .dashboard[data-page="home"] {
+                display: grid !important;
+            }
+
+            body[data-current-page="home"] .toolbar[data-page="home"] {
+                display: flex !important;
+            }
+
+            /* ৩. Study page — শুধু study elements দেখান */
+            body[data-current-page="study"] [data-page="study"] {
+                display: block !important;
+            }
+
+            body[data-current-page="study"] .study-timer-panel[data-page="study"] {
+                display: block !important;
+            }
+
+            /* ৪. Me page — শুধু me elements দেখান */
+            body[data-current-page="me"] [data-page="me"] {
+                display: block !important;
+            }
+
+            /* ৫. Modal সবসময় available থাকবে */
+            .modal-overlay {
+                display: none;
+            }
+
+            .modal-overlay.active {
+                display: flex !important;
+            }
+
+            /* ৬. Layout grid সবসময় active */
+            .layout {
+                display: grid !important;
+            }
+
+            /* ৭. Sidebar flex সবসময় active */
+            .sidebar {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            @media (max-width: 768px) {
+                .layout {
+                    display: flex !important;
+                    flex-direction: column !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        console.log('✅ Page switching CSS injected by study-task.js');
+    }
+
+    // ---------- Page Button Setup ----------
+    function setupPageButtons() {
+        var nav = document.getElementById('mobileBottomNav');
+        if (!nav) {
+            return false;
+        }
+
+        var buttons = nav.querySelectorAll('.mobile-nav-btn');
+        if (buttons.length === 0) {
+            return false;
+        }
+
+        var STORAGE_KEY = 'campusCalendarCurrentPage';
+
+        function setActivePage(pageName) {
+            document.body.setAttribute('data-current-page', pageName);
+
+            buttons.forEach(function(btn) {
+                var btnPage = btn.getAttribute('data-page');
+                if (btnPage === pageName) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            try {
+                localStorage.setItem(STORAGE_KEY, pageName);
+            } catch (e) {}
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            console.log('📄 Page switched to:', pageName);
+        }
+
+        buttons.forEach(function(btn) {
+            // পুরনো listener মুছে নতুন যোগ করার জন্য clone
+            if (btn.dataset.pageSwitchingReady === 'true') {
+                return;
+            }
+            btn.dataset.pageSwitchingReady = 'true';
+
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                var pageName = btn.getAttribute('data-page');
+                if (pageName) {
+                    setActivePage(pageName);
+                }
+            });
+        });
+
+        // Initial page
+        var lastPage = 'home';
+        try {
+            var saved = localStorage.getItem(STORAGE_KEY);
+            if (saved && ['home', 'study', 'me'].indexOf(saved) !== -1) {
+                lastPage = saved;
+            }
+        } catch (e) {}
+
+        setActivePage(lastPage);
+
+        console.log('✅ Page buttons setup complete. Current page:', lastPage);
+        return true;
+    }
+
+    // ---------- Init ----------
+    function init() {
+        injectPageSwitchingCSS();
+
+        var ok = setupPageButtons();
+        if (!ok) {
+            // DOM এখনো ready না — আবার চেষ্টা করুন
+            setTimeout(init, 300);
+        }
+    }
+
+    // DOM ready হলে চালান
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+    // পিছনের জন্য আরো কয়েকবার চেষ্টা
+    setTimeout(init, 500);
+    setTimeout(init, 1500);
+
+})();
