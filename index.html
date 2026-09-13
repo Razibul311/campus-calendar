@@ -2927,6 +2927,95 @@ if ('serviceWorker' in navigator) {
     </button>
 </nav>
 
+    <!-- ✅ ADDED: Page Switching Fix Script -->
+<script>
+(function() {
+    'use strict';
+
+    function initPageSwitching() {
+        var nav = document.getElementById('mobileBottomNav');
+        if (!nav) {
+            setTimeout(initPageSwitching, 300);
+            return;
+        }
+
+        var buttons = nav.querySelectorAll('.mobile-nav-btn');
+        if (buttons.length === 0) {
+            setTimeout(initPageSwitching, 300);
+            return;
+        }
+
+        var STORAGE_KEY = 'campusCalendarCurrentPage';
+
+        function setActivePage(pageName) {
+            // 1. Body তে data-current-page সেট করুন
+            document.body.setAttribute('data-current-page', pageName);
+
+            // 2. Button active state আপডেট করুন
+            buttons.forEach(function(btn) {
+                var btnPage = btn.getAttribute('data-page');
+                if (btnPage === pageName) {
+                    btn.classList.add('active');
+                    btn.style.color = 'rgb(var(--primary))';
+                } else {
+                    btn.classList.remove('active');
+                    btn.style.color = '';
+                }
+            });
+
+            // 3. localStorage এ save করুন
+            try {
+                localStorage.setItem(STORAGE_KEY, pageName);
+            } catch (e) {}
+
+            // 4. Scroll top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            console.log('✅ Page switched to:', pageName);
+        }
+
+        // প্রতিটি বাটনে ক্লিক listener যোগ করুন
+        buttons.forEach(function(btn) {
+            // পুরনো listener সরানোর জন্য clone
+            var freshBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(freshBtn, btn);
+
+            freshBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                var pageName = freshBtn.getAttribute('data-page');
+                if (pageName) {
+                    setActivePage(pageName);
+                }
+            });
+        });
+
+        // নতুন buttons reference
+        buttons = nav.querySelectorAll('.mobile-nav-btn');
+
+        // localStorage থেকে শেষ page লোড করুন
+        var lastPage = 'home';
+        try {
+            var saved = localStorage.getItem(STORAGE_KEY);
+            if (saved && ['home', 'study', 'me'].indexOf(saved) !== -1) {
+                lastPage = saved;
+            }
+        } catch (e) {}
+
+        setActivePage(lastPage);
+
+        console.log('✅ Page switching initialized. Current page:', lastPage);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPageSwitching);
+    } else {
+        initPageSwitching();
+    }
+})();
+</script>
+
 </body>
 
 </html>
