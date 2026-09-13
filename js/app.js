@@ -1975,7 +1975,6 @@ function loadLanguage() {
 /* =========================================================
    TOGGLE LANGUAGE
 ========================================================= */
-
 function toggleLanguage() {
 
     state.language =
@@ -1990,13 +1989,60 @@ function toggleLanguage() {
     );
 
 
-    // ✅ FIX: Study Analytics কেও জানান যাতে সেটাও রিফ্রেশ হয়
-    if (typeof window.setAnalyticsLanguage === "function") {
-        window.setAnalyticsLanguage(state.language);
-    }
-    if (typeof window.forceRenderAnalytics === "function") {
-        window.forceRenderAnalytics();
-    }
+    /* ✅ FIX: languageChanged event dispatch */
+    try {
+        document.dispatchEvent(
+            new CustomEvent(
+                "languageChanged",
+                {
+                    detail: {
+                        language: state.language,
+                        lang: state.language,
+                        value: state.language
+                    }
+                }
+            )
+        );
+    } catch (e) {}
+
+
+    /* ✅ FIX: Study Task Module */
+    try {
+        if (
+            typeof window.forceUpdateStudyTaskLanguage ===
+            "function"
+        ) {
+            window.forceUpdateStudyTaskLanguage();
+        }
+    } catch (e) {}
+
+
+    /* ✅ FIX: Study Analytics Module */
+    try {
+        if (
+            typeof window.setAnalyticsLanguage ===
+            "function"
+        ) {
+            window.setAnalyticsLanguage(state.language);
+        }
+        if (
+            typeof window.forceRenderAnalytics ===
+            "function"
+        ) {
+            window.forceRenderAnalytics();
+        }
+    } catch (e) {}
+
+
+    /* ✅ FIX: Daily Diary Module */
+    try {
+        if (
+            typeof window.updateDiaryLanguage ===
+            "function"
+        ) {
+            window.updateDiaryLanguage();
+        }
+    } catch (e) {}
 
 
     updateLanguageButton();
@@ -2014,8 +2060,6 @@ function toggleLanguage() {
     updateDashboard();
 
 }
-
-
 /* =========================================================
    LANGUAGE BUTTON
 ========================================================= */
@@ -7174,83 +7218,3 @@ window.toggleLanguage = toggleLanguage;
 
 })();
 
-/* =========================================================
-   ✅ ADDED: PAGE SWITCHING CSS INJECTOR
-   CSS এ data-page নিয়ম না থাকলে এটা inject করবে
-========================================================= */
-
-(function injectPageSwitchingCSS() {
-
-    // চেক করুন CSS আগে থেকে inject হয়েছে কিনা
-    if (document.getElementById('page-switching-style')) {
-        return;
-    }
-
-    var style = document.createElement('style');
-    style.id = 'page-switching-style';
-    style.textContent = `
-        /* ১. প্রথমে সব data-page এলিমেন্ট লুকান */
-        body[data-current-page] [data-page] {
-            display: none !important;
-        }
-
-        /* ২. Home page — শুধু home elements দেখান */
-        body[data-current-page="home"] [data-page="home"] {
-            display: block !important;
-        }
-
-        body[data-current-page="home"] .dashboard[data-page="home"] {
-            display: grid !important;
-        }
-
-        body[data-current-page="home"] .toolbar[data-page="home"] {
-            display: flex !important;
-        }
-
-        /* ৩. Study page — শুধু study elements দেখান */
-        body[data-current-page="study"] [data-page="study"] {
-            display: block !important;
-        }
-
-        body[data-current-page="study"] .study-timer-panel[data-page="study"] {
-            display: block !important;
-        }
-
-        /* ৪. Me page — শুধু me elements দেখান */
-        body[data-current-page="me"] [data-page="me"] {
-            display: block !important;
-        }
-
-        /* ৫. Modal গুলো সবসময় available থাকবে */
-        .modal-overlay {
-            display: none;
-        }
-
-        .modal-overlay.active {
-            display: flex !important;
-        }
-
-        /* ৬. Layout grid সবসময় active */
-        .layout {
-            display: grid !important;
-        }
-
-        /* ৭. Sidebar flex সবসময় active */
-        .sidebar {
-            display: flex !important;
-            flex-direction: column !important;
-        }
-
-        @media (max-width: 768px) {
-            .layout {
-                display: flex !important;
-                flex-direction: column !important;
-            }
-        }
-    `;
-
-    document.head.appendChild(style);
-
-    console.log('✅ Page switching CSS injected');
-
-})();
