@@ -4951,6 +4951,8 @@ body.dark .study-report-empty {
 
 
 
+
+
 /* =========================================================
    📱 PHONE LAYOUT — FORCE ORDER
    Mobile (up to 768px)
@@ -5051,40 +5053,46 @@ body.dark .study-report-empty {
         box-sizing: border-box !important;
     }
 }
-
 /* =========================================================
-   ✅ PAGE SWITCHING FIX — MUST BE AT THE VERY END
+   ✅ PAGE SWITCHING FIX — FINAL CORRECT VERSION
 ========================================================= */
 
-/* সব data-page এলিমেন্ট ডিফল্টভাবে লুকান */
-body[data-current-page] [data-page]:not(.layout):not(.sidebar) {
+/* ১. সব data-page এলিমেন্ট ডিফল্টভাবে লুকান */
+body[data-current-page] [data-page] {
     display: none;
 }
 
-/* Home page — শুধু home elements */
-body[data-current-page="home"] [data-page="home"] {
-    display: block;
-}
-
+/* ২. Home page — সব home elements দেখান */
 body[data-current-page="home"] .dashboard[data-page="home"] {
-    display: grid;
+    display: grid !important;
 }
 
 body[data-current-page="home"] .toolbar[data-page="home"] {
-    display: flex;
+    display: flex !important;
 }
 
-/* Study page — শুধু study elements */
-body[data-current-page="study"] [data-page="study"] {
-    display: block;
+body[data-current-page="home"] .calendar-card[data-page="home"],
+body[data-current-page="home"] .bangladesh-holidays[data-page="home"],
+body[data-current-page="home"] .side-card[data-page="home"] {
+    display: block !important;
 }
 
-/* Me page — শুধু me elements */
-body[data-current-page="me"] [data-page="me"] {
-    display: block;
+/* ৩. Study page — সব study elements দেখান */
+body[data-current-page="study"] .study-task-card[data-page="study"],
+body[data-current-page="study"] .study-analytics-card[data-page="study"],
+body[data-current-page="study"] .daily-study-report-card[data-page="study"],
+body[data-current-page="study"] .weekly-study-report-card[data-page="study"],
+body[data-current-page="study"] .completed-subjects-container[data-page="study"] {
+    display: block !important;
 }
 
-/* Layout container সবসময় দৃশ্যমান */
+/* ৪. Me page — সব me elements দেখান */
+body[data-current-page="me"] .cgpa-calculator-card[data-page="me"],
+body[data-current-page="me"] .daily-diary-card[data-page="me"] {
+    display: block !important;
+}
+
+/* ৫. Layout container সবসময় দৃশ্যমান */
 .layout {
     display: grid;
 }
