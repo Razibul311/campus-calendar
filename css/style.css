@@ -5301,17 +5301,16 @@ body[data-current-page="me"] .daily-diary-card[data-page="me"] {
 
 
 /* =========================================================
-   ✅ FIX: Modal Overlay Z-INDEX এবং Modal Bottom Padding
+   ✅ FIX: Modal Overlay + Mobile Modal
 ========================================================= */
 
-/* ১. Modal Overlay কে nav bar এর উপরে রাখুন */
+/* ১. Modal Overlay — nav bar এর উপরে */
 .modal-overlay {
     z-index: 99999 !important;
 }
 
-/* ২. Modal এর max height এবং padding */
+/* ২. Modal এর general style */
 .modal {
-    max-height: calc(100vh - 20px) !important;
     padding-bottom: 0 !important;
 }
 
@@ -5320,7 +5319,7 @@ body[data-current-page="me"] .daily-diary-card[data-page="me"] {
     padding-bottom: 20px !important;
 }
 
-/* ৪. Modal Footer sticky করুন modal এর ভিতরে */
+/* ৪. Modal Footer sticky */
 .modal-footer {
     position: sticky !important;
     bottom: 0 !important;
@@ -5330,32 +5329,38 @@ body[data-current-page="me"] .daily-diary-card[data-page="me"] {
     border-top: 1px solid rgb(var(--border)) !important;
 }
 
-/* ৫. Mobile এ modal কে nav bar এর উপরে থামান */
+/* ৫. Mobile এ modal — উপরের দিক থেকে বেশি জায়গা */
 @media (max-width: 768px) {
 
     .modal-overlay {
         align-items: flex-end !important;
-        /* ✅ শুধু একবার padding — nav bar এর জন্য */
-        padding: 0 0 calc(60px + env(safe-area-inset-bottom)) 0 !important;
+        padding: 0 0 70px 0 !important;
+        background: rgba(15, 23, 42, 0.60) !important;
     }
 
     .modal {
-        /* ✅ শুধু max-height, কোনো margin-bottom নেই */
-        max-height: calc(100vh - 60px - env(safe-area-inset-bottom)) !important;
-        /* ✅ Round corners */
-        border-radius: 20px 20px 0 0 !important;
-        /* ✅ কোনো margin-bottom নেই */
+        /* ✅ উপরের দিক থেকে জায়গা - বেশি height */
+        max-height: calc(100vh - 40px) !important;
+        /* ✅ Round corners 4 দিকে? না — শুধু উপরে */
+        border-radius: 24px 24px 0 0 !important;
+        /* ✅ কোনো margin নেই */
         margin: 0 !important;
+        /* ✅ নিচে padding দরকার নেই — nav bar overlay তে আছে */
+        padding: 0 !important;
+        /* ✅ Shadow কম */
+        box-shadow: 0 -8px 40px rgba(15, 23, 42, 0.20) !important;
+        /* ✅ Overflow hidden যাতে corners কাজ করে */
+        overflow: hidden !important;
     }
 
-    /* ✅ Modal Body — scrollable */
+    /* Modal Body — স্ক্রল */
     .modal-body {
         max-height: calc(100vh - 220px) !important;
         overflow-y: auto !important;
-        padding-bottom: 16px !important;
+        padding: 16px !important;
     }
 
-    /* ✅ Modal Footer — সবার নিচে, sticky */
+    /* Modal Footer — সবার নিচে */
     .modal-footer {
         padding: 12px 16px !important;
         position: sticky !important;
@@ -5363,13 +5368,22 @@ body[data-current-page="me"] .daily-diary-card[data-page="me"] {
         z-index: 10 !important;
         background: rgb(var(--surface)) !important;
         border-top: 1px solid rgb(var(--border)) !important;
-        box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.08) !important;
-        /* ✅ নিচে কোনো বাড়তি padding নেই */
+        box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.06) !important;
         margin: 0 !important;
+        border-radius: 0 !important;
     }
 
+    /* Modal Header — উপরে, corners এর সাথে fit */
+    .modal-header {
+        padding: 14px 16px !important;
+        border-bottom: 1px solid rgb(var(--border)) !important;
+        border-radius: 24px 24px 0 0 !important;
+        background: rgb(var(--surface)) !important;
+    }
+
+    /* Modal এর ভিতরের button group */
     .modal-footer button {
-        min-height: 40px !important;
-        font-size: 13px !important;
+        min-height: 42px !important;
+        font-size: 14px !important;
     }
 }
