@@ -4084,6 +4084,10 @@ body.dark .study-report-empty {
     color: rgb(var(--text-muted));
 }
 
+
+
+
+
 /* =========================================================
    📱 PHONE LAYOUT — FORCE ORDER
    Mobile (up to 768px)
@@ -4192,16 +4196,16 @@ body.dark .study-report-empty {
 }
 
 /* =========================================================
-   ✅ NEW — PAGE SWITCHING SYSTEM (Home / Study / Me)
-   এই অংশটুকু নতুন যোগ করা হয়েছে — বাকি কিছু বদলানো হয়নি
+   ✅ PAGE SWITCHING — Home / Study / Me  (NEW ADDITION)
+   এই অংশটুকু নতুন যোগ করা হয়েছে — উপরের কোনো লাইন বদলানো হয়নি
 ========================================================= */
 
-/* ডিফল্ট: সব data-page সেকশন লুকানো */
-[data-page] {
+/* সব data-page section ডিফল্টভাবে লুকানো */
+body[data-current-page] [data-page] {
     display: none !important;
 }
 
-/* Home পেজ সক্রিয় */
+/* ---------- HOME page ---------- */
 body[data-current-page="home"] [data-page="home"] {
     display: block !important;
 }
@@ -4214,48 +4218,39 @@ body[data-current-page="home"] .toolbar[data-page="home"] {
     display: flex !important;
 }
 
-/* Study পেজ সক্রিয় */
+body[data-current-page="home"] .calendar-card[data-page="home"],
+body[data-current-page="home"] .bangladesh-holidays[data-page="home"] {
+    display: block !important;
+}
+
+/* ---------- STUDY page ---------- */
 body[data-current-page="study"] [data-page="study"] {
     display: block !important;
 }
 
-body[data-current-page="study"] .study-task-card[data-page="study"] {
-    display: block !important;
-}
-
-body[data-current-page="study"] .study-analytics-card[data-page="study"] {
-    display: block !important;
-}
-
-body[data-current-page="study"] .daily-study-report-card[data-page="study"] {
-    display: block !important;
-}
-
-body[data-current-page="study"] .weekly-study-report-card[data-page="study"] {
-    display: block !important;
-}
-
+body[data-current-page="study"] .study-task-card[data-page="study"],
+body[data-current-page="study"] .study-analytics-card[data-page="study"],
+body[data-current-page="study"] .daily-study-report-card[data-page="study"],
+body[data-current-page="study"] .weekly-study-report-card[data-page="study"],
 body[data-current-page="study"] .completed-subjects-container[data-page="study"] {
     display: block !important;
 }
 
-/* Me পেজ সক্রিয় */
+/* ---------- ME page ---------- */
 body[data-current-page="me"] [data-page="me"] {
     display: block !important;
 }
 
-body[data-current-page="me"] .cgpa-calculator-card[data-page="me"] {
-    display: block !important;
-}
-
+body[data-current-page="me"] .cgpa-calculator-card[data-page="me"],
 body[data-current-page="me"] .daily-diary-card[data-page="me"] {
     display: block !important;
 }
 
-/* layout এবং container সবসময় দেখাতে হবে (তাদের data-page নেই) */
-.layout,
-.container,
+/* ---------- Layout containers সবসময় দৃশ্যমান ---------- */
 .topbar,
+.container,
+.layout,
+.sidebar,
 .mobile-bottom-nav {
     display: block;
 }
@@ -4269,7 +4264,6 @@ body[data-current-page="me"] .daily-diary-card[data-page="me"] {
     flex-direction: column !important;
 }
 
-/* মোবাইলে layout flex column */
 @media (max-width: 768px) {
     .layout {
         display: flex !important;
