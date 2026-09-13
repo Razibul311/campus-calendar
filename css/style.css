@@ -5525,3 +5525,110 @@ body .alarm-header .alarm-title-area small {
         border-radius: 0 0 24px 24px !important;
     }
 }
+
+/* =========================================================
+   ✅ CRITICAL FIX: Modal Body Scroll + Modal Height
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* =========================================================
+       Modal Overlay — Nav bar এর উপরে জায়গা
+    ========================================================= */
+    body .modal-overlay {
+        display: flex !important;
+        align-items: flex-end !important;
+        justify-content: center !important;
+        padding: 8px 8px calc(75px + env(safe-area-inset-bottom)) 8px !important;
+        overflow: hidden !important;
+    }
+
+    /* =========================================================
+       Modal — Fixed height, flex column, all corners round
+    ========================================================= */
+    body .modal-overlay .modal {
+        /* ✅ Modal এর সর্বোচ্চ height সেট করুন */
+        max-height: calc(100dvh - 100px - env(safe-area-inset-bottom)) !important;
+        height: auto !important;
+
+        /* ✅ 4 direction round corners */
+        border-radius: 24px !important;
+        overflow: hidden !important;
+
+        /* ✅ Flex column layout */
+        display: flex !important;
+        flex-direction: column !important;
+
+        margin: 0 !important;
+    }
+
+    /* =========================================================
+       Modal Header — Fixed at top
+    ========================================================= */
+    body .modal-overlay .modal-header {
+        flex: 0 0 auto !important;
+        flex-shrink: 0 !important;
+        background: rgb(var(--surface)) !important;
+        border-radius: 24px 24px 0 0 !important;
+        position: relative !important;
+        z-index: 2 !important;
+    }
+
+    /* =========================================================
+       ✅ Modal Body — MUST BE SCROLLABLE
+    ========================================================= */
+    body .modal-overlay .modal-body {
+        /* ✅ Flex এ grow এবং shrink */
+        flex: 1 1 auto !important;
+        flex-basis: 0 !important;
+
+        /* ✅ সঠিক height এবং scroll */
+        max-height: none !important;
+        height: auto !important;
+        min-height: 0 !important;
+
+        /* ✅ Scroll enable */
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        overscroll-behavior: contain !important;
+
+        /* ✅ Padding */
+        padding: 16px !important;
+
+        /* ✅ Position */
+        position: relative !important;
+        z-index: 1 !important;
+
+        /* ✅ Scrollbar স্টাইল */
+        scrollbar-width: thin !important;
+    }
+
+    /* WebKit scrollbar */
+    body .modal-overlay .modal-body::-webkit-scrollbar {
+        width: 4px !important;
+    }
+
+    body .modal-overlay .modal-body::-webkit-scrollbar-thumb {
+        background: rgb(var(--primary)) !important;
+        border-radius: 4px !important;
+    }
+
+    body .modal-overlay .modal-body::-webkit-scrollbar-track {
+        background: transparent !important;
+    }
+
+    /* =========================================================
+       Modal Footer — Fixed at bottom
+    ========================================================= */
+    body .modal-overlay .modal-footer {
+        flex: 0 0 auto !important;
+        flex-shrink: 0 !important;
+        background: rgb(var(--surface)) !important;
+        border-radius: 0 0 24px 24px !important;
+        border-top: 1px solid rgb(var(--border)) !important;
+        position: relative !important;
+        z-index: 2 !important;
+        box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.06) !important;
+    }
+}
