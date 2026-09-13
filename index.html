@@ -47,8 +47,11 @@
         href="css/study-task.css"
     >
 
-    <!-- ✅ ADDED: Mobile Bottom Nav CSS (inline) -->
+    <!-- ✅ ADDED: Page Switching + Mobile Bottom Nav CSS -->
     <style>
+        /* =========================================================
+           MOBILE BOTTOM NAVIGATION
+        ========================================================= */
         .mobile-bottom-nav {
             display: none;
         }
@@ -117,6 +120,69 @@
 
             .container {
                 padding-bottom: calc(80px + env(safe-area-inset-bottom)) !important;
+            }
+        }
+
+        /* =========================================================
+           ✅ PAGE SWITCHING — CRITICAL FIX
+        ========================================================= */
+
+        /* ১. প্রথমে সব data-page এলিমেন্ট লুকান */
+        body[data-current-page] [data-page] {
+            display: none !important;
+        }
+
+        /* ২. Home page — শুধু home elements দেখান */
+        body[data-current-page="home"] [data-page="home"] {
+            display: block !important;
+        }
+
+        body[data-current-page="home"] .dashboard[data-page="home"] {
+            display: grid !important;
+        }
+
+        body[data-current-page="home"] .toolbar[data-page="home"] {
+            display: flex !important;
+        }
+
+        /* ৩. Study page — শুধু study elements দেখান */
+        body[data-current-page="study"] [data-page="study"] {
+            display: block !important;
+        }
+
+        body[data-current-page="study"] .study-timer-panel[data-page="study"] {
+            display: block !important;
+        }
+
+        /* ৪. Me page — শুধু me elements দেখান */
+        body[data-current-page="me"] [data-page="me"] {
+            display: block !important;
+        }
+
+        /* ৫. Modal গুলো সবসময় available থাকবে (এদের data-page নেই) */
+        .modal-overlay {
+            display: none;
+        }
+
+        .modal-overlay.active {
+            display: flex !important;
+        }
+
+        /* ৬. Layout grid সবসময় active */
+        .layout {
+            display: grid !important;
+        }
+
+        /* ৭. Sidebar flex সবসময় active */
+        .sidebar {
+            display: flex !important;
+            flex-direction: column !important;
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                display: flex !important;
+                flex-direction: column !important;
             }
         }
     </style>
