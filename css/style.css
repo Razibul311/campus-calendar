@@ -3907,3 +3907,90 @@ body.dark #eventDetails .detail-value {
         font-size: 13px;
     }
 }
+
+/* =========================================================
+   ✅ CRITICAL FIX: Event Details Modal Body Visibility
+========================================================= */
+
+/* Desktop + All Screens — Modal Body MUST be visible */
+#detailsModal .modal-body,
+#eventDetails {
+    display: block !important;
+    min-height: 100px !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 18px !important;
+    flex: 1 1 auto !important;
+}
+
+/* Modal Container must allow body to grow */
+#detailsModal .modal {
+    display: flex !important;
+    flex-direction: column !important;
+    max-height: 90vh !important;
+    overflow: hidden !important;
+}
+
+/* Header & Footer fixed height */
+#detailsModal .modal-header,
+#detailsModal .modal-footer {
+    flex: 0 0 auto !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+}
+
+/* Detail Row Visibility */
+#detailsModal .detail-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    padding: 12px 0 !important;
+    border-bottom: 1px solid rgb(var(--border-light)) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#detailsModal .detail-row:last-child {
+    border-bottom: none !important;
+}
+
+#detailsModal .detail-label {
+    display: block !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: rgb(var(--text-muted)) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#detailsModal .detail-value {
+    display: block !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: rgb(var(--text)) !important;
+    line-height: 1.5 !important;
+    word-break: break-word !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#detailsModal .detail-value small {
+    display: block !important;
+    margin-top: 4px !important;
+    font-size: 12px !important;
+    color: rgb(var(--text-muted)) !important;
+    font-weight: 400 !important;
+}
+
+/* Dark mode */
+body.dark #detailsModal .detail-row {
+    border-bottom-color: rgb(var(--border)) !important;
+}
+
+body.dark #detailsModal .detail-value {
+    color: rgb(var(--text)) !important;
+}
