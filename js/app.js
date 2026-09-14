@@ -3180,14 +3180,9 @@ if (holiday) {
                 eventElement.addEventListener(
                     "click",
                     clickEvent => {
-
+                        console.log("🔵 Event clicked, id:", event.id);
                         clickEvent.stopPropagation();
-
-
-                        showEventDetails(
-                            event.id
-                        );
-
+                        showEventDetails(event.id);
                     }
                 );
 
@@ -4322,6 +4317,8 @@ async function deleteCurrentEvent() {
 ========================================================= */
 
 function showEventDetails(id) {
+
+    console.log("🔵 showEventDetails called with id:", id);
 
     const event =
         state.events.find(
