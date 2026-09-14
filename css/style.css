@@ -120,7 +120,7 @@
     --other-color: 100, 116, 139;
 
     /* =========================================================
-       SHADOW
+       SHADOW — RGB (Alpha values handled in rgba())
     ========================================================= */
     --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
     --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
@@ -184,6 +184,7 @@
    ========================================================= */
 
 body.dark {
+    /* ---------- Primary Dark ---------- */
     --primary: 45, 212, 191;
     --primary-hover: 94, 234, 212;
     --primary-dark: 20, 184, 166;
@@ -192,6 +193,7 @@ body.dark {
     --primary-subtle: 4, 47, 46;
     --primary-ring: 45, 212, 191;
 
+    /* ---------- Accent Dark ---------- */
     --accent: 129, 140, 248;
     --accent-hover: 165, 180, 252;
     --accent-dark: 99, 102, 241;
@@ -199,6 +201,7 @@ body.dark {
     --accent-soft: 30, 27, 75;
     --accent-ring: 129, 140, 248;
 
+    /* ---------- Background Dark ---------- */
     --bg: 8, 14, 26;
     --bg-elevated: 13, 23, 40;
     --bg-warm: 15, 26, 46;
@@ -208,6 +211,7 @@ body.dark {
     --surface-hover: 27, 43, 66;
     --surface-elevated: 22, 35, 55;
 
+    /* ---------- Text Dark ---------- */
     --text: 241, 245, 249;
     --text-primary: 248, 250, 252;
     --text-secondary: 203, 213, 225;
@@ -215,11 +219,13 @@ body.dark {
     --text-faint: 100, 116, 139;
     --text-inverse: 15, 23, 42;
 
+    /* ---------- Border Dark ---------- */
     --border: 37, 53, 74;
     --border-strong: 51, 65, 85;
     --border-light: 29, 43, 62;
     --border-focus: 45, 212, 191;
 
+    /* ---------- Semantic Dark ---------- */
     --success: 52, 211, 153;
     --success-soft: 6, 78, 59;
     --success-border: 5, 150, 105;
@@ -240,10 +246,12 @@ body.dark {
     --info-border: 2, 132, 199;
     --info-text: 125, 211, 252;
 
+    /* ---------- Today Dark ---------- */
     --today-bg: 19, 78, 74;
     --today-border: 45, 212, 191;
     --today-text: 153, 246, 228;
 
+    /* ---------- Holiday Dark ---------- */
     --holiday-bg: 76, 5, 19;
     --holiday-border: 251, 113, 133;
     --holiday-text: 253, 164, 175;
@@ -251,6 +259,7 @@ body.dark {
     --holiday-indicator-bg: 76, 5, 19;
     --holiday-indicator-border: 136, 19, 55;
 
+    /* ---------- Shadow Dark ---------- */
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.30);
     --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
     --shadow: 0 8px 28px rgba(0, 0, 0, 0.40);
@@ -259,11 +268,13 @@ body.dark {
     --shadow-2xl: 0 40px 80px rgba(0, 0, 0, 0.70);
     --shadow-glow: 0 4px 25px rgba(45, 212, 191, 0.12);
 
+    /* ---------- Dark Background Gradients ---------- */
     --bg-gradient-1: radial-gradient(circle at 8% 0%, rgba(45, 212, 191, 0.06), transparent 26%);
     --bg-gradient-2: radial-gradient(circle at 92% 100%, rgba(129, 140, 248, 0.05), transparent 30%);
     --bg-gradient-3: radial-gradient(circle at 50% 50%, rgba(45, 212, 191, 0.03), transparent 50%);
     --gradient-bg: linear-gradient(180deg, rgb(8, 14, 26) 0%, rgb(13, 23, 40) 100%);
 
+    /* ---------- Gradients Dark ---------- */
     --gradient-topbar: var(--gradient-topbar-dark);
 }
 
@@ -297,7 +308,8 @@ body {
         sans-serif;
 
     color: rgb(var(--text));
-
+    
+    /* Premium Multi-Layer Background — RGB */
     background:
         var(--bg-gradient-3),
         var(--bg-gradient-2),
@@ -314,13 +326,14 @@ body {
     overflow-x: hidden;
 }
 
+/* Subtle Background Pattern Overlay */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background-image:
+    background-image: 
         radial-gradient(circle at 20% 50%, rgba(13, 148, 136, 0.02) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(79, 70, 229, 0.015) 0%, transparent 50%);
 }
@@ -334,6 +347,7 @@ body::before {
    04. SCROLLBAR — RGB
    ========================================================= */
 
+/* Light Mode */
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -353,6 +367,7 @@ body::before {
     background: linear-gradient(180deg, rgb(var(--primary-hover)), rgb(var(--primary-dark)));
 }
 
+/* Dark Mode */
 body.dark::-webkit-scrollbar-track {
     background: rgb(30, 41, 59);
 }
@@ -431,7 +446,7 @@ textarea::placeholder {
     content: "";
     position: absolute;
     inset: 0;
-    background:
+    background: 
         radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.06), transparent 60%),
         radial-gradient(circle at 80% 70%, rgba(45, 212, 191, 0.08), transparent 50%);
     pointer-events: none;
@@ -593,6 +608,36 @@ textarea::placeholder {
     box-shadow: var(--shadow);
 }
 
+
+
+/* Stat Card 5 — Assignment (Same as Today's Events - Teal) */
+.stat-card:nth-child(5)::before {
+    background: linear-gradient(90deg, rgb(13, 148, 136), rgb(8, 145, 178));
+}
+.stat-card:nth-child(5) strong { color: rgb(13, 148, 136); }
+body.dark .stat-card:nth-child(5) strong { color: rgb(45, 212, 191); }
+
+/* Stat Card 6 — Project (Same as This Month - Indigo) */
+.stat-card:nth-child(6)::before {
+    background: linear-gradient(90deg, rgb(79, 70, 229), rgb(124, 58, 237));
+}
+.stat-card:nth-child(6) strong { color: rgb(79, 70, 229); }
+body.dark .stat-card:nth-child(6) strong { color: rgb(129, 140, 248); }
+
+/* Stat Card 7 — Presentation (Same as Classes - Amber) */
+.stat-card:nth-child(7)::before {
+    background: linear-gradient(90deg, rgb(245, 158, 11), rgb(217, 119, 6));
+}
+.stat-card:nth-child(7) strong { color: rgb(245, 158, 11); }
+body.dark .stat-card:nth-child(7) strong { color: rgb(251, 191, 36); }
+
+/* Stat Card 8 — Personal (Same as Exams - Rose) */
+.stat-card:nth-child(8)::before {
+    background: linear-gradient(90deg, rgb(225, 29, 72), rgb(251, 113, 133));
+}
+.stat-card:nth-child(8) strong { color: rgb(225, 29, 72); }
+body.dark .stat-card:nth-child(8) strong { color: rgb(251, 113, 133); }
+
 .stat-card::after {
     content: "";
     position: absolute;
@@ -606,6 +651,10 @@ textarea::placeholder {
     opacity: 0.5;
 }
 
+/* =========================================================
+   STAT CARDS — COLORED TOP BORDER + NUMBER
+   ========================================================= */
+
 /* Stat Card 1 — Today's Events (Teal) */
 .stat-card:nth-child(1)::before {
     content: "";
@@ -616,8 +665,12 @@ textarea::placeholder {
     height: 3px;
     background: linear-gradient(90deg, rgb(13, 148, 136), rgb(8, 145, 178));
 }
-.stat-card:nth-child(1) strong { color: rgb(13, 148, 136); }
-body.dark .stat-card:nth-child(1) strong { color: rgb(45, 212, 191); }
+.stat-card:nth-child(1) strong {
+    color: rgb(13, 148, 136);
+}
+body.dark .stat-card:nth-child(1) strong {
+    color: rgb(45, 212, 191);
+}
 
 /* Stat Card 2 — This Month (Indigo) */
 .stat-card:nth-child(2)::before {
@@ -629,8 +682,12 @@ body.dark .stat-card:nth-child(1) strong { color: rgb(45, 212, 191); }
     height: 3px;
     background: linear-gradient(90deg, rgb(79, 70, 229), rgb(124, 58, 237));
 }
-.stat-card:nth-child(2) strong { color: rgb(79, 70, 229); }
-body.dark .stat-card:nth-child(2) strong { color: rgb(129, 140, 248); }
+.stat-card:nth-child(2) strong {
+    color: rgb(79, 70, 229);
+}
+body.dark .stat-card:nth-child(2) strong {
+    color: rgb(129, 140, 248);
+}
 
 /* Stat Card 3 — Classes (Amber) */
 .stat-card:nth-child(3)::before {
@@ -642,8 +699,12 @@ body.dark .stat-card:nth-child(2) strong { color: rgb(129, 140, 248); }
     height: 3px;
     background: linear-gradient(90deg, rgb(245, 158, 11), rgb(217, 119, 6));
 }
-.stat-card:nth-child(3) strong { color: rgb(245, 158, 11); }
-body.dark .stat-card:nth-child(3) strong { color: rgb(251, 191, 36); }
+.stat-card:nth-child(3) strong {
+    color: rgb(245, 158, 11);
+}
+body.dark .stat-card:nth-child(3) strong {
+    color: rgb(251, 191, 36);
+}
 
 /* Stat Card 4 — Exams (Rose) */
 .stat-card:nth-child(4)::before {
@@ -655,10 +716,14 @@ body.dark .stat-card:nth-child(3) strong { color: rgb(251, 191, 36); }
     height: 3px;
     background: linear-gradient(90deg, rgb(225, 29, 72), rgb(251, 113, 133));
 }
-.stat-card:nth-child(4) strong { color: rgb(225, 29, 72); }
-body.dark .stat-card:nth-child(4) strong { color: rgb(251, 113, 133); }
+.stat-card:nth-child(4) strong {
+    color: rgb(225, 29, 72);
+}
+body.dark .stat-card:nth-child(4) strong {
+    color: rgb(251, 113, 133);
+}
 
-/* Stat Card 5 — Assignment (Teal) */
+/* Stat Card 5 — Assignment (Same as Today's Events - Teal) */
 .stat-card:nth-child(5)::before {
     content: "";
     position: absolute;
@@ -668,10 +733,14 @@ body.dark .stat-card:nth-child(4) strong { color: rgb(251, 113, 133); }
     height: 3px;
     background: linear-gradient(90deg, rgb(13, 148, 136), rgb(8, 145, 178));
 }
-.stat-card:nth-child(5) strong { color: rgb(13, 148, 136); }
-body.dark .stat-card:nth-child(5) strong { color: rgb(45, 212, 191); }
+.stat-card:nth-child(5) strong {
+    color: rgb(13, 148, 136);
+}
+body.dark .stat-card:nth-child(5) strong {
+    color: rgb(45, 212, 191);
+}
 
-/* Stat Card 6 — Project (Indigo) */
+/* Stat Card 6 — Project (Same as This Month - Indigo) */
 .stat-card:nth-child(6)::before {
     content: "";
     position: absolute;
@@ -681,10 +750,14 @@ body.dark .stat-card:nth-child(5) strong { color: rgb(45, 212, 191); }
     height: 3px;
     background: linear-gradient(90deg, rgb(79, 70, 229), rgb(124, 58, 237));
 }
-.stat-card:nth-child(6) strong { color: rgb(79, 70, 229); }
-body.dark .stat-card:nth-child(6) strong { color: rgb(129, 140, 248); }
+.stat-card:nth-child(6) strong {
+    color: rgb(79, 70, 229);
+}
+body.dark .stat-card:nth-child(6) strong {
+    color: rgb(129, 140, 248);
+}
 
-/* Stat Card 7 — Presentation (Amber) */
+/* Stat Card 7 — Presentation (Same as Classes - Amber) */
 .stat-card:nth-child(7)::before {
     content: "";
     position: absolute;
@@ -694,10 +767,14 @@ body.dark .stat-card:nth-child(6) strong { color: rgb(129, 140, 248); }
     height: 3px;
     background: linear-gradient(90deg, rgb(245, 158, 11), rgb(217, 119, 6));
 }
-.stat-card:nth-child(7) strong { color: rgb(245, 158, 11); }
-body.dark .stat-card:nth-child(7) strong { color: rgb(251, 191, 36); }
+.stat-card:nth-child(7) strong {
+    color: rgb(245, 158, 11);
+}
+body.dark .stat-card:nth-child(7) strong {
+    color: rgb(251, 191, 36);
+}
 
-/* Stat Card 8 — Personal (Rose) */
+/* Stat Card 8 — Personal (Same as Exams - Rose) */
 .stat-card:nth-child(8)::before {
     content: "";
     position: absolute;
@@ -707,9 +784,12 @@ body.dark .stat-card:nth-child(7) strong { color: rgb(251, 191, 36); }
     height: 3px;
     background: linear-gradient(90deg, rgb(225, 29, 72), rgb(251, 113, 133));
 }
-.stat-card:nth-child(8) strong { color: rgb(225, 29, 72); }
-body.dark .stat-card:nth-child(8) strong { color: rgb(251, 113, 133); }
-
+.stat-card:nth-child(8) strong {
+    color: rgb(225, 29, 72);
+}
+body.dark .stat-card:nth-child(8) strong {
+    color: rgb(251, 113, 133);
+}
 .stat-card span,
 .stat-card small {
     display: block;
@@ -998,6 +1078,8 @@ body.dark .stat-card:nth-child(8) strong { color: rgb(251, 113, 133); }
         box-shadow var(--transition);
 }
 
+
+
 .day:hover {
     background: rgb(var(--surface-hover));
 }
@@ -1152,6 +1234,7 @@ body.dark .stat-card:nth-child(8) strong { color: rgb(251, 113, 133); }
     filter: brightness(1.08);
 }
 
+/* Event Category Colors — RGB */
 .event.class {
     background: linear-gradient(135deg, rgb(13, 148, 136), rgb(20, 184, 166));
 }
@@ -1526,14 +1609,6 @@ body.dark .category-tag {
     font-size: clamp(16px, 1.4vw, 19px);
     font-weight: 700;
     color: rgb(var(--text));
-
-    /* ✅ FIX: Duplicate text prevent — single line ellipsis */
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    min-width: 0;
-    flex: 1;
 }
 
 /* =========================================================
@@ -1551,11 +1626,6 @@ body.dark .category-tag {
     color: rgb(var(--text-muted));
     background: transparent;
     font-size: 22px;
-    line-height: 1;
-    flex-shrink: 0;
-
-    /* ✅ FIX: JS থেকে "×" সেট হয়, তাই অতিরিক্ত text hide করা হচ্ছে */
-    overflow: hidden;
     transition: all var(--transition);
 }
 
@@ -1649,8 +1719,11 @@ body.dark .glass {
 }
 
 /* =========================================================
-   37-48. RESPONSIVE — RGB
+   37-48. RESPONSIVE & UTILITY — RGB (Unchanged)
    ========================================================= */
+
+/* All responsive sections remain the same structure
+   but use rgb(var(--variable)) pattern */
 
 @media (min-width: 1281px) {
     .container {
@@ -2167,6 +2240,7 @@ body.dark .glass {
     border-color: rgb(191, 219, 254);
 }
 
+/* Dark Mode Past Events */
 body.dark .past-event-checkbox .checkmark {
     background: rgb(30, 41, 59);
     border-color: rgb(71, 85, 105);
@@ -2407,6 +2481,7 @@ body.dark .past-event-item:has(.past-event-check:checked) {
     margin-top: 0;
 }
 
+/* Dark Mode CGPA */
 body.dark .cgpa-course-row input,
 body.dark .cgpa-course-row select {
     background: rgb(30, 41, 59);
@@ -2491,10 +2566,7 @@ body.dark .cgpa-final strong {
     }
 }
 
-/* =========================================================
-   STUDY REPORT SUBJECT COLORS
-   ========================================================= */
-
+/* Study Report Subject Colors - RGB Version */
 .study-report-subject-fill {
     transition: width 0.6s ease;
     border-radius: 4px;
@@ -2529,6 +2601,7 @@ body.dark .cgpa-final strong {
     overflow: hidden;
 }
 
+/* Weekly Chart Colors */
 .study-chart-bar {
     width: 100%;
     background: linear-gradient(180deg, #6366f1, #818cf8);
@@ -2572,10 +2645,57 @@ body.dark .cgpa-final strong {
     font-weight: 500;
 }
 
+/* Daily/Weekly Report Cards */
+.daily-report-card,
+.weekly-report-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 16px;
+}
+
+.report-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.report-stat-item {
+    text-align: center;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 12px;
+}
+
+.report-stat-item .stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.report-stat-item .stat-label {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 4px;
+}
+
+/* RGB Color Preview */
+.color-preview {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
 /* =========================================================
    STUDY REPORT - SIDEBAR STYLES
    ========================================================= */
 
+/* ---------- Section Container ---------- */
 .side-card {
     background: rgb(var(--surface));
     border: 1px solid rgb(var(--border));
@@ -2589,6 +2709,7 @@ body.dark .cgpa-final strong {
     box-shadow: var(--shadow-sm);
 }
 
+/* ---------- Section Header ---------- */
 .section-header {
     display: flex;
     flex-direction: column;
@@ -2616,6 +2737,7 @@ body.dark .cgpa-final strong {
     margin-top: 2px;
 }
 
+/* ---------- Navigation Buttons ---------- */
 .study-report-navigation {
     display: flex;
     gap: 6px;
@@ -2664,6 +2786,7 @@ body.dark .cgpa-final strong {
     border-color: rgb(var(--primary-hover));
 }
 
+/* ---------- Current Date Display ---------- */
 .study-report-current-date {
     padding: 8px 12px;
     margin-bottom: 12px;
@@ -2679,6 +2802,7 @@ body.dark .cgpa-final strong {
     color: rgb(var(--text));
 }
 
+/* ---------- Report Cards Grid ---------- */
 .study-report-cards {
     display: grid;
     gap: 8px;
@@ -2693,6 +2817,7 @@ body.dark .cgpa-final strong {
     grid-template-columns: repeat(2, 1fr);
 }
 
+/* ---------- Individual Report Card ---------- */
 .study-report-card {
     padding: 12px 14px;
     background: rgb(var(--surface-soft));
@@ -2723,6 +2848,7 @@ body.dark .cgpa-final strong {
     color: rgb(var(--text));
 }
 
+/* ---------- Subject Breakdown ---------- */
 .study-report-panel {
     margin-top: 14px;
 }
@@ -2786,6 +2912,7 @@ body.dark .cgpa-final strong {
     transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* ---------- Weekly Chart ---------- */
 #weeklyStudyChart {
     display: flex;
     align-items: flex-end;
@@ -2845,6 +2972,802 @@ body.dark .cgpa-final strong {
     font-weight: 500;
 }
 
+/* ---------- Reset Button ---------- */
+.study-report-reset-btn {
+    width: 100%;
+    margin-top: 14px;
+    padding: 8px 16px;
+    border: 1px solid rgb(var(--danger-border));
+    border-radius: var(--radius-sm);
+    background: rgb(var(--danger-soft));
+    color: rgb(var(--danger));
+    font-size: 12px;
+    font-weight: 600;
+    transition: all var(--transition);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.study-report-reset-btn:hover {
+    background: rgb(254, 202, 202);
+    border-color: rgb(var(--danger));
+    transform: translateY(-1px);
+}
+
+.study-report-reset-btn:active {
+    transform: scale(0.97);
+}
+/* =========================================================
+   DARK MODE — STUDY REPORT (PURPLE THEME)
+   ========================================================= */
+
+/* ---------- Nav Buttons — Inactive (Visible) ---------- */
+body.dark .study-report-nav-btn:not(.active) {
+    background: rgba(30, 41, 59, 0.85);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    color: rgb(226, 232, 240);
+    font-weight: 600;
+}
+
+body.dark .study-report-nav-btn:not(.active):hover {
+    background: rgba(45, 55, 72, 0.95);
+    border-color: rgb(167, 139, 250);
+    color: rgb(255, 255, 255);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+/* ---------- Nav Buttons — Active (Purple Gradient) ---------- */
+body.dark .study-report-nav-btn.active {
+    background: linear-gradient(135deg, rgb(139, 92, 246), rgb(124, 58, 237));
+    border-color: rgb(167, 139, 250);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.45);
+    font-weight: 600;
+}
+
+body.dark .study-report-nav-btn.active:hover {
+    background: linear-gradient(135deg, rgb(167, 139, 250), rgb(139, 92, 246));
+    border-color: rgb(196, 181, 253);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.55);
+}
+
+/* ---------- Current Date Display (Purple Tint) ---------- */
+body.dark .study-report-current-date {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(167, 139, 250, 0.2);
+}
+
+body.dark .study-report-current-date strong {
+    color: rgb(196, 181, 253);
+}
+
+/* ---------- Report Cards (Purple Tint) ---------- */
+body.dark .study-report-card {
+    background: rgba(139, 92, 246, 0.08);
+    border-color: rgba(167, 139, 250, 0.15);
+}
+
+/* ---------- Reset Button ---------- */
+body.dark .study-report-reset-btn {
+    background: rgb(76, 5, 25);
+    border-color: rgb(136, 19, 55);
+    color: rgb(251, 113, 133);
+}
+
+body.dark .study-report-reset-btn:hover {
+    background: rgb(127, 29, 29);
+    border-color: rgb(251, 113, 133);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .side-card {
+        padding: 14px;
+    }
+    
+    .study-report-navigation {
+        width: 100%;
+    }
+    
+    .study-report-nav-btn {
+        flex: 1;
+        justify-content: center;
+        font-size: 11px;
+        padding: 6px 10px;
+        min-height: 32px;
+    }
+    
+    .daily-sidebar-cards,
+    .weekly-sidebar-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    
+    .study-report-card strong {
+        font-size: 18px;
+    }
+    
+    #weeklyStudyChart {
+        height: 100px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar-area {
+        height: 60px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar {
+        max-width: 20px;
+        min-width: 4px;
+    }
+}
+
+@media (max-width: 500px) {
+    .side-card {
+        padding: 12px;
+    }
+    
+    .section-header {
+        gap: 8px;
+    }
+    
+    .study-report-nav-btn {
+        font-size: 10px;
+        padding: 5px 8px;
+        min-height: 30px;
+    }
+    
+    .study-report-cards {
+        gap: 5px;
+    }
+    
+    .study-report-card {
+        padding: 10px 12px;
+    }
+    
+    .study-report-card strong {
+        font-size: 16px;
+    }
+    
+    .study-report-card-label {
+        font-size: 9px;
+    }
+    
+    .study-report-reset-btn {
+        font-size: 11px;
+        padding: 7px 12px;
+    }
+    
+    #weeklyStudyChart {
+        height: 85px;
+        gap: 4px;
+        padding: 6px 0;
+    }
+    
+    #weeklyStudyChart .study-chart-bar-area {
+        height: 50px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar {
+        max-width: 16px;
+        min-width: 3px;
+    }
+    
+    #weeklyStudyChart .study-chart-value {
+        font-size: 8px;
+        min-height: 14px;
+    }
+    
+    #weeklyStudyChart .study-chart-day {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 380px) {
+    .side-card {
+        padding: 10px;
+    }
+    
+    .study-report-nav-btn {
+        font-size: 9px;
+        padding: 4px 6px;
+        min-height: 28px;
+    }
+    
+    .study-report-card {
+        padding: 8px 10px;
+    }
+    
+    .study-report-card strong {
+        font-size: 14px;
+    }
+    
+    .study-report-card-label {
+        font-size: 8px;
+    }
+    
+    #weeklyStudyChart {
+        height: 70px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar-area {
+        height: 40px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar {
+        max-width: 12px;
+        min-width: 2px;
+    }
+}
+
+/* =========================================================
+   01. DESIGN TOKENS — PREMIUM COLOR SYSTEM (RGB ONLY)
+   ========================================================= */
+
+:root {
+    /* =========================================================
+       PRIMARY — TEAL (Complete Palette - RGB)
+    ========================================================= */
+    --primary: 13, 148, 136;
+    --primary-hover: 15, 118, 110;
+    --primary-dark: 17, 94, 89;
+    --primary-light: 45, 212, 191;
+    --primary-soft: 204, 251, 241;
+    --primary-subtle: 240, 253, 250;
+    --primary-ring: 13, 148, 136;
+
+    /* =========================================================
+       ACCENT — INDIGO (Complete Palette - RGB)
+    ========================================================= */
+    --accent: 79, 70, 229;
+    --accent-hover: 67, 56, 202;
+    --accent-dark: 55, 48, 163;
+    --accent-light: 129, 140, 248;
+    --accent-soft: 238, 242, 255;
+    --accent-ring: 79, 70, 229;
+
+    /* =========================================================
+       SEMANTIC — SUCCESS (RGB)
+    ========================================================= */
+    --success: 5, 150, 105;
+    --success-soft: 236, 253, 245;
+    --success-border: 167, 243, 208;
+    --success-text: 6, 95, 70;
+    --success-ring: 5, 150, 105;
+
+    /* =========================================================
+       SEMANTIC — WARNING (RGB)
+    ========================================================= */
+    --warning: 217, 119, 6;
+    --warning-soft: 255, 251, 235;
+    --warning-border: 252, 211, 77;
+    --warning-text: 146, 64, 14;
+    --warning-ring: 217, 119, 6;
+
+    /* =========================================================
+       SEMANTIC — DANGER (RGB)
+    ========================================================= */
+    --danger: 225, 29, 72;
+    --danger-soft: 255, 241, 242;
+    --danger-border: 254, 205, 211;
+    --danger-text: 159, 18, 57;
+    --danger-ring: 225, 29, 72;
+
+    /* =========================================================
+       SEMANTIC — INFO (RGB)
+    ========================================================= */
+    --info: 2, 132, 199;
+    --info-soft: 240, 249, 255;
+    --info-border: 125, 211, 252;
+    --info-text: 12, 74, 110;
+    --info-ring: 2, 132, 199;
+
+    /* =========================================================
+       BACKGROUND — RGB
+    ========================================================= */
+    --bg: 244, 246, 250;
+    --bg-elevated: 255, 255, 255;
+    --bg-warm: 250, 251, 252;
+
+    --surface: 255, 255, 255;
+    --surface-soft: 248, 250, 252;
+    --surface-hover: 241, 245, 249;
+    --surface-elevated: 255, 255, 255;
+
+    /* =========================================================
+       TEXT — RGB
+    ========================================================= */
+    --text: 15, 23, 42;
+    --text-primary: 15, 23, 42;
+    --text-secondary: 71, 85, 105;
+    --text-muted: 100, 116, 139;
+    --text-faint: 148, 163, 184;
+    --text-inverse: 255, 255, 255;
+
+    /* =========================================================
+       BORDER — RGB
+    ========================================================= */
+    --border: 226, 232, 240;
+    --border-strong: 203, 213, 225;
+    --border-light: 241, 245, 249;
+    --border-focus: 13, 148, 136;
+
+    /* =========================================================
+       TODAY — RGB
+    ========================================================= */
+    --today-bg: 236, 253, 245;
+    --today-border: 5, 150, 105;
+    --today-text: 6, 95, 70;
+
+    /* =========================================================
+       HOLIDAY — WARM ROSE (RGB)
+    ========================================================= */
+    --holiday-bg: 255, 241, 242;
+    --holiday-border: 251, 113, 133;
+    --holiday-text: 225, 29, 72;
+    --holiday-soft: 255, 228, 230;
+    --holiday-indicator-bg: 255, 241, 242;
+    --holiday-indicator-border: 254, 205, 211;
+
+    /* =========================================================
+       EVENT CATEGORY COLORS — RGB
+    ========================================================= */
+    --class-color: 13, 148, 136;
+    --exam-color: 225, 29, 72;
+    --assignment-color: 124, 58, 237;
+    --project-color: 245, 158, 11;
+    --presentation-color: 8, 145, 178;
+    --personal-color: 5, 150, 105;
+    --holiday-color: 219, 39, 119;
+    --other-color: 100, 116, 139;
+
+    /* =========================================================
+       SHADOW — RGB (Alpha values handled in rgba())
+    ========================================================= */
+    --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+    --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 18px 45px rgba(15, 23, 42, 0.12);
+    --shadow-xl: 0 25px 60px rgba(15, 23, 42, 0.18);
+    --shadow-2xl: 0 35px 70px rgba(15, 23, 42, 0.22);
+    --shadow-glow: 0 4px 20px rgba(13, 148, 136, 0.15);
+
+    /* =========================================================
+       RADIUS
+    ========================================================= */
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-2xl: 24px;
+    --radius-full: 9999px;
+
+    /* =========================================================
+       TRANSITIONS
+    ========================================================= */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: 0.15s var(--ease-out);
+    --transition: 0.25s var(--ease-in-out);
+    --transition-slow: 0.4s var(--ease-in-out);
+
+    /* =========================================================
+       GRADIENT UTILITIES — Using RGB
+    ========================================================= */
+    --gradient-primary: linear-gradient(135deg, rgb(13, 148, 136) 0%, rgb(8, 145, 178) 100%);
+    --gradient-accent: linear-gradient(135deg, rgb(79, 70, 229) 0%, rgb(124, 58, 237) 100%);
+    --gradient-warm: linear-gradient(145deg, rgb(245, 158, 11) 0%, rgb(217, 119, 6) 100%);
+    --gradient-success: linear-gradient(135deg, rgb(5, 150, 105) 0%, rgb(52, 211, 153) 100%);
+    --gradient-danger: linear-gradient(135deg, rgb(225, 29, 72) 0%, rgb(251, 113, 133) 100%);
+    --gradient-topbar: linear-gradient(145deg, rgb(13, 148, 136) 0%, rgb(8, 145, 178) 45%, rgb(15, 118, 110) 75%, rgb(17, 94, 89) 100%);
+    --gradient-topbar-dark: linear-gradient(145deg, rgb(4, 47, 46) 0%, rgb(19, 78, 74) 40%, rgb(22, 78, 99) 70%, rgb(15, 23, 42) 100%);
+    --gradient-bg: linear-gradient(180deg, rgb(244, 246, 250) 0%, rgb(238, 242, 255) 100%);
+
+    /* =========================================================
+       BACKGROUND GRADIENT OVERLAYS — RGB
+    ========================================================= */
+    --bg-gradient-1: radial-gradient(circle at 8% 0%, rgba(13, 148, 136, 0.055), transparent 26%);
+    --bg-gradient-2: radial-gradient(circle at 92% 100%, rgba(79, 70, 229, 0.04), transparent 30%);
+    --bg-gradient-3: radial-gradient(circle at 50% 50%, rgba(13, 148, 136, 0.025), transparent 50%);
+
+    /* =========================================================
+       CONTAINER WIDTHS
+    ========================================================= */
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1280px;
+    --container-2xl: 1440px;
+}
+
+/* =========================================================
+   02. DARK MODE — RGB VERSION
+   ========================================================= */
+
+body.dark {
+    /* ---------- Primary Dark ---------- */
+    --primary: 45, 212, 191;
+    --primary-hover: 94, 234, 212;
+    --primary-dark: 20, 184, 166;
+    --primary-light: 153, 246, 228;
+    --primary-soft: 19, 78, 74;
+    --primary-subtle: 4, 47, 46;
+    --primary-ring: 45, 212, 191;
+
+    /* ---------- Accent Dark ---------- */
+    --accent: 129, 140, 248;
+    --accent-hover: 165, 180, 252;
+    --accent-dark: 99, 102, 241;
+    --accent-light: 199, 210, 254;
+    --accent-soft: 30, 27, 75;
+    --accent-ring: 129, 140, 248;
+
+    /* ---------- Background Dark ---------- */
+    --bg: 8, 14, 26;
+    --bg-elevated: 13, 23, 40;
+    --bg-warm: 15, 26, 46;
+
+    --surface: 17, 28, 45;
+    --surface-soft: 22, 35, 55;
+    --surface-hover: 27, 43, 66;
+    --surface-elevated: 22, 35, 55;
+
+    /* ---------- Text Dark ---------- */
+    --text: 241, 245, 249;
+    --text-primary: 248, 250, 252;
+    --text-secondary: 203, 213, 225;
+    --text-muted: 148, 163, 184;
+    --text-faint: 100, 116, 139;
+    --text-inverse: 15, 23, 42;
+
+    /* ---------- Border Dark ---------- */
+    --border: 37, 53, 74;
+    --border-strong: 51, 65, 85;
+    --border-light: 29, 43, 62;
+    --border-focus: 45, 212, 191;
+
+    /* ---------- Semantic Dark ---------- */
+    --success: 52, 211, 153;
+    --success-soft: 6, 78, 59;
+    --success-border: 5, 150, 105;
+    --success-text: 167, 243, 208;
+
+    --warning: 251, 191, 36;
+    --warning-soft: 69, 26, 3;
+    --warning-border: 217, 119, 6;
+    --warning-text: 252, 211, 77;
+
+    --danger: 251, 113, 133;
+    --danger-soft: 76, 5, 25;
+    --danger-border: 225, 29, 72;
+    --danger-text: 254, 205, 211;
+
+    --info: 56, 189, 248;
+    --info-soft: 8, 47, 73;
+    --info-border: 2, 132, 199;
+    --info-text: 125, 211, 252;
+
+    /* ---------- Today Dark ---------- */
+    --today-bg: 19, 78, 74;
+    --today-border: 45, 212, 191;
+    --today-text: 153, 246, 228;
+
+    /* ---------- Holiday Dark ---------- */
+    --holiday-bg: 76, 5, 19;
+    --holiday-border: 251, 113, 133;
+    --holiday-text: 253, 164, 175;
+    --holiday-soft: 136, 19, 55;
+    --holiday-indicator-bg: 76, 5, 19;
+    --holiday-indicator-border: 136, 19, 55;
+
+    /* ---------- Shadow Dark ---------- */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.30);
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
+    --shadow: 0 8px 28px rgba(0, 0, 0, 0.40);
+    --shadow-lg: 0 20px 55px rgba(0, 0, 0, 0.50);
+    --shadow-xl: 0 30px 70px rgba(0, 0, 0, 0.60);
+    --shadow-2xl: 0 40px 80px rgba(0, 0, 0, 0.70);
+    --shadow-glow: 0 4px 25px rgba(45, 212, 191, 0.12);
+
+    /* ---------- Dark Background Gradients ---------- */
+    --bg-gradient-1: radial-gradient(circle at 8% 0%, rgba(45, 212, 191, 0.06), transparent 26%);
+    --bg-gradient-2: radial-gradient(circle at 92% 100%, rgba(129, 140, 248, 0.05), transparent 30%);
+    --bg-gradient-3: radial-gradient(circle at 50% 50%, rgba(45, 212, 191, 0.03), transparent 50%);
+    --gradient-bg: linear-gradient(180deg, rgb(8, 14, 26) 0%, rgb(13, 23, 40) 100%);
+
+    /* ---------- Gradients Dark ---------- */
+    --gradient-topbar: var(--gradient-topbar-dark);
+}
+
+/* =========================================================
+   03. STUDY REPORT SIDEBAR — COMPLETE
+   ========================================================= */
+
+/* ---------- Section Container ---------- */
+.side-card {
+    background: rgb(var(--surface));
+    border: 1px solid rgb(var(--border));
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    box-shadow: var(--shadow-xs);
+    transition: all var(--transition);
+}
+
+.side-card:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+/* ---------- Section Header ---------- */
+.section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.section-header > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.section-header h3 {
+    margin: 0;
+    font-size: clamp(15px, 1.2vw, 17px);
+    font-weight: 700;
+    color: rgb(var(--text));
+}
+
+.section-header small {
+    display: block;
+    font-size: 12px;
+    color: rgb(var(--text-muted));
+    margin-top: 2px;
+}
+
+/* ---------- Navigation Buttons ---------- */
+.study-report-navigation {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.study-report-nav-btn {
+    min-height: 34px;
+    padding: 6px 14px;
+    border: 1px solid rgb(var(--border));
+    border-radius: var(--radius-sm);
+    background: rgb(var(--surface));
+    color: rgb(var(--text-secondary));
+    font-size: 12px;
+    font-weight: 500;
+    transition: all var(--transition);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex: 1;
+}
+
+.study-report-nav-btn:hover {
+    background: rgb(var(--surface-hover));
+    border-color: rgb(var(--primary));
+    color: rgb(var(--primary));
+    transform: translateY(-1px);
+}
+
+.study-report-nav-btn:active {
+    transform: scale(0.97);
+}
+
+.study-report-nav-btn.active {
+    background: rgb(var(--primary));
+    border-color: rgb(var(--primary));
+    color: rgb(var(--text-inverse));
+    box-shadow: var(--shadow-glow);
+}
+
+.study-report-nav-btn.active:hover {
+    background: rgb(var(--primary-hover));
+    border-color: rgb(var(--primary-hover));
+}
+
+/* ---------- Current Date Display ---------- */
+.study-report-current-date {
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    background: rgb(var(--surface-soft));
+    border-radius: var(--radius-sm);
+    border: 1px solid rgb(var(--border-light));
+    text-align: center;
+}
+
+.study-report-current-date strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(var(--text));
+}
+
+/* ---------- Report Cards Grid ---------- */
+.study-report-cards {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.daily-sidebar-cards {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.weekly-sidebar-cards {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* ---------- Individual Report Card ---------- */
+.study-report-card {
+    padding: 12px 14px;
+    background: rgb(var(--surface-soft));
+    border-radius: var(--radius-sm);
+    border: 1px solid rgb(var(--border-light));
+    transition: all var(--transition);
+}
+
+.study-report-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xs);
+}
+
+.study-report-card-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgb(var(--text-muted));
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+}
+
+.study-report-card strong {
+    display: block;
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 700;
+    color: rgb(var(--text));
+}
+
+/* ---------- Subject Breakdown ---------- */
+.study-report-panel {
+    margin-top: 14px;
+}
+
+.study-report-panel h4 {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(var(--text-secondary));
+}
+
+.study-subject-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.study-report-subject-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.study-report-subject-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.study-report-subject-info span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgb(var(--text-secondary));
+}
+
+.study-report-subject-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: rgb(var(--primary));
+}
+
+.study-report-subject-info strong {
+    font-weight: 600;
+    color: rgb(var(--text));
+}
+
+.study-report-subject-bar {
+    width: 100%;
+    height: 5px;
+    background: rgb(var(--surface-soft));
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.study-report-subject-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    background: rgb(var(--primary));
+}
+
+/* ---------- Weekly Chart ---------- */
+#weeklyStudyChart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 120px;
+    padding: 8px 0;
+    gap: 6px;
+    border-bottom: 2px solid rgb(var(--border));
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+#weeklyStudyChart .study-chart-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap: 4px;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+#weeklyStudyChart .study-chart-value {
+    font-size: 9px;
+    color: rgb(var(--text-muted));
+    font-weight: 500;
+    min-height: 16px;
+}
+
+#weeklyStudyChart .study-chart-bar-area {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#weeklyStudyChart .study-chart-bar {
+    width: 100%;
+    max-width: 24px;
+    min-width: 6px;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    min-height: 3px;
+    background: linear-gradient(180deg, rgb(var(--accent)), rgb(var(--accent-light)));
+}
+
+#weeklyStudyChart .study-chart-bar:hover {
+    filter: brightness(1.1);
+    transform: scaleY(1.02);
+    transform-origin: bottom;
+}
+
+#weeklyStudyChart .study-chart-day {
+    font-size: 9px;
+    color: rgb(var(--text-muted));
+    font-weight: 500;
+}
+
+/* ---------- Reset Button ---------- */
 .study-report-reset-btn {
     width: 100%;
     margin-top: 14px;
@@ -2874,50 +3797,119 @@ body.dark .cgpa-final strong {
 }
 
 /* =========================================================
-   DARK MODE — STUDY REPORT (PURPLE THEME)
+   04. STUDY REPORT SUBJECT COLORS — RGB CLASSES
    ========================================================= */
 
-body.dark .study-report-nav-btn:not(.active) {
-    background: rgba(30, 41, 59, 0.85);
-    border: 1px solid rgba(139, 92, 246, 0.4);
-    color: rgb(226, 232, 240);
-    font-weight: 600;
+.study-report-subject-fill.color-1 { background: rgb(37, 99, 235); }
+.study-report-subject-fill.color-2 { background: rgb(22, 163, 74); }
+.study-report-subject-fill.color-3 { background: rgb(245, 158, 11); }
+.study-report-subject-fill.color-4 { background: rgb(220, 38, 38); }
+.study-report-subject-fill.color-5 { background: rgb(124, 58, 237); }
+.study-report-subject-fill.color-6 { background: rgb(8, 145, 178); }
+.study-report-subject-fill.color-7 { background: rgb(219, 39, 119); }
+.study-report-subject-fill.color-8 { background: rgb(234, 88, 12); }
+.study-report-subject-fill.color-9 { background: rgb(79, 70, 229); }
+.study-report-subject-fill.color-10 { background: rgb(5, 150, 105); }
+
+.study-report-subject-dot.color-1 { background: rgb(37, 99, 235); }
+.study-report-subject-dot.color-2 { background: rgb(22, 163, 74); }
+.study-report-subject-dot.color-3 { background: rgb(245, 158, 11); }
+.study-report-subject-dot.color-4 { background: rgb(220, 38, 38); }
+.study-report-subject-dot.color-5 { background: rgb(124, 58, 237); }
+.study-report-subject-dot.color-6 { background: rgb(8, 145, 178); }
+.study-report-subject-dot.color-7 { background: rgb(219, 39, 119); }
+.study-report-subject-dot.color-8 { background: rgb(234, 88, 12); }
+.study-report-subject-dot.color-9 { background: rgb(79, 70, 229); }
+.study-report-subject-dot.color-10 { background: rgb(5, 150, 105); }
+
+/* =========================================================
+   05. DARK MODE — STUDY REPORT SIDEBAR
+   ========================================================= */
+
+body.dark .side-card {
+    background: rgb(var(--surface));
+    border-color: rgb(var(--border));
 }
 
-body.dark .study-report-nav-btn:not(.active):hover {
-    background: rgba(45, 55, 72, 0.95);
-    border-color: rgb(167, 139, 250);
-    color: rgb(255, 255, 255);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+body.dark .section-header h3 {
+    color: rgb(var(--text));
+}
+
+body.dark .section-header small {
+    color: rgb(var(--text-muted));
+}
+
+body.dark .study-report-nav-btn {
+    background: rgb(var(--surface));
+    border-color: rgb(var(--border));
+    color: rgb(var(--text-secondary));
+}
+
+body.dark .study-report-nav-btn:hover {
+    background: rgb(var(--surface-hover));
+    border-color: rgb(var(--primary));
+    color: rgb(var(--primary-light));
 }
 
 body.dark .study-report-nav-btn.active {
-    background: linear-gradient(135deg, rgb(139, 92, 246), rgb(124, 58, 237));
-    border-color: rgb(167, 139, 250);
-    color: rgb(255, 255, 255);
-    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.45);
-    font-weight: 600;
+    background: rgb(var(--primary));
+    border-color: rgb(var(--primary));
+    color: rgb(var(--text-inverse));
 }
 
 body.dark .study-report-nav-btn.active:hover {
-    background: linear-gradient(135deg, rgb(167, 139, 250), rgb(139, 92, 246));
-    border-color: rgb(196, 181, 253);
-    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.55);
+    background: rgb(var(--primary-hover));
+    border-color: rgb(var(--primary-hover));
 }
 
 body.dark .study-report-current-date {
-    background: rgba(139, 92, 246, 0.1);
-    border-color: rgba(167, 139, 250, 0.2);
+    background: rgb(var(--surface-soft));
+    border-color: rgb(var(--border-light));
 }
 
 body.dark .study-report-current-date strong {
-    color: rgb(196, 181, 253);
+    color: rgb(var(--text));
 }
 
 body.dark .study-report-card {
-    background: rgba(139, 92, 246, 0.08);
-    border-color: rgba(167, 139, 250, 0.15);
+    background: rgb(var(--surface-soft));
+    border-color: rgb(var(--border-light));
+}
+
+body.dark .study-report-card-label {
+    color: rgb(var(--text-muted));
+}
+
+body.dark .study-report-card strong {
+    color: rgb(var(--text));
+}
+
+body.dark .study-report-panel h4 {
+    color: rgb(var(--text-secondary));
+}
+
+body.dark .study-report-subject-info span {
+    color: rgb(var(--text-secondary));
+}
+
+body.dark .study-report-subject-info strong {
+    color: rgb(var(--text));
+}
+
+body.dark .study-report-subject-bar {
+    background: rgb(var(--surface-soft));
+}
+
+body.dark #weeklyStudyChart {
+    border-bottom-color: rgb(var(--border));
+}
+
+body.dark #weeklyStudyChart .study-chart-value {
+    color: rgb(var(--text-muted));
+}
+
+body.dark #weeklyStudyChart .study-chart-day {
+    color: rgb(var(--text-muted));
 }
 
 body.dark .study-report-reset-btn {
@@ -2931,15 +3923,19 @@ body.dark .study-report-reset-btn:hover {
     border-color: rgb(251, 113, 133);
 }
 
+/* =========================================================
+   06. RESPONSIVE — STUDY REPORT SIDEBAR
+   ========================================================= */
+
 @media (max-width: 768px) {
     .side-card {
         padding: 14px;
     }
-
+    
     .study-report-navigation {
         width: 100%;
     }
-
+    
     .study-report-nav-btn {
         flex: 1;
         justify-content: center;
@@ -2947,25 +3943,25 @@ body.dark .study-report-reset-btn:hover {
         padding: 6px 10px;
         min-height: 32px;
     }
-
+    
     .daily-sidebar-cards,
     .weekly-sidebar-cards {
         grid-template-columns: repeat(2, 1fr);
         gap: 6px;
     }
-
+    
     .study-report-card strong {
         font-size: 18px;
     }
-
+    
     #weeklyStudyChart {
         height: 100px;
     }
-
+    
     #weeklyStudyChart .study-chart-bar-area {
         height: 60px;
     }
-
+    
     #weeklyStudyChart .study-chart-bar {
         max-width: 20px;
         min-width: 4px;
@@ -2976,58 +3972,58 @@ body.dark .study-report-reset-btn:hover {
     .side-card {
         padding: 12px;
     }
-
+    
     .section-header {
         gap: 8px;
     }
-
+    
     .study-report-nav-btn {
         font-size: 10px;
         padding: 5px 8px;
         min-height: 30px;
     }
-
+    
     .study-report-cards {
         gap: 5px;
     }
-
+    
     .study-report-card {
         padding: 10px 12px;
     }
-
+    
     .study-report-card strong {
         font-size: 16px;
     }
-
+    
     .study-report-card-label {
         font-size: 9px;
     }
-
+    
     .study-report-reset-btn {
         font-size: 11px;
         padding: 7px 12px;
     }
-
+    
     #weeklyStudyChart {
         height: 85px;
         gap: 4px;
         padding: 6px 0;
     }
-
+    
     #weeklyStudyChart .study-chart-bar-area {
         height: 50px;
     }
-
+    
     #weeklyStudyChart .study-chart-bar {
         max-width: 16px;
         min-width: 3px;
     }
-
+    
     #weeklyStudyChart .study-chart-value {
         font-size: 8px;
         min-height: 14px;
     }
-
+    
     #weeklyStudyChart .study-chart-day {
         font-size: 8px;
     }
@@ -3037,38 +4033,42 @@ body.dark .study-report-reset-btn:hover {
     .side-card {
         padding: 10px;
     }
-
+    
     .study-report-nav-btn {
         font-size: 9px;
         padding: 4px 6px;
         min-height: 28px;
     }
-
+    
     .study-report-card {
         padding: 8px 10px;
     }
-
+    
     .study-report-card strong {
         font-size: 14px;
     }
-
+    
     .study-report-card-label {
         font-size: 8px;
     }
-
+    
     #weeklyStudyChart {
         height: 70px;
     }
-
+    
     #weeklyStudyChart .study-chart-bar-area {
         height: 40px;
     }
-
+    
     #weeklyStudyChart .study-chart-bar {
         max-width: 12px;
         min-width: 2px;
     }
 }
+
+/* =========================================================
+   07. STUDY REPORT — GLOBAL STYLES
+   ========================================================= */
 
 .study-report-empty {
     padding: 16px;
@@ -3086,6 +4086,10 @@ body.dark .study-report-empty {
     color: rgb(var(--text-muted));
 }
 
+/* =========================================================
+   08. STUDY REPORT — TRANSITIONS
+   ========================================================= */
+
 .study-report-nav-btn,
 .study-report-card,
 .study-report-reset-btn,
@@ -3094,11 +4098,19 @@ body.dark .study-report-empty {
     transition: all var(--transition);
 }
 
+/* =========================================================
+   09. STUDY REPORT — FOCUS STATES
+   ========================================================= */
+
 .study-report-nav-btn:focus-visible,
 .study-report-reset-btn:focus-visible {
     outline: 2px solid rgb(var(--primary-ring));
     outline-offset: 2px;
 }
+
+/* =========================================================
+   10. STUDY REPORT — PRINT
+   ========================================================= */
 
 @media print {
     .side-card {
@@ -3106,7 +4118,7 @@ body.dark .study-report-empty {
         box-shadow: none;
         break-inside: avoid;
     }
-
+    
     .study-report-nav-btn,
     .study-report-reset-btn {
         display: none !important;
@@ -3117,6 +4129,21 @@ body.dark .study-report-empty {
    STUDY REPORT SIDEBAR — DAILY & WEEKLY WITH RGB
    ========================================================= */
 
+/* ---------- Section Container ---------- */
+.side-card {
+    background: rgb(var(--surface));
+    border: 1px solid rgb(var(--border));
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    box-shadow: var(--shadow-xs);
+    transition: all var(--transition);
+}
+
+.side-card:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+/* ---------- Daily Report Card ---------- */
 .daily-study-report-card {
     background: rgb(var(--surface));
     border: 1px solid rgb(var(--border));
@@ -3131,6 +4158,7 @@ body.dark .study-report-empty {
     border-color: rgb(var(--primary));
 }
 
+/* ---------- Weekly Report Card ---------- */
 .weekly-study-report-card {
     background: rgb(var(--surface));
     border: 1px solid rgb(var(--border));
@@ -3145,18 +4173,87 @@ body.dark .study-report-empty {
     border-color: rgb(var(--accent));
 }
 
+/* ---------- Section Header ---------- */
+.section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.section-header > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.section-header h3 {
+    margin: 0;
+    font-size: clamp(15px, 1.2vw, 17px);
+    font-weight: 700;
+    color: rgb(var(--text));
+    letter-spacing: -0.3px;
+}
+
+.section-header small {
+    display: block;
+    font-size: 12px;
+    color: rgb(var(--text-muted));
+    margin-top: 2px;
+}
+
+/* ---------- Daily Report Header ---------- */
 .daily-study-report-card .section-header h3 {
     color: rgb(var(--primary));
     border-bottom: 2px solid rgba(var(--primary), 0.1);
     padding-bottom: 6px;
 }
 
+/* ---------- Weekly Report Header ---------- */
 .weekly-study-report-card .section-header h3 {
     color: rgb(var(--accent));
     border-bottom: 2px solid rgba(var(--accent), 0.1);
     padding-bottom: 6px;
 }
 
+/* ---------- Navigation Buttons ---------- */
+.study-report-navigation {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.study-report-nav-btn {
+    min-height: 34px;
+    padding: 6px 14px;
+    border: 1px solid rgb(var(--border));
+    border-radius: var(--radius-sm);
+    background: rgb(var(--surface));
+    color: rgb(var(--text-secondary));
+    font-size: 12px;
+    font-weight: 500;
+    transition: all var(--transition);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex: 1;
+}
+
+.study-report-nav-btn:hover {
+    background: rgb(var(--surface-hover));
+    border-color: rgb(var(--primary));
+    color: rgb(var(--primary));
+    transform: translateY(-1px);
+}
+
+.study-report-nav-btn:active {
+    transform: scale(0.97);
+}
+
+/* ---------- Daily Report Navigation ---------- */
 .daily-study-report-card .study-report-nav-btn.active {
     background: rgb(var(--primary));
     border-color: rgb(var(--primary));
@@ -3174,6 +4271,7 @@ body.dark .study-report-empty {
     color: rgb(var(--primary));
 }
 
+/* ---------- Weekly Report Navigation ---------- */
 .weekly-study-report-card .study-report-nav-btn.active {
     background: rgb(var(--accent));
     border-color: rgb(var(--accent));
@@ -3191,6 +4289,16 @@ body.dark .study-report-empty {
     color: rgb(var(--accent));
 }
 
+/* ---------- Current Date Display ---------- */
+.study-report-current-date {
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgb(var(--border-light));
+    text-align: center;
+}
+
+/* ---------- Daily Current Date ---------- */
 .daily-study-report-card .study-report-current-date {
     background: rgba(var(--primary), 0.06);
     border-color: rgba(var(--primary), 0.15);
@@ -3200,6 +4308,7 @@ body.dark .study-report-empty {
     color: rgb(var(--primary-dark));
 }
 
+/* ---------- Weekly Current Date ---------- */
 .weekly-study-report-card .study-report-current-date {
     background: rgba(var(--accent), 0.06);
     border-color: rgba(var(--accent), 0.15);
@@ -3209,6 +4318,38 @@ body.dark .study-report-empty {
     color: rgb(var(--accent-dark));
 }
 
+.study-report-current-date strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(var(--text));
+}
+
+/* ---------- Report Cards Grid ---------- */
+.study-report-cards {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.daily-sidebar-cards {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.weekly-sidebar-cards {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* ---------- Individual Report Card ---------- */
+.study-report-card {
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgb(var(--border-light));
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ---------- Daily Report Cards ---------- */
 .daily-study-report-card .study-report-card {
     background: rgba(var(--primary-subtle), 0.3);
     border-color: rgba(var(--primary), 0.08);
@@ -3240,6 +4381,7 @@ body.dark .study-report-empty {
     color: rgb(var(--primary-dark));
 }
 
+/* ---------- Weekly Report Cards ---------- */
 .weekly-study-report-card .study-report-card {
     background: rgba(var(--accent-soft), 0.3);
     border-color: rgba(var(--accent), 0.08);
@@ -3271,6 +4413,38 @@ body.dark .study-report-empty {
     color: rgb(var(--accent-dark));
 }
 
+/* ---------- Report Card Label ---------- */
+.study-report-card-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgb(var(--text-muted));
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+}
+
+/* ---------- Report Card Value ---------- */
+.study-report-card strong {
+    display: block;
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 700;
+    color: rgb(var(--text));
+}
+
+/* ---------- Subject Breakdown ---------- */
+.study-report-panel {
+    margin-top: 14px;
+}
+
+.study-report-panel h4 {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(var(--text-secondary));
+}
+
+/* ---------- Daily Subject Breakdown ---------- */
 .daily-study-report-card .study-report-panel h4 {
     color: rgb(var(--primary));
 }
@@ -3279,12 +4453,19 @@ body.dark .study-report-empty {
     background: rgb(var(--primary));
 }
 
+/* ---------- Weekly Subject Breakdown ---------- */
 .weekly-study-report-card .study-report-panel h4 {
     color: rgb(var(--accent));
 }
 
 .weekly-study-report-card .study-subject-breakdown .study-report-subject-dot {
     background: rgb(var(--accent));
+}
+
+.study-subject-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .study-report-subject-row {
@@ -3307,9 +4488,25 @@ body.dark .study-report-empty {
     color: rgb(var(--text-secondary));
 }
 
+.study-report-subject-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
 .study-report-subject-info strong {
     font-weight: 600;
     color: rgb(var(--text));
+}
+
+.study-report-subject-bar {
+    width: 100%;
+    height: 5px;
+    background: rgb(var(--surface-soft));
+    border-radius: var(--radius-full);
+    overflow: hidden;
 }
 
 .study-report-subject-fill {
@@ -3318,10 +4515,59 @@ body.dark .study-report-empty {
     transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* ---------- Weekly Chart ---------- */
+#weeklyStudyChart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 120px;
+    padding: 8px 0;
+    gap: 6px;
+    border-bottom: 2px solid rgb(var(--border));
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+/* ---------- Weekly Chart Container ---------- */
 .weekly-study-report-card #weeklyStudyChart {
     border-bottom-color: rgba(var(--accent), 0.2);
 }
 
+#weeklyStudyChart .study-chart-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap: 4px;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+#weeklyStudyChart .study-chart-value {
+    font-size: 9px;
+    color: rgb(var(--text-muted));
+    font-weight: 500;
+    min-height: 16px;
+}
+
+#weeklyStudyChart .study-chart-bar-area {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#weeklyStudyChart .study-chart-bar {
+    width: 100%;
+    max-width: 24px;
+    min-width: 6px;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    min-height: 3px;
+}
+
+/* ---------- Weekly Chart Bar Colors ---------- */
 .weekly-study-report-card #weeklyStudyChart .study-chart-bar {
     background: linear-gradient(180deg, rgb(var(--accent)), rgb(var(--accent-light)));
 }
@@ -3330,6 +4576,38 @@ body.dark .study-report-empty {
     background: linear-gradient(180deg, rgb(var(--primary)), rgb(var(--primary-light)));
 }
 
+#weeklyStudyChart .study-chart-bar:hover {
+    filter: brightness(1.1);
+    transform: scaleY(1.02);
+    transform-origin: bottom;
+}
+
+#weeklyStudyChart .study-chart-day {
+    font-size: 9px;
+    color: rgb(var(--text-muted));
+    font-weight: 500;
+}
+
+/* ---------- Reset Button ---------- */
+.study-report-reset-btn {
+    width: 100%;
+    margin-top: 14px;
+    padding: 8px 16px;
+    border: 1px solid rgb(var(--danger-border));
+    border-radius: var(--radius-sm);
+    background: rgb(var(--danger-soft));
+    color: rgb(var(--danger));
+    font-size: 12px;
+    font-weight: 600;
+    transition: all var(--transition);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* ---------- Daily Reset Button ---------- */
 .daily-study-report-card .study-report-reset-btn {
     border-color: rgba(var(--danger), 0.3);
     background: rgba(var(--danger), 0.06);
@@ -3342,6 +4620,7 @@ body.dark .study-report-empty {
     transform: translateY(-1px);
 }
 
+/* ---------- Weekly Reset Button ---------- */
 .weekly-study-report-card .study-report-reset-btn {
     border-color: rgba(var(--danger), 0.3);
     background: rgba(var(--danger), 0.06);
@@ -3352,6 +4631,10 @@ body.dark .study-report-empty {
     background: rgba(var(--danger), 0.12);
     border-color: rgb(var(--danger));
     transform: translateY(-1px);
+}
+
+.study-report-reset-btn:active {
+    transform: scale(0.97);
 }
 
 /* =========================================================
@@ -3384,18 +4667,21 @@ body.dark .study-report-empty {
    DARK MODE — DAILY & WEEKLY REPORTS (SAME PURPLE THEME)
    ========================================================= */
 
+/* ---------- Report Cards Background ---------- */
 body.dark .daily-study-report-card,
 body.dark .weekly-study-report-card {
     background: rgb(var(--surface));
     border-color: rgb(var(--border));
 }
 
+/* ---------- Section Headers — Same Purple ---------- */
 body.dark .daily-study-report-card .section-header h3,
 body.dark .weekly-study-report-card .section-header h3 {
     color: rgb(167, 139, 250);
     border-bottom-color: rgba(139, 92, 246, 0.3);
 }
 
+/* ---------- Nav Buttons — Inactive ---------- */
 body.dark .study-report-nav-btn:not(.active) {
     background: rgba(30, 41, 59, 0.85);
     border: 1px solid rgba(139, 92, 246, 0.4);
@@ -3411,6 +4697,7 @@ body.dark .study-report-nav-btn:not(.active):hover {
     box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
+/* ---------- Nav Buttons — Active (Same Purple) ---------- */
 body.dark .daily-study-report-card .study-report-nav-btn.active,
 body.dark .weekly-study-report-card .study-report-nav-btn.active {
     background: linear-gradient(135deg, rgb(139, 92, 246), rgb(124, 58, 237));
@@ -3427,6 +4714,7 @@ body.dark .weekly-study-report-card .study-report-nav-btn.active:hover {
     box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
 }
 
+/* ---------- Current Date Display (Same Purple) ---------- */
 body.dark .daily-study-report-card .study-report-current-date,
 body.dark .weekly-study-report-card .study-report-current-date {
     background: rgba(139, 92, 246, 0.1);
@@ -3438,6 +4726,7 @@ body.dark .weekly-study-report-card .study-report-current-date strong {
     color: rgb(196, 181, 253);
 }
 
+/* ---------- Report Cards (Same Purple) ---------- */
 body.dark .daily-study-report-card .study-report-card,
 body.dark .weekly-study-report-card .study-report-card {
     background: rgba(139, 92, 246, 0.08);
@@ -3449,11 +4738,13 @@ body.dark .weekly-study-report-card .study-report-card strong {
     color: rgb(196, 181, 253);
 }
 
+/* ---------- Panel Headers (Same Purple) ---------- */
 body.dark .daily-study-report-card .study-report-panel h4,
 body.dark .weekly-study-report-card .study-report-panel h4 {
     color: rgb(167, 139, 250);
 }
 
+/* ---------- Subject Info ---------- */
 body.dark .study-report-subject-info span {
     color: rgb(var(--text-secondary));
 }
@@ -3466,6 +4757,7 @@ body.dark .study-report-subject-bar {
     background: rgb(var(--surface-soft));
 }
 
+/* ---------- Weekly Chart ---------- */
 body.dark #weeklyStudyChart {
     border-bottom-color: rgba(var(--border), 0.3);
 }
@@ -3475,6 +4767,7 @@ body.dark .weekly-study-report-card #weeklyStudyChart .study-chart-bar {
     background: linear-gradient(180deg, rgb(196, 181, 253), rgb(139, 92, 246));
 }
 
+/* ---------- Reset Button ---------- */
 body.dark .study-report-reset-btn {
     background: rgb(76, 5, 25);
     border-color: rgb(136, 19, 55);
@@ -3485,580 +4778,283 @@ body.dark .study-report-reset-btn:hover {
     background: rgb(127, 29, 29);
     border-color: rgb(251, 113, 133);
 }
-
 /* =========================================================
-   📱 PHONE LAYOUT — FORCE ORDER
+   RESPONSIVE
    ========================================================= */
 
 @media (max-width: 768px) {
-
-    .layout {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-        width: 100% !important;
-    }
-
-    .calendar-card { order: 1 !important; }
-    .bangladesh-holidays { order: 2 !important; }
-    .sidebar > .side-card:nth-of-type(1) { order: 3 !important; }
-    .sidebar > .side-card:nth-of-type(2) { order: 4 !important; }
-    .sidebar > .side-card:nth-of-type(3) { order: 5 !important; }
-    .study-task-card { order: 6 !important; }
-    .study-analytics-card { order: 7 !important; }
-    .cgpa-calculator-card { order: 8 !important; }
-    .daily-diary-card { order: 9 !important; }
-    .daily-study-report-card { order: 10 !important; }
-    .weekly-study-report-card { order: 11 !important; }
-    .completed-subjects-container { order: 12 !important; }
-
-    .calendar-card,
-    .bangladesh-holidays,
-    .side-card,
-    .study-task-card,
-    .study-analytics-card,
-    .cgpa-calculator-card,
-    .daily-diary-card,
     .daily-study-report-card,
-    .weekly-study-report-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
+    .weekly-study-report-card,
+    .side-card {
+        padding: 14px;
     }
-}
-
-/* =========================================================
-   ✅ PAGE SWITCHING FIX
-========================================================= */
-
-body[data-current-page] [data-page] {
-    display: none;
-}
-
-body[data-current-page="home"] .dashboard[data-page="home"] {
-    display: grid !important;
-}
-
-body[data-current-page="home"] .toolbar[data-page="home"] {
-    display: flex !important;
-}
-
-body[data-current-page="home"] .calendar-card[data-page="home"],
-body[data-current-page="home"] .bangladesh-holidays[data-page="home"],
-body[data-current-page="home"] .side-card[data-page="home"] {
-    display: block !important;
-}
-
-body[data-current-page="study"] .study-task-card[data-page="study"],
-body[data-current-page="study"] .study-analytics-card[data-page="study"],
-body[data-current-page="study"] .daily-study-report-card[data-page="study"],
-body[data-current-page="study"] .weekly-study-report-card[data-page="study"],
-body[data-current-page="study"] .completed-subjects-container[data-page="study"] {
-    display: block !important;
-}
-
-body[data-current-page="me"] .cgpa-calculator-card[data-page="me"],
-body[data-current-page="me"] .daily-diary-card[data-page="me"] {
-    display: block !important;
-}
-
-.layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 315px;
-    gap: 18px;
-    align-items: start;
-}
-
-@media (max-width: 768px) {
-
-    .layout {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-        width: 100% !important;
+    
+    .study-report-navigation {
+        width: 100%;
     }
-
-    .layout > div,
-    .layout > aside {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-        width: 100% !important;
+    
+    .study-report-nav-btn {
+        flex: 1;
+        justify-content: center;
+        font-size: 11px;
+        padding: 6px 10px;
+        min-height: 32px;
     }
-
-    .calendar-grid {
-        grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
-        gap: 3px !important;
-        padding: 4px !important;
+    
+    .daily-sidebar-cards,
+    .weekly-sidebar-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
     }
-
-    .day {
-        min-height: 70px !important;
-        padding: 4px 3px !important;
+    
+    .study-report-card strong {
+        font-size: 18px;
     }
-
-    .calendar-card {
-        padding: 0 !important;
+    
+    #weeklyStudyChart {
+        height: 100px;
     }
-
-    .calendar-header {
-        padding: 10px 12px !important;
+    
+    #weeklyStudyChart .study-chart-bar-area {
+        height: 60px;
     }
-
-    .calendar-header h2 {
-        font-size: 16px !important;
+    
+    #weeklyStudyChart .study-chart-bar {
+        max-width: 20px;
+        min-width: 4px;
     }
-
-    .calendar-card,
-    .bangladesh-holidays,
-    .side-card,
-    .study-task-card,
-    .study-analytics-card,
-    .cgpa-calculator-card,
-    .daily-diary-card,
-    .daily-study-report-card,
-    .weekly-study-report-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }
-}
-
-/* =========================================================
-   ✅ MOBILE BOTTOM NAVIGATION
-========================================================= */
-
-.mobile-bottom-nav {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .mobile-bottom-nav {
-        display: flex !important;
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        z-index: 9999 !important;
-        background: rgb(var(--surface)) !important;
-        border-top: 1px solid rgb(var(--border)) !important;
-        padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) !important;
-        justify-content: space-around !important;
-        align-items: center !important;
-        box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.08) !important;
-    }
-
-    .mobile-bottom-nav .mobile-nav-btn,
-    body[data-current-page] .mobile-bottom-nav .mobile-nav-btn {
-        display: flex !important;
-        flex: 1 !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 2px !important;
-        background: transparent !important;
-        border: none !important;
-        color: rgb(var(--text-muted)) !important;
-        font-size: 11px !important;
-        font-weight: 600 !important;
-        padding: 6px 0 !important;
-        cursor: pointer !important;
-        min-height: 48px !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-
-    .mobile-bottom-nav .mobile-nav-btn.active {
-        color: rgb(var(--primary)) !important;
-    }
-
-    .mobile-bottom-nav .mobile-nav-icon,
-    .mobile-bottom-nav .mobile-nav-label {
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-
-    body {
-        padding-bottom: calc(70px + env(safe-area-inset-bottom)) !important;
-    }
-}
-
-/* =========================================================
-   ✅ ALARM SWITCH — SUNDAR TOGGLE
-========================================================= */
-
-.alarm-switch {
-    position: relative !important;
-    display: inline-block !important;
-    width: 52px !important;
-    height: 30px !important;
-    min-width: 52px !important;
-    max-width: 52px !important;
-    flex-shrink: 0 !important;
-    cursor: pointer !important;
-}
-
-.alarm-switch input {
-    position: absolute !important;
-    opacity: 0 !important;
-    width: 0 !important;
-    height: 0 !important;
-    pointer-events: none !important;
-}
-
-.alarm-switch .alarm-slider {
-    position: absolute !important;
-    inset: 0 !important;
-    background: rgb(203, 213, 225) !important;
-    border-radius: 999px !important;
-    transition: all 0.3s ease !important;
-    box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.10) !important;
-}
-
-.alarm-switch .alarm-slider::before {
-    content: "" !important;
-    position: absolute !important;
-    height: 24px !important;
-    width: 24px !important;
-    left: 3px !important;
-    top: 3px !important;
-    background: #ffffff !important;
-    border-radius: 50% !important;
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25) !important;
-    transition: transform 0.3s ease !important;
-}
-
-.alarm-switch input:checked + .alarm-slider {
-    background: linear-gradient(135deg, rgb(13, 148, 136), rgb(8, 145, 178)) !important;
-}
-
-.alarm-switch input:checked + .alarm-slider::before {
-    transform: translateX(22px) !important;
-}
-
-body.dark .alarm-switch .alarm-slider {
-    background: rgb(51, 65, 85) !important;
-}
-
-body.dark .alarm-switch .alarm-slider::before {
-    background: rgb(241, 245, 249) !important;
-}
-
-body.dark .alarm-switch input:checked + .alarm-slider {
-    background: linear-gradient(135deg, rgb(45, 212, 191), rgb(20, 184, 166)) !important;
-}
-
-.alarm-header {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 12px !important;
-    width: 100% !important;
-}
-
-.alarm-title-area {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-}
-
-/* =========================================================
-   ✅ MOBILE MODAL — SCROLL, ROUND CORNERS, FIXED HEIGHT
-========================================================= */
-
-@media (max-width: 768px) {
-
-    .modal-overlay {
-        display: flex !important;
-        align-items: flex-end !important;
-        padding: 12px 12px calc(80px + env(safe-area-inset-bottom)) 12px !important;
-        overflow: hidden !important;
-        z-index: 99999 !important;
-    }
-
-    .modal-overlay .modal {
-        height: calc(100dvh - 110px) !important;
-        max-height: calc(100dvh - 110px) !important;
-        min-height: 0 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        overflow: hidden !important;
-        border-radius: 24px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    .modal-overlay .modal .modal-header {
-        flex: 0 0 auto !important;
-        flex-shrink: 0 !important;
-        flex-grow: 0 !important;
-        border-radius: 24px 24px 0 0 !important;
-        background: rgb(var(--surface)) !important;
-    }
-
-    .modal-overlay .modal .modal-footer {
-        flex: 0 0 auto !important;
-        flex-shrink: 0 !important;
-        flex-grow: 0 !important;
-        border-radius: 0 0 24px 24px !important;
-        background: rgb(var(--surface)) !important;
-        border-top: 1px solid rgb(var(--border)) !important;
-        padding: 12px 16px !important;
-        box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.06) !important;
-    }
-
-    .modal-overlay .modal .modal-body {
-        flex: 1 1 0% !important;
-        flex-grow: 1 !important;
-        flex-shrink: 1 !important;
-        flex-basis: 0% !important;
-
-        min-height: 0 !important;
-        max-height: none !important;
-        height: auto !important;
-
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        -webkit-overflow-scrolling: touch !important;
-        overscroll-behavior: contain !important;
-
-        display: block !important;
-        padding: 16px !important;
-        box-sizing: border-box !important;
-        position: relative !important;
-    }
-
-    .modal-overlay .modal .modal-footer button {
-        min-height: 42px !important;
-        font-size: 13px !important;
-    }
-
-    .modal-overlay .modal .modal-body::-webkit-scrollbar {
-        width: 4px !important;
-    }
-
-    .modal-overlay .modal .modal-body::-webkit-scrollbar-thumb {
-        background: rgb(var(--primary)) !important;
-        border-radius: 4px !important;
-    }
-
-    .modal-overlay .modal .modal-body::-webkit-scrollbar-track {
-        background: transparent !important;
-    }
-}
-
-/* =========================================================
-   EVENT DETAILS MODAL — CONTENT STYLES
-========================================================= */
-
-#eventDetails .detail-row {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 12px 0;
-    border-bottom: 1px solid rgb(var(--border-light));
-}
-
-#eventDetails .detail-row:last-child {
-    border-bottom: none;
-}
-
-#eventDetails .detail-label {
-    font-size: 11px;
-    font-weight: 600;
-    color: rgb(var(--text-muted));
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-}
-
-#eventDetails .detail-value {
-    font-size: 14px;
-    font-weight: 500;
-    color: rgb(var(--text));
-    line-height: 1.5;
-    word-break: break-word;
-}
-
-#eventDetails .detail-value small {
-    display: block;
-    margin-top: 4px;
-    font-size: 12px;
-    color: rgb(var(--text-muted));
-    font-weight: 400;
-}
-
-body.dark #eventDetails .detail-row {
-    border-bottom-color: rgb(var(--border));
-}
-
-body.dark #eventDetails .detail-label {
-    color: rgb(var(--text-muted));
-}
-
-body.dark #eventDetails .detail-value {
-    color: rgb(var(--text));
 }
 
 @media (max-width: 500px) {
-    #eventDetails .detail-row {
-        padding: 10px 0;
+    .daily-study-report-card,
+    .weekly-study-report-card,
+    .side-card {
+        padding: 12px;
     }
-    #eventDetails .detail-value {
-        font-size: 13px;
+    
+    .section-header {
+        gap: 8px;
+    }
+    
+    .study-report-nav-btn {
+        font-size: 10px;
+        padding: 5px 8px;
+        min-height: 30px;
+    }
+    
+    .study-report-cards {
+        gap: 5px;
+    }
+    
+    .study-report-card {
+        padding: 10px 12px;
+    }
+    
+    .study-report-card strong {
+        font-size: 16px;
+    }
+    
+    .study-report-card-label {
+        font-size: 9px;
+    }
+    
+    .study-report-reset-btn {
+        font-size: 11px;
+        padding: 7px 12px;
+    }
+    
+    #weeklyStudyChart {
+        height: 85px;
+        gap: 4px;
+        padding: 6px 0;
+    }
+    
+    #weeklyStudyChart .study-chart-bar-area {
+        height: 50px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar {
+        max-width: 16px;
+        min-width: 3px;
+    }
+    
+    #weeklyStudyChart .study-chart-value {
+        font-size: 8px;
+        min-height: 14px;
+    }
+    
+    #weeklyStudyChart .study-chart-day {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 380px) {
+    .daily-study-report-card,
+    .weekly-study-report-card,
+    .side-card {
+        padding: 10px;
+    }
+    
+    .study-report-nav-btn {
+        font-size: 9px;
+        padding: 4px 6px;
+        min-height: 28px;
+    }
+    
+    .study-report-card {
+        padding: 8px 10px;
+    }
+    
+    .study-report-card strong {
+        font-size: 14px;
+    }
+    
+    .study-report-card-label {
+        font-size: 8px;
+    }
+    
+    #weeklyStudyChart {
+        height: 70px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar-area {
+        height: 40px;
+    }
+    
+    #weeklyStudyChart .study-chart-bar {
+        max-width: 12px;
+        min-width: 2px;
     }
 }
 
 /* =========================================================
-   ✅ CRITICAL FIX: Event Details Modal Body Visibility
-========================================================= */
+   EMPTY STATE
+   ========================================================= */
 
-/* Desktop + All Screens — Modal Body MUST be visible */
-#detailsModal .modal-body,
-#eventDetails {
-    display: block !important;
-    min-height: 100px !important;
-    height: auto !important;
-    max-height: none !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding: 18px !important;
-    flex: 1 1 auto !important;
+.study-report-empty {
+    padding: 16px;
+    text-align: center;
+    color: rgb(var(--text-muted));
+    font-size: 12px;
+    background: rgb(var(--surface-soft));
+    border-radius: var(--radius-sm);
+    border: 1px dashed rgb(var(--border));
 }
 
-/* Modal Container must allow body to grow */
-#detailsModal .modal {
-    display: flex !important;
-    flex-direction: column !important;
-    max-height: 90vh !important;
-    overflow: hidden !important;
+body.dark .study-report-empty {
+    background: rgb(var(--surface-soft));
+    border-color: rgb(var(--border));
+    color: rgb(var(--text-muted));
 }
 
-/* Header & Footer fixed height */
-#detailsModal .modal-header,
-#detailsModal .modal-footer {
-    flex: 0 0 auto !important;
-    flex-shrink: 0 !important;
-    flex-grow: 0 !important;
-}
 
-/* Detail Row Visibility */
-#detailsModal .detail-row {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 4px !important;
-    padding: 12px 0 !important;
-    border-bottom: 1px solid rgb(var(--border-light)) !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
 
-#detailsModal .detail-row:last-child {
-    border-bottom: none !important;
-}
 
-#detailsModal .detail-label {
-    display: block !important;
-    font-size: 11px !important;
-    font-weight: 600 !important;
-    color: rgb(var(--text-muted)) !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.3px !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-#detailsModal .detail-value {
-    display: block !important;
-    font-size: 14px !important;
-    font-weight: 500 !important;
-    color: rgb(var(--text)) !important;
-    line-height: 1.5 !important;
-    word-break: break-word !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-#detailsModal .detail-value small {
-    display: block !important;
-    margin-top: 4px !important;
-    font-size: 12px !important;
-    color: rgb(var(--text-muted)) !important;
-    font-weight: 400 !important;
-}
-
-/* Dark mode */
-body.dark #detailsModal .detail-row {
-    border-bottom-color: rgb(var(--border)) !important;
-}
-
-body.dark #detailsModal .detail-value {
-    color: rgb(var(--text)) !important;
-}
 
 
 /* =========================================================
-   📱 MOBILE BOTTOM NAVIGATION — FORCE SHOW
+   📱 PHONE LAYOUT — FORCE ORDER
+   Mobile (up to 768px)
 ========================================================= */
-
-.mobile-bottom-nav {
-    display: none;
-}
 
 @media (max-width: 768px) {
-    .mobile-bottom-nav {
-        display: flex !important;
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        z-index: 99999 !important;
-        background: rgb(var(--surface)) !important;
-        border-top: 1px solid rgb(var(--border)) !important;
-        padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) !important;
-        justify-content: space-around !important;
-        align-items: center !important;
-        box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.08) !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-    }
 
-    .mobile-bottom-nav .mobile-nav-btn {
+    /* =====================================================
+       LAYOUT — Single Column, সব sections এক নিচে
+    ===================================================== */
+    .layout {
         display: flex !important;
-        flex: 1 !important;
         flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 2px !important;
-        background: transparent !important;
-        border: none !important;
-        color: rgb(var(--text-muted)) !important;
-        font-size: 11px !important;
-        font-weight: 600 !important;
-        padding: 6px 0 !important;
-        cursor: pointer !important;
-        min-height: 48px !important;
-        visibility: visible !important;
-        opacity: 1 !important;
+        gap: 12px !important;
+        width: 100% !important;
     }
 
-    .mobile-bottom-nav .mobile-nav-btn.active {
-        color: rgb(var(--primary)) !important;
+    /* Main column + Sidebar - both full width */
+    .layout > div,
+    .layout > aside {
+        display: contents !important;
+        /* "contents" দিলে parent element invisible হয়ে যায়
+           কিন্তু ভিতরের সব sections সরাসরি layout-এর child হয়ে যায় */
     }
 
-    .mobile-bottom-nav .mobile-nav-icon {
-        display: block !important;
-        font-size: 20px !important;
-        line-height: 1 !important;
+    /* =====================================================
+       ORDER — আপনার চাওয়া sequence
+       ===================================================== */
+
+    /* 1. Calendar */
+    .calendar-card {
+        order: 1 !important;
     }
 
-    .mobile-bottom-nav .mobile-nav-label {
-        display: block !important;
-        font-size: 11px !important;
+    /* 2. Bangladesh Holidays */
+    .bangladesh-holidays {
+        order: 2 !important;
     }
 
-    /* Body padding to prevent content being hidden */
-    body {
-        padding-bottom: calc(70px + env(safe-area-inset-bottom)) !important;
+    /* 3. Quick Add (প্রথম side-card যেটা Quick Add) */
+    .sidebar > .side-card:nth-of-type(1) {
+        order: 3 !important;
+    }
+
+    /* 4. Upcoming Events */
+    .sidebar > .side-card:nth-of-type(2) {
+        order: 4 !important;
+    }
+
+    /* 5. Past Events */
+    .sidebar > .side-card:nth-of-type(3) {
+        order: 5 !important;
+    }
+
+    /* 6. Study Tasks */
+    .study-task-card {
+        order: 6 !important;
+    }
+
+    /* 7. Study Analytics */
+    .study-analytics-card {
+        order: 7 !important;
+    }
+
+    /* 8. CGPA Calculator */
+    .cgpa-calculator-card {
+        order: 8 !important;
+    }
+
+    /* 9. Daily Diary */
+    .daily-diary-card {
+        order: 9 !important;
+    }
+
+    /* 10. Daily Study Report */
+    .daily-study-report-card {
+        order: 10 !important;
+    }
+
+    /* 11. Weekly Study Report */
+    .weekly-study-report-card {
+        order: 11 !important;
+    }
+
+    /* 12. Completed Subjects */
+    .completed-subjects-container {
+        order: 12 !important;
+    }
+
+    /* =====================================================
+       FORCE - সব section full width
+    ===================================================== */
+    .calendar-card,
+    .bangladesh-holidays,
+    .side-card,
+    .study-task-card,
+    .study-analytics-card,
+    .cgpa-calculator-card,
+    .daily-diary-card,
+    .daily-study-report-card,
+    .weekly-study-report-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 }
