@@ -47,242 +47,7 @@
         href="css/study-task.css"
     >
 
-    
 
-    <!-- =========================================================
-         ✅ MODAL FOOTER + CONTENT FIX
-    ========================================================== -->
-
-    <style id="modal-fix">
-
-        /* =====================================================
-           MOBILE MODAL — Footer fixed, Body scrollable
-        ===================================================== */
-
-        @media (max-width: 768px) {
-
-            .modal-overlay {
-                display: flex !important;
-                align-items: flex-end !important;
-                justify-content: center !important;
-                padding: 8px 8px calc(72px + env(safe-area-inset-bottom)) 8px !important;
-                overflow: hidden !important;
-                z-index: 99999 !important;
-            }
-
-            .modal-overlay > .modal {
-                display: flex !important;
-                flex-direction: column !important;
-                flex-wrap: nowrap !important;
-                height: calc(100dvh - 92px) !important;
-                max-height: calc(100dvh - 92px) !important;
-                min-height: 0 !important;
-                overflow: hidden !important;
-                border-radius: 24px !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-
-            .modal-overlay > .modal > .modal-header {
-                flex: 0 0 auto !important;
-                flex-grow: 0 !important;
-                flex-shrink: 0 !important;
-                min-height: 0 !important;
-                max-height: none !important;
-                padding: 14px 18px !important;
-                border-bottom: 1px solid rgb(var(--border)) !important;
-                background: rgb(var(--surface)) !important;
-                border-radius: 24px 24px 0 0 !important;
-            }
-
-            .modal-overlay > .modal > form {
-                display: flex !important;
-                flex-direction: column !important;
-                flex: 1 1 0% !important;
-                min-height: 0 !important;
-                overflow: hidden !important;
-                margin: 0 !important;
-            }
-
-            .modal-overlay > .modal > form > .modal-body,
-            .modal-overlay > .modal > .modal-body {
-                flex: 1 1 0% !important;
-                flex-grow: 1 !important;
-                flex-shrink: 1 !important;
-                flex-basis: 0% !important;
-                min-height: 0 !important;
-                max-height: none !important;
-                overflow-y: auto !important;
-                overflow-x: hidden !important;
-                -webkit-overflow-scrolling: touch !important;
-                padding: 16px 18px !important;
-                display: block !important;
-            }
-
-            .modal-overlay > .modal > form > .modal-footer,
-            .modal-overlay > .modal > .modal-footer {
-                flex: 0 0 auto !important;
-                flex-grow: 0 !important;
-                flex-shrink: 0 !important;
-                min-height: 0 !important;
-                max-height: none !important;
-                display: flex !important;
-                flex-direction: row !important;
-                flex-wrap: nowrap !important;
-                align-items: center !important;
-                justify-content: flex-end !important;
-                gap: 8px !important;
-                padding: 12px 18px !important;
-                border-top: 1px solid rgb(var(--border)) !important;
-                background: rgb(var(--surface)) !important;
-                border-radius: 0 0 24px 24px !important;
-                box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.08) !important;
-                position: relative !important;
-                bottom: auto !important;
-                z-index: 10 !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-
-            .modal-overlay > .modal > form > .modal-footer > button,
-            .modal-overlay > .modal > .modal-footer > button {
-                display: inline-flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                min-height: 44px !important;
-                padding: 10px 18px !important;
-                font-size: 14px !important;
-                font-weight: 600 !important;
-                flex: 0 1 auto !important;
-                white-space: nowrap !important;
-                position: static !important;
-            }
-
-            .modal-overlay > .modal > form > .modal-footer > span,
-            .modal-overlay > .modal > .modal-footer > span {
-                display: block !important;
-                flex: 1 1 auto !important;
-                visibility: hidden !important;
-            }
-
-            .modal-footer > #deleteBtn:not(.hidden),
-            .modal-footer > #deleteStudyTaskBtn:not(.hidden) {
-                margin-right: auto !important;
-                display: inline-flex !important;
-            }
-
-            .modal-footer > .hidden {
-                display: none !important;
-            }
-        }
-
-        @media (max-width: 500px) {
-            .modal-overlay {
-                padding: 6px 6px calc(70px + env(safe-area-inset-bottom)) 6px !important;
-            }
-
-            .modal-overlay > .modal {
-                height: calc(100dvh - 88px) !important;
-                max-height: calc(100dvh - 88px) !important;
-                border-radius: 20px !important;
-            }
-
-            .modal-overlay > .modal > .modal-header {
-                padding: 12px 14px !important;
-                border-radius: 20px 20px 0 0 !important;
-            }
-
-            .modal-overlay > .modal > form > .modal-body,
-            .modal-overlay > .modal > .modal-body {
-                padding: 14px !important;
-            }
-
-            .modal-overlay > .modal > form > .modal-footer,
-            .modal-overlay > .modal > .modal-footer {
-                padding: 10px 14px !important;
-                border-radius: 0 0 20px 20px !important;
-                gap: 6px !important;
-            }
-
-            .modal-overlay > .modal > form > .modal-footer > button,
-            .modal-overlay > .modal > .modal-footer > button {
-                min-height: 42px !important;
-                padding: 8px 14px !important;
-                font-size: 13px !important;
-            }
-        }
-
-        /* =====================================================
-           ✅ EVENT DETAILS MODAL — Content Force Visible
-        ===================================================== */
-
-        #detailsModal .modal-body,
-        #eventDetails {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            color: rgb(var(--text)) !important;
-            background: rgb(var(--surface)) !important;
-            min-height: 100px !important;
-            padding: 16px 18px !important;
-        }
-
-        #detailsModal .detail-row,
-        #eventDetails .detail-row {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 4px !important;
-            padding: 12px 0 !important;
-            border-bottom: 1px solid rgb(var(--border-light)) !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-
-        #detailsModal .detail-row:last-child,
-        #eventDetails .detail-row:last-child {
-            border-bottom: none !important;
-        }
-
-        #detailsModal .detail-label,
-        #eventDetails .detail-label {
-            display: block !important;
-            font-size: 11px !important;
-            font-weight: 600 !important;
-            color: rgb(var(--text-muted)) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.3px !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-
-        #detailsModal .detail-value,
-        #eventDetails .detail-value {
-            display: block !important;
-            font-size: 14px !important;
-            font-weight: 500 !important;
-            color: rgb(var(--text)) !important;
-            line-height: 1.5 !important;
-            word-break: break-word !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-
-        #detailsModal .detail-value small,
-        #eventDetails .detail-value small {
-            display: block !important;
-            margin-top: 4px !important;
-            font-size: 12px !important;
-            color: rgb(var(--text-muted)) !important;
-            font-weight: 400 !important;
-        }
-
-        body.dark #detailsModal .detail-row,
-        body.dark #eventDetails .detail-row {
-            border-bottom-color: rgb(var(--border)) !important;
-        }
-    </style>
 
     <!-- =========================================================
          WEB APP MANIFEST
@@ -307,6 +72,10 @@
 
 <header class="topbar">
 
+    <!-- =====================================================
+         BRAND
+    ====================================================== -->
+
     <div class="brand">
 
         <div
@@ -315,6 +84,8 @@
         >
             📅
         </div>
+
+
 
         <div>
 
@@ -331,6 +102,10 @@
     </div>
 
 
+
+    <!-- =====================================================
+         HEADER ACTIONS
+    ======================================================= -->
 
     <div class="header-actions">
 
@@ -378,54 +153,200 @@
 
 
 
+    <!-- =====================================================
+         DASHBOARD
+    ======================================================= -->
+
     <section class="dashboard">
 
-        <article class="stat-card">
-            <span id="todayEventsLabel">Today's Events</span>
-            <strong id="todayCount">0</strong>
-            <small id="todayEventsSub">Scheduled today</small>
-        </article>
+
+
+        <!-- =================================================
+             TODAY EVENTS
+        ================================================== -->
 
         <article class="stat-card">
-            <span id="monthEventsLabel">This Month</span>
-            <strong id="monthCount">0</strong>
-            <small id="monthEventsSub">Total events</small>
+
+            <span id="todayEventsLabel">
+                Today's Events
+            </span>
+
+            <strong id="todayCount">
+                0
+            </strong>
+
+            <small id="todayEventsSub">
+                Scheduled today
+            </small>
+
         </article>
 
-        <article class="stat-card">
-            <span id="classesLabel">Classes</span>
-            <strong id="classCount">0</strong>
-            <small id="classesSub">This month</small>
-        </article>
+
+
+
+
+        <!-- =================================================
+             MONTH EVENTS
+        ================================================== -->
 
         <article class="stat-card">
-            <span id="examsLabel">Exams</span>
-            <strong id="examCount">0</strong>
-            <small id="examsSub">This month</small>
+
+            <span id="monthEventsLabel">
+                This Month
+            </span>
+
+            <strong id="monthCount">
+                0
+            </strong>
+
+            <small id="monthEventsSub">
+                Total events
+            </small>
+
         </article>
 
-        <article class="stat-card">
-            <span id="assignmentLabel">Assignment</span>
-            <strong id="assignmentCount">0</strong>
-            <small id="assignmentSub">This month</small>
-        </article>
+
+
+
+
+        <!-- =================================================
+             CLASSES
+        ================================================== -->
 
         <article class="stat-card">
-            <span id="projectLabel">Project</span>
-            <strong id="projectCount">0</strong>
-            <small id="projectSub">This month</small>
+
+            <span id="classesLabel">
+                Classes
+            </span>
+
+            <strong id="classCount">
+                0
+            </strong>
+
+            <small id="classesSub">
+                This month
+            </small>
+
         </article>
 
-        <article class="stat-card">
-            <span id="presentationLabel">Presentation</span>
-            <strong id="presentationCount">0</strong>
-            <small id="presentationSub">This month</small>
-        </article>
+
+
+
+
+        <!-- =================================================
+             EXAMS
+        ================================================== -->
 
         <article class="stat-card">
-            <span id="personalLabel">Personal</span>
-            <strong id="personalCount">0</strong>
-            <small id="personalSub">This month</small>
+
+            <span id="examsLabel">
+                Exams
+            </span>
+
+            <strong id="examCount">
+                0
+            </strong>
+
+            <small id="examsSub">
+                This month
+            </small>
+
+        </article>
+
+
+
+
+
+        <!-- =================================================
+             ASSIGNMENT
+        ================================================== -->
+
+        <article class="stat-card">
+
+            <span id="assignmentLabel">
+                Assignment
+            </span>
+
+            <strong id="assignmentCount">
+                0
+            </strong>
+
+            <small id="assignmentSub">
+                This month
+            </small>
+
+        </article>
+
+
+
+
+
+        <!-- =================================================
+             PROJECT
+        ================================================== -->
+
+        <article class="stat-card">
+
+            <span id="projectLabel">
+                Project
+            </span>
+
+            <strong id="projectCount">
+                0
+            </strong>
+
+            <small id="projectSub">
+                This month
+            </small>
+
+        </article>
+
+
+
+
+
+        <!-- =================================================
+             PRESENTATION
+        ================================================== -->
+
+        <article class="stat-card">
+
+            <span id="presentationLabel">
+                Presentation
+            </span>
+
+            <strong id="presentationCount">
+                0
+            </strong>
+
+            <small id="presentationSub">
+                This month
+            </small>
+
+        </article>
+
+
+
+
+
+        <!-- =================================================
+             PERSONAL
+        ================================================== -->
+
+        <article class="stat-card">
+
+            <span id="personalLabel">
+                Personal
+            </span>
+
+            <strong id="personalCount">
+                0
+            </strong>
+
+            <small id="personalSub">
+                This month
+            </small>
+
         </article>
 
     </section>
@@ -433,28 +354,132 @@
 
 
 
+
+    <!-- =====================================================
+         TOOLBAR
+    ======================================================= -->
 
     <section class="toolbar">
 
-        <input id="searchInput" type="search" placeholder="Search events..." aria-label="Search events">
 
-        <select id="categoryFilter" aria-label="Filter events by category">
-            <option value="all" id="categoryAllOption">All Categories</option>
-            <option value="class" id="categoryClassOption">Class</option>
-            <option value="exam" id="categoryExamOption">Exam</option>
-            <option value="assignment" id="categoryAssignmentOption">Assignment</option>
-            <option value="project" id="categoryProjectOption">Project</option>
-            <option value="presentation" id="categoryPresentationOption">Presentation</option>
-            <option value="personal" id="categoryPersonalOption">Personal</option>
-            <option value="holiday" id="categoryHolidayOption">Holiday</option>
-            <option value="other" id="categoryOtherOption">Other</option>
+
+        <input
+            id="searchInput"
+            type="search"
+            placeholder="Search events..."
+            aria-label="Search events"
+        >
+
+
+
+        <select
+            id="categoryFilter"
+            aria-label="Filter events by category"
+        >
+
+            <option
+                value="all"
+                id="categoryAllOption"
+            >
+                All Categories
+            </option>
+
+            <option
+                value="class"
+                id="categoryClassOption"
+            >
+                Class
+            </option>
+
+            <option
+                value="exam"
+                id="categoryExamOption"
+            >
+                Exam
+            </option>
+
+            <option
+                value="assignment"
+                id="categoryAssignmentOption"
+            >
+                Assignment
+            </option>
+
+            <option
+                value="project"
+                id="categoryProjectOption"
+            >
+                Project
+            </option>
+
+            <option
+                value="presentation"
+                id="categoryPresentationOption"
+            >
+                Presentation
+            </option>
+
+            <option
+                value="personal"
+                id="categoryPersonalOption"
+            >
+                Personal
+            </option>
+
+            <option
+                value="holiday"
+                id="categoryHolidayOption"
+            >
+                Holiday
+            </option>
+
+            <option
+                value="other"
+                id="categoryOtherOption"
+            >
+                Other
+            </option>
+
         </select>
 
-        <button id="addEventBtn" class="primary-btn" type="button">+ Add Event</button>
-        <button id="exportBtn" class="secondary-btn" type="button">Export</button>
-        <button id="importBtn" class="secondary-btn" type="button">Import</button>
 
-        <input id="importFile" type="file" accept=".json,application/json" hidden>
+
+        <button
+            id="addEventBtn"
+            class="primary-btn"
+            type="button"
+        >
+            + Add Event
+        </button>
+
+
+
+        <button
+            id="exportBtn"
+            class="secondary-btn"
+            type="button"
+        >
+            Export
+        </button>
+
+
+
+        <button
+            id="importBtn"
+            class="secondary-btn"
+            type="button"
+        >
+            Import
+        </button>
+
+
+
+        <input
+            id="importFile"
+            type="file"
+            accept=".json,application/json"
+            hidden
+        >
 
     </section>
 
@@ -462,223 +487,921 @@
 
 
 
+    <!-- =====================================================
+         MAIN LAYOUT
+    ======================================================= -->
+
     <section class="layout">
+
+
+
+        <!-- =================================================
+             MAIN CALENDAR COLUMN
+        ================================================== -->
 
         <div>
 
+
+
+            <!-- =================================================
+                 CALENDAR CARD
+            ================================================== -->
+
             <section class="calendar-card">
 
+
+
                 <div class="calendar-header">
+
                     <div>
+
                         <h2 id="monthTitle"></h2>
-                        <p id="monthSubtitle">Bangladesh Standard Time</p>
+
+                        <p id="monthSubtitle">
+                            Bangladesh Standard Time
+                        </p>
+
                     </div>
+
+
+
                     <div class="calendar-nav">
-                        <button id="prevBtn" class="nav-btn" type="button" aria-label="Previous month">‹</button>
-                        <button id="calendarTodayBtn" class="nav-btn" type="button" aria-label="Current month">●</button>
-                        <button id="nextBtn" class="nav-btn" type="button" aria-label="Next month">›</button>
+
+                        <button
+                            id="prevBtn"
+                            class="nav-btn"
+                            type="button"
+                            aria-label="Previous month"
+                        >
+                            ‹
+                        </button>
+
+
+
+                        <button
+                            id="calendarTodayBtn"
+                            class="nav-btn"
+                            type="button"
+                            aria-label="Current month"
+                        >
+                            ●
+                        </button>
+
+
+
+                        <button
+                            id="nextBtn"
+                            class="nav-btn"
+                            type="button"
+                            aria-label="Next month"
+                        >
+                            ›
+                        </button>
+
                     </div>
+
                 </div>
 
-                <div id="calendarGrid" class="calendar-grid"></div>
+
+
+                <div
+                    id="calendarGrid"
+                    class="calendar-grid"
+                ></div>
+
+
 
                 <div class="legend">
-                    <span><i class="dot class-dot"></i><span data-translate="class">Class</span></span>
-                    <span><i class="dot exam-dot"></i><span data-translate="exam">Exam</span></span>
-                    <span><i class="dot assignment-dot"></i><span data-translate="assignment">Assignment</span></span>
-                    <span><i class="dot project-dot"></i><span data-translate="project">Project</span></span>
-                    <span><i class="dot presentation-dot"></i><span data-translate="presentation">Presentation</span></span>
-                    <span><i class="dot personal-dot"></i><span data-translate="personal">Personal</span></span>
+
+                    <span>
+
+                        <i class="dot class-dot"></i>
+
+                        <span data-translate="class">
+                            Class
+                        </span>
+
+                    </span>
+
+
+
+                    <span>
+
+                        <i class="dot exam-dot"></i>
+
+                        <span data-translate="exam">
+                            Exam
+                        </span>
+
+                    </span>
+
+
+
+                    <span>
+
+                        <i class="dot assignment-dot"></i>
+
+                        <span data-translate="assignment">
+                            Assignment
+                        </span>
+
+                    </span>
+
+
+
+                    <span>
+
+                        <i class="dot project-dot"></i>
+
+                        <span data-translate="project">
+                            Project
+                        </span>
+
+                    </span>
+
+
+
+                    <span>
+
+                        <i class="dot presentation-dot"></i>
+
+                        <span data-translate="presentation">
+                            Presentation
+                        </span>
+
+                    </span>
+
+
+
+                    <span>
+
+                        <i class="dot personal-dot"></i>
+
+                        <span data-translate="personal">
+                            Personal
+                        </span>
+
+                    </span>
+
                 </div>
 
             </section>
 
+
+
+
+
+            <!-- =================================================
+                 BANGLADESH HOLIDAYS
+            ================================================== -->
+
             <section class="bangladesh-holidays">
-                <h3 id="holidaysTitle">Bangladesh Holidays</h3>
-                <div id="holidayList" class="holiday-list"></div>
+
+                <h3 id="holidaysTitle">
+                    Bangladesh Holidays
+                </h3>
+
+                <div
+                    id="holidayList"
+                    class="holiday-list"
+                ></div>
+
             </section>
+
+
+
+
+
+            <!-- =================================================
+                 STUDY TASKS
+            ================================================== -->
 
             <section class="side-card study-task-card">
 
-<div id="studyTimerPanel" class="study-timer-panel hidden">
+<!-- =========================================================
+     STUDY TIMER
+========================================================= -->
+
+<div
+    id="studyTimerPanel"
+    class="study-timer-panel hidden"
+>
+
+    <!-- =====================================================
+         TIMER HEADER
+    ====================================================== -->
+
     <div class="study-timer-header">
+
         <div class="study-timer-task">
-            <span id="studyTimerTaskTitle">Study Timer</span>
-            <small id="studyTimerSubject">Subject</small>
+
+            <span id="studyTimerTaskTitle">
+                Study Timer
+            </span>
+
+            <small id="studyTimerSubject">
+                Subject
+            </small>
+
         </div>
-        <button type="button" id="minimizeStudyTimer" class="study-timer-minimize-btn" aria-label="Minimize study timer" title="Minimize">−</button>
+
+
+
+        <button
+            type="button"
+            id="minimizeStudyTimer"
+            class="study-timer-minimize-btn"
+            aria-label="Minimize study timer"
+            title="Minimize"
+        >
+            −
+        </button>
+
     </div>
+
+
+
+    <!-- =====================================================
+         TIMER CONTENT
+    ====================================================== -->
+
     <div class="study-timer-content">
+
         <div class="study-timer-display">
-            <span id="studyTimerDisplay">00:00:00</span>
+
+            <span id="studyTimerDisplay">
+                00:00:00
+            </span>
+
         </div>
+
+
+
         <div class="study-timer-actions">
-            <button type="button" id="pauseStudyTimerBtn" class="secondary-btn">⏸ Pause</button>
-            <button type="button" id="finishStudyTimerBtn" class="primary-btn">⏹ Finish</button>
-            <button type="button" id="cancelStudyTimerBtn" class="study-timer-cancel-btn">Cancel</button>
+
+            <button
+                type="button"
+                id="pauseStudyTimerBtn"
+                class="secondary-btn"
+            >
+                ⏸ Pause
+            </button>
+
+
+
+            <button
+                type="button"
+                id="finishStudyTimerBtn"
+                class="primary-btn"
+            >
+                ⏹ Finish
+            </button>
+
+            <button
+                type="button"
+                id="cancelStudyTimerBtn"
+                class="study-timer-cancel-btn"
+            >
+                Cancel
+            </button>
+
         </div>
+
     </div>
+
 </div>
+                <!-- =================================================
+                     STUDY TASK HEADER
+                ================================================== -->
 
                 <div class="section-header">
-                    <h3 id="studyTasksTitle">Study Tasks</h3>
-                    <button id="addStudyTaskBtn" class="primary-btn" type="button">+ Add</button>
+
+                    <h3 id="studyTasksTitle">
+                        Study Tasks
+                    </h3>
+
+
+
+                    <button
+                        id="addStudyTaskBtn"
+                        class="primary-btn"
+                        type="button"
+                    >
+                        + Add
+                    </button>
+
                 </div>
+
+
+
+                <!-- =================================================
+                     STUDY PROGRESS SUMMARY
+                ================================================== -->
 
                 <div class="study-progress-summary">
+
                     <div class="progress-info">
-                        <span id="studyProgressLabel">Overall Progress</span>
-                        <strong id="studyProgressPercent">0%</strong>
+
+                        <span id="studyProgressLabel">
+                            Overall Progress
+                        </span>
+
+                        <strong id="studyProgressPercent">
+                            0%
+                        </strong>
+
                     </div>
+
+
+
                     <div class="progress-bar">
-                        <div id="studyProgressBar" class="progress-fill" style="width: 0%;"></div>
+
+                        <div
+                            id="studyProgressBar"
+                            class="progress-fill"
+                            style="width: 0%;"
+                        ></div>
+
                     </div>
+
                 </div>
+
+
+
+                <!-- =================================================
+                     STUDY PROGRESS CHART
+                ================================================== -->
 
                 <div class="study-chart-container">
-                    <h4 id="studyChartTitle">Study Task Progress</h4>
+
+                    <h4 id="studyChartTitle">
+                        Study Task Progress
+                    </h4>
+
+
+
                     <div class="study-progress-chart">
-                        <div id="studyProgressPie" class="progress-pie">
-                            <div id="studyPieLabels" class="study-pie-labels" aria-hidden="true"></div>
+
+                        <div
+                            id="studyProgressPie"
+                            class="progress-pie"
+                        >
+
+                            <div
+                                id="studyPieLabels"
+                                class="study-pie-labels"
+                                aria-hidden="true"
+                            ></div>
+
+
+
                             <div class="progress-pie-center">
-                                <strong id="studyPiePercent">0%</strong>
-                                <span id="studyPieLabel">Complete</span>
+
+                                <strong id="studyPiePercent">
+                                    0%
+                                </strong>
+
+                                <span id="studyPieLabel">
+                                    Complete
+                                </span>
+
                             </div>
+
                         </div>
+
                     </div>
+
+
+
                     <div class="study-chart-legend">
+
                         <div class="chart-legend-item">
-                            <span class="chart-legend-dot completed"></span>
-                            <span id="studyCompletedLabel">Completed</span>
+
+                            <span
+                                class="chart-legend-dot completed"
+                            ></span>
+
+                            <span id="studyCompletedLabel">
+                                Completed
+                            </span>
+
                         </div>
+
+
+
                         <div class="chart-legend-item">
-                            <span class="chart-legend-dot remaining"></span>
-                            <span id="studyRemainingLabel">Remaining</span>
+
+                            <span
+                                class="chart-legend-dot remaining"
+                            ></span>
+
+                            <span id="studyRemainingLabel">
+                                Remaining
+                            </span>
+
                         </div>
+
                     </div>
+
                 </div>
 
+
+
+                <!-- =================================================
+                     STUDY TASK LIST
+                ================================================== -->
+
                 <div id="studyTasks">
-                    <p id="noStudyTasks" class="empty-state">No study tasks yet.</p>
+
+                    <p
+                        id="noStudyTasks"
+                        class="empty-state"
+                    >
+                        No study tasks yet.
+                    </p>
+
                 </div>
 
             </section>
+
+<!-- =========================================================
+     FINAL STUDY ANALYTICS
+========================================================= -->
 
 <section class="study-analytics-card">
 
     <div class="section-header">
+
         <h2 id="studyAnalyticsTitle">📊 Study Analytics</h2>  
+
     </div> 
 
+
+    <!-- =====================================================
+         DAILY
+    ====================================================== -->
+
     <div class="study-analytics-section">
+
         <h4 id="dailyTitle">📅 Daily</h4>
+
         <div class="study-analytics-grid">
-            <div class="analytics-stat-card"><span id="dailyTotalStudyTimeLabel">Total Study Time</span><strong id="analyticsDailyStudyTime">0m</strong></div>
-            <div class="analytics-stat-card"><span id="dailyTotalSessionsLabel">Total Sessions</span><strong id="analyticsDailySessions">0</strong></div>
-            <div class="analytics-stat-card"><span id="dailyCompletedSessionsLabel">Completed Sessions</span><strong id="analyticsDailyCompleted">0</strong></div>
-            <div class="analytics-stat-card"><span id="dailyCompletionLabel">Completion: </span><strong id="analyticsDailyCompletion">0</strong></div>
-        </div>
-    </div>
 
-    <div class="study-analytics-section">
-        <h4 id="weeklyTitle">📆 Weekly</h4>
-        <div class="study-analytics-grid">
-            <div class="analytics-stat-card"><span id="weeklyTotalStudyTimeLabel">Total Study Time</span><strong id="analyticsWeeklyStudyTime">0m</strong></div>
-            <div class="analytics-stat-card"><span id="weeklyDailyAverageLabel">Daily Average</span><strong id="analyticsWeeklyAverage">0m</strong></div>
-            <div class="analytics-stat-card"><span id="weeklyTotalSessionsLabel">Total Sessions</span><strong id="analyticsWeeklySessions">0</strong></div>
-            <div class="analytics-stat-card"><span id="weeklyCompletionLabel">Completion: </span><strong id="analyticsWeeklyCompletion">0</strong></div>
-            <div class="analytics-stat-card"><span id="weeklyMostProductiveDayLabel">Most Productive Day</span><strong id="analyticsMostProductiveDay">—</strong></div>
-        </div>
-    </div>
-
-    <div class="study-analytics-section">
-        <h4 id="monthlyTitle">🗓️ Monthly</h4>
-        <div class="study-analytics-grid">
-            <div class="analytics-stat-card"><span id="monthlyTotalStudyTimeLabel">Total Study Time</span><strong id="analyticsMonthlyStudyTime">0m</strong></div>
-            <div class="analytics-stat-card"><span id="monthlyDailyAverageLabel">Daily Average</span><strong id="analyticsMonthlyAverage">0m</strong></div>
-            <div class="analytics-stat-card"><span id="monthlyTotalSessionsLabel">Total Sessions</span><strong id="analyticsMonthlySessions">0</strong></div>
-            <div class="analytics-stat-card"><span id="monthlyCompletionLabel">Completion: </span><strong id="analyticsMonthlyCompletion">0</strong></div>
-            <div class="analytics-stat-card"><span id="monthlyMostProductiveWeekLabel">Most Productive Week</span><strong id="analyticsMostProductiveWeek">—</strong></div>
-        </div>
-    </div>
-
-    <div class="study-analytics-section">
-        <h3 id="subjectTitle">Subject Analytics</h3>
-        <div class="study-analytics-highlight">
-            <div><span id="mostStudiedLabel">Most Studied Subject</span><strong id="analyticsMostStudiedSubject">—</strong></div>
-            <div><span id="leastStudiedLabel">Least Studied Subject</span><strong id="analyticsLeastStudiedSubject">—</strong></div>
-        </div>
-        <div id="studySubjectAnalytics" class="study-subject-analytics"></div>
-    </div>
-
-    <div class="study-analytics-section">
-        <h2 id="chartsTitle">📊 Charts</h2>
-        <div class="study-chart-card">
-            <h5 id="weeklyChartTitle"> Weekly Study Time: </h5>
-            <div id="weeklyStudyChart" class="weekly-study-chart"></div>
-        </div>
-        <div class="study-chart-card">
-            <h5 id="monthlyChartTitle">Monthly Study Trend:</h5>
-            <div id="monthlyStudyTrend" class="monthly-study-trend"></div>
-        </div>
-        <div class="study-chart-card">
-            <h5 id="subjectDistributionTitle">🥧 Subject Distribution</h5>
-            <div class="study-pie-wrapper">
-                <div id="subjectDistributionPie" class="subject-distribution-pie"></div>
-                <div id="subjectDistributionLegend" class="subject-distribution-legend"></div>
+            <div class="analytics-stat-card">
+                <span id="dailyTotalStudyTimeLabel">Total Study Time</span>
+                <strong id="analyticsDailyStudyTime">0m</strong>
             </div>
+
+            <div class="analytics-stat-card">
+                <span id="dailyTotalSessionsLabel">Total Sessions</span>
+                <strong id="analyticsDailySessions">0</strong>
+            </div>
+
+            <div class="analytics-stat-card">
+                <span id="dailyCompletedSessionsLabel">Completed Sessions</span>
+                <strong id="analyticsDailyCompleted">0</strong>
+            </div>
+
+            <div class="analytics-stat-card">
+                <span id="dailyCompletionLabel">Completion: </span>
+                <strong id="analyticsDailyCompletion">0</strong>
+            </div>
+
         </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         WEEKLY
+    ====================================================== -->
+
+    <div class="study-analytics-section">
+
+        <h4 id="weeklyTitle">📆 Weekly</h4>
+
+        <div class="study-analytics-grid">
+
+            <div class="analytics-stat-card">
+                <span id="weeklyTotalStudyTimeLabel">Total Study Time</span>
+                <strong id="analyticsWeeklyStudyTime">0m</strong>
+            </div>
+
+            <div class="analytics-stat-card">
+                <span id="weeklyDailyAverageLabel">Daily Average</span>
+                <strong id="analyticsWeeklyAverage">0m</strong>
+            </div>
+
+            <div class="analytics-stat-card">
+                <span id="weeklyTotalSessionsLabel">Total Sessions</span>
+                <strong id="analyticsWeeklySessions">0</strong>
+            </div>
+
+            <div class="analytics-stat-card">
+                <span id="weeklyCompletionLabel">Completion: </span>
+                <strong id="analyticsWeeklyCompletion">0</strong>
+            </div>
+
+            <div class="analytics-stat-card">
+                <span id="weeklyMostProductiveDayLabel">Most Productive Day</span>
+                <strong id="analyticsMostProductiveDay">—</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MONTHLY
+    ====================================================== -->
+
+    <div class="study-analytics-section">
+
+        <h4 id="monthlyTitle">🗓️ Monthly</h4>
+
+        <div class="study-analytics-grid">
+
+            <div class="analytics-stat-card">
+                <span id="monthlyTotalStudyTimeLabel">Total Study Time</span>
+                <strong id="analyticsMonthlyStudyTime">0m</strong>
+            </div>
+
+            <div class="analytics-stat-card">
+                <span id="monthlyDailyAverageLabel">Daily Average</span>
+                <strong id="analyticsMonthlyAverage">0m</strong>
+            </div>
+
+            <div class="analytics-stat-card">
+                <span id="monthlyTotalSessionsLabel">Total Sessions</span>
+                <strong id="analyticsMonthlySessions">0</strong>
+            </div>
+
+            <div class="analytics-stat-card">
+                <span id="monthlyCompletionLabel">Completion: </span>
+                <strong id="analyticsMonthlyCompletion">0</strong>
+            </div>
+
+            <div class="analytics-stat-card">
+                <span id="monthlyMostProductiveWeekLabel">Most Productive Week</span>
+                <strong id="analyticsMostProductiveWeek">—</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SUBJECT
+    ====================================================== -->
+
+    <div class="study-analytics-section">
+
+        <h3 id="subjectTitle">Subject Analytics</h3>
+
+
+        <div class="study-analytics-highlight">
+
+            <div>
+                <span id="mostStudiedLabel">Most Studied Subject</span>
+
+                <strong
+                    id="analyticsMostStudiedSubject"
+                >
+                    —
+                </strong>
+            </div>
+
+
+            <div>
+                <span id="leastStudiedLabel">Least Studied Subject</span>
+
+                <strong
+                    id="analyticsLeastStudiedSubject"
+                >
+                    —
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div
+             id="studySubjectAnalytics"
+            class="study-subject-analytics"
+        ></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CHARTS
+    ====================================================== -->
+
+    <div class="study-analytics-section">
+
+        <h2 id="chartsTitle">📊 Charts</h2>
+
+
+        <!-- WEEKLY -->
+        
         <div class="study-chart-card">
-            <h5 id="subjectComparisonTitle"> Subject Study Time Comparison</h5>
-            <div id="subjectStudyComparison" class="subject-study-comparison"></div>
+
+            <h5 id="weeklyChartTitle">
+                 Weekly Study Time: 
+            </h5>
+
+            <div
+                id="weeklyStudyChart"
+                class="weekly-study-chart"
+            ></div>
+
         </div>
+        
+
+
+        <!-- MONTHLY TREND -->
+
+        <div class="study-chart-card">
+
+            <h5 id="monthlyChartTitle">
+                Monthly Study Trend:
+            </h5>
+
+            <div
+                id="monthlyStudyTrend"
+                class="monthly-study-trend"
+            ></div>
+
+        </div>
+
+
+        <!-- SUBJECT DISTRIBUTION -->
+
+        <div class="study-chart-card">
+
+            <h5 id="subjectDistributionTitle">
+                🥧 Subject Distribution
+            </h5>
+
+
+            <div class="study-pie-wrapper">
+
+                <div
+                    id="subjectDistributionPie"
+                    class="subject-distribution-pie"
+                ></div>
+
+
+                <div
+                    id="subjectDistributionLegend"
+                    class="subject-distribution-legend"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUBJECT COMPARISON -->
+
+        <div class="study-chart-card">
+
+            <h5 id="subjectComparisonTitle">
+                 Subject Study Time Comparison
+            </h5>
+
+            <div
+                id="subjectStudyComparison"
+                class="subject-study-comparison"
+            ></div>
+
+        </div>
+
     </div>
 
  </section>
 
      </div>
 
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
         <aside class="sidebar">
 
-            <section class="side-card">
-                <h3 id="quickAddTitle">Quick Add</h3>
-                <button id="quickClassBtn" class="quick-btn" data-category="class" type="button">+ Class</button>
-                <button id="quickExamBtn" class="quick-btn" data-category="exam" type="button">+ CT / Exam</button>
-                <button id="quickAssignmentBtn" class="quick-btn" data-category="assignment" type="button">+ Assignment</button>
-                <button id="quickProjectBtn" class="quick-btn" data-category="project" type="button">+ Project</button>
-                <button id="quickPresentationBtn" class="quick-btn" data-category="presentation" type="button">+ Presentation</button>
-                <button id="quickPersonalBtn" class="quick-btn" data-category="personal" type="button">+ Personal</button>
-            </section>
+
+
+            <!-- =================================================
+                 QUICK ADD
+            ================================================== -->
 
             <section class="side-card">
+
+                <h3 id="quickAddTitle">
+                    Quick Add
+                </h3>
+
+
+
+                <button
+                    id="quickClassBtn"
+                    class="quick-btn"
+                    data-category="class"
+                    type="button"
+                >
+                    + Class
+                </button>
+
+
+
+                <button
+                    id="quickExamBtn"
+                    class="quick-btn"
+                    data-category="exam"
+                    type="button"
+                >
+                    + CT / Exam
+                </button>
+
+
+
+                <button
+                    id="quickAssignmentBtn"
+                    class="quick-btn"
+                    data-category="assignment"
+                    type="button"
+                >
+                    + Assignment
+                </button>
+
+
+
+                <button
+                    id="quickProjectBtn"
+                    class="quick-btn"
+                    data-category="project"
+                    type="button"
+                >
+                    + Project
+                </button>
+
+
+
+                <button
+                    id="quickPresentationBtn"
+                    class="quick-btn"
+                    data-category="presentation"
+                    type="button"
+                >
+                    + Presentation
+                </button>
+
+
+
+                <button
+                    id="quickPersonalBtn"
+                    class="quick-btn"
+                    data-category="personal"
+                    type="button"
+                >
+                    + Personal
+                </button>
+
+            </section>
+
+
+
+
+
+            <!-- =================================================
+                 UPCOMING EVENTS
+            ================================================== -->
+
+            <section class="side-card">
+
                 <div class="section-header">
-                    <h3 id="upcomingTitle">Upcoming Events</h3>
-                    <span id="eventCount">0 events</span>
+
+                    <h3 id="upcomingTitle">
+                        Upcoming Events
+                    </h3>
+
+
+
+                    <span id="eventCount">
+                        0 events
+                    </span>
+
                 </div>
+
+
+
                 <div id="upcomingEvents"></div>
+
             </section>
 
+
+
+
+
+            <!-- =================================================
+                 PAST EVENTS
+            ================================================== -->
+
             <section class="side-card">
+
                 <div class="section-header">
-                    <h3 id="pastEventsTitle">Past Events</h3>
-                    <button type="button" id="selectAllPastEvents" class="past-select-btn">Select All</button>
+
+                    <h3 id="pastEventsTitle">
+                        Past Events
+                    </h3>
+
+
+
+                    <button
+                        type="button"
+                        id="selectAllPastEvents"
+                        class="past-select-btn"
+                    >
+                        Select All
+                    </button>
+
                 </div>
+
+
+
                 <div id="pastEvents"></div>
-                <div id="pastEventsActions" class="past-events-actions">
-                    <span id="selectedPastCount">0 selected</span>
-                    <button type="button" id="deleteSelectedPastEvents" class="delete-past-btn">Delete Selected</button>
+
+
+
+                <div
+                    id="pastEventsActions"
+                    class="past-events-actions"
+                >
+
+                    <span id="selectedPastCount">
+                        0 selected
+                    </span>
+
+
+
+                    <button
+                        type="button"
+                        id="deleteSelectedPastEvents"
+                        class="delete-past-btn"
+                    >
+                        Delete Selected
+                    </button>
+
                 </div>
+
             </section>
+
+        <!-- =================================================
+            CGPA CALCULATOR
+        ================================================== -->
 
         <section class="side-card cgpa-calculator-card">
+
             <div class="section-header">
-                <h3 id="cgpaCalculatorTitle"> CGPA Calculator</h3>
+
+                <h3 id="cgpaCalculatorTitle">
+                     CGPA Calculator
+                </h3>
+
             </div>
+
+
+            <!-- =================================================
+                COURSE LIST
+            ================================================== -->
+
             <div id="cgpaCourseList" class="cgpa-course-list">
+
                 <div class="cgpa-course-row">
-                    <input type="text" class="cgpa-course-name" placeholder="Course" aria-label="Course name">
-                    <input type="number" class="cgpa-course-credit" placeholder="Credit" min="0" step="0.5" aria-label="Course credit">
-                    <select class="cgpa-course-grade" aria-label="Course grade">
+
+                    <input
+                        type="text"
+                        class="cgpa-course-name"
+                        placeholder="Course"
+                        aria-label="Course name"
+                    >
+
+                    <input
+                        type="number"
+                        class="cgpa-course-credit"
+                        placeholder="Credit"
+                        min="0"
+                        step="0.5"
+                        aria-label="Course credit"
+                    >
+
+                    <select
+                        class="cgpa-course-grade"
+                        aria-label="Course grade"
+                    >
+
                         <option value="4.00">A+</option>
                         <option value="3.75">A</option>
                         <option value="3.50">A-</option>
@@ -689,39 +1412,147 @@
                         <option value="2.25">C</option>
                         <option value="2.00">D</option>
                         <option value="0.00">F</option>
+
                     </select>
-                    <button type="button" class="cgpa-remove-btn" title="Remove course" aria-label="Remove course">×</button>
+
+                    <button
+                        type="button"
+                        class="cgpa-remove-btn"
+                        title="Remove course"
+                        aria-label="Remove course"
+                    >
+                        ×
+                    </button>
+
                 </div>
+
             </div>
-            <button type="button" id="addCgpaCourseBtn" class="secondary-btn cgpa-add-btn">+ Add Course</button>
+
+
+            <!-- =================================================
+                ADD COURSE
+            ================================================== -->
+
+            <button
+                type="button"
+                id="addCgpaCourseBtn"
+                class="secondary-btn cgpa-add-btn"
+            >
+                + Add Course
+            </button>
+
+
+            <!-- =================================================
+                CGPA RESULT
+            ================================================== -->
+
             <div class="cgpa-result">
-                <div class="cgpa-result-row"><span id="totalCreditsLabel">Total Credits</span><strong id="cgpaTotalCredits">0</strong></div>
-                <div class="cgpa-result-row"><span id="totalGradePointsLabel">Total Grade Points</span><strong id="cgpaTotalPoints">0</strong></div>
-                <div class="cgpa-final"><span id="cgpaLabel">CGPA</span><strong id="cgpaValue">0.00</strong></div>
+
+                <div class="cgpa-result-row">
+
+                    <span id="totalCreditsLabel">
+                        Total Credits
+                    </span>
+
+                    <strong id="cgpaTotalCredits">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="cgpa-result-row">
+
+                    <span id="totalGradePointsLabel">
+                        Total Grade Points
+                    </span>
+
+                    <strong id="cgpaTotalPoints">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="cgpa-final">
+
+                    <span id="cgpaLabel">
+                        CGPA
+                    </span>
+
+                    <strong id="cgpaValue">
+                        0.00
+                    </strong>
+
+                </div>
+
             </div>
+
+
+            <!-- =================================================
+                ACTIONS
+            ================================================== -->
+
             <div class="cgpa-actions">
-                <button type="button" id="resetCgpaBtn" class="study-report-reset-btn">🗑 Reset</button>
+
+                <button
+                    type="button"
+                    id="resetCgpaBtn"
+                    class="study-report-reset-btn"
+                >
+                    🗑 Reset
+                </button>
+
             </div>
+
         </section>
 
+
+        <!-- =================================================
+     DAILY DIARY / ডেইলি ডায়েরি
+================================================== -->
+
 <section class="side-card daily-diary-card">
+
+    <!-- HEADER -->
     <div class="section-header">
         <div>
             <h3 id="diaryTitle">📔 Daily Diary</h3>
             <small id="diarySubtitle">Write your daily thoughts</small>
         </div>
-        <button type="button" id="diarySearchToggle" class="diary-icon-btn" title="Search">🔍</button>
+        <button 
+            type="button" 
+            id="diarySearchToggle" 
+            class="diary-icon-btn"
+            title="Search"
+        >🔍</button>
     </div>
+
+    <!-- SEARCH BAR -->
     <div id="diarySearchBox" class="diary-search-box hidden">
-        <input type="search" id="diarySearchInput" placeholder="Search all notes...">
+        <input 
+            type="search" 
+            id="diarySearchInput" 
+            placeholder="Search all notes..."
+        >
         <div id="diarySearchResults" class="diary-search-results"></div>
     </div>
+
+    <!-- DATE NAVIGATION -->
     <div class="diary-date-nav">
         <button type="button" id="diaryPrevDay" class="diary-nav-btn" title="Previous day">◀</button>
-        <div class="diary-current-date"><strong id="diaryDateDisplay">Today</strong></div>
+        <div class="diary-current-date">
+            <strong id="diaryDateDisplay">Today</strong>
+        </div>
         <button type="button" id="diaryNextDay" class="diary-nav-btn" title="Next day">▶</button>
     </div>
-    <button type="button" id="diaryTodayBtn" class="secondary-btn diary-today-btn">📍 <span id="diaryTodayText">Go to Today</span></button>
+
+    <!-- TODAY BUTTON -->
+    <button type="button" id="diaryTodayBtn" class="secondary-btn diary-today-btn">
+        📍 <span id="diaryTodayText">Go to Today</span>
+    </button>
+
+    <!-- MOOD SELECTOR -->
     <div class="diary-mood-row">
         <span id="diaryMoodLabel">Mood:</span>
         <div class="diary-moods" id="diaryMoods">
@@ -733,73 +1564,294 @@
             <button type="button" class="mood-btn" data-mood="stressed" title="Stressed">😰</button>
         </div>
     </div>
-    <textarea id="diaryTextArea" class="diary-textarea" placeholder="আজকের দিনটি কেমন গেল? / How was your day?" rows="8"></textarea>
+
+    <!-- TEXT AREA -->
+    <textarea
+        id="diaryTextArea"
+        class="diary-textarea"
+        placeholder="আজকের দিনটি কেমন গেল? / How was your day?"
+        rows="8"
+    ></textarea>
+
+    <!-- INFO BAR -->
     <div class="diary-info">
         <span id="diaryWordCount">0 words</span>
         <span id="diarySavedIndicator">✓ Saved</span>
     </div>
+
+    <!-- ACTIONS -->
     <div class="diary-actions">
-        <button type="button" id="diarySaveBtn" class="primary-btn">💾 <span id="diarySaveText">Save</span></button>
-        <button type="button" id="diaryDeleteBtn" class="study-report-reset-btn">🗑 <span id="diaryDeleteText">Delete</span></button>
+        <button type="button" id="diarySaveBtn" class="primary-btn">
+            💾 <span id="diarySaveText">Save</span>
+        </button>
+        <button type="button" id="diaryDeleteBtn" class="study-report-reset-btn">
+            🗑 <span id="diaryDeleteText">Delete</span>
+        </button>
     </div>
+
 </section>
+                   <!-- =================================================
+                         DAILY STUDY REPORT — SIDEBAR
+                    ================================================== -->
 
                 <section class="side-card daily-study-report-card">
+
+                    <!-- =================================================
+                        DAILY REPORT HEADER
+                    ================================================== -->
+
                     <div class="section-header">
+
                         <div>
-                            <h3 id="dailyStudyReportTitle">Daily Study Report</h3>
-                            <small id="dailyStudyReportSubtitle">Today's study progress</small>
+                            <h3 id="dailyStudyReportTitle">
+                                Daily Study Report
+                            </h3>
+                            <small id="dailyStudyReportSubtitle">
+                                Today's study progress
+                            </small>
                         </div>
+
                     </div>
+
+                    <!-- =================================================
+                        DAILY REPORT NAVIGATION
+                    ================================================== -->
+
                     <div class="study-report-navigation">
-                        <button type="button" id="previousReportDay" class="secondary-btn study-report-nav-btn">← <span id="previousReportDayText">Previous Day</span></button>
-                        <button type="button" id="dailyReportTodayBtn" class="secondary-btn study-report-nav-btn active"><span id="dailyReportTodayText">Today</span></button>
+                        <button
+                            type="button"
+                            id="previousReportDay"
+                            class="secondary-btn study-report-nav-btn"
+                        >
+                            ← <span id="previousReportDayText">Previous Day</span>
+                        </button>
+
+                        <button
+                            type="button"
+                            id="dailyReportTodayBtn"
+                            class="secondary-btn study-report-nav-btn active"
+                        >
+                            <span id="dailyReportTodayText">Today</span>
+                        </button>
                     </div>
-                    <div class="study-report-current-date"><strong id="dailyReportDate">Today</strong></div>
+
+                    <!-- =================================================
+                        DAILY REPORT DATE
+                    ================================================== -->
+
+                    <div class="study-report-current-date">
+                        <strong id="dailyReportDate">Today</strong>
+                    </div>
+
+                    <!-- =================================================
+                        DAILY REPORT CARDS
+                    ================================================== -->
+
                     <div class="study-report-cards daily-sidebar-cards">
-                        <div class="study-report-card"><div><span class="study-report-card-label" id="dailyStudyTimeLabel">Study Time</span><strong id="dailyStudyTime">0h 0m</strong></div></div>
-                        <div class="study-report-card"><div><span class="study-report-card-label" id="dailyCompletedLabel">Completed</span><strong id="dailyCompleted">0</strong></div></div>
-                        <div class="study-report-card"><div><span class="study-report-card-label" id="dailySessionsLabel">Sessions</span><strong id="dailySessions">0</strong></div></div>
-                        <div class="study-report-card"><div><span class="study-report-card-label" id="dailyCompletionLabel">Completion</span><strong id="dailyCompletion">0%</strong></div></div>
+
+                        <!-- STUDY TIME -->
+                        <div class="study-report-card">
+                            <div>
+                                <span class="study-report-card-label" id="dailyStudyTimeLabel">
+                                    Study Time
+                                </span>
+                                <strong id="dailyStudyTime">0h 0m</strong>
+                            </div>
+                        </div>
+
+                        <!-- COMPLETED -->
+                        <div class="study-report-card">
+                            <div>
+                                <span class="study-report-card-label" id="dailyCompletedLabel">
+                                    Completed
+                                </span>
+                                <strong id="dailyCompleted">0</strong>
+                            </div>
+                        </div>
+
+                        <!-- SESSIONS -->
+                        <div class="study-report-card">
+                            <div>
+                                <span class="study-report-card-label" id="dailySessionsLabel">
+                                    Sessions
+                                </span>
+                                <strong id="dailySessions">0</strong>
+                            </div>
+                        </div>
+
+                        <!-- COMPLETION -->
+                        <div class="study-report-card">
+                            <div>
+                                <span class="study-report-card-label" id="dailyCompletionLabel">
+                                    Completion
+                                </span>
+                                <strong id="dailyCompletion">0%</strong>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <!-- =================================================
+                        DAILY SUBJECT BREAKDOWN
+                    ================================================== -->
+
                     <div class="study-report-panel">
                         <h4 id="dailySubjectTitle">Subject Breakdown</h4>
                         <div id="dailySubjectBreakdown" class="study-subject-breakdown"></div>
                     </div>
-                    <button type="button" id="resetDailyStudyReport" class="study-report-reset-btn">🗑 Reset Daily</button>
+
+                    <!-- =================================================
+                        DAILY RESET BUTTON
+                    ================================================== -->
+
+                    <button
+                        type="button"
+                        id="resetDailyStudyReport"
+                        class="study-report-reset-btn"
+                    >
+                        🗑 Reset Daily
+                    </button>
+
                 </section>
 
+                <!-- =================================================
+                    WEEKLY STUDY REPORT — SIDEBAR
+                ================================================== -->
+
                 <section class="side-card weekly-study-report-card">
+
+                    <!-- =================================================
+                        WEEKLY REPORT HEADER
+                    ================================================== -->
+
                     <div class="section-header">
+
                         <div>
-                            <h3 id="weeklyStudyReportTitle">Weekly Study Report</h3>
-                            <small id="weeklyStudyReportSubtitle">Track your weekly study progress</small>
+                            <h3 id="weeklyStudyReportTitle">
+                                Weekly Study Report
+                            </h3>
+                            <small id="weeklyStudyReportSubtitle">
+                                Track your weekly study progress
+                            </small>
                         </div>
+
                     </div>
+
+                    <!-- =================================================
+                        WEEKLY REPORT NAVIGATION
+                    ================================================== -->
+
                     <div class="study-report-navigation">
-                        <button type="button" id="previousReportWeek" class="secondary-btn study-report-nav-btn">← <span id="previousReportWeekText">Previous Week</span></button>
-                        <button type="button" id="weeklyReportTodayBtn" class="secondary-btn study-report-nav-btn active"><span id="weeklyReportTodayText">This Week</span></button>
+                        <button
+                            type="button"
+                            id="previousReportWeek"
+                            class="secondary-btn study-report-nav-btn"
+                        >
+                            ← <span id="previousReportWeekText">Previous Week</span>
+                        </button>
+
+                        <button
+                            type="button"
+                            id="weeklyReportTodayBtn"
+                            class="secondary-btn study-report-nav-btn active"
+                        >
+                            <span id="weeklyReportTodayText">This Week</span>
+                        </button>
                     </div>
-                    <div class="study-report-current-date"><strong id="weeklyReportDate">This Week</strong></div>
+
+                    <!-- =================================================
+                        WEEK RANGE
+                    ================================================== -->
+
+                    <div class="study-report-current-date">
+                        <strong id="weeklyReportDate">This Week</strong>
+                    </div>
+
+                    <!-- =================================================
+                        WEEKLY REPORT CARDS
+                    ================================================== -->
+
                     <div class="study-report-cards weekly-sidebar-cards">
-                        <div class="study-report-card"><div><span class="study-report-card-label" id="weeklyStudyTimeLabel">Study Time</span><strong id="weeklyStudyTime">0h 0m</strong></div></div>
-                        <div class="study-report-card"><div><span class="study-report-card-label" id="weeklyAverageLabel">Daily Average</span><strong id="weeklyAverage">0h 0m</strong></div></div>
-                        <div class="study-report-card"><div><span class="study-report-card-label" id="weeklyCompletedLabel">Completed</span><strong id="weeklyCompleted">0</strong></div></div>
-                        <div class="study-report-card"><div><span class="study-report-card-label" id="weeklyCompletionLabel">Completion</span><strong id="weeklyCompletion">0%</strong></div></div>
+
+                        <!-- STUDY TIME -->
+                        <div class="study-report-card">
+                            <div>
+                                <span class="study-report-card-label" id="weeklyStudyTimeLabel">
+                                    Study Time
+                                </span>
+                                <strong id="weeklyStudyTime">0h 0m</strong>
+                            </div>
+                        </div>
+
+                        <!-- DAILY AVERAGE -->
+                        <div class="study-report-card">
+                            <div>
+                                <span class="study-report-card-label" id="weeklyAverageLabel">
+                                    Daily Average
+                                </span>
+                                <strong id="weeklyAverage">0h 0m</strong>
+                            </div>
+                        </div>
+
+                        <!-- COMPLETED -->
+                        <div class="study-report-card">
+                            <div>
+                                <span class="study-report-card-label" id="weeklyCompletedLabel">
+                                    Completed
+                                </span>
+                                <strong id="weeklyCompleted">0</strong>
+                            </div>
+                        </div>
+
+                        <!-- COMPLETION -->
+                        <div class="study-report-card">
+                            <div>
+                                <span class="study-report-card-label" id="weeklyCompletionLabel">
+                                    Completion
+                                </span>
+                                <strong id="weeklyCompletion">0%</strong>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <!-- =================================================
+                        WEEKLY STUDY TIME CHART
+                    ================================================== -->
+
                     <div class="study-report-panel">
                         <h4 id="weeklyChartTitle">Weekly Study Time</h4>
                         <div id="weeklyStudyChart" class="weekly-study-chart"></div>
                     </div>
+
+                    <!-- =================================================
+                        WEEKLY SUBJECT BREAKDOWN
+                    ================================================== -->
+
                     <div class="study-report-panel">
                         <h4 id="weeklySubjectTitle">Subject Breakdown</h4>
                         <div id="weeklySubjectBreakdown" class="study-subject-breakdown"></div>
                     </div>
-                    <button type="button" id="resetWeeklyStudyReport" class="study-report-reset-btn">🗑 Reset Weekly</button>
-                </section>
 
+                    <!-- =================================================
+                        WEEKLY RESET BUTTON
+                    ================================================== -->
+
+                    <button
+                        type="button"
+                        id="resetWeeklyStudyReport"
+                        class="study-report-reset-btn"
+                    >
+                        🗑 Reset Weekly
+                    </button>
+
+
+                </section>
+                <!-- Completed Subjects List -->
                 <div class="completed-subjects-container" id="completedSubjectsContainer" style="margin-top: 14px; padding-top: 14px; border-top: 1px solid rgb(var(--border));">
-                    <h4 style="margin: 0 0 10px 0; font-size: 13px; font-weight: 600; color: rgb(var(--success)); display: flex; align-items: center; gap: 6px;">🎉 Completed Subjects</h4>
+                    <h4 style="margin: 0 0 10px 0; font-size: 13px; font-weight: 600; color: rgb(var(--success)); display: flex; align-items: center; gap: 6px;">
+                        🎉 Completed Subjects
+                    </h4>
                     <div id="completedSubjectsList">
                         <p style="color: rgb(var(--text-muted)); font-size: 12px; text-align: center; padding: 10px 0;">Loading...</p>
                     </div>
@@ -815,228 +1867,1026 @@
 
 
 
-<!-- EVENT MODAL -->
+<!-- =========================================================
+     EVENT MODAL
+========================================================= -->
 
-<div id="eventModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<div
+    id="eventModal"
+    class="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+>
+
     <div class="modal">
+
+
+
+        <!-- =====================================================
+             MODAL HEADER
+        ====================================================== -->
+
         <div class="modal-header">
-            <h2 id="modalTitle">Add Event</h2>
-            <button class="close-btn" data-close="eventModal" type="button" aria-label="Close">×</button>
+
+            <h2 id="modalTitle">
+                Add Event
+            </h2>
+
+
+
+            <button
+                class="close-btn"
+                data-close="eventModal"
+                type="button"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
         </div>
+
+
+
+
+
+        <!-- =====================================================
+             EVENT FORM
+        ====================================================== -->
+
         <form id="eventForm">
+
             <div class="modal-body">
-                <input id="eventId" type="hidden">
+
+
+
+                <input
+                    id="eventId"
+                    type="hidden"
+                >
+
+
+
+                <!-- =================================================
+                     EVENT TITLE
+                ================================================== -->
+
                 <label>
-                    <span id="eventTitleLabel">Event Title</span>
-                    <input id="eventTitle" type="text" required autocomplete="off" placeholder="CSE 3101 Class">
+
+                    <span id="eventTitleLabel">
+                        Event Title
+                    </span>
+
+
+
+                    <input
+                        id="eventTitle"
+                        type="text"
+                        required
+                        autocomplete="off"
+                        placeholder="CSE 3101 Class"
+                    >
+
                 </label>
+
+
+
+
+
+                <!-- =================================================
+                     DATE + CATEGORY
+                ================================================== -->
+
                 <div class="form-row">
+
                     <label>
-                        <span id="eventDateLabel">Date</span>
-                        <input id="eventDate" type="date" required>
+
+                        <span id="eventDateLabel">
+                            Date
+                        </span>
+
+
+
+                        <input
+                            id="eventDate"
+                            type="date"
+                            required
+                        >
+
                     </label>
+
+
+
                     <label>
-                        <span id="eventCategoryLabel">Category</span>
+
+                        <span id="eventCategoryLabel">
+                            Category
+                        </span>
+
+
+
                         <select id="eventCategory">
-                            <option value="class" id="eventCategoryClassOption">Class</option>
-                            <option value="exam" id="eventCategoryExamOption">Exam / CT</option>
-                            <option value="assignment" id="eventCategoryAssignmentOption">Assignment</option>
-                            <option value="project" id="eventCategoryProjectOption">Project</option>
-                            <option value="presentation" id="eventCategoryPresentationOption">Presentation</option>
-                            <option value="personal" id="eventCategoryPersonalOption">Personal</option>
-                            <option value="holiday" id="eventCategoryHolidayOption">Holiday</option>
-                            <option value="other" id="eventCategoryOtherOption">Other</option>
+
+                            <option
+                                value="class"
+                                id="eventCategoryClassOption"
+                            >
+                                Class
+                            </option>
+
+                            <option
+                                value="exam"
+                                id="eventCategoryExamOption"
+                            >
+                                Exam / CT
+                            </option>
+
+                            <option
+                                value="assignment"
+                                id="eventCategoryAssignmentOption"
+                            >
+                                Assignment
+                            </option>
+
+                            <option
+                                value="project"
+                                id="eventCategoryProjectOption"
+                            >
+                                Project
+                            </option>
+
+                            <option
+                                value="presentation"
+                                id="eventCategoryPresentationOption"
+                            >
+                                Presentation
+                            </option>
+
+                            <option
+                                value="personal"
+                                id="eventCategoryPersonalOption"
+                            >
+                                Personal
+                            </option>
+
+                            <option
+                                value="holiday"
+                                id="eventCategoryHolidayOption"
+                            >
+                                Holiday
+                            </option>
+
+                            <option
+                                value="other"
+                                id="eventCategoryOtherOption"
+                            >
+                                Other
+                            </option>
+
                         </select>
+
                     </label>
+
                 </div>
+
+
+
+
+
+                <!-- =================================================
+                     START + END
+                ================================================== -->
+
                 <div class="form-row">
+
                     <label>
-                        <span id="eventStartLabel">Start</span>
-                        <input id="eventStart" type="time">
+
+                        <span id="eventStartLabel">
+                            Start
+                        </span>
+
+
+
+                        <input
+                            id="eventStart"
+                            type="time"
+                        >
+
                     </label>
+
+
+
                     <label>
-                        <span id="eventEndLabel">End</span>
-                        <input id="eventEnd" type="time">
+
+                        <span id="eventEndLabel">
+                            End
+                        </span>
+
+
+
+                        <input
+                            id="eventEnd"
+                            type="time"
+                        >
+
                     </label>
+
                 </div>
+
+
+
+
+
+                <!-- =================================================
+                     LOCATION
+                ================================================== -->
+
                 <label>
-                    <span id="eventLocationLabel">Location</span>
-                    <input id="eventLocation" type="text" autocomplete="off" placeholder="Room 302 / Online / Offline">
+
+                    <span id="eventLocationLabel">
+                        Location
+                    </span>
+
+
+
+                    <input
+                        id="eventLocation"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Room 302 / Online / Offline"
+                    >
+
                 </label>
+
+
+
+
+
+                <!-- =================================================
+                     DESCRIPTION
+                ================================================== -->
+
                 <label>
-                    <span id="eventDescriptionLabel">Description</span>
-                    <textarea id="eventDescription" placeholder="Additional details..."></textarea>
+
+                    <span id="eventDescriptionLabel">
+                        Description
+                    </span>
+
+
+
+                    <textarea
+                        id="eventDescription"
+                        placeholder="Additional details..."
+                    ></textarea>
+
                 </label>
+
+
+
+
+
+                <!-- =================================================
+                     CUSTOM ALARM
+                ================================================== -->
+
                 <div class="alarm-section">
+
+
+
                     <div class="alarm-header">
+
                         <div class="alarm-title-area">
-                            <strong id="customAlarmTitle">🔔 Custom Alarm</strong>
-                            <small id="customAlarmSubtitle">Set your own alarm date and time</small>
+
+                            <strong id="customAlarmTitle">
+                                🔔 Custom Alarm
+                            </strong>
+
+
+
+                            <small id="customAlarmSubtitle">
+                                Set your own alarm date and time
+                            </small>
+
                         </div>
+
+
+
                         <label class="alarm-switch">
-                            <input id="eventReminder" type="checkbox">
+
+                            <input
+                                id="eventReminder"
+                                type="checkbox"
+                            >
+
                             <span class="alarm-slider"></span>
+
                         </label>
+
                     </div>
-                    <div id="alarmSettings" class="alarm-settings hidden">
+
+
+
+
+
+                    <div
+                        id="alarmSettings"
+                        class="alarm-settings hidden"
+                    >
+
+
+
+                        <!-- =================================================
+                             ALARM DATE
+                        ================================================== -->
+
                         <label>
-                            <span id="alarmDateLabel">Alarm Date</span>
-                            <input id="customAlarmDate" type="date">
+
+                            <span id="alarmDateLabel">
+                                Alarm Date
+                            </span>
+
+
+
+                            <input
+                                id="customAlarmDate"
+                                type="date"
+                            >
+
                         </label>
+
+
+
+
+
+                        <!-- =================================================
+                             ALARM TIME
+                        ================================================== -->
+
                         <label>
-                            <span id="alarmTimeLabel">Alarm Time</span>
-                            <input id="customAlarmTime" type="time">
+
+                            <span id="alarmTimeLabel">
+                                Alarm Time
+                            </span>
+
+
+
+                            <input
+                                id="customAlarmTime"
+                                type="time"
+                            >
+
                         </label>
+
+
+
+
+
+                        <!-- =================================================
+                             ALARM SOUND
+                        ================================================== -->
+
                         <label>
-                            <span id="alarmSoundLabel">Alarm Sound</span>
+
+                            <span id="alarmSoundLabel">
+                                Alarm Sound
+                            </span>
+
+
+
                             <select id="alarmSound">
-                                <option value="default" id="alarmSoundDefaultOption">Default Alarm</option>
-                                <option value="beep" id="alarmSoundBeepOption">Beep</option>
-                                <option value="bell" id="alarmSoundBellOption">Bell</option>
-                                <option value="digital" id="alarmSoundDigitalOption">Digital Alarm</option>
+
+                                <option
+                                    value="default"
+                                    id="alarmSoundDefaultOption"
+                                >
+                                    Default Alarm
+                                </option>
+
+                                <option
+                                    value="beep"
+                                    id="alarmSoundBeepOption"
+                                >
+                                    Beep
+                                </option>
+
+                                <option
+                                    value="bell"
+                                    id="alarmSoundBellOption"
+                                >
+                                    Bell
+                                </option>
+
+                                <option
+                                    value="digital"
+                                    id="alarmSoundDigitalOption"
+                                >
+                                    Digital Alarm
+                                </option>
+
                             </select>
+
                         </label>
-                        <button id="testAlarmBtn" type="button" class="secondary-btn alarm-test-btn">🔊 Test Alarm</button>
+
+
+
+
+
+                        <!-- =================================================
+                             TEST ALARM
+                        ================================================== -->
+
+                        <button
+                            id="testAlarmBtn"
+                            type="button"
+                            class="secondary-btn alarm-test-btn"
+                        >
+                            🔊 Test Alarm
+                        </button>
+
                     </div>
+
                 </div>
+
             </div>
+
+
+
+
+
+            <!-- =================================================
+                 EVENT MODAL FOOTER
+            ================================================== -->
+
             <div class="modal-footer">
-                <button id="deleteBtn" type="button" class="danger-btn hidden">Delete</button>
+
+                <button
+                    id="deleteBtn"
+                    type="button"
+                    class="danger-btn hidden"
+                >
+                    Delete
+                </button>
+
+
+
                 <span></span>
-                <button id="cancelEventBtn" type="button" class="secondary-btn" data-close="eventModal">Cancel</button>
-                <button id="saveEventBtn" type="submit" class="primary-btn">Save Event</button>
+
+
+
+                <button
+                    id="cancelEventBtn"
+                    type="button"
+                    class="secondary-btn"
+                    data-close="eventModal"
+                >
+                    Cancel
+                </button>
+
+
+
+                <button
+                    id="saveEventBtn"
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Save Event
+                </button>
+
             </div>
+
         </form>
+
     </div>
+
 </div>
 
 
 
 
 
-<!-- STUDY TASK MODAL -->
+<!-- =========================================================
+     STUDY TASK MODAL
+========================================================= -->
 
-<div id="studyTaskModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="studyTaskModalTitle">
+<div
+    id="studyTaskModal"
+    class="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="studyTaskModalTitle"
+>
+
     <div class="modal">
+
+
+
+        <!-- =====================================================
+             STUDY TASK MODAL HEADER
+        ====================================================== -->
+
         <div class="modal-header">
-            <h2 id="studyTaskModalTitle">Add Study Task</h2>
-            <button class="close-btn" data-close="studyTaskModal" type="button" aria-label="Close">×</button>
+
+            <h2 id="studyTaskModalTitle">
+                Add Study Task
+            </h2>
+
+
+
+            <button
+                class="close-btn"
+                data-close="studyTaskModal"
+                type="button"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
         </div>
+
+
+
+
+
+        <!-- =====================================================
+             STUDY TASK FORM
+        ====================================================== -->
+
         <form id="studyTaskForm">
+
             <div class="modal-body">
-                <input id="studyTaskId" type="hidden">
+
+
+
+                <input
+                    id="studyTaskId"
+                    type="hidden"
+                >
+
+
+
+
+
+                <!-- =================================================
+                     TASK TITLE
+                ================================================== -->
+
                 <label>
-                    <span id="studyTaskTitleLabel">Task Title</span>
-                    <input id="studyTaskTitle" type="text" required autocomplete="off" placeholder="Complete Data Structure chapter">
+
+                    <span id="studyTaskTitleLabel">
+                        Task Title
+                    </span>
+
+
+
+                    <input
+                        id="studyTaskTitle"
+                        type="text"
+                        required
+                        autocomplete="off"
+                        placeholder="Complete Data Structure chapter"
+                    >
+
                 </label>
+
+
+
+
+
+                <!-- =================================================
+                     SUBJECT
+                ================================================== -->
+
                 <label>
-                    <span id="studyTaskSubjectLabel">Subject</span>
-                    <input id="studyTaskSubject" type="text" autocomplete="off" placeholder="Data Structure">
+
+                    <span id="studyTaskSubjectLabel">
+                        Subject
+                    </span>
+
+
+
+                    <input
+                        id="studyTaskSubject"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Data Structure"
+                    >
+
                 </label>
+
+
+
+                <!-- =================================================
+                     TARGET STUDY TIME - FIXED WITH TRANSLATION IDs
+                ================================================== -->
+
                 <div class="form-group">
+
                     <label for="studyTaskTargetMinutes">
                         <span id="studyTaskTargetLabel">Target Study Time</span>
                     </label>
-                    <input type="number" id="studyTaskTargetMinutes" min="1" step="1" placeholder="e.g. 60" required>
-                    <small id="studyTaskTargetHelp">Enter target study time in minutes</small>
+
+                    <input
+                        type="number"
+                        id="studyTaskTargetMinutes"
+                        min="1"
+                        step="1"
+                        placeholder="e.g. 60"
+                        required
+                    >
+
+                    <small id="studyTaskTargetHelp">
+                        Enter target study time in minutes
+                    </small>
+
                 </div>
+
+
+
+
+
+                <!-- =================================================
+                     START DATE + DEADLINE
+                ================================================== -->
+
                 <div class="form-row">
+
                     <label>
-                        <span id="studyTaskDateLabel">Start Date</span>
-                        <input id="studyTaskDate" type="date" required>
+
+                        <span id="studyTaskDateLabel">
+                            Start Date
+                        </span>
+
+
+
+                        <input
+                            id="studyTaskDate"
+                            type="date"
+                            required
+                        >
+
                     </label>
+
+
+
                     <label>
-                        <span id="studyTaskDeadlineLabel">Deadline</span>
-                        <input id="studyTaskDeadline" type="date" required>
+
+                        <span id="studyTaskDeadlineLabel">
+                            Deadline
+                        </span>
+
+
+
+                        <input
+                            id="studyTaskDeadline"
+                            type="date"
+                            required
+                        >
+
                     </label>
+
                 </div>
+
+
+
+
+
+                <!-- =================================================
+                     PRIORITY
+                ================================================== -->
+
                 <label>
-                    <span id="studyTaskPriorityLabel">Priority</span>
+
+                    <span id="studyTaskPriorityLabel">
+                        Priority
+                    </span>
+
+
+
                     <select id="studyTaskPriority">
-                        <option value="low" id="studyTaskPriorityLow">Low</option>
-                        <option value="medium" id="studyTaskPriorityMedium" selected>Medium</option>
-                        <option value="high" id="studyTaskPriorityHigh">High</option>
+
+                        <option
+                            value="low"
+                            id="studyTaskPriorityLow"
+                        >
+                            Low
+                        </option>
+
+                        <option
+                            value="medium"
+                            id="studyTaskPriorityMedium"
+                            selected
+                        >
+                            Medium
+                        </option>
+
+                        <option
+                            value="high"
+                            id="studyTaskPriorityHigh"
+                        >
+                            High
+                        </option>
+
                     </select>
+
                 </label>
+
+
+
+
+
+                <!-- =================================================
+                     PROGRESS
+                ================================================== -->
+
                 <label>
-                    <span id="studyTaskProgressLabel">Progress</span>
-                    <input id="studyTaskProgress" type="range" min="0" max="100" value="0">
+
+                    <span id="studyTaskProgressLabel">
+                        Progress
+                    </span>
+
+
+
+                    <input
+                        id="studyTaskProgress"
+                        type="range"
+                        min="0"
+                        max="100"
+                        value="0"
+                    >
+
                 </label>
+
+
+
+
+
                 <div class="task-progress-value">
-                    <strong id="studyTaskProgressValue">0%</strong>
+
+                    <strong id="studyTaskProgressValue">
+                        0%
+                    </strong>
+
                 </div>
+
+
+
+
+
+                <!-- =================================================
+                     NOTES
+                ================================================== -->
+
                 <label>
-                    <span id="studyTaskNotesLabel">Notes</span>
-                    <textarea id="studyTaskNotes" placeholder="Study notes..."></textarea>
+
+                    <span id="studyTaskNotesLabel">
+                        Notes
+                    </span>
+
+
+
+                    <textarea
+                        id="studyTaskNotes"
+                        placeholder="Study notes..."
+                    ></textarea>
+
                 </label>
+
             </div>
+
+
+
+
+
+            <!-- =================================================
+                 STUDY TASK MODAL FOOTER
+            ================================================== -->
+
             <div class="modal-footer">
-                <button id="deleteStudyTaskBtn" type="button" class="danger-btn hidden">Delete</button>
+
+                <button
+                    id="deleteStudyTaskBtn"
+                    type="button"
+                    class="danger-btn hidden"
+                >
+                    Delete
+                </button>
+
+
+
                 <span></span>
-                <button id="cancelStudyTaskBtn" type="button" class="secondary-btn" data-close="studyTaskModal">Cancel</button>
-                <button id="saveStudyTaskBtn" type="submit" class="primary-btn">Save Task</button>
+
+
+
+                <button
+                    id="cancelStudyTaskBtn"
+                    type="button"
+                    class="secondary-btn"
+                    data-close="studyTaskModal"
+                >
+                    Cancel
+                </button>
+
+
+
+                <button
+                    id="saveStudyTaskBtn"
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Save Task
+                </button>
+
             </div>
+
         </form>
+
     </div>
+
 </div>
 
 
 
 
 
-<!-- CUSTOM ALARM POPUP -->
+<!-- =========================================================
+     CUSTOM ALARM POPUP
+========================================================= -->
 
-<div id="alarmModal" class="modal-overlay alarm-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="alarmTitle">
+<div
+    id="alarmModal"
+    class="modal-overlay alarm-modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="alarmTitle"
+>
+
     <div class="modal alarm-modal">
-        <div class="alarm-icon">🔔</div>
-        <h2 id="alarmTitle">Alarm</h2>
-        <p id="alarmMessage">Your scheduled alarm is ringing.</p>
-        <div id="alarmEventInfo" class="alarm-event-info"></div>
+
+
+
+        <div class="alarm-icon">
+            🔔
+        </div>
+
+
+
+        <h2 id="alarmTitle">
+            Alarm
+        </h2>
+
+
+
+        <p id="alarmMessage">
+            Your scheduled alarm is ringing.
+        </p>
+
+
+
+        <div
+            id="alarmEventInfo"
+            class="alarm-event-info"
+        ></div>
+
+
+
         <div class="alarm-actions">
-            <button id="dismissAlarmBtn" type="button" class="secondary-btn">Dismiss</button>
-            <button id="snoozeAlarmBtn" type="button" class="primary-btn">Snooze 5 Minutes</button>
+
+            <button
+                id="dismissAlarmBtn"
+                type="button"
+                class="secondary-btn"
+            >
+                Dismiss
+            </button>
+
+
+
+            <button
+                id="snoozeAlarmBtn"
+                type="button"
+                class="primary-btn"
+            >
+                Snooze 5 Minutes
+            </button>
+
         </div>
+
     </div>
+
 </div>
 
 
 
 
 
-<!-- EVENT DETAILS MODAL -->
+<!-- =========================================================
+     EVENT DETAILS MODAL
+========================================================= -->
 
-<div id="detailsModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="detailsModalTitle">
+<div
+    id="detailsModal"
+    class="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="detailsModalTitle"
+>
+
     <div class="modal">
+
+
+
         <div class="modal-header">
-            <h2 id="detailsModalTitle">Event Details</h2>
-            <button class="close-btn" data-close="detailsModal" type="button" aria-label="Close">×</button>
+
+            <h2 id="detailsModalTitle">
+                Event Details
+            </h2>
+
+
+
+            <button
+                class="close-btn"
+                data-close="detailsModal"
+                type="button"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
         </div>
-        <div id="eventDetails" class="modal-body"></div>
+
+
+
+
+
+        <div
+            id="eventDetails"
+            class="modal-body"
+        ></div>
+
+
+
+
+
         <div class="modal-footer">
+
             <span></span>
-            <button id="closeDetailsBtn" class="secondary-btn" data-close="detailsModal" type="button">Close</button>
-            <button id="editDetailsBtn" class="primary-btn" type="button">Edit</button>
+
+
+
+            <button
+                id="closeDetailsBtn"
+                class="secondary-btn"
+                data-close="detailsModal"
+                type="button"
+            >
+                Close
+            </button>
+
+
+
+            <button
+                id="editDetailsBtn"
+                class="primary-btn"
+                type="button"
+            >
+                Edit
+            </button>
+
         </div>
+
     </div>
+
 </div>
 
 
 
 
 
-<!-- TOAST MESSAGE -->
+<!-- =========================================================
+     TOAST MESSAGE
+========================================================= -->
 
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+></div>
 
 
 
 
 
-<!-- JAVASCRIPT -->
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
 
 <script src="js/app.js"></script>
+
 <script src="js/study-task.js"></script>
+
 <script src="js/cgpa-calculator.js"></script>
+
 <script src="js/study-analytics.js"></script>
 
 
