@@ -7382,24 +7382,61 @@ if (deleteSelectedPastEventsBtn) {
 }
 
 /* =========================================================
-   PAGE NAVIGATION
+   PAGE NAVIGATION — Home / Study / Me
+   Dashboard + Toolbar শুধু Home page-এ visible।
 ========================================================= */
 
 function switchPage(pageName) {
-    // Update active button
+
+    /* -----------------------------------------------------
+       Update active nav button
+    ----------------------------------------------------- */
     document.querySelectorAll('.bottom-nav-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.page === pageName);
     });
 
-    // Show/hide sections based on page
-    const sections = {
+    /* -----------------------------------------------------
+       Only apply on mobile
+    ----------------------------------------------------- */
+    const isMobile = window.innerWidth <= 768;
+
+    /* -----------------------------------------------------
+       All hideable elements
+       
+       Dashboard + Toolbar — only visible on Home page
+    ----------------------------------------------------- */
+    const allHideableSelectors = [
+        '.dashboard',
+        '.toolbar',
+        '.calendar-card',
+        '.bangladesh-holidays',
+        '.sidebar > .side-card:nth-of-type(1)',  // Quick Add
+        '.sidebar > .side-card:nth-of-type(2)',  // Upcoming Events
+        '.sidebar > .side-card:nth-of-type(3)',  // Past Events
+        '.study-task-card',
+        '.study-analytics-card',
+        '.daily-study-report-card',
+        '.weekly-study-report-card',
+        '.completed-subjects-container',
+        '.cgpa-calculator-card',
+        '.daily-diary-card'
+    ];
+
+    /* -----------------------------------------------------
+       Sections per page
+    ----------------------------------------------------- */
+    const pageSections = {
+
         home: [
+            '.dashboard',
+            '.toolbar',
             '.calendar-card',
             '.bangladesh-holidays',
-            '.sidebar > .side-card:nth-of-type(1)', // Quick Add
-            '.sidebar > .side-card:nth-of-type(2)', // Upcoming
-            '.sidebar > .side-card:nth-of-type(3)'  // Past Events
+            '.sidebar > .side-card:nth-of-type(1)',
+            '.sidebar > .side-card:nth-of-type(2)',
+            '.sidebar > .side-card:nth-of-type(3)'
         ],
+
         study: [
             '.study-task-card',
             '.study-analytics-card',
@@ -7407,64 +7444,115 @@ function switchPage(pageName) {
             '.weekly-study-report-card',
             '.completed-subjects-container'
         ],
+
         me: [
             '.cgpa-calculator-card',
             '.daily-diary-card'
         ]
     };
 
-    // Hide all sections first
-    document.querySelectorAll(
-        '.calendar-card, .bangladesh-holidays, .side-card, ' +
-        '.study-task-card, .study-analytics-card, ' +
-        '.daily-study-report-card, .weekly-study-report-card, ' +
-        '.completed-subjects-container'
-    ).forEach(el => {
-        el.style.display = 'none';
-    });
+    /* -----------------------------------------------------
+       Desktop → show everything, skip page hiding
+    ----------------------------------------------------- */
+    if (!isMobile) {
+        allHideableSelectors.forEach(selector => {
+            document.querySelectorAll(selector).forEach(el => {
+                el.classList.remove('page-hidden');
+            });
+        });
+        return;
+    }
 
-    // Show sections for current page
-    const currentSections = sections[pageName] || [];
-    currentSections.forEach(selector => {
+    /* -----------------------------------------------------
+       Mobile → hide all, then show current page
+    ----------------------------------------------------- */
+    allHideableSelectors.forEach(selector => {
         document.querySelectorAll(selector).forEach(el => {
-            el.style.display = '';
+            el.classList.add('page-hidden');
         });
     });
 
-    // Save preference
+    const currentSections = pageSections[pageName] || [];
+
+    currentSections.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.classList.remove('page-hidden');
+        });
+    });
+
+    /* -----------------------------------------------------
+       Save preference + scroll to top
+    ----------------------------------------------------- */
     localStorage.setItem('campusCalendarPage', pageName);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Setup bottom nav listeners
+/* =========================================================
+   INIT
+========================================================= */
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    /* Bottom nav button listeners */
     document.querySelectorAll('.bottom-nav-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             switchPage(btn.dataset.page);
         });
     });
 
-    // Restore last page
-    const savedPage = localStorage.getItem('campusCalendarPage') || 'home';
-    switchPage(savedPage);
+    /* Restore last page (mobile only) */
+    if (window.innerWidth <= 768) {
+        const savedPage =
+            localStorage.getItem('campusCalendarPage') || 'home';
+        switchPage(savedPage);
+    }
+
+    /* Handle resize — reset when going desktop */
+    let lastWidth = window.innerWidth;
+    window.addEventListener('resize', () => {
+        const nowMobile = window.innerWidth <= 768;
+        const wasMobile = lastWidth <= 768;
+
+        if (nowMobile !== wasMobile) {
+            const currentPage =
+                localStorage.getItem('campusCalendarPage') || 'home';
+            switchPage(currentPage);
+        }
+
+        lastWidth = window.innerWidth;
+    });
 });
 
-// Language support
+/* =========================================================
+   LANGUAGE SUPPORT
+========================================================= */
+
 function updateBottomNavLanguage() {
-    const lang = getStudyTaskLanguage ? getStudyTaskLanguage() : 'en';
+
+    const lang =
+        typeof getStudyTaskLanguage === 'function'
+            ? getStudyTaskLanguage()
+            : 'en';
+
     const labels = {
-        en: { home: 'Home', study: 'Study', me: 'Me' },
-        bn: { home: 'হোম', study: 'স্টাডি', me: 'আমি' }
+        en: { home: 'Home',  study: 'Study', me: 'Me' },
+        bn: { home: 'হোম',   study: 'স্টাডি', me: 'আমি' }
     };
+
     const t = labels[lang] || labels.en;
 
-    const homeEl = document.getElementById('navHomeLabel');
+    const homeEl  = document.getElementById('navHomeLabel');
     const studyEl = document.getElementById('navStudyLabel');
-    const meEl = document.getElementById('navMeLabel');
+    const meEl    = document.getElementById('navMeLabel');
 
-    if (homeEl) homeEl.textContent = t.home;
+    if (homeEl)  homeEl.textContent  = t.home;
     if (studyEl) studyEl.textContent = t.study;
-    if (meEl) meEl.textContent = t.me;
+    if (meEl)    meEl.textContent    = t.me;
 }
 
-// Call on language change
+document.addEventListener('languageChanged', updateBottomNavLanguage);
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(updateBottomNavLanguage, 300);
+});
 document.addEventListener('languageChanged', updateBottomNavLanguage);
