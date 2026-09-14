@@ -5156,236 +5156,56 @@ body.dark .study-report-empty {
 }
 
 
-/* =========================================================
-   MODAL FIX v3 — Android WebView safe
-   ========================================================= */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 768px) {
-
-    .modal-overlay {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100% !important;
         width: 100% !important;
-        height: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        display: flex !important;
-        align-items: flex-end !important;
-        justify-content: center !important;
-        overflow: hidden !important;
-        box-sizing: border-box !important;
     }
 
-    .modal {
+    body {
         position: relative !important;
-        width: 100% !important;
+    }
+
+    .modal-overlay,
+    .modal,
+    .modal * {
         max-width: 100% !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        left: auto !important;
-        right: auto !important;
-        transform: none !important;
-        border-radius: 20px 20px 0 0 !important;
-        overflow-x: hidden !important;
-        overflow-y: auto !important;
-        box-sizing: border-box !important;
-        max-height: 92vh !important;
-    }
-
-    .modal-header {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        gap: 10px !important;
-        padding: 14px 16px !important;
-        flex-wrap: nowrap !important;
-        box-sizing: border-box !important;
-        width: 100% !important;
-    }
-
-    .modal-header h2 {
-        flex: 1 1 auto !important;
-        min-width: 0 !important;
-        font-size: 17px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-    }
-
-    .modal-header .close-btn {
-        flex: 0 0 auto !important;
-        width: 36px !important;
-        height: 36px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    .modal-body {
-        padding: 16px 16px !important;
-        box-sizing: border-box !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
-    }
-
-    .modal-body label {
-        display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 0 14px 0 !important;
-        padding: 0 !important;
         box-sizing: border-box !important;
     }
 
-    .modal-body label > span {
-        display: block !important;
-        margin-bottom: 6px !important;
-        padding: 0 !important;
-    }
-
-    .modal-body input,
-    .modal-body select,
-    .modal-body textarea {
-        display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 10px 12px !important;
-        box-sizing: border-box !important;
-    }
-
-    .modal-body small {
-        display: block !important;
-        margin: 4px 0 10px 0 !important;
-        padding: 0 !important;
-        font-size: 11px !important;
-        line-height: 1.4 !important;
-        box-sizing: border-box !important;
-    }
-
-    .modal-body .form-row {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        box-sizing: border-box !important;
-    }
-
-    .modal-body input[type="range"] {
-        width: 100% !important;
-        margin: 6px 0 !important;
-        padding: 0 !important;
-    }
-
-    .task-progress-value {
-        text-align: right !important;
-        margin: 4px 0 10px 0 !important;
-        padding: 0 !important;
-    }
-
-    .modal-footer {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: flex-end !important;
-        gap: 8px !important;
-        padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) !important;
-        flex-wrap: nowrap !important;
-        position: sticky !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-        background: rgb(var(--surface)) !important;
-        border-top: 1px solid rgb(var(--border)) !important;
-        z-index: 5 !important;
-        box-sizing: border-box !important;
-    }
-
-    .modal-footer > span:first-child {
-        display: none !important;
-    }
-
-    .modal-footer button {
-        flex: 1 1 0 !important;
-        min-width: 0 !important;
-        max-width: none !important;
-        padding: 10px 12px !important;
-        font-size: 13px !important;
-        margin: 0 !important;
-        box-sizing: border-box !important;
-    }
-
-    .alarm-section {
-        margin: 14px 0 0 0 !important;
-        padding: 0 !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    .alarm-header {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        gap: 10px !important;
-        flex-wrap: wrap !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    .alarm-settings {
-        margin-top: 12px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    .form-row {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
-}
-
-@media (max-width: 380px) {
-    .modal-header {
-        padding: 12px 14px !important;
-    }
-
-    .modal-header h2 {
-        font-size: 15px !important;
-    }
-
-    .modal-body {
-        padding: 14px 14px !important;
-    }
-
-    .modal-body label {
-        font-size: 11px !important;
-    }
-
-    .modal-body input,
-    .modal-body select,
-    .modal-body textarea {
-        padding: 9px 10px !important;
-        font-size: 13px !important;
-    }
-
-    .modal-footer {
-        padding: 10px 14px calc(10px + env(safe-area-inset-bottom)) !important;
-    }
-
-    .modal-footer button {
-        font-size: 12px !important;
-        padding: 9px 10px !important;
+    .modal * {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
     }
 }
