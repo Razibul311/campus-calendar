@@ -5122,26 +5122,21 @@ body.dark .study-report-empty {
     letter-spacing: 0.2px;
 }
 
-/* Page sections - hide/show */
-.page-section {
-    display: none;
+/* Page show/hide */
+.page-hidden {
+    display: none !important;
 }
 
-.page-section.active {
-    display: block;
+/* Body padding for bottom nav on mobile */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: calc(70px + env(safe-area-inset-bottom));
+    }
 }
 
-/* Body padding for bottom nav */
-body {
-    padding-bottom: calc(70px + env(safe-area-inset-bottom));
-}
-
-/* Desktop - hide bottom nav */
+/* Desktop - hide bottom nav, show everything */
 @media (min-width: 769px) {
     .bottom-nav {
         display: none;
-    }
-    body {
-        padding-bottom: 0;
     }
 }
