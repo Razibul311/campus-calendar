@@ -4619,8 +4619,9 @@ function showEventDetails(id) {
 
     }
 
-   console.log("📋 Event Details HTML:", html);
-console.log("📋 Container found:", container);
+    console.log("📋 Event Details HTML:", html);
+    console.log("📋 Container found:", container);
+
     container.innerHTML =
         html;
 
@@ -7218,4 +7219,3 @@ window.toggleLanguage = toggleLanguage;
     console.log('Mobile page nav initialized. Current page:', lastPage);
 
 })();
-
