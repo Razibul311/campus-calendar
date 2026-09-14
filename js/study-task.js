@@ -2019,15 +2019,15 @@ window.hexToRgb = hexToRgb;
 window.hexToRgbString = hexToRgbString;
 
 /* =========================================================
-   ✅ PAGE SWITCHING FIX — WITH NAV BAR EXCLUSION
-   Home / Study / Me পেজ সুইচিং + Mobile Nav সবসময় দৃশ্যমান
+   ✅ PAGE SWITCHING FIX — NO NAV BAR OVERRIDE
+   Home / Study / Me page switching without touching nav bar
 ========================================================= */
 
 (function pageSwitchingFix() {
 
     // ---------- CSS Inject ----------
     function injectPageSwitchingCSS() {
-        // যদি আগে থেকে inject হয়ে থাকে, remove করে নতুন inject করুন
+        // Remove old style if exists
         const existing = document.getElementById('page-switching-style');
         if (existing) {
             existing.remove();
@@ -2041,7 +2041,7 @@ window.hexToRgbString = hexToRgbString;
                 display: none !important;
             }
 
-            /* ✅ ২. Home page — শুধু home elements দেখান (nav ছাড়া) */
+            /* ✅ ২. Home page — শুধু home elements দেখান */
             body[data-current-page="home"] [data-page="home"]:not(.mobile-nav-btn) {
                 display: block !important;
             }
@@ -2054,7 +2054,7 @@ window.hexToRgbString = hexToRgbString;
                 display: flex !important;
             }
 
-            /* ✅ ৩. Study page — শুধু study elements দেখান (nav ছাড়া) */
+            /* ✅ ৩. Study page */
             body[data-current-page="study"] [data-page="study"]:not(.mobile-nav-btn) {
                 display: block !important;
             }
@@ -2063,12 +2063,12 @@ window.hexToRgbString = hexToRgbString;
                 display: block !important;
             }
 
-            /* ✅ ৪. Me page — শুধু me elements দেখান (nav ছাড়া) */
+            /* ✅ ৪. Me page */
             body[data-current-page="me"] [data-page="me"]:not(.mobile-nav-btn) {
                 display: block !important;
             }
 
-            /* ✅ ৫. Modal সবসময় available থাকবে */
+            /* ✅ ৫. Modal */
             .modal-overlay {
                 display: none;
             }
@@ -2077,28 +2077,15 @@ window.hexToRgbString = hexToRgbString;
                 display: flex !important;
             }
 
-            /* ✅ ৬. Layout grid সবসময় active */
+            /* ✅ ৬. Layout */
             .layout {
                 display: grid !important;
             }
 
-            /* ✅ ৭. Sidebar flex সবসময় active */
+            /* ✅ ৭. Sidebar */
             .sidebar {
                 display: flex !important;
                 flex-direction: column !important;
-            }
-
-            /* ✅ ৮. Mobile Nav — NEVER hidden by page switching */
-            .mobile-bottom-nav,
-            .mobile-bottom-nav .mobile-nav-btn,
-            .mobile-bottom-nav .mobile-nav-icon,
-            .mobile-bottom-nav .mobile-nav-label {
-                display: revert !important;
-            }
-
-            /* ✅ ৯. Nav buttons specific styles (CSS থেকে আসবে) */
-            .mobile-bottom-nav .mobile-nav-btn[data-page] {
-                display: flex !important;
             }
 
             @media (max-width: 768px) {
@@ -2107,9 +2094,12 @@ window.hexToRgbString = hexToRgbString;
                     flex-direction: column !important;
                 }
             }
+
+            /* ⚠️ IMPORTANT: Mobile nav bar-এর কোনো style এখানে নেই।
+               সব nav bar style style.css থেকে আসবে। */
         `;
         document.head.appendChild(style);
-        console.log('✅ Page switching CSS injected by study-task.js (nav bar excluded)');
+        console.log('✅ Page switching CSS injected (nav bar untouched)');
     }
 
     // ---------- Page Button Setup ----------
