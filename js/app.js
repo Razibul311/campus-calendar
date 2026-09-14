@@ -580,8 +580,8 @@ const TEXT = {
     },
 
     pastEvents: {
-    en: "Past Events",
-    bn: "পূর্বের ইভেন্ট"
+        en: "Past Events",
+        bn: "পূর্বের ইভেন্ট"
     },
 
     eventTitle: {
@@ -723,8 +723,6 @@ const TEXT = {
         en: "No holidays found",
         bn: "কোনো ছুটি পাওয়া যায়নি"
     }
-
-
 
 };
 
@@ -2163,45 +2161,46 @@ function applyTranslations() {
         "thisMonthSmall"
     );
 
-set(
-    "assignmentLabel",
-    "assignment"
-);
+    set(
+        "assignmentLabel",
+        "assignment"
+    );
 
-set(
-    "assignmentSub",
-    "thisMonthSmall"
-);
+    set(
+        "assignmentSub",
+        "thisMonthSmall"
+    );
 
-set(
-    "projectLabel",
-    "project"
-);
+    set(
+        "projectLabel",
+        "project"
+    );
 
-set(
-    "projectSub",
-    "thisMonthSmall"
-);
+    set(
+        "projectSub",
+        "thisMonthSmall"
+    );
 
-set(
-    "presentationLabel",
-    "presentation"
-);
+    set(
+        "presentationLabel",
+        "presentation"
+    );
 
-set(
-    "presentationSub",
-    "thisMonthSmall"
-);
+    set(
+        "presentationSub",
+        "thisMonthSmall"
+    );
 
-set(
-    "personalLabel",
-    "personal"
-);
+    set(
+        "personalLabel",
+        "personal"
+    );
 
-set(
-    "personalSub",
-    "thisMonthSmall"
-);
+    set(
+        "personalSub",
+        "thisMonthSmall"
+    );
+
     set(
         "holidaysTitle",
         "holidays"
@@ -2211,6 +2210,7 @@ set(
         "quickAddTitle",
         "quickAdd"
     );
+
     set(
         "addEventBtn",
         "addEvent"
@@ -2296,10 +2296,14 @@ set(
         "testAlarm"
     );
 
-    set(
-        "detailsModalTitle",
-        "eventDetails"
-    );
+    /* ✅ FIX: detailsModalTitle — শুধু তখনই সেট করুন
+       যখন কোনো ইভেন্ট সিলেক্ট করা নেই */
+    if (!state.selectedEventId) {
+        set(
+            "detailsModalTitle",
+            "eventDetails"
+        );
+    }
 
     set(
         "dismissAlarmBtn",
@@ -2757,7 +2761,7 @@ function renderCalendar() {
         ) {
 
             title.textContent =
-               formatBanglaMonthYear(
+                formatBanglaMonthYear(
 
                     state.currentDate
 
@@ -3059,48 +3063,47 @@ function renderCalendar() {
         );
 
 
-const holiday = getHolidayForDate(
-    cellDate
-);
-
-if (holiday) {
-
-    day.classList.add(
-        "holiday-day"
-    );
-
-    const holidayIndicator =
-        document.createElement(
-            "div"
+        const holiday = getHolidayForDate(
+            cellDate
         );
 
-    holidayIndicator.className =
-        "holiday-indicator";
+        if (holiday) {
 
-    holidayIndicator.textContent =
-         
-        (
-            state.language === "bn"
-                ? (
-                    holiday.titleBn ||
-                    holiday.title
-                )
-                : holiday.title
-        );
+            day.classList.add(
+                "holiday-day"
+            );
 
-    holidayIndicator.title =
-        state.language === "bn"
-            ? (
-                holiday.titleBn ||
-                holiday.title
-            )
-            : holiday.title;
+            const holidayIndicator =
+                document.createElement(
+                    "div"
+                );
 
-    day.appendChild(
-        holidayIndicator
-    );
+            holidayIndicator.className =
+                "holiday-indicator";
 
-}
+            holidayIndicator.textContent =
+                (
+                    state.language === "bn"
+                        ? (
+                            holiday.titleBn ||
+                            holiday.title
+                        )
+                        : holiday.title
+                );
+
+            holidayIndicator.title =
+                state.language === "bn"
+                    ? (
+                        holiday.titleBn ||
+                        holiday.title
+                    )
+                    : holiday.title;
+
+            day.appendChild(
+                holidayIndicator
+            );
+
+        }
 
         if (
             state.language === "bn"
@@ -3140,7 +3143,7 @@ if (holiday) {
         .filter(event => {
 
             if (
-                event.date !==  dateString
+                event.date !== dateString
             ) {
                 return false;
             }
@@ -3157,9 +3160,9 @@ if (holiday) {
         dayEvents.forEach(
             event => {
 
-                const eventElement =  document.createElement(
-                        "div"
-                    );
+                const eventElement = document.createElement(
+                    "div"
+                );
 
 
                 eventElement.className =
@@ -4091,10 +4094,10 @@ async function saveEventFromForm() {
 
     await cancelNativeAlarm(eventId);
     if (eventData.reminder) {
-    await scheduleNativeAlarm(eventData);
-} else {
-    await cancelNativeAlarm(eventData.id);
-}
+        await scheduleNativeAlarm(eventData);
+    } else {
+        await cancelNativeAlarm(eventData.id);
+    }
 
     saveEvents();
 
@@ -4313,7 +4316,7 @@ async function deleteCurrentEvent() {
 
 
 /* =========================================================
-   EVENT DETAILS
+   EVENT DETAILS — ✅ FIXED: Duplicate Title Removed
 ========================================================= */
 
 function showEventDetails(id) {
@@ -4323,311 +4326,185 @@ function showEventDetails(id) {
     const event =
         state.events.find(
             item =>
-                String(
-                    item.id
-                ) ===
-                String(
-                    id
-                )
+                String(item.id) === String(id)
         );
 
 
     if (!event) return;
 
 
-    state.selectedEventId =
-        event.id;
+    state.selectedEventId = event.id;
+
+
+    /* ✅ FIX: Modal Title-এ ইভেন্টের টাইটেল সেট করুন */
+    const modalTitle =
+        document.getElementById("detailsModalTitle");
+
+    if (modalTitle) {
+        modalTitle.textContent =
+            event.title || t("eventDetails");
+    }
 
 
     const container =
-        document.getElementById(
-            "eventDetails"
-        );
+        document.getElementById("eventDetails");
 
 
     if (!container) return;
 
 
     const category =
-        CATEGORY_NAMES[
-            event.category
-        ]?.[
-            state.language
-        ] ||
+        CATEGORY_NAMES[event.category]?.[state.language] ||
         event.category;
 
 
-    const date =
-        parseDate(
-            event.date
-        );
+    const date = parseDate(event.date);
 
 
     const formattedDate =
         date
-
             ? date.toLocaleDateString(
-
                 state.language === "bn"
-
                     ? "bn-BD"
-
                     : "en-US",
-
                 {
-
-                    weekday:
-                        "long",
-
-                    year:
-                        "numeric",
-
-                    month:
-                        "long",
-
-                    day:
-                        "numeric"
-
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
                 }
-
             )
-
             : event.date;
 
 
     let html = "";
 
 
-    html += `
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                ${escapeHTML(
-                    t("eventTitle")
-                )}
-            </div>
-
-            <div class="detail-value">
-                ${escapeHTML(
-                    event.title
-                )}
-            </div>
-
-        </div>
-
-    `;
+    /* ✅ FIX: Title row সরিয়ে দেওয়া হয়েছে — কারণ Modal Title-এ ইতিমধ্যেই আছে */
 
 
     html += `
-
         <div class="detail-row">
-
             <div class="detail-label">
-                ${escapeHTML(
-                    t("date")
-                )}
+                ${escapeHTML(t("date"))}
             </div>
-
             <div class="detail-value">
-
-                ${escapeHTML(
-                    formattedDate
-                )}
-
+                ${escapeHTML(formattedDate)}
                 ${
                     state.language === "bn" && date
-
                         ? `<br><small>${escapeHTML(
-                            formatBanglaDate(
-                                date
-                            )
+                            formatBanglaDate(date)
                         )}</small>`
-
                         : ""
                 }
-
             </div>
-
         </div>
-
     `;
 
 
     html += `
-
         <div class="detail-row">
-
             <div class="detail-label">
-                ${escapeHTML(
-                    t("category")
-                )}
+                ${escapeHTML(t("category"))}
             </div>
-
             <div class="detail-value">
-                ${escapeHTML(
-                    category
-                )}
+                ${escapeHTML(category)}
             </div>
-
         </div>
-
     `;
 
 
-    if (
-        event.start
-    ) {
+    if (event.start) {
 
         html += `
-
             <div class="detail-row">
-
                 <div class="detail-label">
-                    ${escapeHTML(
-                        t("start")
-                    )}
+                    ${escapeHTML(t("start"))}
                 </div>
-
                 <div class="detail-value">
-
-                    ${escapeHTML(
-                        event.start
-                    )}
-
+                    ${escapeHTML(event.start)}
                     ${
                         event.end
-
-                            ? ` - ${escapeHTML(
-                                event.end
-                            )}`
-
+                            ? ` - ${escapeHTML(event.end)}`
                             : ""
                     }
-
                 </div>
-
             </div>
-
         `;
 
     }
 
 
-    if (
-        event.location
-    ) {
+    if (event.location) {
 
         html += `
-
             <div class="detail-row">
-
                 <div class="detail-label">
-                    ${escapeHTML(
-                        t("location")
-                    )}
+                    ${escapeHTML(t("location"))}
                 </div>
-
                 <div class="detail-value">
-                    ${escapeHTML(
-                        event.location
-                    )}
+                    ${escapeHTML(event.location)}
                 </div>
-
             </div>
-
         `;
 
     }
 
 
-    if (
-        event.description
-    ) {
+    if (event.description) {
 
         html += `
-
             <div class="detail-row">
-
                 <div class="detail-label">
-                    ${escapeHTML(
-                        t("description")
-                    )}
+                    ${escapeHTML(t("description"))}
                 </div>
-
                 <div class="detail-value">
-                    ${escapeHTML(
-                        event.description
-                    )}
+                    ${escapeHTML(event.description)}
                 </div>
-
             </div>
-
         `;
 
     }
 
 
-    if (
-        event.reminder
-    ) {
+    if (event.reminder) {
 
         const alarmDate =
             event.alarmDate
-                ? escapeHTML(
-                    event.alarmDate
-                )
+                ? escapeHTML(event.alarmDate)
                 : "";
-
 
         const alarmTime =
             event.alarmTime
-                ? escapeHTML(
-                    event.alarmTime
-                )
+                ? escapeHTML(event.alarmTime)
                 : "";
 
 
         html += `
-
             <div class="detail-row">
-
                 <div class="detail-label">
-                    🔔 ${escapeHTML(
-                        t("alarm")
-                    )}
+                    🔔 ${escapeHTML(t("alarm"))}
                 </div>
-
                 <div class="detail-value">
-
                     ${alarmDate}
-
                     ${
                         alarmTime
                             ? ` ${alarmTime}`
                             : ""
                     }
-
                 </div>
-
             </div>
-
         `;
 
     }
 
+
     console.log("📋 Event Details HTML:", html);
-    console.log("📋 Container found:", container);
 
-    container.innerHTML =
-        html;
+    container.innerHTML = html;
 
 
-    document.getElementById(
-        "detailsModal"
-    )?.classList.add(
-        "active"
-    );
+    document.getElementById("detailsModal")?.classList.add("active");
 
 }
 
@@ -4677,12 +4554,6 @@ function renderUpcoming() {
     container.innerHTML = "";
 
 
-    const today =
-        formatDate(
-            new Date()
-        );
-
-
     const events = getFilteredEvents()
 
         .filter(event => {
@@ -4705,9 +4576,9 @@ function renderUpcoming() {
         );
 
 
-    const count =  document.getElementById(
-            "eventCount"
-        );
+    const count = document.getElementById(
+        "eventCount"
+    );
 
     if (count) {
 
@@ -4878,19 +4749,19 @@ function renderUpcoming() {
 
 function renderPastEvents() {
 
-        const title =
+    const title =
         document.getElementById(
             "pastEventsTitle"
         );
 
-        const selectAllBtn =
+    const selectAllBtn =
         document.getElementById(
             "selectAllPastEvents"
         );
 
-        const deleteBtn =
-         document.getElementById(
-        "deleteSelectedPastEvents"
+    const deleteBtn =
+        document.getElementById(
+            "deleteSelectedPastEvents"
         );
 
     if (title) {
@@ -4913,12 +4784,12 @@ function renderPastEvents() {
 
     if (deleteBtn) {
 
-    deleteBtn.textContent =
-        state.language === "bn"
-            ? "নির্বাচিতগুলো মুছুন"
-            : "Delete Selected";
+        deleteBtn.textContent =
+            state.language === "bn"
+                ? "নির্বাচিতগুলো মুছুন"
+                : "Delete Selected";
 
-}
+    }
 
     const container =
         document.getElementById("pastEvents");
@@ -5026,7 +4897,7 @@ function renderPastEvents() {
                     }"
                 >
 
-                    <input                        type="checkbox"
+                    <input type="checkbox"
                         class="past-event-check"
                         data-event-id="${event.id}"
                     >
@@ -5289,7 +5160,7 @@ function deleteSelectedPastEvents() {
                 )
         );
 
-        
+
     saveEvents();
 
 
@@ -5305,33 +5176,25 @@ function deleteSelectedPastEvents() {
 
 function updateDashboard() {
 
-    const now =
-        new Date();
+    const now = new Date();
 
 
-    const today =
-        formatDate(
-            now
-        );
+    const today = formatDate(now);
 
 
-    const year =
-        state.currentDate.getFullYear();
+    const year = state.currentDate.getFullYear();
 
 
-    const month =
-        state.currentDate.getMonth();
+    const month = state.currentDate.getMonth();
 
 
-    const filtered =
-            state.events;
+    const filtered = state.events;
 
 
     const todayEvents =
         filtered.filter(
             event =>
-                event.date ===
-                today
+                event.date === today
         );
 
 
@@ -5340,9 +5203,7 @@ function updateDashboard() {
             event => {
 
                 const date =
-                    parseDate(
-                        event.date
-                    );
+                    parseDate(event.date);
 
 
                 if (!date) {
@@ -5354,13 +5215,11 @@ function updateDashboard() {
 
                 return (
 
-                    date.getFullYear() ===
-                    year
+                    date.getFullYear() === year
 
                     &&
 
-                    date.getMonth() ===
-                    month
+                    date.getMonth() === month
 
                 );
 
@@ -5371,97 +5230,60 @@ function updateDashboard() {
     const classes =
         monthEvents.filter(
             event =>
-                event.category ===
-                "class"
+                event.category === "class"
         );
 
 
     const exams =
         monthEvents.filter(
             event =>
-                event.category ===
-                "exam"
+                event.category === "exam"
         );
 
 
     const assignments =
         monthEvents.filter(
             event =>
-                event.category ===
-                "assignment"
+                event.category === "assignment"
         );
 
 
     const projects =
         monthEvents.filter(
             event =>
-                event.category ===
-                "project"
+                event.category === "project"
         );
 
 
     const presentations =
         monthEvents.filter(
             event =>
-                event.category ===
-                "presentation"
+                event.category === "presentation"
         );
 
 
     const personals =
         monthEvents.filter(
             event =>
-                event.category ===
-                "personal"
+                event.category === "personal"
         );
 
 
-    setText(
-        "todayCount",
-        todayEvents.length
-    );
+    setText("todayCount", todayEvents.length);
 
+    setText("monthCount", monthEvents.length);
 
-    setText(
-        "monthCount",
-        monthEvents.length
-    );
+    setText("classCount", classes.length);
 
+    setText("examCount", exams.length);
 
-    setText(
-        "classCount",
-        classes.length
-    );
+    setText("assignmentCount", assignments.length);
 
+    setText("projectCount", projects.length);
 
-    setText(
-        "examCount",
-        exams.length
-    );
+    setText("presentationCount", presentations.length);
 
-
-    setText(
-        "assignmentCount",
-        assignments.length
-    );
-
-
-    setText(
-        "projectCount",
-        projects.length
-    );
-
-
-    setText(
-        "presentationCount",
-        presentations.length
-    );
-
-
-    setText(
-        "personalCount",
-        personals.length
-    );
+    setText("personalCount", personals.length);
 
 }
 
@@ -5469,15 +5291,10 @@ function updateDashboard() {
    SET TEXT
 ========================================================= */
 
-function setText(
-    id,
-    value
-) {
+function setText(id, value) {
 
     const element =
-        document.getElementById(
-            id
-        );
+        document.getElementById(id);
 
 
     if (!element) return;
@@ -5487,9 +5304,7 @@ function setText(
 
         state.language === "bn"
 
-            ? toBanglaNumber(
-                value
-            )
+            ? toBanglaNumber(value)
 
             : value;
 
@@ -6003,7 +5818,6 @@ function checkAlarms() {
 
 
     if (changed) {
-       
 
         saveEvents();
         renderCalendar();
@@ -6855,9 +6669,9 @@ function importEvents(event) {
                         }
                     );
 
-                
+
                 saveEvents();
-    
+
 
                 renderCalendar();
 
