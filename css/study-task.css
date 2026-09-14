@@ -7235,3 +7235,315 @@ body.dark .study-comparison-fill {
         padding: 9px 10px !important;
     }
 }
+
+
+
+
+
+
+
+/* =========================================================
+   🔥🔥🔥 FINAL MODAL FIX — Absolute Last Resort
+   এটা সব CSS rule override করবে
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* ============ OVERLAY ============ */
+    #studyTaskModal.modal-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        justify-content: center !important;
+    }
+
+    /* ============ MODAL BOX ============ */
+    #studyTaskModal .modal {
+        position: relative !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        min-width: 0 !important;
+        height: auto !important;
+        max-height: 92vh !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        bottom: 0 !important;
+        border-radius: 20px 20px 0 0 !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        transform: none !important;
+    }
+
+    /* ============ HEADER ============ */
+    #studyTaskModal .modal-header {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 14px 16px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        flex-wrap: nowrap !important;
+        flex-shrink: 0 !important;
+    }
+
+    #studyTaskModal .modal-header h2 {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 16px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+
+    #studyTaskModal .modal-header .close-btn {
+        flex: 0 0 auto !important;
+        width: 36px !important;
+        height: 36px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ============ BODY ============ */
+    #studyTaskModal .modal-body {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 14px 16px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+        flex: 1 1 auto !important;
+    }
+
+    #studyTaskModal .modal-body * {
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+    }
+
+    #studyTaskModal .modal-body label {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 0 12px 0 !important;
+        padding: 0 !important;
+    }
+
+    #studyTaskModal .modal-body label > span {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 0 6px 0 !important;
+        padding: 0 !important;
+    }
+
+    #studyTaskModal .modal-body input,
+    #studyTaskModal .modal-body select,
+    #studyTaskModal .modal-body textarea {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 10px 12px !important;
+        box-sizing: border-box !important;
+    }
+
+    #studyTaskModal .modal-body small {
+        display: block !important;
+        width: 100% !important;
+        margin: 4px 0 10px 0 !important;
+        padding: 0 !important;
+    }
+
+    #studyTaskModal .modal-body .form-row,
+    #studyTaskModal .modal-body .form-group {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 12px !important;
+        box-sizing: border-box !important;
+    }
+
+    #studyTaskModal .modal-body input[type="range"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 6px 0 !important;
+        padding: 0 !important;
+    }
+
+    #studyTaskModal .task-progress-value {
+        width: 100% !important;
+        text-align: right !important;
+        margin: 4px 0 10px 0 !important;
+        padding: 0 !important;
+    }
+
+    /* ============ FOOTER ============ */
+    #studyTaskModal .modal-footer {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: stretch !important;
+        gap: 8px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        position: sticky !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: #ffffff !important;
+        border-top: 1px solid #e2e8f0 !important;
+        z-index: 5 !important;
+        flex-wrap: nowrap !important;
+        flex-shrink: 0 !important;
+    }
+
+    #studyTaskModal .modal-footer > span {
+        display: none !important;
+    }
+
+    #studyTaskModal .modal-footer button {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        width: auto !important;
+        padding: 10px 12px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ============ DARK MODE ============ */
+    body.dark #studyTaskModal .modal-footer,
+    .dark #studyTaskModal .modal-footer {
+        background: #0f172a !important;
+        border-top-color: #334155 !important;
+    }
+
+    /* ============ EVENT MODAL (একই fix) ============ */
+    #eventModal.modal-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: 100vh !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        justify-content: center !important;
+    }
+
+    #eventModal .modal {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        border-radius: 20px 20px 0 0 !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        max-height: 92vh !important;
+        transform: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #eventModal .modal-body {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 14px 16px !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+    }
+
+    #eventModal .modal-body * {
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+    }
+
+    #eventModal .modal-body input,
+    #eventModal .modal-body select,
+    #eventModal .modal-body textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    #eventModal .modal-body .form-row {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    #eventModal .modal-footer {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 8px !important;
+        width: 100% !important;
+        padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) !important;
+        box-sizing: border-box !important;
+        position: sticky !important;
+        bottom: 0 !important;
+        background: #ffffff !important;
+        border-top: 1px solid #e2e8f0 !important;
+        flex-wrap: nowrap !important;
+    }
+
+    #eventModal .modal-footer > span {
+        display: none !important;
+    }
+
+    #eventModal .modal-footer button {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        padding: 10px 12px !important;
+        box-sizing: border-box !important;
+    }
+
+    body.dark #eventModal .modal-footer,
+    .dark #eventModal .modal-footer {
+        background: #0f172a !important;
+        border-top-color: #334155 !important;
+    }
+}
