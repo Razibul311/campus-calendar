@@ -40,7 +40,7 @@ const STUDY_TASK_TEXT = {
     inProgress: { en: "In Progress", bn: "চলমান" },
     completed: { en: "Completed", bn: "সম্পন্ন" },
     noTasks: { en: "No study tasks yet.", bn: "এখনো কোনো স্টাডি টাস্ক নেই।" },
-    overdue: { en: "Overdue", bn: "সময় শেষ" },
+    overdue: { en: "Overdue", bn: "সময় শেষ" },
     dueToday: { en: "Due Today", bn: "আজ শেষ হবে" },
     confirmDelete: { en: "Delete this study task?", bn: "এই স্টাডি টাস্কটি মুছে ফেলবেন?" },
     taskSaved: { en: "Study task saved.", bn: "স্টাডি টাস্ক সংরক্ষণ করা হয়েছে।" },
@@ -168,13 +168,10 @@ let lastStudyTaskLanguage = null;
 let studyTaskInitialized = false;
 
 // =========================================================
-// LANGUAGE DETECTION - IMPROVED
-// ✅ ADDED: localStorage FIRST, তারপর বাকি সব
+// LANGUAGE DETECTION
 // =========================================================
 
 function getStudyTaskLanguage() {
-
-    // ✅ ADDED: localStorage কে প্রথম priority দেওয়া হচ্ছে
     try {
         const keys = [
             "bdStudentCalendarLanguage",
@@ -1862,23 +1859,15 @@ function forceUpdateStudyTaskLanguage() {
 }
 
 // =========================================================
-// LANGUAGE CHANGE LISTENERS - OPTIMIZED
-// ✅ ADDED: languageChanged event এ immediate + delayed কল
+// LANGUAGE CHANGE LISTENERS
 // =========================================================
 
 function setupLanguageChangeListeners() {
-
-    // ✅ ADDED: languageChanged event শুনুন (Calendar JS dispatch করে)
     document.addEventListener("languageChanged", function(e) {
-
-        // Immediate refresh
         forceUpdateStudyTaskLanguage();
-
-        // Delayed refresh (backup)
         setTimeout(function() {
             forceUpdateStudyTaskLanguage();
         }, 50);
-
     });
 
     document.addEventListener("click", function(event) {
@@ -2012,9 +2001,6 @@ document.addEventListener("visibilitychange", function() {
 
 // =========================================================
 // GLOBAL EXPORT
-// ✅ ADDED: window.forceUpdateStudyTaskLanguage already
-// exposed, এবং Calendar JS থেকে window.toggleLanguage
-// কল হলে languageChanged event dispatch হবে
 // =========================================================
 
 window.studyTasks = studyTasks;
@@ -2033,28 +2019,30 @@ window.hexToRgb = hexToRgb;
 window.hexToRgbString = hexToRgbString;
 
 /* =========================================================
-   ✅ ADDED: PAGE SWITCHING FIX
-   Home / Study / Me পেজ সুইচিং ঠিকমতো কাজ করার জন্য
+   ✅ PAGE SWITCHING FIX — WITH NAV BAR EXCLUSION
+   Home / Study / Me পেজ সুইচিং + Mobile Nav সবসময় দৃশ্যমান
 ========================================================= */
 
 (function pageSwitchingFix() {
 
     // ---------- CSS Inject ----------
     function injectPageSwitchingCSS() {
-        if (document.getElementById('page-switching-style')) {
-            return;
+        // যদি আগে থেকে inject হয়ে থাকে, remove করে নতুন inject করুন
+        const existing = document.getElementById('page-switching-style');
+        if (existing) {
+            existing.remove();
         }
 
         var style = document.createElement('style');
         style.id = 'page-switching-style';
         style.textContent = `
-            /* ১. প্রথমে সব data-page এলিমেন্ট লুকান */
-            body[data-current-page] [data-page] {
+            /* ✅ ১. সব data-page এলিমেন্ট লুকান — কিন্তু nav buttons ছাড়া */
+            body[data-current-page] [data-page]:not(.mobile-nav-btn) {
                 display: none !important;
             }
 
-            /* ২. Home page — শুধু home elements দেখান */
-            body[data-current-page="home"] [data-page="home"] {
+            /* ✅ ২. Home page — শুধু home elements দেখান (nav ছাড়া) */
+            body[data-current-page="home"] [data-page="home"]:not(.mobile-nav-btn) {
                 display: block !important;
             }
 
@@ -2066,8 +2054,8 @@ window.hexToRgbString = hexToRgbString;
                 display: flex !important;
             }
 
-            /* ৩. Study page — শুধু study elements দেখান */
-            body[data-current-page="study"] [data-page="study"] {
+            /* ✅ ৩. Study page — শুধু study elements দেখান (nav ছাড়া) */
+            body[data-current-page="study"] [data-page="study"]:not(.mobile-nav-btn) {
                 display: block !important;
             }
 
@@ -2075,12 +2063,12 @@ window.hexToRgbString = hexToRgbString;
                 display: block !important;
             }
 
-            /* ৪. Me page — শুধু me elements দেখান */
-            body[data-current-page="me"] [data-page="me"] {
+            /* ✅ ৪. Me page — শুধু me elements দেখান (nav ছাড়া) */
+            body[data-current-page="me"] [data-page="me"]:not(.mobile-nav-btn) {
                 display: block !important;
             }
 
-            /* ৫. Modal সবসময় available থাকবে */
+            /* ✅ ৫. Modal সবসময় available থাকবে */
             .modal-overlay {
                 display: none;
             }
@@ -2089,15 +2077,28 @@ window.hexToRgbString = hexToRgbString;
                 display: flex !important;
             }
 
-            /* ৬. Layout grid সবসময় active */
+            /* ✅ ৬. Layout grid সবসময় active */
             .layout {
                 display: grid !important;
             }
 
-            /* ৭. Sidebar flex সবসময় active */
+            /* ✅ ৭. Sidebar flex সবসময় active */
             .sidebar {
                 display: flex !important;
                 flex-direction: column !important;
+            }
+
+            /* ✅ ৮. Mobile Nav — NEVER hidden by page switching */
+            .mobile-bottom-nav,
+            .mobile-bottom-nav .mobile-nav-btn,
+            .mobile-bottom-nav .mobile-nav-icon,
+            .mobile-bottom-nav .mobile-nav-label {
+                display: revert !important;
+            }
+
+            /* ✅ ৯. Nav buttons specific styles (CSS থেকে আসবে) */
+            .mobile-bottom-nav .mobile-nav-btn[data-page] {
+                display: flex !important;
             }
 
             @media (max-width: 768px) {
@@ -2108,7 +2109,7 @@ window.hexToRgbString = hexToRgbString;
             }
         `;
         document.head.appendChild(style);
-        console.log('✅ Page switching CSS injected by study-task.js');
+        console.log('✅ Page switching CSS injected by study-task.js (nav bar excluded)');
     }
 
     // ---------- Page Button Setup ----------
@@ -2147,7 +2148,6 @@ window.hexToRgbString = hexToRgbString;
         }
 
         buttons.forEach(function(btn) {
-            // পুরনো listener মুছে নতুন যোগ করার জন্য clone
             if (btn.dataset.pageSwitchingReady === 'true') {
                 return;
             }
@@ -2164,7 +2164,6 @@ window.hexToRgbString = hexToRgbString;
             });
         });
 
-        // Initial page
         var lastPage = 'home';
         try {
             var saved = localStorage.getItem(STORAGE_KEY);
@@ -2185,19 +2184,16 @@ window.hexToRgbString = hexToRgbString;
 
         var ok = setupPageButtons();
         if (!ok) {
-            // DOM এখনো ready না — আবার চেষ্টা করুন
             setTimeout(init, 300);
         }
     }
 
-    // DOM ready হলে চালান
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
         init();
     }
 
-    // পিছনের জন্য আরো কয়েকবার চেষ্টা
     setTimeout(init, 500);
     setTimeout(init, 1500);
 
