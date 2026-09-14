@@ -7380,3 +7380,91 @@ if (deleteSelectedPastEventsBtn) {
     );
 
 }
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+function switchPage(pageName) {
+    // Update active button
+    document.querySelectorAll('.bottom-nav-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.page === pageName);
+    });
+
+    // Show/hide sections based on page
+    const sections = {
+        home: [
+            '.calendar-card',
+            '.bangladesh-holidays',
+            '.sidebar > .side-card:nth-of-type(1)', // Quick Add
+            '.sidebar > .side-card:nth-of-type(2)', // Upcoming
+            '.sidebar > .side-card:nth-of-type(3)'  // Past Events
+        ],
+        study: [
+            '.study-task-card',
+            '.study-analytics-card',
+            '.daily-study-report-card',
+            '.weekly-study-report-card',
+            '.completed-subjects-container'
+        ],
+        me: [
+            '.cgpa-calculator-card',
+            '.daily-diary-card'
+        ]
+    };
+
+    // Hide all sections first
+    document.querySelectorAll(
+        '.calendar-card, .bangladesh-holidays, .side-card, ' +
+        '.study-task-card, .study-analytics-card, ' +
+        '.daily-study-report-card, .weekly-study-report-card, ' +
+        '.completed-subjects-container'
+    ).forEach(el => {
+        el.style.display = 'none';
+    });
+
+    // Show sections for current page
+    const currentSections = sections[pageName] || [];
+    currentSections.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.style.display = '';
+        });
+    });
+
+    // Save preference
+    localStorage.setItem('campusCalendarPage', pageName);
+}
+
+// Setup bottom nav listeners
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.bottom-nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            switchPage(btn.dataset.page);
+        });
+    });
+
+    // Restore last page
+    const savedPage = localStorage.getItem('campusCalendarPage') || 'home';
+    switchPage(savedPage);
+});
+
+// Language support
+function updateBottomNavLanguage() {
+    const lang = getStudyTaskLanguage ? getStudyTaskLanguage() : 'en';
+    const labels = {
+        en: { home: 'Home', study: 'Study', me: 'Me' },
+        bn: { home: 'হোম', study: 'স্টাডি', me: 'আমি' }
+    };
+    const t = labels[lang] || labels.en;
+
+    const homeEl = document.getElementById('navHomeLabel');
+    const studyEl = document.getElementById('navStudyLabel');
+    const meEl = document.getElementById('navMeLabel');
+
+    if (homeEl) homeEl.textContent = t.home;
+    if (studyEl) studyEl.textContent = t.study;
+    if (meEl) meEl.textContent = t.me;
+}
+
+// Call on language change
+document.addEventListener('languageChanged', updateBottomNavLanguage);
