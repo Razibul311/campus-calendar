@@ -722,6 +722,11 @@ const TEXT = {
     noHolidays: {
         en: "No holidays found",
         bn: "কোনো ছুটি পাওয়া যায়নি"
+    },
+
+    noDetails: {
+        en: "No details available.",
+        bn: "কোনো বিস্তারিত তথ্য নেই।"
     }
 
 };
@@ -758,7 +763,6 @@ function toBanglaNumber(value) {
 
 /* =========================================================
    BANGLA CALENDAR
-   BANGLADESH REVISED BANGLA CALENDAR
 ========================================================= */
 
 const BANGLA_MONTHS = [
@@ -779,10 +783,6 @@ const BANGLA_MONTHS = [
 ];
 
 
-/* =========================================================
-   GREGORIAN LEAP YEAR
-========================================================= */
-
 function isGregorianLeapYear(year) {
 
     return (
@@ -798,12 +798,6 @@ function isGregorianLeapYear(year) {
 
 }
 
-
-/* =========================================================
-   BANGLA NEW YEAR
-   Bangladesh Bangla Calendar
-   1 Boishakh = 14 April
-========================================================= */
 
 function getBanglaNewYearDate(
     gregorianYear
@@ -875,8 +869,6 @@ function getBanglaDate(
             year - 1;
 
     }
-
-
 
     else {
 
@@ -1105,6 +1097,7 @@ function formatBanglaMonthYear(
     );
 
 }
+
 
 /* =========================================================
    ESCAPE HTML
@@ -1404,6 +1397,7 @@ function syncCurrentMonthWithToday() {
     }
 
 }
+
 /* =========================================================
    INITIALIZATION
 ========================================================= */
@@ -1579,218 +1573,90 @@ function setupEventListeners() {
 
 
     if (prevBtn) {
-
-        prevBtn.addEventListener(
-            "click",
-            previousMonth
-        );
-
+        prevBtn.addEventListener("click", previousMonth);
     }
-
 
     if (nextBtn) {
-
-        nextBtn.addEventListener(
-            "click",
-            nextMonth
-        );
-
+        nextBtn.addEventListener("click", nextMonth);
     }
-
 
     if (calendarTodayBtn) {
-
-        calendarTodayBtn.addEventListener(
-            "click",
-            goToday
-        );
-
+        calendarTodayBtn.addEventListener("click", goToday);
     }
-
 
     if (todayBtn) {
-
-        todayBtn.addEventListener(
-            "click",
-            goToday
-        );
-
+        todayBtn.addEventListener("click", goToday);
     }
-
 
     if (addEventBtn) {
-
-        addEventBtn.addEventListener(
-            "click",
-            () => {
-
-                openEventModal();
-
-            }
-        );
-
+        addEventBtn.addEventListener("click", () => {
+            openEventModal();
+        });
     }
-
 
     if (eventForm) {
-
-        eventForm.addEventListener(
-            "submit",
-            clickEvent => {
-
-                event.preventDefault();
-
-                saveEventFromForm();
-
-            }
-        );
-
+        eventForm.addEventListener("submit", clickEvent => {
+            clickEvent.preventDefault();
+            saveEventFromForm();
+        });
     }
-
 
     if (themeBtn) {
-
-        themeBtn.addEventListener(
-            "click",
-            toggleTheme
-        );
-
+        themeBtn.addEventListener("click", toggleTheme);
     }
-
-
-    // ✅ FIX: languageBtn listener removed from here
-    // কারণ Study Analytics JS ইতিমধ্যেই এখানে listener যোগ করে
-    // এবং সেটি window.toggleLanguage কেও কল করে।
-
 
     if (searchInput) {
-
-        searchInput.addEventListener(
-            "input",
-            () => {
-
-                renderCalendar();
-
-                renderUpcoming();
-                renderPastEvents();
-
-                updateDashboard();
-
-            }
-        );
-
+        searchInput.addEventListener("input", () => {
+            renderCalendar();
+            renderUpcoming();
+            renderPastEvents();
+            updateDashboard();
+        });
     }
-
 
     if (categoryFilter) {
-
-        categoryFilter.addEventListener(
-            "change",
-            () => {
-
-                renderCalendar();
-
-                renderUpcoming();
-                renderPastEvents();
-
-                updateDashboard();
-
-            }
-        );
-
+        categoryFilter.addEventListener("change", () => {
+            renderCalendar();
+            renderUpcoming();
+            renderPastEvents();
+            updateDashboard();
+        });
     }
-
 
     if (exportBtn) {
-
-        exportBtn.addEventListener(
-            "click",
-            exportEvents
-        );
-
+        exportBtn.addEventListener("click", exportEvents);
     }
 
+    if (importBtn && importFile) {
+        importBtn.addEventListener("click", () => {
+            importFile.click();
+        });
 
-    if (
-        importBtn &&
-        importFile
-    ) {
-
-        importBtn.addEventListener(
-            "click",
-            () => {
-
-                importFile.click();
-
-            }
-        );
-
-
-        importFile.addEventListener(
-            "change",
-            importEvents
-        );
-
+        importFile.addEventListener("change", importEvents);
     }
-
 
     if (reminder) {
-
-        reminder.addEventListener(
-            "change",
-            toggleAlarmFields
-        );
-
+        reminder.addEventListener("change", toggleAlarmFields);
     }
-
 
     if (testAlarmBtn) {
-
-        testAlarmBtn.addEventListener(
-            "click",
-            testAlarm
-        );
-
+        testAlarmBtn.addEventListener("click", testAlarm);
     }
-
 
     if (deleteBtn) {
-
-        deleteBtn.addEventListener(
-            "click",
-            deleteCurrentEvent
-        );
-
+        deleteBtn.addEventListener("click", deleteCurrentEvent);
     }
-
 
     if (dismissAlarmBtn) {
-
-        dismissAlarmBtn.addEventListener(
-            "click",
-            dismissAlarm
-        );
-
+        dismissAlarmBtn.addEventListener("click", dismissAlarm);
     }
-
 
     if (snoozeAlarmBtn) {
-
-        snoozeAlarmBtn.addEventListener(
-            "click",
-            snoozeAlarm
-        );
-
+        snoozeAlarmBtn.addEventListener("click", snoozeAlarm);
     }
 
-
     if (editDetailsBtn) {
-
-        editDetailsBtn.addEventListener(
-            "click",
-            editSelectedEvent
-        );
-
+        editDetailsBtn.addEventListener("click", editSelectedEvent);
     }
 
 
@@ -1868,81 +1734,42 @@ function setupEventListeners() {
 
 function toggleTheme() {
 
-    document.body.classList.toggle(
-        "dark"
-    );
+    document.body.classList.toggle("dark");
 
-
-    const dark =
-        document.body.classList.contains(
-            "dark"
-        );
-
+    const dark = document.body.classList.contains("dark");
 
     localStorage.setItem(
         DARK_STORAGE_KEY,
-        dark
-            ? "1"
-            : "0"
+        dark ? "1" : "0"
     );
-
 
     updateThemeButton();
 
 }
 
-
-/* =========================================================
-   LOAD THEME
-========================================================= */
 
 function loadTheme() {
 
     if (
-
-        localStorage.getItem(
-            DARK_STORAGE_KEY
-        ) === "1"
-
+        localStorage.getItem(DARK_STORAGE_KEY) === "1"
     ) {
-
-        document.body.classList.add(
-            "dark"
-        );
-
+        document.body.classList.add("dark");
     }
-
 
     updateThemeButton();
 
 }
 
 
-/* =========================================================
-   UPDATE THEME BUTTON
-========================================================= */
-
 function updateThemeButton() {
 
-    const button =
-        document.getElementById(
-            "themeBtn"
-        );
-
+    const button = document.getElementById("themeBtn");
 
     if (!button) return;
 
+    const dark = document.body.classList.contains("dark");
 
-    const dark =
-        document.body.classList.contains(
-            "dark"
-        );
-
-
-    button.textContent =
-        dark
-            ? "☀️"
-            : "🌙";
+    button.textContent = dark ? "☀️" : "🌙";
 
 }
 
@@ -1953,33 +1780,18 @@ function updateThemeButton() {
 
 function loadLanguage() {
 
-    const saved =
-        localStorage.getItem(
-            LANGUAGE_STORAGE_KEY
-        );
+    const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY);
 
-
-    state.language =
-        saved === "bn"
-            ? "bn"
-            : "en";
-
+    state.language = saved === "bn" ? "bn" : "en";
 
     updateLanguageButton();
 
 }
 
 
-/* =========================================================
-   TOGGLE LANGUAGE
-========================================================= */
 function toggleLanguage() {
 
-    state.language =
-        state.language === "en"
-            ? "bn"
-            : "en";
-
+    state.language = state.language === "en" ? "bn" : "en";
 
     localStorage.setItem(
         LANGUAGE_STORAGE_KEY,
@@ -1987,7 +1799,6 @@ function toggleLanguage() {
     );
 
 
-    /* ✅ FIX: languageChanged event dispatch */
     try {
         document.dispatchEvent(
             new CustomEvent(
@@ -2004,40 +1815,25 @@ function toggleLanguage() {
     } catch (e) {}
 
 
-    /* ✅ FIX: Study Task Module */
     try {
-        if (
-            typeof window.forceUpdateStudyTaskLanguage ===
-            "function"
-        ) {
+        if (typeof window.forceUpdateStudyTaskLanguage === "function") {
             window.forceUpdateStudyTaskLanguage();
         }
     } catch (e) {}
 
 
-    /* ✅ FIX: Study Analytics Module */
     try {
-        if (
-            typeof window.setAnalyticsLanguage ===
-            "function"
-        ) {
+        if (typeof window.setAnalyticsLanguage === "function") {
             window.setAnalyticsLanguage(state.language);
         }
-        if (
-            typeof window.forceRenderAnalytics ===
-            "function"
-        ) {
+        if (typeof window.forceRenderAnalytics === "function") {
             window.forceRenderAnalytics();
         }
     } catch (e) {}
 
 
-    /* ✅ FIX: Daily Diary Module */
     try {
-        if (
-            typeof window.updateDiaryLanguage ===
-            "function"
-        ) {
+        if (typeof window.updateDiaryLanguage === "function") {
             window.updateDiaryLanguage();
         }
     } catch (e) {}
@@ -2049,34 +1845,22 @@ function toggleLanguage() {
     syncCurrentMonthWithToday();
 
     renderCalendar();
-
     renderUpcoming();
     renderPastEvents();
-
     renderHolidays();
 
     updateDashboard();
 
 }
-/* =========================================================
-   LANGUAGE BUTTON
-========================================================= */
+
 
 function updateLanguageButton() {
 
-    const button =
-        document.getElementById(
-            "languageBtn"
-        );
-
+    const button = document.getElementById("languageBtn");
 
     if (!button) return;
 
-
-    button.textContent =
-        state.language === "en"
-            ? "বাংলা"
-            : "English";
+    button.textContent = state.language === "en" ? "বাংলা" : "English";
 
 }
 
@@ -2090,293 +1874,91 @@ function applyTranslations() {
     const set =
         (id, key) => {
 
-            const element =
-                document.getElementById(
-                    id
-                );
-
+            const element = document.getElementById(id);
 
             if (element) {
-
-                element.textContent =
-                    t(key);
-
+                element.textContent = t(key);
             }
 
         };
 
 
-    set(
-        "appTitle",
-        "appTitle"
-    );
+    set("appTitle", "appTitle");
+    set("appSubtitle", "appSubtitle");
+    set("todayBtn", "today");
+    set("todayEventsLabel", "todayEvents");
+    set("todayEventsSub", "scheduledToday");
+    set("monthEventsLabel", "thisMonth");
+    set("monthEventsSub", "totalEvents");
+    set("classesLabel", "classes");
+    set("classesSub", "thisMonthSmall");
+    set("examsLabel", "exams");
+    set("examsSub", "thisMonthSmall");
+    set("assignmentLabel", "assignment");
+    set("assignmentSub", "thisMonthSmall");
+    set("projectLabel", "project");
+    set("projectSub", "thisMonthSmall");
+    set("presentationLabel", "presentation");
+    set("presentationSub", "thisMonthSmall");
+    set("personalLabel", "personal");
+    set("personalSub", "thisMonthSmall");
+    set("holidaysTitle", "holidays");
+    set("quickAddTitle", "quickAdd");
+    set("addEventBtn", "addEvent");
+    set("exportBtn", "export");
+    set("importBtn", "import");
+    set("upcomingTitle", "upcomingEvents");
+    set("eventTitleLabel", "eventTitle");
+    set("eventDateLabel", "date");
+    set("eventCategoryLabel", "category");
+    set("eventStartLabel", "start");
+    set("eventEndLabel", "end");
+    set("eventLocationLabel", "location");
+    set("eventDescriptionLabel", "description");
+    set("customAlarmTitle", "customAlarm");
+    set("customAlarmSubtitle", "customAlarmSubtitle");
+    set("alarmDateLabel", "alarmDate");
+    set("alarmTimeLabel", "alarmTime");
+    set("alarmSoundLabel", "alarmSound");
+    set("testAlarmBtn", "testAlarm");
 
-    set(
-        "appSubtitle",
-        "appSubtitle"
-    );
-
-    set(
-        "todayBtn",
-        "today"
-    );
-
-    set(
-        "todayEventsLabel",
-        "todayEvents"
-    );
-
-    set(
-        "todayEventsSub",
-        "scheduledToday"
-    );
-
-    set(
-        "monthEventsLabel",
-        "thisMonth"
-    );
-
-    set(
-        "monthEventsSub",
-        "totalEvents"
-    );
-
-    set(
-        "classesLabel",
-        "classes"
-    );
-
-    set(
-        "classesSub",
-        "thisMonthSmall"
-    );
-
-    set(
-        "examsLabel",
-        "exams"
-    );
-
-    set(
-        "examsSub",
-        "thisMonthSmall"
-    );
-
-    set(
-        "assignmentLabel",
-        "assignment"
-    );
-
-    set(
-        "assignmentSub",
-        "thisMonthSmall"
-    );
-
-    set(
-        "projectLabel",
-        "project"
-    );
-
-    set(
-        "projectSub",
-        "thisMonthSmall"
-    );
-
-    set(
-        "presentationLabel",
-        "presentation"
-    );
-
-    set(
-        "presentationSub",
-        "thisMonthSmall"
-    );
-
-    set(
-        "personalLabel",
-        "personal"
-    );
-
-    set(
-        "personalSub",
-        "thisMonthSmall"
-    );
-
-    set(
-        "holidaysTitle",
-        "holidays"
-    );
-
-    set(
-        "quickAddTitle",
-        "quickAdd"
-    );
-
-    set(
-        "addEventBtn",
-        "addEvent"
-    );
-
-    set(
-        "exportBtn",
-        "export"
-    );
-
-    set(
-        "importBtn",
-        "import"
-    );
-
-    set(
-        "upcomingTitle",
-        "upcomingEvents"
-    );
-
-    set(
-        "eventTitleLabel",
-        "eventTitle"
-    );
-
-    set(
-        "eventDateLabel",
-        "date"
-    );
-
-    set(
-        "eventCategoryLabel",
-        "category"
-    );
-
-    set(
-        "eventStartLabel",
-        "start"
-    );
-
-    set(
-        "eventEndLabel",
-        "end"
-    );
-
-    set(
-        "eventLocationLabel",
-        "location"
-    );
-
-    set(
-        "eventDescriptionLabel",
-        "description"
-    );
-
-    set(
-        "customAlarmTitle",
-        "customAlarm"
-    );
-
-    set(
-        "customAlarmSubtitle",
-        "customAlarmSubtitle"
-    );
-
-    set(
-        "alarmDateLabel",
-        "alarmDate"
-    );
-
-    set(
-        "alarmTimeLabel",
-        "alarmTime"
-    );
-
-    set(
-        "alarmSoundLabel",
-        "alarmSound"
-    );
-
-    set(
-        "testAlarmBtn",
-        "testAlarm"
-    );
 
     /* ✅ FIX: detailsModalTitle — শুধু তখনই সেট করুন
        যখন কোনো ইভেন্ট সিলেক্ট করা নেই */
     if (!state.selectedEventId) {
-        set(
-            "detailsModalTitle",
-            "eventDetails"
-        );
+        set("detailsModalTitle", "eventDetails");
     }
 
-    set(
-        "dismissAlarmBtn",
-        "dismiss"
-    );
-
-    set(
-        "snoozeAlarmBtn",
-        "snooze"
-    );
-
-    set(
-        "pastEventsTitle",
-        "pastEvents"
-    );
+    set("dismissAlarmBtn", "dismiss");
+    set("snoozeAlarmBtn", "snooze");
+    set("pastEventsTitle", "pastEvents");
 
 
-    const searchInput =
-        document.getElementById(
-            "searchInput"
-        );
-
+    const searchInput = document.getElementById("searchInput");
 
     if (searchInput) {
-
-        searchInput.placeholder =
-            t("searchEvents");
-
+        searchInput.placeholder = t("searchEvents");
     }
 
 
-    const categoryFilter =
-        document.getElementById(
-            "categoryFilter"
-        );
-
+    const categoryFilter = document.getElementById("categoryFilter");
 
     if (categoryFilter) {
-
-        updateCategorySelect(
-            categoryFilter
-        );
-
+        updateCategorySelect(categoryFilter);
     }
 
 
-    const eventCategory =
-        document.getElementById(
-            "eventCategory"
-        );
-
+    const eventCategory = document.getElementById("eventCategory");
 
     if (eventCategory) {
-
-        updateEventCategorySelect(
-            eventCategory
-        );
-
+        updateEventCategorySelect(eventCategory);
     }
 
 
-    const alarmSound =
-        document.getElementById(
-            "alarmSound"
-        );
-
+    const alarmSound = document.getElementById("alarmSound");
 
     if (alarmSound) {
-
-        updateAlarmSoundSelect(
-            alarmSound
-        );
-
+        updateAlarmSoundSelect(alarmSound);
     }
 
 
@@ -2384,131 +1966,66 @@ function applyTranslations() {
 
 
     document
-        .querySelectorAll(
-            '[data-close="eventModal"]'
-        )
-        .forEach(
-            button => {
-
-                button.textContent =
-                    button.classList.contains(
-                        "close-btn"
-                    )
-                        ? "×"
-                        : t("cancel");
-
-            }
-        );
+        .querySelectorAll('[data-close="eventModal"]')
+        .forEach(button => {
+            button.textContent =
+                button.classList.contains("close-btn")
+                    ? "×"
+                    : t("cancel");
+        });
 
 
     document
-        .querySelectorAll(
-            '[data-close="detailsModal"]'
-        )
-        .forEach(
-            button => {
-
-                button.textContent =
-                    button.classList.contains(
-                        "close-btn"
-                    )
-                        ? "×"
-                        : t("close");
-
-            }
-        );
+        .querySelectorAll('[data-close="detailsModal"]')
+        .forEach(button => {
+            button.textContent =
+                button.classList.contains("close-btn")
+                    ? "×"
+                    : t("close");
+        });
 
 
     const saveButton =
-        document.querySelector(
-            '#eventForm button[type="submit"]'
-        );
-
+        document.querySelector('#eventForm button[type="submit"]');
 
     if (saveButton) {
-
-        saveButton.textContent =
-            t("saveEvent");
-
+        saveButton.textContent = t("saveEvent");
     }
 
 
-    const deleteButton =
-        document.getElementById(
-            "deleteBtn"
-        );
-
+    const deleteButton = document.getElementById("deleteBtn");
 
     if (deleteButton) {
-
-        deleteButton.textContent =
-            t("delete");
-
+        deleteButton.textContent = t("delete");
     }
 
 
-    const editButton =
-        document.getElementById(
-            "editDetailsBtn"
-        );
-
+    const editButton = document.getElementById("editDetailsBtn");
 
     if (editButton) {
-
-        editButton.textContent =
-            t("edit");
-
+        editButton.textContent = t("edit");
     }
 
 
-    if (
-        !state.editingId
-    ) {
-
-        const modalTitle =
-            document.getElementById(
-                "modalTitle"
-            );
-
-
+    if (!state.editingId) {
+        const modalTitle = document.getElementById("modalTitle");
         if (modalTitle) {
-
-            modalTitle.textContent =
-                t("addEvent");
-
+            modalTitle.textContent = t("addEvent");
         }
-
     }
 
 
-    const alarmTitle =
-        document.getElementById(
-            "alarmTitle"
-        );
-
+    const alarmTitle = document.getElementById("alarmTitle");
 
     if (alarmTitle) {
-
-        alarmTitle.textContent =
-            t("alarm");
-
+        alarmTitle.textContent = t("alarm");
     }
 
 
-    const alarmMessage =
-        document.getElementById(
-            "alarmMessage"
-        );
+    const alarmMessage = document.getElementById("alarmMessage");
 
-
-    if (
-        alarmMessage &&
-        !state.activeAlarmEvent
-    ) {
-
-        alarmMessage.textContent =
-            t("alarmRinging");
-
+    if (alarmMessage && !state.activeAlarmEvent) {
+        alarmMessage.textContent = t("alarmRinging");
     }
 
 }
@@ -2520,204 +2037,103 @@ function applyTranslations() {
 
 function updateCategorySelect(select) {
 
-    const options =
-        select.querySelectorAll(
-            "option"
-        );
+    const options = select.querySelectorAll("option");
 
+    options.forEach(option => {
 
-    options.forEach(
-        option => {
+        const value = option.value;
 
-            const value =
-                option.value;
-
-
-            if (
-                value === "all"
-            ) {
-
-                option.textContent =
-                    t(
-                        "allCategories"
-                    );
-
-                return;
-
-            }
-
-
-            if (
-                CATEGORY_NAMES[value]
-            ) {
-
-                option.textContent =
-                    CATEGORY_NAMES[value][
-                        state.language
-                    ];
-
-            }
-
+        if (value === "all") {
+            option.textContent = t("allCategories");
+            return;
         }
-    );
+
+        if (CATEGORY_NAMES[value]) {
+            option.textContent =
+                CATEGORY_NAMES[value][state.language];
+        }
+
+    });
 
 }
 
 
-/* =========================================================
-   EVENT CATEGORY SELECT
-========================================================= */
+function updateEventCategorySelect(select) {
 
-function updateEventCategorySelect(
-    select
-) {
+    const options = select.querySelectorAll("option");
 
-    const options =
-        select.querySelectorAll(
-            "option"
-        );
+    options.forEach(option => {
 
+        const value = option.value;
 
-    options.forEach(
-        option => {
+        if (CATEGORY_NAMES[value]) {
 
-            const value =
-                option.value;
+            option.textContent =
 
+                state.language === "bn"
 
-            if (
-                CATEGORY_NAMES[value]
-            ) {
+                    ? CATEGORY_NAMES[value].bn
 
-                option.textContent =
+                    : value === "exam"
 
-                    state.language === "bn"
+                        ? "Exam / CT"
 
-                        ? CATEGORY_NAMES[
-                            value
-                        ].bn
-
-                        : value === "exam"
-
-                            ? "Exam / CT"
-
-                            : CATEGORY_NAMES[
-                                value
-                            ].en;
-
-            }
+                        : CATEGORY_NAMES[value].en;
 
         }
-    );
+
+    });
 
 }
 
 
-/* =========================================================
-   ALARM SOUND SELECT
-========================================================= */
-
-function updateAlarmSoundSelect(
-    select
-) {
+function updateAlarmSoundSelect(select) {
 
     const names = {
 
-        default:
-            "defaultAlarm",
-
-        beep:
-            "beep",
-
-        bell:
-            "bell",
-
-        digital:
-            "digital"
+        default: "defaultAlarm",
+        beep: "beep",
+        bell: "bell",
+        digital: "digital"
 
     };
 
 
-    select
-        .querySelectorAll(
-            "option"
-        )
-        .forEach(
-            option => {
+    select.querySelectorAll("option").forEach(option => {
 
-                const key =
-                    names[
-                        option.value
-                    ];
+        const key = names[option.value];
 
+        if (key) {
+            option.textContent = t(key);
+        }
 
-                if (key) {
-
-                    option.textContent =
-                        t(key);
-
-                }
-
-            }
-        );
+    });
 
 }
 
 
-/* =========================================================
-   QUICK BUTTONS
-========================================================= */
-
 function updateQuickButtons() {
 
-    const buttons =
-        document.querySelectorAll(
-            ".quick-btn"
-        );
+    const buttons = document.querySelectorAll(".quick-btn");
 
+    buttons.forEach(button => {
 
-    buttons.forEach(
-        button => {
+        const category = button.dataset.category;
 
-            const category =
-                button.dataset.category;
-
-
-            if (
-                category === "exam"
-            ) {
-
-                button.textContent =
-                    state.language === "bn"
-
-                        ? "+ CT / পরীক্ষা"
-
-                        : "+ CT / Exam";
-
-                return;
-
-            }
-
-
-            if (
-                CATEGORY_NAMES[
-                    category
-                ]
-            ) {
-
-                button.textContent =
-                    "+ " +
-
-                    CATEGORY_NAMES[
-                        category
-                    ][
-                        state.language
-                    ];
-
-            }
-
+        if (category === "exam") {
+            button.textContent =
+                state.language === "bn"
+                    ? "+ CT / পরীক্ষা"
+                    : "+ CT / Exam";
+            return;
         }
-    );
+
+        if (CATEGORY_NAMES[category]) {
+            button.textContent =
+                "+ " + CATEGORY_NAMES[category][state.language];
+        }
+
+    });
 
 }
 
@@ -2728,479 +2144,210 @@ function updateQuickButtons() {
 
 function renderCalendar() {
 
-    const grid =
-        document.getElementById(
-            "calendarGrid"
-        );
-
+    const grid = document.getElementById("calendarGrid");
 
     if (!grid) return;
 
-
     grid.innerHTML = "";
 
+    const year = state.currentDate.getFullYear();
+    const month = state.currentDate.getMonth();
 
-    const year =
-        state.currentDate.getFullYear();
-
-
-    const month =
-        state.currentDate.getMonth();
-
-
-    const title =
-        document.getElementById(
-            "monthTitle"
-        );
-
+    const title = document.getElementById("monthTitle");
 
     if (title) {
-
-        if (
-            state.language === "bn"
-        ) {
-
-            title.textContent =
-                formatBanglaMonthYear(
-
-                    state.currentDate
-
-                );
-
+        if (state.language === "bn") {
+            title.textContent = formatBanglaMonthYear(state.currentDate);
+        } else {
+            title.textContent = `${MONTHS_EN[month]} ${year}`;
         }
-
-        else {
-
-            title.textContent =
-                `${MONTHS_EN[month]} ${year}`;
-
-        }
-
     }
 
-
-    const subtitle =
-        document.getElementById(
-            "monthSubtitle"
-        );
-
+    const subtitle = document.getElementById("monthSubtitle");
 
     if (subtitle) {
-
-        subtitle.textContent =
-            t(
-                "bangladeshTime"
-            );
-
+        subtitle.textContent = t("bangladeshTime");
     }
 
 
     const weekdays =
-        state.language === "bn"
-
-            ? WEEKDAYS_BN
-
-            : WEEKDAYS_EN;
+        state.language === "bn" ? WEEKDAYS_BN : WEEKDAYS_EN;
 
 
-    weekdays.forEach(
-        (dayName, index) => {
+    weekdays.forEach((dayName, index) => {
 
-            const header =
-                document.createElement(
-                    "div"
-                );
+        const header = document.createElement("div");
 
+        header.className = "weekday";
 
-            header.className =
-                "weekday";
-
-
-            if (
-                index === 5 ||
-                index === 6
-            ) {
-
-                header.style.color =
-                    "#e53935";
-
-            }
-
-
-            header.textContent =
-                dayName;
-
-
-            grid.appendChild(
-                header
-            );
-
+        if (index === 5 || index === 6) {
+            header.style.color = "#e53935";
         }
-    );
+
+        header.textContent = dayName;
+
+        grid.appendChild(header);
+
+    });
 
 
-    const firstDay =
-        new Date(
-            year,
-            month,
-            1
-        ).getDay();
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const daysInPreviousMonth = new Date(year, month, 0).getDate();
+
+    const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
 
 
-    const daysInMonth =
-        new Date(
-            year,
-            month + 1,
-            0
-        ).getDate();
-
-
-    const daysInPreviousMonth =
-        new Date(
-            year,
-            month,
-            0
-        ).getDate();
-
-
-    const totalCells =
-        Math.ceil(
-
-            (
-                firstDay +
-                daysInMonth
-            ) / 7
-
-        ) * 7;
-
-
-    for (
-
-        let cell = 0;
-
-        cell < totalCells;
-
-        cell++
-
-    ) {
+    for (let cell = 0; cell < totalCells; cell++) {
 
         let dayNumber;
-
         let cellDate;
-
         let otherMonth = false;
 
 
-        if (
-            cell < firstDay
-        ) {
+        if (cell < firstDay) {
 
-            dayNumber =
-                daysInPreviousMonth -
-                firstDay +
-                cell +
-                1;
-
-
-            cellDate =
-                new Date(
-                    year,
-                    month - 1,
-                    dayNumber
-                );
-
-
+            dayNumber = daysInPreviousMonth - firstDay + cell + 1;
+            cellDate = new Date(year, month - 1, dayNumber);
             otherMonth = true;
 
         }
 
+        else if (cell >= firstDay + daysInMonth) {
 
-        else if (
-
-            cell >=
-            firstDay +
-            daysInMonth
-
-        ) {
-
-            dayNumber =
-                cell -
-                firstDay -
-                daysInMonth +
-                1;
-
-
-            cellDate =
-                new Date(
-                    year,
-                    month + 1,
-                    dayNumber
-                );
-
-
+            dayNumber = cell - firstDay - daysInMonth + 1;
+            cellDate = new Date(year, month + 1, dayNumber);
             otherMonth = true;
-
-        }
-
-
-        else {
-
-            dayNumber =
-                cell -
-                firstDay +
-                1;
-
-
-            cellDate =
-                new Date(
-                    year,
-                    month,
-                    dayNumber
-                );
-
-        }
-
-
-        const day =
-            document.createElement(
-                "div"
-            );
-
-
-        day.className =
-            "day";
-
-
-        if (
-            otherMonth
-        ) {
-
-            day.classList.add(
-                "other-month"
-            );
-
-        }
-
-
-        if (
-
-            isSameDate(
-                cellDate,
-                new Date()
-            )
-
-        ) {
-
-            day.classList.add(
-                "today"
-            );
-
-        }
-
-
-        if (
-
-            cellDate.getDay() === 5 ||
-
-            cellDate.getDay() === 6
-
-        ) {
-
-            day.classList.add(
-                "weekend"
-            );
-
-        }
-
-
-        day.addEventListener(
-            "click",
-            () => {
-
-                openEventModal(
-
-                    formatDate(
-                        cellDate
-                    )
-
-                );
-
-            }
-        );
-
-
-        const number =
-            document.createElement(
-                "div"
-            );
-
-
-        number.className =
-            "day-number";
-
-
-        if (
-            state.language === "bn"
-        ) {
-
-            number.textContent =
-                toBanglaNumber(
-                    dayNumber
-                );
 
         }
 
         else {
 
-            number.textContent =
-                dayNumber;
+            dayNumber = cell - firstDay + 1;
+            cellDate = new Date(year, month, dayNumber);
 
         }
 
 
-        day.appendChild(
-            number
-        );
+        const day = document.createElement("div");
+
+        day.className = "day";
+
+        if (otherMonth) {
+            day.classList.add("other-month");
+        }
+
+        if (isSameDate(cellDate, new Date())) {
+            day.classList.add("today");
+        }
+
+        if (cellDate.getDay() === 5 || cellDate.getDay() === 6) {
+            day.classList.add("weekend");
+        }
 
 
-        const holiday = getHolidayForDate(
-            cellDate
-        );
+        day.addEventListener("click", () => {
+            openEventModal(formatDate(cellDate));
+        });
+
+
+        const number = document.createElement("div");
+
+        number.className = "day-number";
+
+        if (state.language === "bn") {
+            number.textContent = toBanglaNumber(dayNumber);
+        } else {
+            number.textContent = dayNumber;
+        }
+
+        day.appendChild(number);
+
+
+        const holiday = getHolidayForDate(cellDate);
 
         if (holiday) {
 
-            day.classList.add(
-                "holiday-day"
-            );
+            day.classList.add("holiday-day");
 
-            const holidayIndicator =
-                document.createElement(
-                    "div"
-                );
+            const holidayIndicator = document.createElement("div");
 
-            holidayIndicator.className =
-                "holiday-indicator";
+            holidayIndicator.className = "holiday-indicator";
 
             holidayIndicator.textContent =
-                (
-                    state.language === "bn"
-                        ? (
-                            holiday.titleBn ||
-                            holiday.title
-                        )
-                        : holiday.title
-                );
+                (state.language === "bn"
+                    ? (holiday.titleBn || holiday.title)
+                    : holiday.title);
 
             holidayIndicator.title =
                 state.language === "bn"
-                    ? (
-                        holiday.titleBn ||
-                        holiday.title
-                    )
+                    ? (holiday.titleBn || holiday.title)
                     : holiday.title;
 
-            day.appendChild(
-                holidayIndicator
-            );
+            day.appendChild(holidayIndicator);
 
         }
 
-        if (
-            state.language === "bn"
-        ) {
+        if (state.language === "bn") {
 
-            const banglaDate =
-                document.createElement(
-                    "div"
-                );
+            const banglaDate = document.createElement("div");
 
+            banglaDate.className = "bangla-day-number";
 
-            banglaDate.className =
-                "bangla-day-number";
+            banglaDate.textContent = formatBanglaShortDate(cellDate);
 
-
-            banglaDate.textContent =
-                formatBanglaShortDate(
-                    cellDate
-                );
-
-
-            day.appendChild(
-                banglaDate
-            );
+            day.appendChild(banglaDate);
 
         }
 
 
-        const dateString =
-            formatDate(
-                cellDate
-            );
+        const dateString = formatDate(cellDate);
 
 
         const dayEvents = getFilteredEvents()
 
-        .filter(event => {
+            .filter(event => {
 
-            if (
-                event.date !== dateString
-            ) {
-                return false;
-            }
+                if (event.date !== dateString) {
+                    return false;
+                }
 
-            return getEventStatus(event) !== "past";
+                return getEventStatus(event) !== "past";
 
-        })
+            })
 
-        .sort(
-            sortEvents
-        );
+            .sort(sortEvents);
 
 
-        dayEvents.forEach(
-            event => {
+        dayEvents.forEach(event => {
 
-                const eventElement = document.createElement(
-                    "div"
-                );
+            const eventElement = document.createElement("div");
 
+            eventElement.className =
+                `event ${event.category || "other"}`;
 
-                eventElement.className =
-                    `event ${
-                        event.category ||
-                        "other"
-                    }`;
+            eventElement.textContent = event.title;
+            eventElement.title = event.title;
 
 
-                eventElement.textContent =
-                    event.title;
+            /* ✅ Click handler for event details */
+            eventElement.addEventListener("click", clickEvent => {
+
+                clickEvent.stopPropagation();
+
+                console.log("🔵 Event clicked, id:", event.id);
+
+                showEventDetails(event.id);
+
+            });
 
 
-                eventElement.title =
-                    event.title;
+            day.appendChild(eventElement);
+
+        });
 
 
-                eventElement.addEventListener(
-                    "click",
-                    clickEvent => {
-                        console.log("🔵 Event clicked, id:", event.id);
-                        clickEvent.stopPropagation();
-                        showEventDetails(event.id);
-                    }
-                );
-
-
-                day.appendChild(
-                    eventElement
-                );
-
-            }
-        );
-
-
-        grid.appendChild(
-            day
-        );
+        grid.appendChild(day);
 
     }
 
@@ -3213,212 +2360,105 @@ function renderCalendar() {
 
 function sortEvents(a, b) {
 
-    const first =
-        `${a.date} ${a.start || "00:00"}`;
+    const first = `${a.date} ${a.start || "00:00"}`;
+    const second = `${b.date} ${b.start || "00:00"}`;
 
-
-    const second =
-        `${b.date} ${b.start || "00:00"}`;
-
-
-    return first.localeCompare(
-        second
-    );
+    return first.localeCompare(second);
 
 }
 
 
 /* =========================================================
-   PREVIOUS MONTH
+   PREVIOUS / NEXT MONTH
 ========================================================= */
 
 function previousMonth() {
 
     state.currentDate =
         new Date(
-
             state.currentDate.getFullYear(),
-
             state.currentDate.getMonth() - 1,
-
             1
-
         );
 
-
     renderCalendar();
-
     updateDashboard();
 
 }
 
-
-/* =========================================================
-   NEXT MONTH
-========================================================= */
 
 function nextMonth() {
 
     state.currentDate =
         new Date(
-
             state.currentDate.getFullYear(),
-
             state.currentDate.getMonth() + 1,
-
             1
-
         );
 
-
     renderCalendar();
-
     updateDashboard();
 
 }
 
-
-/* =========================================================
-   GO TODAY
-========================================================= */
 
 function goToday() {
 
-    const today =
-        new Date();
-
+    const today = new Date();
 
     state.currentDate =
-        new Date(
-
-            today.getFullYear(),
-
-            today.getMonth(),
-
-            1
-
-        );
-
+        new Date(today.getFullYear(), today.getMonth(), 1);
 
     renderCalendar();
-
     renderUpcoming();
     renderPastEvents();
-
     updateDashboard();
 
 }
 
 
 /* =========================================================
-   FORMAT DATE
+   FORMAT / PARSE / SAME DATE
 ========================================================= */
 
 function formatDate(date) {
 
-    if (
-
-        !date ||
-
-        Number.isNaN(
-            date.getTime()
-        )
-
-    ) {
-
+    if (!date || Number.isNaN(date.getTime())) {
         return "";
-
     }
 
-
-    const year =
-        date.getFullYear();
-
-
-    const month =
-        String(
-            date.getMonth() + 1
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    const day =
-        String(
-            date.getDate()
-        ).padStart(
-            2,
-            "0"
-        );
-
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
 
     return `${year}-${month}-${day}`;
 
 }
 
 
-/* =========================================================
-   SAME DATE
-========================================================= */
-
 function isSameDate(a, b) {
 
     return (
-
-        a.getFullYear() ===
-        b.getFullYear()
-
-        &&
-
-        a.getMonth() ===
-        b.getMonth()
-
-        &&
-
-        a.getDate() ===
-        b.getDate()
-
+        a.getFullYear() === b.getFullYear() &&
+        a.getMonth() === b.getMonth() &&
+        a.getDate() === b.getDate()
     );
 
 }
 
 
-/* =========================================================
-   PARSE DATE
-========================================================= */
+function parseDate(dateString) {
 
-function parseDate(
-    dateString
-) {
+    if (!dateString) return null;
 
-    if (!dateString) {
+    const date = new Date(`${dateString}T00:00:00`);
 
-        return null;
-
-    }
-
-
-    const date =
-        new Date(
-            `${dateString}T00:00:00`
-        );
-
-
-    if (
-        Number.isNaN(
-            date.getTime()
-        )
-    ) {
-
-        return null;
-
-    }
-
+    if (Number.isNaN(date.getTime())) return null;
 
     return date;
 
 }
+
 
 /* =========================================================
    EVENT STATUS
@@ -3431,52 +2471,32 @@ function getEventStatus(event) {
     }
 
     const today = new Date();
-
     const eventDate = parseDate(event.date);
 
-    if (!eventDate) {
-        return "past";
-    }
+    if (!eventDate) return "past";
 
     const todayDate = new Date(
         today.getFullYear(),
         today.getMonth(),
         today.getDate(),
-        0,
-        0,
-        0,
-        0
+        0, 0, 0, 0
     );
 
     const eventDay = new Date(
         eventDate.getFullYear(),
         eventDate.getMonth(),
         eventDate.getDate(),
-        0,
-        0,
-        0,
-        0
+        0, 0, 0, 0
     );
 
-    if (eventDay > todayDate) {
-        return "upcoming";
-    }
+    if (eventDay > todayDate) return "upcoming";
+    if (eventDay < todayDate) return "past";
 
-    if (eventDay < todayDate) {
-        return "past";
-    }
+    if (!event.end) return "ongoing";
 
-    if (!event.end) {
-        return "ongoing";
-    }
+    const [hours, minutes] = event.end.split(":").map(Number);
 
-    const [hours, minutes] =
-        event.end.split(":").map(Number);
-
-    if (
-        Number.isNaN(hours) ||
-        Number.isNaN(minutes)
-    ) {
+    if (Number.isNaN(hours) || Number.isNaN(minutes)) {
         return "ongoing";
     }
 
@@ -3490,15 +2510,15 @@ function getEventStatus(event) {
         0
     );
 
-    if (
-        today.getTime() >=
-        eventEnd.getTime()
-    ) {
+    if (today.getTime() >= eventEnd.getTime()) {
         return "past";
     }
 
     return "ongoing";
+
 }
+
+
 /* =========================================================
    FILTER EVENTS
 ========================================================= */
@@ -3506,81 +2526,33 @@ function getEventStatus(event) {
 function getFilteredEvents() {
 
     const search =
-        (
-            document.getElementById(
-                "searchInput"
-            )?.value ||
-            ""
-        )
-
+        (document.getElementById("searchInput")?.value || "")
             .trim()
             .toLowerCase();
 
-
     const category =
-        document.getElementById(
-            "categoryFilter"
-        )?.value ||
-        "all";
+        document.getElementById("categoryFilter")?.value || "all";
 
 
-    return state.events.filter(
-        event => {
+    return state.events.filter(event => {
 
-            const title =
-                String(
-                    event.title ||
-                    ""
-                ).toLowerCase();
+        const title = String(event.title || "").toLowerCase();
+        const description = String(event.description || "").toLowerCase();
+        const location = String(event.location || "").toLowerCase();
 
+        const matchesSearch =
+            !search ||
+            title.includes(search) ||
+            description.includes(search) ||
+            location.includes(search);
 
-            const description =
-                String(
-                    event.description ||
-                    ""
-                ).toLowerCase();
+        const matchesCategory =
+            category === "all" ||
+            event.category === category;
 
+        return matchesSearch && matchesCategory;
 
-            const location =
-                String(
-                    event.location ||
-                    ""
-                ).toLowerCase();
-
-
-            const matchesSearch =
-                !search ||
-
-                title.includes(
-                    search
-                ) ||
-
-                description.includes(
-                    search
-                ) ||
-
-                location.includes(
-                    search
-                );
-
-
-            const matchesCategory =
-                category === "all" ||
-
-                event.category ===
-                category;
-
-
-            return (
-
-                matchesSearch &&
-
-                matchesCategory
-
-            );
-
-        }
-    );
+    });
 
 }
 
@@ -3589,127 +2561,57 @@ function getFilteredEvents() {
    OPEN EVENT MODAL
 ========================================================= */
 
-function openEventModal(
+function openEventModal(date = null, category = "class") {
 
-    date = null,
-
-    category = "class"
-
-) {
-
-    const modal =
-        document.getElementById(
-            "eventModal"
-        );
-
+    const modal = document.getElementById("eventModal");
 
     if (!modal) return;
 
-
-    state.editingId =
-        null;
+    state.editingId = null;
 
 
-    const form =
-        document.getElementById(
-            "eventForm"
-        );
-
+    const form = document.getElementById("eventForm");
 
     if (form) {
-
         form.reset();
-
     }
 
 
-    const modalTitle =
-        document.getElementById(
-            "modalTitle"
-        );
-
+    const modalTitle = document.getElementById("modalTitle");
 
     if (modalTitle) {
-
-        modalTitle.textContent =
-            t("addEvent");
-
+        modalTitle.textContent = t("addEvent");
     }
 
 
-    document.getElementById(
-        "eventId"
-    ).value = "";
+    document.getElementById("eventId").value = "";
+
+    document.getElementById("eventCategory").value =
+        category || "class";
+
+    document.getElementById("deleteBtn")?.classList.add("hidden");
 
 
-    document.getElementById(
-        "eventCategory"
-    ).value =
-        category ||
-        "class";
+    const selectedDate = date || formatDate(new Date());
+
+    document.getElementById("eventDate").value = selectedDate;
 
 
-    document.getElementById(
-        "deleteBtn"
-    )?.classList.add(
-        "hidden"
-    );
-
-
-    const selectedDate =
-        date ||
-
-        formatDate(
-            new Date()
-        );
-
-
-    document.getElementById(
-        "eventDate"
-    ).value =
-        selectedDate;
-
-
-    const reminder =
-        document.getElementById(
-            "eventReminder"
-        );
-
+    const reminder = document.getElementById("eventReminder");
 
     if (reminder) {
-
-        reminder.checked =
-            false;
-
+        reminder.checked = false;
     }
 
 
-    document.getElementById(
-        "alarmSettings"
-    )?.classList.add(
-        "hidden"
-    );
+    document.getElementById("alarmSettings")?.classList.add("hidden");
+
+    document.getElementById("customAlarmDate").value = "";
+    document.getElementById("customAlarmTime").value = "";
+    document.getElementById("alarmSound").value = "default";
 
 
-    document.getElementById(
-        "customAlarmDate"
-    ).value = "";
-
-
-    document.getElementById(
-        "customAlarmTime"
-    ).value = "";
-
-
-    document.getElementById(
-        "alarmSound"
-    ).value =
-        "default";
-
-
-    modal.classList.add(
-        "active"
-    );
+    modal.classList.add("active");
 
 }
 
@@ -3720,69 +2622,32 @@ function openEventModal(
 
 function closeModal(id) {
 
-    const modal =
-        document.getElementById(
-            id
-        );
-
+    const modal = document.getElementById(id);
 
     if (!modal) return;
 
+    modal.classList.remove("active");
 
-    modal.classList.remove(
-        "active"
-    );
-
-
-    if (
-        id ===
-        "alarmModal"
-    ) {
-
+    if (id === "alarmModal") {
         stopAlarmSound();
-
-
-        state.activeAlarmEvent =
-            null;
-
+        state.activeAlarmEvent = null;
     }
 
 }
 
 
-/* =========================================================
-   CLOSE EVENT MODAL
-========================================================= */
-
 function closeEventModal() {
-
-    closeModal(
-        "eventModal"
-    );
-
+    closeModal("eventModal");
 }
 
-
-/* =========================================================
-   CLOSE ACTIVE MODALS
-========================================================= */
 
 function closeActiveModals() {
 
     document
-        .querySelectorAll(
-            ".modal-overlay.active"
-        )
-        .forEach(
-            modal => {
-
-                modal.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
+        .querySelectorAll(".modal-overlay.active")
+        .forEach(modal => {
+            modal.classList.remove("active");
+        });
 
     stopAlarmSound();
 
@@ -3795,241 +2660,109 @@ function closeActiveModals() {
 
 async function saveEventFromForm() {
 
-    const title =
-        document.getElementById(
-            "eventTitle"
-        ).value.trim();
+    const title = document.getElementById("eventTitle").value.trim();
+    const date = document.getElementById("eventDate").value;
+    const category = document.getElementById("eventCategory").value;
+    const start = document.getElementById("eventStart").value;
+    const end = document.getElementById("eventEnd").value;
+    const reminder = document.getElementById("eventReminder").checked;
 
 
-    const date =
-        document.getElementById(
-            "eventDate"
-        ).value;
-
-
-    const category =
-        document.getElementById(
-            "eventCategory"
-        ).value;
-
-
-    const start =
-        document.getElementById(
-            "eventStart"
-        ).value;
-
-
-    const end =
-        document.getElementById(
-            "eventEnd"
-        ).value;
-
-
-    const reminder =
-        document.getElementById(
-            "eventReminder"
-        ).checked;
-
-
-    if (
-        !title ||
-        !date
-    ) {
-
+    if (!title || !date) {
         showToast(
-
             state.language === "bn"
-
                 ? "ইভেন্টের নাম ও তারিখ দিন।"
-
                 : "Please enter event title and date."
-
         );
-
         return;
-
     }
 
 
-    if (
-
-        start &&
-        end &&
-        start > end
-
-    ) {
-
+    if (start && end && start > end) {
         showToast(
-
             state.language === "bn"
-
                 ? "শেষের সময় শুরুর সময়ের পরে হতে হবে।"
-
                 : "End time must be after start time."
-
         );
-
         return;
-
     }
 
 
-    let alarmDate =
-        document.getElementById(
-            "customAlarmDate"
-        ).value;
-
-
-    let alarmTime =
-        document.getElementById(
-            "customAlarmTime"
-        ).value;
-
+    let alarmDate = document.getElementById("customAlarmDate").value;
+    let alarmTime = document.getElementById("customAlarmTime").value;
 
     const alarmSound =
-        document.getElementById(
-            "alarmSound"
-        ).value ||
-        "default";
+        document.getElementById("alarmSound").value || "default";
 
 
     if (reminder) {
 
-        if (
-            !alarmDate ||
-            !alarmTime
-        ) {
-
+        if (!alarmDate || !alarmTime) {
             showToast(
-
                 state.language === "bn"
-
                     ? "অ্যালার্মের তারিখ ও সময় দিন।"
-
                     : "Please set alarm date and time."
-
             );
-
             return;
-
         }
 
 
-        const alarmDateTime =
-            new Date(
-                `${alarmDate}T${alarmTime}:00`
-            );
+        const alarmDateTime = new Date(`${alarmDate}T${alarmTime}:00`);
 
-
-        if (
-
-            Number.isNaN(
-                alarmDateTime.getTime()
-            )
-
-        ) {
-
+        if (Number.isNaN(alarmDateTime.getTime())) {
             showToast(
-
                 state.language === "bn"
-
                     ? "অ্যালার্মের তারিখ বা সময় সঠিক নয়।"
-
                     : "Invalid alarm date or time."
-
             );
-
             return;
-
         }
 
 
-        if (
-
-            alarmDateTime.getTime() <=
-            Date.now()
-
-        ) {
-
+        if (alarmDateTime.getTime() <= Date.now()) {
             showToast(
-
                 state.language === "bn"
-
                     ? "অ্যালার্ম ভবিষ্যতের সময় সেট করুন।"
-
                     : "Please set the alarm for a future time."
-
             );
-
             return;
-
         }
 
-    }
-
-    else {
-
+    } else {
         alarmDate = "";
-
         alarmTime = "";
-
     }
 
 
-    const eventId =
-        document.getElementById(
-            "eventId"
-        ).value;
-
+    const eventId = document.getElementById("eventId").value;
 
     const existingEvent =
         eventId
-
             ? state.events.find(
-                event =>
-                    String(
-                        event.id
-                    ) ===
-                    String(
-                        eventId
-                    )
+                event => String(event.id) === String(eventId)
             )
-
             : null;
 
 
     const eventData = {
 
-        id:
-            eventId ||
-            Date.now().toString(),
+        id: eventId || Date.now().toString(),
 
         title,
-
         date,
-
         category,
-
         start,
-
         end,
 
         location:
-            document.getElementById(
-                "eventLocation"
-            ).value.trim(),
+            document.getElementById("eventLocation").value.trim(),
 
         description:
-            document.getElementById(
-                "eventDescription"
-            ).value.trim(),
+            document.getElementById("eventDescription").value.trim(),
 
         reminder,
-
         alarmDate,
-
         alarmTime,
-
         alarmSound,
 
         alarmTriggered:
@@ -4037,21 +2770,12 @@ async function saveEventFromForm() {
             reminder
 
                 ? (
-
                     existingEvent &&
+                    existingEvent.alarmDate === alarmDate &&
+                    existingEvent.alarmTime === alarmTime
 
-                    existingEvent.alarmDate ===
-                    alarmDate &&
-
-                    existingEvent.alarmTime ===
-                    alarmTime
-
-                        ? Boolean(
-                            existingEvent.alarmTriggered
-                        )
-
+                        ? Boolean(existingEvent.alarmTriggered)
                         : false
-
                 )
 
                 : false
@@ -4063,34 +2787,19 @@ async function saveEventFromForm() {
 
         const index =
             state.events.findIndex(
-                event =>
-                    String(
-                        event.id
-                    ) ===
-                    String(
-                        eventId
-                    )
+                event => String(event.id) === String(eventId)
             );
 
-
-        if (
-            index !== -1
-        ) {
-
-            state.events[index] =
-                eventData;
-
+        if (index !== -1) {
+            state.events[index] = eventData;
         }
 
-    }
+    } else {
 
-    else {
-
-        state.events.push(
-            eventData
-        );
+        state.events.push(eventData);
 
     }
+
 
     await cancelNativeAlarm(eventId);
     if (eventData.reminder) {
@@ -4099,42 +2808,23 @@ async function saveEventFromForm() {
         await cancelNativeAlarm(eventData.id);
     }
 
+
     saveEvents();
-
     closeEventModal();
-
     renderCalendar();
-
     renderUpcoming();
     renderPastEvents();
-
     updateDashboard();
 
 
     showToast(
-
         eventId
-
-            ? (
-
-                state.language === "bn"
-
-                    ? "ইভেন্ট সফলভাবে আপডেট হয়েছে।"
-
-                    : "Event updated successfully."
-
-            )
-
-            : (
-
-                state.language === "bn"
-
-                    ? "ইভেন্ট সফলভাবে যোগ হয়েছে।"
-
-                    : "Event added successfully."
-
-            )
-
+            ? (state.language === "bn"
+                ? "ইভেন্ট সফলভাবে আপডেট হয়েছে।"
+                : "Event updated successfully.")
+            : (state.language === "bn"
+                ? "ইভেন্ট সফলভাবে যোগ হয়েছে।"
+                : "Event added successfully.")
     );
 
 }
@@ -4148,125 +2838,45 @@ function editEvent(id) {
 
     const event =
         state.events.find(
-            item =>
-                String(
-                    item.id
-                ) ===
-                String(
-                    id
-                )
+            item => String(item.id) === String(id)
         );
-
 
     if (!event) return;
 
-
-    state.editingId =
-        event.id;
+    state.editingId = event.id;
 
 
-    document.getElementById(
-        "modalTitle"
-    ).textContent =
-
+    document.getElementById("modalTitle").textContent =
         state.language === "bn"
-
             ? "ইভেন্ট এডিট করুন"
-
             : "Edit Event";
 
-
-    document.getElementById(
-        "eventId"
-    ).value =
-        event.id;
-
-
-    document.getElementById(
-        "eventTitle"
-    ).value =
-        event.title || "";
-
-
-    document.getElementById(
-        "eventDate"
-    ).value =
-        event.date || "";
-
-
-    document.getElementById(
-        "eventCategory"
-    ).value =
-        event.category ||
-        "other";
-
-
-    document.getElementById(
-        "eventStart"
-    ).value =
-        event.start || "";
-
-
-    document.getElementById(
-        "eventEnd"
-    ).value =
-        event.end || "";
-
-
-    document.getElementById(
-        "eventLocation"
-    ).value =
-        event.location || "";
-
-
-    document.getElementById(
-        "eventDescription"
-    ).value =
+    document.getElementById("eventId").value = event.id;
+    document.getElementById("eventTitle").value = event.title || "";
+    document.getElementById("eventDate").value = event.date || "";
+    document.getElementById("eventCategory").value =
+        event.category || "other";
+    document.getElementById("eventStart").value = event.start || "";
+    document.getElementById("eventEnd").value = event.end || "";
+    document.getElementById("eventLocation").value = event.location || "";
+    document.getElementById("eventDescription").value =
         event.description || "";
 
+    document.getElementById("eventReminder").checked =
+        Boolean(event.reminder);
 
-    document.getElementById(
-        "eventReminder"
-    ).checked =
-        Boolean(
-            event.reminder
-        );
-
-
-    document.getElementById(
-        "customAlarmDate"
-    ).value =
+    document.getElementById("customAlarmDate").value =
         event.alarmDate || "";
-
-
-    document.getElementById(
-        "customAlarmTime"
-    ).value =
+    document.getElementById("customAlarmTime").value =
         event.alarmTime || "";
-
-
-    document.getElementById(
-        "alarmSound"
-    ).value =
-        event.alarmSound ||
-        "default";
+    document.getElementById("alarmSound").value =
+        event.alarmSound || "default";
 
 
     toggleAlarmFields();
 
-
-    document.getElementById(
-        "deleteBtn"
-    )?.classList.remove(
-        "hidden"
-    );
-
-
-    document.getElementById(
-        "eventModal"
-    )?.classList.add(
-        "active"
-    );
+    document.getElementById("deleteBtn")?.classList.remove("hidden");
+    document.getElementById("eventModal")?.classList.add("active");
 
 }
 
@@ -4277,234 +2887,288 @@ function editEvent(id) {
 
 async function deleteCurrentEvent() {
 
-    const id =
-        document.getElementById("eventId").value;
+    const id = document.getElementById("eventId").value;
 
     if (!id) return;
 
-    const confirmed =
-        confirm(
-            state.language === "bn"
-                ? "এই ইভেন্টটি ডিলিট করতে চান?"
-                : "Delete this event?"
-        );
+    const confirmed = confirm(
+        state.language === "bn"
+            ? "এই ইভেন্টটি ডিলিট করতে চান?"
+            : "Delete this event?"
+    );
 
     if (!confirmed) return;
 
+
     state.events =
         state.events.filter(
-            event =>
-                String(event.id) !== String(id)
+            event => String(event.id) !== String(id)
         );
 
     await cancelNativeAlarm(id);
 
     saveEvents();
-
     closeEventModal();
     renderCalendar();
     renderUpcoming();
     renderPastEvents();
     updateDashboard();
 
+
     showToast(
         state.language === "bn"
             ? "ইভেন্ট ডিলিট করা হয়েছে।"
             : "Event deleted."
     );
+
 }
 
 
 /* =========================================================
-   EVENT DETAILS — ✅ FIXED: Duplicate Title Removed
+   ✅ EVENT DETAILS — BULLETPROOF VERSION
+   (Fixed: Empty modal issue + Duplicate title)
 ========================================================= */
 
 function showEventDetails(id) {
 
     console.log("🔵 showEventDetails called with id:", id);
 
-    const event =
-        state.events.find(
-            item =>
-                String(item.id) === String(id)
+    /* ---------- 1. Find event ---------- */
+    const event = state.events.find(
+        item => String(item.id) === String(id)
+    );
+
+    if (!event) {
+        console.error("❌ Event not found for id:", id);
+        console.log("Available event IDs:", state.events.map(e => e.id));
+        showToast(
+            state.language === "bn"
+                ? "ইভেন্ট খুঁজে পাওয়া যায়নি।"
+                : "Event not found."
         );
+        return;
+    }
 
-
-    if (!event) return;
-
+    console.log("✅ Event found:", event);
 
     state.selectedEventId = event.id;
 
 
-    /* ✅ FIX: Modal Title-এ ইভেন্টের টাইটেল সেট করুন */
-    const modalTitle =
-        document.getElementById("detailsModalTitle");
+    /* ---------- 2. Set modal title ---------- */
+    const modalTitle = document.getElementById("detailsModalTitle");
 
     if (modalTitle) {
-        modalTitle.textContent =
-            event.title || t("eventDetails");
+        modalTitle.textContent = event.title || t("eventDetails");
+    } else {
+        console.warn("⚠️ detailsModalTitle element not found");
     }
 
 
-    const container =
-        document.getElementById("eventDetails");
+    /* ---------- 3. Get container ---------- */
+    const container = document.getElementById("eventDetails");
+
+    if (!container) {
+        console.error("❌ #eventDetails container not found in DOM");
+        return;
+    }
 
 
-    if (!container) return;
+    /* ---------- 4. Build HTML safely ---------- */
+    const parts = [];
 
+
+    /* ---- Category ---- */
+    const categoryKey = String(event.category || "other");
 
     const category =
-        CATEGORY_NAMES[event.category]?.[state.language] ||
-        event.category;
+        (CATEGORY_NAMES[categoryKey] &&
+         CATEGORY_NAMES[categoryKey][state.language]) ||
+        categoryKey;
 
 
-    const date = parseDate(event.date);
+    /* ---- Date ---- */
+    let formattedDate = event.date || "";
+    let banglaDateLine = "";
 
+    const parsedDate = parseDate(event.date);
 
-    const formattedDate =
-        date
-            ? date.toLocaleDateString(
-                state.language === "bn"
-                    ? "bn-BD"
-                    : "en-US",
+    if (parsedDate) {
+
+        try {
+
+            formattedDate = parsedDate.toLocaleDateString(
+                state.language === "bn" ? "bn-BD" : "en-US",
                 {
                     weekday: "long",
                     year: "numeric",
                     month: "long",
                     day: "numeric"
                 }
-            )
-            : event.date;
+            );
+
+        } catch (err) {
+            formattedDate = event.date;
+        }
+
+        if (state.language === "bn" &&
+            typeof formatBanglaDate === "function") {
+            banglaDateLine = formatBanglaDate(parsedDate);
+        }
+
+    }
 
 
-    let html = "";
-
-
-    /* ✅ FIX: Title row সরিয়ে দেওয়া হয়েছে — কারণ Modal Title-এ ইতিমধ্যেই আছে */
-
-
-    html += `
+    /* ---- Date Row ---- */
+    parts.push(`
         <div class="detail-row">
-            <div class="detail-label">
-                ${escapeHTML(t("date"))}
-            </div>
+            <div class="detail-label">${escapeHTML(t("date"))}</div>
             <div class="detail-value">
                 ${escapeHTML(formattedDate)}
-                ${
-                    state.language === "bn" && date
-                        ? `<br><small>${escapeHTML(
-                            formatBanglaDate(date)
-                        )}</small>`
-                        : ""
-                }
+                ${banglaDateLine
+                    ? `<br><small>${escapeHTML(banglaDateLine)}</small>`
+                    : ""}
             </div>
         </div>
-    `;
+    `);
 
 
-    html += `
+    /* ---- Category Row ---- */
+    parts.push(`
         <div class="detail-row">
-            <div class="detail-label">
-                ${escapeHTML(t("category"))}
-            </div>
-            <div class="detail-value">
-                ${escapeHTML(category)}
-            </div>
+            <div class="detail-label">${escapeHTML(t("category"))}</div>
+            <div class="detail-value">${escapeHTML(category)}</div>
         </div>
-    `;
+    `);
 
 
-    if (event.start) {
+    /* ---- Start / End Time ---- */
+    const startTime = String(event.start || "").trim();
+    const endTime = String(event.end || "").trim();
 
-        html += `
+    if (startTime || endTime) {
+
+        let timeText = startTime || "";
+
+        if (endTime) {
+            timeText = timeText
+                ? `${startTime} - ${endTime}`
+                : endTime;
+        }
+
+        parts.push(`
             <div class="detail-row">
-                <div class="detail-label">
-                    ${escapeHTML(t("start"))}
-                </div>
-                <div class="detail-value">
-                    ${escapeHTML(event.start)}
-                    ${
-                        event.end
-                            ? ` - ${escapeHTML(event.end)}`
-                            : ""
-                    }
-                </div>
+                <div class="detail-label">${escapeHTML(t("start"))}</div>
+                <div class="detail-value">${escapeHTML(timeText)}</div>
             </div>
-        `;
+        `);
 
     }
 
 
-    if (event.location) {
+    /* ---- Location ---- */
+    const location = String(event.location || "").trim();
 
-        html += `
+    if (location) {
+
+        parts.push(`
             <div class="detail-row">
-                <div class="detail-label">
-                    ${escapeHTML(t("location"))}
-                </div>
-                <div class="detail-value">
-                    ${escapeHTML(event.location)}
-                </div>
+                <div class="detail-label">${escapeHTML(t("location"))}</div>
+                <div class="detail-value">${escapeHTML(location)}</div>
             </div>
-        `;
+        `);
 
     }
 
 
-    if (event.description) {
+    /* ---- Description ---- */
+    const description = String(event.description || "").trim();
 
-        html += `
+    if (description) {
+
+        parts.push(`
             <div class="detail-row">
-                <div class="detail-label">
-                    ${escapeHTML(t("description"))}
-                </div>
-                <div class="detail-value">
-                    ${escapeHTML(event.description)}
-                </div>
+                <div class="detail-label">${escapeHTML(t("description"))}</div>
+                <div class="detail-value">${escapeHTML(description)}</div>
             </div>
-        `;
+        `);
 
     }
 
 
+    /* ---- Alarm ---- */
     if (event.reminder) {
 
-        const alarmDate =
-            event.alarmDate
-                ? escapeHTML(event.alarmDate)
-                : "";
+        const alarmDate = String(event.alarmDate || "").trim();
+        const alarmTime = String(event.alarmTime || "").trim();
 
-        const alarmTime =
-            event.alarmTime
-                ? escapeHTML(event.alarmTime)
-                : "";
+        let alarmText = "";
 
+        if (alarmDate && alarmTime) {
+            alarmText = `${alarmDate} — ${alarmTime}`;
+        } else if (alarmDate) {
+            alarmText = alarmDate;
+        } else if (alarmTime) {
+            alarmText = alarmTime;
+        } else {
+            alarmText = "—";
+        }
 
-        html += `
+        parts.push(`
             <div class="detail-row">
-                <div class="detail-label">
-                    🔔 ${escapeHTML(t("alarm"))}
-                </div>
-                <div class="detail-value">
-                    ${alarmDate}
-                    ${
-                        alarmTime
-                            ? ` ${alarmTime}`
-                            : ""
-                    }
-                </div>
+                <div class="detail-label">🔔 ${escapeHTML(t("alarm"))}</div>
+                <div class="detail-value">${escapeHTML(alarmText)}</div>
             </div>
-        `;
+        `);
 
     }
 
 
-    console.log("📋 Event Details HTML:", html);
+    /* ---- Fallback if no rows ---- */
+    if (parts.length === 0) {
 
-    container.innerHTML = html;
+        parts.push(`
+            <div class="detail-row">
+                <div class="detail-value">${escapeHTML(t("noDetails"))}</div>
+            </div>
+        `);
+
+    }
 
 
-    document.getElementById("detailsModal")?.classList.add("active");
+    const html = parts.join("");
+
+    console.log("📋 Generated HTML length:", html.length);
+    console.log("📋 HTML preview:", html.substring(0, 300));
+
+
+    /* ---------- 5. Inject HTML ---------- */
+    try {
+
+        container.innerHTML = html;
+
+        console.log(
+            "✅ HTML injected. Children count:",
+            container.children.length
+        );
+
+    } catch (err) {
+
+        console.error("❌ Failed to inject HTML:", err);
+
+        container.textContent = "Error loading details.";
+
+    }
+
+
+    /* ---------- 6. Show modal ---------- */
+    const modal = document.getElementById("detailsModal");
+
+    if (modal) {
+        modal.classList.add("active");
+        console.log("✅ Modal opened");
+    } else {
+        console.error("❌ #detailsModal element not found");
+    }
 
 }
 
@@ -4515,23 +3179,10 @@ function showEventDetails(id) {
 
 function editSelectedEvent() {
 
-    if (
-        !state.selectedEventId
-    ) {
+    if (!state.selectedEventId) return;
 
-        return;
-
-    }
-
-
-    closeModal(
-        "detailsModal"
-    );
-
-
-    editEvent(
-        state.selectedEventId
-    );
+    closeModal("detailsModal");
+    editEvent(state.selectedEventId);
 
 }
 
@@ -4542,14 +3193,9 @@ function editSelectedEvent() {
 
 function renderUpcoming() {
 
-    const container =
-        document.getElementById(
-            "upcomingEvents"
-        );
-
+    const container = document.getElementById("upcomingEvents");
 
     if (!container) return;
-
 
     container.innerHTML = "";
 
@@ -4559,6 +3205,7 @@ function renderUpcoming() {
         .filter(event => {
 
             const status = getEventStatus(event);
+
             return (
                 status === "upcoming" ||
                 status === "ongoing"
@@ -4566,182 +3213,93 @@ function renderUpcoming() {
 
         })
 
-        .sort(
-            sortEvents
-        )
+        .sort(sortEvents)
 
-        .slice(
-            0,
-            10
-        );
+        .slice(0, 10);
 
 
-    const count = document.getElementById(
-        "eventCount"
-    );
+    const count = document.getElementById("eventCount");
 
     if (count) {
-
         count.textContent =
-
             state.language === "bn"
-
-                ? `${toBanglaNumber(
-                    events.length
-                )}টি ইভেন্ট`
-
+                ? `${toBanglaNumber(events.length)}টি ইভেন্ট`
                 : `${events.length} events`;
-
     }
 
 
-    if (
-        !events.length
-    ) {
+    if (!events.length) {
 
         container.innerHTML =
-
-            `<div class="empty">
-                ${escapeHTML(
-                    t("noUpcoming")
-                )}
-            </div>`;
+            `<div class="empty">${escapeHTML(t("noUpcoming"))}</div>`;
 
         return;
 
     }
 
 
-    events.forEach(
-        event => {
+    events.forEach(event => {
 
-            const item =
-                document.createElement(
-                    "div"
-                );
+        const item = document.createElement("div");
+
+        item.className = "upcoming-item";
 
 
-            item.className =
-                "upcoming-item";
+        const category =
+            CATEGORY_NAMES[event.category]?.[state.language] ||
+            event.category;
 
 
-            const category =
-                CATEGORY_NAMES[
-                    event.category
-                ]?.[
-                    state.language
-                ] ||
-                event.category;
+        const date = parseDate(event.date);
 
 
-            const date =
-                parseDate(
-                    event.date
-                );
-
-
-            const formatted =
-                date
-
-                    ? date.toLocaleDateString(
-
-                        state.language === "bn"
-
-                            ? "bn-BD"
-
-                            : "en-US",
-
-                        {
-
-                            month:
-                                "short",
-
-                            day:
-                                "numeric",
-
-                            year:
-                                "numeric"
-
-                        }
-
-                    )
-
-                    : event.date;
-
-
-            item.innerHTML = `
-
-                <div class="upcoming-title">
-
-                    ${escapeHTML(
-                        event.title
-                    )}
-
-                </div>
-
-
-                <div class="upcoming-date">
-
-                    ${escapeHTML(
-                        formatted
-                    )}
-
-                    ${
-                        state.language === "bn" && date
-
-                            ? `<br>${escapeHTML(
-                                formatBanglaDate(
-                                    date
-                                )
-                            )}`
-
-                            : ""
+        const formatted =
+            date
+                ? date.toLocaleDateString(
+                    state.language === "bn" ? "bn-BD" : "en-US",
+                    {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric"
                     }
-
-                    ${
-                        event.start
-
-                            ? ` • ${escapeHTML(
-                                event.start
-                            )}`
-
-                            : ""
-                    }
-
-                </div>
+                )
+                : event.date;
 
 
-                <span class="category-tag">
+        item.innerHTML = `
 
-                    ${escapeHTML(
-                        category
-                    )}
+            <div class="upcoming-title">
+                ${escapeHTML(event.title)}
+            </div>
 
-                </span>
+            <div class="upcoming-date">
+                ${escapeHTML(formatted)}
+                ${state.language === "bn" && date
+                    ? `<br>${escapeHTML(formatBanglaDate(date))}`
+                    : ""}
+                ${event.start
+                    ? ` • ${escapeHTML(event.start)}`
+                    : ""}
+            </div>
 
-            `;
+            <span class="category-tag">
+                ${escapeHTML(category)}
+            </span>
+
+        `;
 
 
-            item.addEventListener(
-                "click",
-                () => {
-
-                    showEventDetails(
-                        event.id
-                    );
-
-                }
-            );
+        item.addEventListener("click", () => {
+            showEventDetails(event.id);
+        });
 
 
-            container.appendChild(
-                item
-            );
+        container.appendChild(item);
 
-        }
-    );
+    });
 
 }
+
 
 /* =========================================================
    PAST EVENTS
@@ -4749,75 +3307,50 @@ function renderUpcoming() {
 
 function renderPastEvents() {
 
-    const title =
-        document.getElementById(
-            "pastEventsTitle"
-        );
+    const title = document.getElementById("pastEventsTitle");
+    const selectAllBtn = document.getElementById("selectAllPastEvents");
+    const deleteBtn = document.getElementById("deleteSelectedPastEvents");
 
-    const selectAllBtn =
-        document.getElementById(
-            "selectAllPastEvents"
-        );
-
-    const deleteBtn =
-        document.getElementById(
-            "deleteSelectedPastEvents"
-        );
 
     if (title) {
-
         title.textContent =
             state.language === "bn"
                 ? "পূর্বের ইভেন্ট"
                 : "Past Events";
-
     }
 
     if (selectAllBtn) {
-
         selectAllBtn.textContent =
             state.language === "bn"
                 ? "সব নির্বাচন"
                 : "Select All";
-
     }
 
     if (deleteBtn) {
-
         deleteBtn.textContent =
             state.language === "bn"
                 ? "নির্বাচিতগুলো মুছুন"
                 : "Delete Selected";
-
     }
 
-    const container =
-        document.getElementById("pastEvents");
+
+    const container = document.getElementById("pastEvents");
 
     if (!container) return;
 
     container.innerHTML = "";
 
-    const events =
-        getFilteredEvents()
+
+    const events = getFilteredEvents()
 
         .filter(event => {
-
-            return (
-                getEventStatus(event) ===
-                "past"
-            );
-
+            return getEventStatus(event) === "past";
         })
 
         .sort((a, b) => {
 
             if (a.date !== b.date) {
-
-                return b.date.localeCompare(
-                    a.date
-                );
-
+                return b.date.localeCompare(a.date);
             }
 
             return sortEvents(a, b);
@@ -4831,41 +3364,33 @@ function renderPastEvents() {
 
         container.innerHTML = `
             <div class="empty">
-
-                ${
-                    state.language === "bn"
-                        ? "কোনো পূর্বের ইভেন্ট নেই।"
-                        : "No past events."
-                }
-
+                ${state.language === "bn"
+                    ? "কোনো পূর্বের ইভেন্ট নেই।"
+                    : "No past events."}
             </div>
         `;
 
         updatePastEventActions();
 
         return;
+
     }
 
 
     events.forEach(event => {
 
-        const item =
-            document.createElement("div");
+        const item = document.createElement("div");
 
-        item.className =
-            "upcoming-item past-event-item";
+        item.className = "upcoming-item past-event-item";
 
 
-        const date =
-            parseDate(event.date);
+        const date = parseDate(event.date);
 
 
         const formatted =
             date
                 ? date.toLocaleDateString(
-                    state.language === "bn"
-                        ? "bn-BD"
-                        : "en-US",
+                    state.language === "bn" ? "bn-BD" : "en-US",
                     {
                         month: "short",
                         day: "numeric",
@@ -4876,11 +3401,7 @@ function renderPastEvents() {
 
 
         const category =
-            CATEGORY_NAMES[
-                event.category
-            ]?.[
-                state.language
-            ] ||
+            CATEGORY_NAMES[event.category]?.[state.language] ||
             event.category;
 
 
@@ -4890,14 +3411,13 @@ function renderPastEvents() {
 
                 <label
                     class="past-event-checkbox"
-                    title="${
-                        state.language === "bn"
-                            ? "ইভেন্ট নির্বাচন করুন"
-                            : "Select event"
-                    }"
+                    title="${state.language === "bn"
+                        ? "ইভেন্ট নির্বাচন করুন"
+                        : "Select event"}"
                 >
 
-                    <input type="checkbox"
+                    <input
+                        type="checkbox"
                         class="past-event-check"
                         data-event-id="${event.id}"
                     >
@@ -4913,11 +3433,7 @@ function renderPastEvents() {
 
                     <span class="past-badge">
 
-                        ${
-                            state.language === "bn"
-                                ? "পূর্বের"
-                                : "Past"
-                        }
+                        ${state.language === "bn" ? "পূর্বের" : "Past"}
 
                     </span>
 
@@ -4930,19 +3446,13 @@ function renderPastEvents() {
 
                 ${escapeHTML(formatted)}
 
-                ${
-                    state.language === "bn" && date
-                        ? `<br>${escapeHTML(
-                            formatBanglaDate(date)
-                        )}`
-                        : ""
-                }
+                ${state.language === "bn" && date
+                    ? `<br>${escapeHTML(formatBanglaDate(date))}`
+                    : ""}
 
-                ${
-                    event.start
-                        ? ` • ${escapeHTML(event.start)}`
-                        : ""
-                }
+                ${event.start
+                    ? ` • ${escapeHTML(event.start)}`
+                    : ""}
 
             </div>
 
@@ -4956,49 +3466,25 @@ function renderPastEvents() {
         `;
 
 
-        const checkbox =
-            item.querySelector(
-                ".past-event-check"
-            );
+        const checkbox = item.querySelector(".past-event-check");
+
+        checkbox.addEventListener("click", event => {
+            event.stopPropagation();
+            updatePastEventActions();
+        });
 
 
-        checkbox.addEventListener(
-            "click",
-            event => {
+        item.addEventListener("click", event => {
 
-                event.stopPropagation();
-
-                updatePastEventActions();
-
+            if (event.target.closest(".past-event-checkbox")) {
+                return;
             }
-        );
 
+            state.selectedEventId = event.id;
 
-        item.addEventListener(
-            "click",
-            event => {
+            showEventDetails(event.id);
 
-                if (
-                    event.target.closest(
-                        ".past-event-checkbox"
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
-                state.selectedEventId =
-                    event.id;
-
-
-                showEventDetails(
-                    event.id
-                );
-
-            }
-        );
+        });
 
 
         container.appendChild(item);
@@ -5018,28 +3504,14 @@ function renderPastEvents() {
 function updatePastEventActions() {
 
     const checkboxes =
-        document.querySelectorAll(
-            ".past-event-check"
-        );
+        document.querySelectorAll(".past-event-check");
 
     const selected =
-        Array.from(checkboxes)
-            .filter(
-                checkbox =>
-                    checkbox.checked
-            );
+        Array.from(checkboxes).filter(checkbox => checkbox.checked);
 
 
-    const actions =
-        document.getElementById(
-            "pastEventsActions"
-        );
-
-
-    const count =
-        document.getElementById(
-            "selectedPastCount"
-        );
+    const actions = document.getElementById("pastEventsActions");
+    const count = document.getElementById("selectedPastCount");
 
 
     if (!actions || !count) return;
@@ -5047,62 +3519,42 @@ function updatePastEventActions() {
 
     if (selected.length > 0) {
 
-        actions.style.display =
-            "flex";
+        actions.style.display = "flex";
 
         count.textContent =
             state.language === "bn"
-
                 ? `${selected.length}টি নির্বাচিত`
-
                 : `${selected.length} selected`;
 
     } else {
 
-        actions.style.display =
-            "none";
+        actions.style.display = "none";
 
         count.textContent =
             state.language === "bn"
-
                 ? "০টি নির্বাচিত"
-
                 : "0 selected";
 
     }
 
 }
 
-/* =========================================================
-   SELECT ALL PAST EVENTS
-========================================================= */
 
 function toggleSelectAllPastEvents() {
 
     const checkboxes =
-        document.querySelectorAll(
-            ".past-event-check"
-        );
+        document.querySelectorAll(".past-event-check");
 
     if (!checkboxes.length) return;
 
 
     const allSelected =
-        Array.from(checkboxes)
-            .every(
-                checkbox =>
-                    checkbox.checked
-            );
+        Array.from(checkboxes).every(checkbox => checkbox.checked);
 
 
-    checkboxes.forEach(
-        checkbox => {
-
-            checkbox.checked =
-                !allSelected;
-
-        }
-    );
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = !allSelected;
+    });
 
 
     updatePastEventActions();
@@ -5110,65 +3562,39 @@ function toggleSelectAllPastEvents() {
 }
 
 
-/* =========================================================
-   DELETE SELECTED PAST EVENTS
-========================================================= */
-
 function deleteSelectedPastEvents() {
 
     const checkboxes =
-        document.querySelectorAll(
-            ".past-event-check:checked"
-        );
+        document.querySelectorAll(".past-event-check:checked");
 
-
-    if (!checkboxes.length) {
-
-        return;
-
-    }
+    if (!checkboxes.length) return;
 
 
     const selectedIds =
-        Array.from(checkboxes)
-            .map(
-                checkbox =>
-                    checkbox.dataset.eventId
-            );
+        Array.from(checkboxes).map(checkbox => checkbox.dataset.eventId);
 
 
     const message =
         state.language === "bn"
-
             ? `${selectedIds.length}টি পূর্বের ইভেন্ট মুছে ফেলতে চান?`
-
             : `Delete ${selectedIds.length} selected past event(s)?`;
 
 
-    if (!confirm(message)) {
-
-        return;
-
-    }
+    if (!confirm(message)) return;
 
 
     state.events =
         state.events.filter(
-            event =>
-                !selectedIds.includes(
-                    String(event.id)
-                )
+            event => !selectedIds.includes(String(event.id))
         );
 
 
     saveEvents();
-
-
     renderCalendar();
-
     renderPastEvents();
 
 }
+
 
 /* =========================================================
    DASHBOARD
@@ -5177,135 +3603,73 @@ function deleteSelectedPastEvents() {
 function updateDashboard() {
 
     const now = new Date();
-
-
     const today = formatDate(now);
 
-
     const year = state.currentDate.getFullYear();
-
-
     const month = state.currentDate.getMonth();
-
 
     const filtered = state.events;
 
 
     const todayEvents =
-        filtered.filter(
-            event =>
-                event.date === today
-        );
+        filtered.filter(event => event.date === today);
 
 
     const monthEvents =
-        filtered.filter(
-            event => {
+        filtered.filter(event => {
 
-                const date =
-                    parseDate(event.date);
+            const date = parseDate(event.date);
 
+            if (!date) return false;
 
-                if (!date) {
+            return (
+                date.getFullYear() === year &&
+                date.getMonth() === month
+            );
 
-                    return false;
-
-                }
-
-
-                return (
-
-                    date.getFullYear() === year
-
-                    &&
-
-                    date.getMonth() === month
-
-                );
-
-            }
-        );
+        });
 
 
     const classes =
-        monthEvents.filter(
-            event =>
-                event.category === "class"
-        );
-
+        monthEvents.filter(event => event.category === "class");
 
     const exams =
-        monthEvents.filter(
-            event =>
-                event.category === "exam"
-        );
-
+        monthEvents.filter(event => event.category === "exam");
 
     const assignments =
-        monthEvents.filter(
-            event =>
-                event.category === "assignment"
-        );
-
+        monthEvents.filter(event => event.category === "assignment");
 
     const projects =
-        monthEvents.filter(
-            event =>
-                event.category === "project"
-        );
-
+        monthEvents.filter(event => event.category === "project");
 
     const presentations =
-        monthEvents.filter(
-            event =>
-                event.category === "presentation"
-        );
-
+        monthEvents.filter(event => event.category === "presentation");
 
     const personals =
-        monthEvents.filter(
-            event =>
-                event.category === "personal"
-        );
+        monthEvents.filter(event => event.category === "personal");
 
 
     setText("todayCount", todayEvents.length);
-
     setText("monthCount", monthEvents.length);
-
     setText("classCount", classes.length);
-
     setText("examCount", exams.length);
-
     setText("assignmentCount", assignments.length);
-
     setText("projectCount", projects.length);
-
     setText("presentationCount", presentations.length);
-
     setText("personalCount", personals.length);
 
 }
 
-/* =========================================================
-   SET TEXT
-========================================================= */
 
 function setText(id, value) {
 
-    const element =
-        document.getElementById(id);
-
+    const element = document.getElementById(id);
 
     if (!element) return;
 
-
     element.textContent =
-
         state.language === "bn"
-
             ? toBanglaNumber(value)
-
             : value;
 
 }
@@ -5413,21 +3777,17 @@ const DEFAULT_HOLIDAYS_2026 = [
 ];
 
 
-const BANGLADESH_HOLIDAYS =
-    DEFAULT_HOLIDAYS_2026;
+const BANGLADESH_HOLIDAYS = DEFAULT_HOLIDAYS_2026;
 
 
 function getHolidayData() {
 
-    return Array.isArray(
-        BANGLADESH_HOLIDAYS
-    )
-
+    return Array.isArray(BANGLADESH_HOLIDAYS)
         ? BANGLADESH_HOLIDAYS
-
         : [];
 
 }
+
 
 function getHolidayForDate(date) {
 
@@ -5435,9 +3795,7 @@ function getHolidayForDate(date) {
 
     return getHolidayData().find(holiday => {
 
-        if (!holiday.date) {
-            return false;
-        }
+        if (!holiday.date) return false;
 
         if (!holiday.endDate) {
             return holiday.date === dateString;
@@ -5452,176 +3810,101 @@ function getHolidayForDate(date) {
 
 }
 
+
 function renderHolidays() {
 
-    const container =
-        document.getElementById(
-            "holidayList"
-        );
-
+    const container = document.getElementById("holidayList");
 
     if (!container) return;
-
 
     container.innerHTML = "";
 
 
     const holidays =
-        [
-            ...getHolidayData()
-        ]
-
-            .sort(
-                (a, b) =>
-                    a.date.localeCompare(
-                        b.date
-                    )
-            );
+        [...getHolidayData()].sort(
+            (a, b) => a.date.localeCompare(b.date)
+        );
 
 
-    if (
-        !holidays.length
-    ) {
+    if (!holidays.length) {
 
         container.innerHTML =
-
-            `<div class="holiday-empty">
-
-                ${escapeHTML(
-                    t("noHolidays")
-                )}
-
-            </div>`;
+            `<div class="holiday-empty">${escapeHTML(t("noHolidays"))}</div>`;
 
         return;
 
     }
 
 
-    holidays.forEach(
-        holiday => {
+    holidays.forEach(holiday => {
 
-            const item =
-                document.createElement(
-                    "div"
-                );
+        const item = document.createElement("div");
+
+        item.className = "holiday-item";
 
 
-            item.className =
-                "holiday-item";
+        const date = parseDate(holiday.date);
 
 
-            const date =
-                parseDate(
-                    holiday.date
-                );
+        const dayName =
+            date
+                ? date.toLocaleDateString(
+                    state.language === "bn" ? "bn-BD" : "en-US",
+                    { weekday: "long" }
+                )
+                : "";
 
 
-            const dayName =
-                date
-
-                    ? date.toLocaleDateString(
-
-                        state.language === "bn"
-
-                            ? "bn-BD"
-
-                            : "en-US",
-
-                        {
-                            weekday:
-                                "long"
-                        }
-
-                    )
-
-                    : "";
+        const formattedDate =
+            date
+                ? date.toLocaleDateString(
+                    state.language === "bn" ? "bn-BD" : "en-US",
+                    {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric"
+                    }
+                )
+                : holiday.date;
 
 
-            const formattedDate =
-                date
+        const holidayName =
 
-                    ? date.toLocaleDateString(
+            state.language === "bn"
 
-                        state.language === "bn"
+                ? (holiday.titleBn || holiday.title)
 
-                            ? "bn-BD"
-
-                            : "en-US",
-
-                        {
-
-                            month:
-                                "long",
-
-                            day:
-                                "numeric",
-
-                            year:
-                                "numeric"
-
-                        }
-
-                    )
-
-                    : holiday.date;
+                : holiday.title;
 
 
-            const holidayName =
+        item.innerHTML = `
 
-                state.language === "bn"
+            <div class="holiday-date">
+                ${escapeHTML(formattedDate)}
+            </div>
 
-                    ? (
-                        holiday.titleBn ||
-                        holiday.title
-                    )
+            ${state.language === "bn" && date
 
-                    : holiday.title;
+                ? `<div class="holiday-bangla-date">
+                    ${escapeHTML(formatBanglaDate(date))}
+                </div>`
 
+                : ""}
 
-            item.innerHTML = `
+            <div class="holiday-name">
+                ${escapeHTML(holidayName)}
+            </div>
 
-                <div class="holiday-date">
-                    ${escapeHTML(
-                        formattedDate
-                    )}
-                </div>
+            <div class="holiday-day">
+                ${escapeHTML(dayName)}
+            </div>
 
-                ${
-                    state.language === "bn" && date
-
-                        ? `<div class="holiday-bangla-date">
-                            ${escapeHTML(
-                                formatBanglaDate(
-                                    date
-                                )
-                            )}
-                        </div>`
-
-                        : ""
-                }
-
-                <div class="holiday-name">
-                    ${escapeHTML(
-                        holidayName
-                    )}
-                </div>
-
-                <div class="holiday-day">
-                    ${escapeHTML(
-                        dayName
-                    )}
-                </div>
-
-            `;
+        `;
 
 
-            container.appendChild(
-                item
-            );
+        container.appendChild(item);
 
-        }
-    );
+    });
 
 }
 
@@ -5632,92 +3915,36 @@ function renderHolidays() {
 
 function toggleAlarmFields() {
 
-    const checkbox =
-        document.getElementById(
-            "eventReminder"
-        );
+    const checkbox = document.getElementById("eventReminder");
+    const settings = document.getElementById("alarmSettings");
+
+    if (!checkbox || !settings) return;
 
 
-    const settings =
-        document.getElementById(
-            "alarmSettings"
-        );
+    settings.classList.toggle("hidden", !checkbox.checked);
 
 
-    if (
-        !checkbox ||
-        !settings
-    ) {
+    if (checkbox.checked) {
 
-        return;
-
-    }
+        const dateInput = document.getElementById("customAlarmDate");
+        const timeInput = document.getElementById("customAlarmTime");
 
 
-    settings.classList.toggle(
-        "hidden",
-        !checkbox.checked
-    );
-
-
-    if (
-        checkbox.checked
-    ) {
-
-        const dateInput =
-            document.getElementById(
-                "customAlarmDate"
-            );
-
-
-        const timeInput =
-            document.getElementById(
-                "customAlarmTime"
-            );
-
-
-        if (
-            dateInput &&
-            !dateInput.value
-        ) {
+        if (dateInput && !dateInput.value) {
 
             dateInput.value =
-                document.getElementById(
-                    "eventDate"
-                ).value ||
-
-                formatDate(
-                    new Date()
-                );
+                document.getElementById("eventDate").value ||
+                formatDate(new Date());
 
         }
 
 
-        if (
-            timeInput &&
-            !timeInput.value
-        ) {
+        if (timeInput && !timeInput.value) {
 
-            const future =
-                new Date(
-                    Date.now() +
-                    60 * 1000
-                );
-
+            const future = new Date(Date.now() + 60 * 1000);
 
             timeInput.value =
-
-                `${String(
-                    future.getHours()
-                ).padStart(
-                    2,
-                    "0"
-                )}:${String(
-                    future.getMinutes()
-                ).padStart(
-                    2,
-                    "0"
-                )}`;
+                `${String(future.getHours()).padStart(2, "0")}:${String(future.getMinutes()).padStart(2, "0")}`;
 
         }
 
@@ -5732,96 +3959,45 @@ function toggleAlarmFields() {
 
 function checkAlarms() {
 
-    const now =
-        new Date();
+    const now = new Date();
 
-
-    if (
-        state.activeAlarmEvent
-    ) {
-
-        return;
-
-    }
+    if (state.activeAlarmEvent) return;
 
 
     let changed = false;
 
 
-    state.events.forEach(
-        event => {
+    state.events.forEach(event => {
 
-            if (
+        if (
+            !event.reminder ||
+            !event.alarmDate ||
+            !event.alarmTime
+        ) return;
 
-                !event.reminder ||
-
-                !event.alarmDate ||
-
-                !event.alarmTime
-
-            ) {
-
-                return;
-
-            }
+        if (event.alarmTriggered) return;
 
 
-            if (
-                event.alarmTriggered
-            ) {
+        const alarmDate =
+            new Date(`${event.alarmDate}T${event.alarmTime}:00`);
 
-                return;
-
-            }
+        if (Number.isNaN(alarmDate.getTime())) return;
 
 
-            const alarmDate =
-                new Date(
+        if (now >= alarmDate) {
 
-                    `${event.alarmDate}T${event.alarmTime}:00`
-
-                );
-
-
-            if (
-
-                Number.isNaN(
-                    alarmDate.getTime()
-                )
-
-            ) {
-
-                return;
-
-            }
-
-
-            if (
-                now >= alarmDate
-            ) {
-
-                event.alarmTriggered =
-                    true;
-
-
-                changed = true;
-
-
-                showAlarm(
-                    event
-                );
-
-            }
+            event.alarmTriggered = true;
+            changed = true;
+            showAlarm(event);
 
         }
-    );
+
+    });
 
 
     if (changed) {
-
         saveEvents();
         renderCalendar();
-
     }
 
 }
@@ -5833,149 +4009,71 @@ function checkAlarms() {
 
 function showAlarm(event) {
 
-    if (
-        state.activeAlarmEvent
-    ) {
+    if (state.activeAlarmEvent) return;
 
-        return;
-
-    }
+    state.activeAlarmEvent = event;
 
 
-    state.activeAlarmEvent =
-        event;
-
-
-    const title =
-        document.getElementById(
-            "alarmTitle"
-        );
-
-
-    const message =
-        document.getElementById(
-            "alarmMessage"
-        );
-
-
-    const info =
-        document.getElementById(
-            "alarmEventInfo"
-        );
+    const title = document.getElementById("alarmTitle");
+    const message = document.getElementById("alarmMessage");
+    const info = document.getElementById("alarmEventInfo");
 
 
     if (title) {
-
-        title.textContent =
-            t("alarm");
-
+        title.textContent = t("alarm");
     }
 
 
     if (message) {
-
         message.textContent =
-
             state.language === "bn"
-
                 ? `${event.title} এর সময় হয়েছে।`
-
                 : `${event.title} is scheduled now.`;
-
     }
 
 
     if (info) {
 
-        const date =
-            parseDate(
-                event.date
-            );
-
+        const date = parseDate(event.date);
 
         const formattedDate =
             date
-
                 ? date.toLocaleDateString(
-
-                    state.language === "bn"
-
-                        ? "bn-BD"
-
-                        : "en-US",
-
+                    state.language === "bn" ? "bn-BD" : "en-US",
                     {
-
-                        weekday:
-                            "long",
-
-                        year:
-                            "numeric",
-
-                        month:
-                            "long",
-
-                        day:
-                            "numeric"
-
+                        weekday: "long",
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric"
                     }
-
                 )
-
                 : event.date;
 
 
         info.innerHTML = `
 
-            <strong>
-                ${escapeHTML(
-                    event.title
-                )}
-            </strong>
+            <strong>${escapeHTML(event.title)}</strong>
 
             <br>
 
-            ${escapeHTML(
-                formattedDate
-            )}
+            ${escapeHTML(formattedDate)}
 
-            ${
-                state.language === "bn" && date
+            ${state.language === "bn" && date
+                ? `<br>${escapeHTML(formatBanglaDate(date))}`
+                : ""}
 
-                    ? `<br>${escapeHTML(
-                        formatBanglaDate(
-                            date
-                        )
-                    )}`
-
-                    : ""
-            }
-
-            ${
-                event.start
-
-                    ? ` • ${escapeHTML(
-                        event.start
-                    )}`
-
-                    : ""
-            }
+            ${event.start
+                ? ` • ${escapeHTML(event.start)}`
+                : ""}
 
         `;
 
     }
 
 
-    document.getElementById(
-        "alarmModal"
-    )?.classList.add(
-        "active"
-    );
+    document.getElementById("alarmModal")?.classList.add("active");
 
-
-    playAlarm(
-        event.alarmSound
-    );
+    playAlarm(event.alarmSound);
 
 }
 
@@ -5987,24 +4085,13 @@ function showAlarm(event) {
 function testAlarm() {
 
     playAlarm(
-
-        document.getElementById(
-            "alarmSound"
-        )?.value ||
-
-        "default"
-
+        document.getElementById("alarmSound")?.value || "default"
     );
 
-
     showToast(
-
         state.language === "bn"
-
             ? "অ্যালার্ম সাউন্ড বাজছে..."
-
             : "Alarm sound playing..."
-
     );
 
 }
@@ -6014,9 +4101,7 @@ function testAlarm() {
    PLAY ALARM
 ========================================================= */
 
-function playAlarm(
-    sound = "default"
-) {
+function playAlarm(sound = "default") {
 
     try {
 
@@ -6024,20 +4109,15 @@ function playAlarm(
 
 
         const AudioContext =
-            window.AudioContext ||
-            window.webkitAudioContext;
+            window.AudioContext || window.webkitAudioContext;
 
 
         if (!AudioContext) {
 
             showToast(
-
                 state.language === "bn"
-
                     ? "এই ডিভাইসে অডিও সাপোর্ট নেই।"
-
                     : "Audio is not supported on this device."
-
             );
 
             return;
@@ -6045,237 +4125,90 @@ function playAlarm(
         }
 
 
-        const context =
-            new AudioContext();
+        const context = new AudioContext();
+
+        state.alarmAudioContext = context;
 
 
-        state.alarmAudioContext =
-            context;
-
-
-        if (
-            context.state ===
-            "suspended"
-        ) {
-
-            context.resume()
-                .catch(
-                    error =>
-                        console.error(
-                            error
-                        )
-                );
-
+        if (context.state === "suspended") {
+            context.resume().catch(error => console.error(error));
         }
 
 
-        const oscillator =
-            context.createOscillator();
+        const oscillator = context.createOscillator();
+        const gain = context.createGain();
+
+        state.alarmOscillator = oscillator;
+        state.alarmGain = gain;
 
 
-        const gain =
-            context.createGain();
-
-
-        state.alarmOscillator =
-            oscillator;
-
-
-        state.alarmGain =
-            gain;
-
-
-        if (
-            sound === "digital"
-        ) {
-
-            oscillator.type =
-                "square";
-
-        }
-
-        else if (
-            sound === "bell"
-        ) {
-
-            oscillator.type =
-                "sine";
-
-        }
-
-        else if (
-            sound === "beep"
-        ) {
-
-            oscillator.type =
-                "square";
-
-        }
-
-        else {
-
-            oscillator.type =
-                "sine";
-
+        if (sound === "digital") {
+            oscillator.type = "square";
+        } else if (sound === "bell") {
+            oscillator.type = "sine";
+        } else if (sound === "beep") {
+            oscillator.type = "square";
+        } else {
+            oscillator.type = "sine";
         }
 
 
-        if (
-            sound === "bell"
-        ) {
-
-            oscillator.frequency.value =
-                880;
-
-        }
-
-        else if (
-            sound === "beep"
-        ) {
-
-            oscillator.frequency.value =
-                660;
-
-        }
-
-        else if (
-            sound === "digital"
-        ) {
-
-            oscillator.frequency.value =
-                1000;
-
-        }
-
-        else {
-
-            oscillator.frequency.value =
-                740;
-
+        if (sound === "bell") {
+            oscillator.frequency.value = 880;
+        } else if (sound === "beep") {
+            oscillator.frequency.value = 660;
+        } else if (sound === "digital") {
+            oscillator.frequency.value = 1000;
+        } else {
+            oscillator.frequency.value = 740;
         }
 
 
-        gain.gain.setValueAtTime(
-
-            0.0001,
-
-            context.currentTime
-
-        );
+        gain.gain.setValueAtTime(0.0001, context.currentTime);
 
 
-        oscillator.connect(
-            gain
-        );
-
-
-        gain.connect(
-            context.destination
-        );
-
+        oscillator.connect(gain);
+        gain.connect(context.destination);
 
         oscillator.start();
 
 
         gain.gain.exponentialRampToValueAtTime(
-
             0.25,
-
-            context.currentTime +
-            0.05
-
+            context.currentTime + 0.05
         );
 
 
-        state.alarmInterval =
-            setInterval(
-                () => {
+        state.alarmInterval = setInterval(() => {
 
-                    if (
-
-                        !state.alarmOscillator ||
-
-                        !state.alarmAudioContext
-
-                    ) {
-
-                        return;
-
-                    }
+            if (!state.alarmOscillator || !state.alarmAudioContext) return;
 
 
-                    const currentContext =
-                        state.alarmAudioContext;
+            const currentContext = state.alarmAudioContext;
+
+            let frequency;
 
 
-                    let frequency;
+            if (sound === "bell") {
+                frequency = Math.random() > 0.5 ? 880 : 660;
+            } else if (sound === "digital") {
+                frequency = Math.random() > 0.5 ? 1000 : 1400;
+            } else {
+                frequency = Math.random() > 0.5 ? 880 : 660;
+            }
 
 
-                    if (
-                        sound === "bell"
-                    ) {
-
-                        frequency =
-
-                            Math.random() > 0.5
-
-                                ? 880
-
-                                : 660;
-
-                    }
-
-                    else if (
-                        sound === "digital"
-                    ) {
-
-                        frequency =
-
-                            Math.random() > 0.5
-
-                                ? 1000
-
-                                : 1400;
-
-                    }
-
-                    else {
-
-                        frequency =
-
-                            Math.random() > 0.5
-
-                                ? 880
-
-                                : 660;
-
-                    }
-
-
-                    state.alarmOscillator
-                        .frequency
-                        .setValueAtTime(
-
-                            frequency,
-
-                            currentContext.currentTime
-
-                        );
-
-                },
-
-                500
+            state.alarmOscillator.frequency.setValueAtTime(
+                frequency,
+                currentContext.currentTime
             );
+
+        }, 500);
 
     }
 
     catch (error) {
-
-        console.error(
-            "Alarm audio error:",
-            error
-        );
-
+        console.error("Alarm audio error:", error);
     }
 
 }
@@ -6287,75 +4220,39 @@ function playAlarm(
 
 function stopAlarmSound() {
 
-    if (
-        state.alarmInterval
-    ) {
-
-        clearInterval(
-            state.alarmInterval
-        );
-
-
-        state.alarmInterval =
-            null;
-
+    if (state.alarmInterval) {
+        clearInterval(state.alarmInterval);
+        state.alarmInterval = null;
     }
 
 
     try {
 
-        if (
-            state.alarmOscillator
-        ) {
-
+        if (state.alarmOscillator) {
             state.alarmOscillator.stop();
-
             state.alarmOscillator.disconnect();
-
-            state.alarmOscillator =
-                null;
-
+            state.alarmOscillator = null;
         }
 
-    }
+    } catch (error) {
 
-    catch (error) {
-
-        console.warn(
-            "Unable to stop oscillator:",
-            error
-        );
-
-        state.alarmOscillator =
-            null;
+        console.warn("Unable to stop oscillator:", error);
+        state.alarmOscillator = null;
 
     }
 
 
     try {
 
-        if (
-            state.alarmAudioContext
-        ) {
-
+        if (state.alarmAudioContext) {
             state.alarmAudioContext.close();
-
-            state.alarmAudioContext =
-                null;
-
+            state.alarmAudioContext = null;
         }
 
-    }
+    } catch (error) {
 
-    catch (error) {
-
-        console.warn(
-            "Unable to close audio context:",
-            error
-        );
-
-        state.alarmAudioContext =
-            null;
+        console.warn("Unable to close audio context:", error);
+        state.alarmAudioContext = null;
 
     }
 
@@ -6363,28 +4260,19 @@ function stopAlarmSound() {
 
 
 /* =========================================================
-   DISMISS ALARM
+   DISMISS / SNOOZE ALARM
 ========================================================= */
 
 function dismissAlarm() {
 
     stopAlarmSound();
+    closeModal("alarmModal");
 
-
-    closeModal(
-        "alarmModal"
-    );
-
-
-    state.activeAlarmEvent =
-        null;
+    state.activeAlarmEvent = null;
 
 }
 
 
-/* =========================================================
-   SNOOZE ALARM
-========================================================= */
 async function snoozeAlarm() {
 
     const event = state.activeAlarmEvent;
@@ -6393,11 +4281,9 @@ async function snoozeAlarm() {
 
     stopAlarmSound();
 
-    const snooze =
-        new Date(Date.now() + 5 * 60 * 1000);
+    const snooze = new Date(Date.now() + 5 * 60 * 1000);
 
-    event.alarmDate =
-        formatDate(snooze);
+    event.alarmDate = formatDate(snooze);
 
     event.alarmTime =
         `${String(snooze.getHours()).padStart(2, "0")}:${String(snooze.getMinutes()).padStart(2, "0")}`;
@@ -6417,116 +4303,57 @@ async function snoozeAlarm() {
             ? "অ্যালার্ম ৫ মিনিটের জন্য snooze করা হয়েছে।"
             : "Alarm snoozed for 5 minutes."
     );
+
 }
 
 
 /* =========================================================
-   EXPORT EVENTS
+   EXPORT / IMPORT EVENTS
 ========================================================= */
 
 function exportEvents() {
 
     try {
 
-        const data =
-            JSON.stringify(
+        const data = JSON.stringify(state.events, null, 2);
 
-                state.events,
-
-                null,
-
-                2
-
-            );
-
-
-        const blob =
-            new Blob(
-
-                [data],
-
-                {
-                    type:
-                        "application/json"
-                }
-
-            );
-
-
-        const url =
-            URL.createObjectURL(
-                blob
-            );
-
-
-        const link =
-            document.createElement(
-                "a"
-            );
-
-
-        link.href =
-            url;
-
-
-        link.download =
-            "bd-student-calendar-events.json";
-
-
-        document.body.appendChild(
-            link
+        const blob = new Blob(
+            [data],
+            { type: "application/json" }
         );
 
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = "bd-student-calendar-events.json";
+
+        document.body.appendChild(link);
 
         link.click();
-
-
         link.remove();
 
 
-        setTimeout(
-
-            () => {
-
-                URL.revokeObjectURL(
-                    url
-                );
-
-            },
-
-            100
-
-        );
+        setTimeout(() => URL.revokeObjectURL(url), 100);
 
 
         showToast(
-
             state.language === "bn"
-
                 ? "ইভেন্ট সফলভাবে এক্সপোর্ট হয়েছে।"
-
                 : "Events exported successfully."
-
         );
 
     }
 
     catch (error) {
 
-        console.error(
-            "Export error:",
-            error
-        );
-
+        console.error("Export error:", error);
 
         showToast(
-
             state.language === "bn"
-
                 ? "এক্সপোর্ট করা যায়নি।"
-
                 : "Unable to export events."
-
         );
 
     }
@@ -6534,211 +4361,114 @@ function exportEvents() {
 }
 
 
-/* =========================================================
-   IMPORT EVENTS
-========================================================= */
-
 function importEvents(event) {
 
-    const file =
-        event.target.files?.[0];
-
+    const file = event.target.files?.[0];
 
     if (!file) return;
 
 
-    const reader =
-        new FileReader();
+    const reader = new FileReader();
 
 
-    reader.onload =
-        () => {
+    reader.onload = () => {
 
-            try {
+        try {
 
-                const imported =
-                    JSON.parse(
-                        reader.result
-                    );
+            const imported = JSON.parse(reader.result);
 
 
-                if (
-                    !Array.isArray(
-                        imported
-                    )
-                ) {
-
-                    throw new Error(
-                        "Invalid format"
-                    );
-
-                }
-
-
-                const validEvents =
-
-                    imported
-
-                        .map(
-                            normalizeEvent
-                        )
-
-                        .filter(
-                            item =>
-                                item &&
-                                item.title &&
-                                item.date
-                        );
-
-
-                if (
-                    validEvents.length !==
-                    imported.length
-                ) {
-
-                    throw new Error(
-                        "Invalid event data"
-                    );
-
-                }
-
-
-                const confirmed =
-                    confirm(
-
-                        state.language === "bn"
-
-                            ? "বর্তমান ইভেন্টগুলো replace করে import করা হবে। আপনি কি নিশ্চিত?"
-
-                            : "Replace current events with imported events?"
-
-                    );
-
-
-                if (
-                    !confirmed
-                ) {
-
-                    return;
-
-                }
-
-
-                const usedIds =
-                    new Set();
-
-
-                state.events =
-                    validEvents.map(
-                        item => {
-
-                            let id =
-                                String(
-                                    item.id
-                                );
-
-
-                            if (
-                                usedIds.has(id)
-                            ) {
-
-                                id =
-                                    Date.now()
-                                    .toString() +
-
-                                    Math.random()
-                                        .toString(36)
-                                        .slice(2);
-
-                            }
-
-
-                            usedIds.add(
-                                id
-                            );
-
-
-                            return {
-
-                                ...item,
-
-                                id
-
-                            };
-
-                        }
-                    );
-
-
-                saveEvents();
-
-
-                renderCalendar();
-
-                renderUpcoming();
-                renderPastEvents();
-
-                updateDashboard();
-
-
-                showToast(
-
-                    state.language === "bn"
-
-                        ? "ইভেন্ট সফলভাবে import হয়েছে।"
-
-                        : "Events imported successfully."
-
-                );
-
+            if (!Array.isArray(imported)) {
+                throw new Error("Invalid format");
             }
 
-            catch (error) {
 
-                console.error(
-                    "Import error:",
-                    error
-                );
+            const validEvents =
+                imported
+                    .map(normalizeEvent)
+                    .filter(item => item && item.title && item.date);
 
 
-                showToast(
-
-                    state.language === "bn"
-
-                        ? "ভুল JSON ফাইল।"
-
-                        : "Invalid JSON file."
-
-                );
-
+            if (validEvents.length !== imported.length) {
+                throw new Error("Invalid event data");
             }
 
-        };
 
-
-    reader.onerror =
-        () => {
-
-            showToast(
-
+            const confirmed = confirm(
                 state.language === "bn"
-
-                    ? "ফাইল পড়া যায়নি।"
-
-                    : "Unable to read file."
-
+                    ? "বর্তমান ইভেন্টগুলো replace করে import করা হবে। আপনি কি নিশ্চিত?"
+                    : "Replace current events with imported events?"
             );
 
-        };
+
+            if (!confirmed) return;
 
 
-    reader.readAsText(
-        file
-    );
+            const usedIds = new Set();
 
 
-    event.target.value =
-        "";
+            state.events =
+                validEvents.map(item => {
+
+                    let id = String(item.id);
+
+                    if (usedIds.has(id)) {
+                        id =
+                            Date.now().toString() +
+                            Math.random().toString(36).slice(2);
+                    }
+
+                    usedIds.add(id);
+
+                    return { ...item, id };
+
+                });
+
+
+            saveEvents();
+            renderCalendar();
+            renderUpcoming();
+            renderPastEvents();
+            updateDashboard();
+
+
+            showToast(
+                state.language === "bn"
+                    ? "ইভেন্ট সফলভাবে import হয়েছে।"
+                    : "Events imported successfully."
+            );
+
+        }
+
+        catch (error) {
+
+            console.error("Import error:", error);
+
+            showToast(
+                state.language === "bn"
+                    ? "ভুল JSON ফাইল।"
+                    : "Invalid JSON file."
+            );
+
+        }
+
+    };
+
+
+    reader.onerror = () => {
+
+        showToast(
+            state.language === "bn"
+                ? "ফাইল পড়া যায়নি।"
+                : "Unable to read file."
+        );
+
+    };
+
+
+    reader.readAsText(file);
+
+    event.target.value = "";
 
 }
 
@@ -6747,47 +4477,23 @@ function importEvents(event) {
    TOAST
 ========================================================= */
 
-function showToast(
-    message
-) {
+function showToast(message) {
 
-    const toast =
-        document.getElementById(
-            "toast"
-        );
-
+    const toast = document.getElementById("toast");
 
     if (!toast) return;
 
 
-    toast.textContent =
-        message;
+    toast.textContent = message;
+    toast.classList.add("show");
 
 
-    toast.classList.add(
-        "show"
-    );
+    clearTimeout(showToast.timer);
 
 
-    clearTimeout(
-        showToast.timer
-    );
-
-
-    showToast.timer =
-        setTimeout(
-
-            () => {
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            },
-
-            2500
-
-        );
+    showToast.timer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
 
 }
 
@@ -6796,182 +4502,78 @@ function showToast(
    MODAL BACKDROP CLICK
 ========================================================= */
 
-window.addEventListener(
-    "click",
-    event => {
+window.addEventListener("click", event => {
 
-        if (
+    if (event.target.classList.contains("modal-overlay")) {
 
-            event.target.classList.contains(
-                "modal-overlay"
-            )
+        const modal = event.target;
 
-        ) {
+        if (modal.id === "alarmModal") return;
 
-            const modal =
-                event.target;
-
-
-            if (
-                modal.id ===
-                "alarmModal"
-            ) {
-
-                return;
-
-            }
-
-
-            modal.classList.remove(
-                "active"
-            );
-
-        }
+        modal.classList.remove("active");
 
     }
-);
+
+});
 
 
 /* =========================================================
-   PAGE VISIBILITY
+   PAGE VISIBILITY / BEFORE UNLOAD
 ========================================================= */
 
-document.addEventListener(
-    "visibilitychange",
-    () => {
-
-        if (
-            !document.hidden
-        ) {
-
-            checkAlarms();
-
-        }
-
-    }
-);
+document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) checkAlarms();
+});
 
 
-/* =========================================================
-   BEFORE UNLOAD
-========================================================= */
-
-window.addEventListener(
-    "beforeunload",
-    () => {
-
-        stopAlarmSound();
-
-    }
-);
+window.addEventListener("beforeunload", () => {
+    stopAlarmSound();
+});
 
 
 /* =========================================================
    EXPOSE FUNCTIONS
 ========================================================= */
 
-window.openEventModal =
-    openEventModal;
+window.openEventModal = openEventModal;
+window.editEvent = editEvent;
+window.closeEventModal = closeEventModal;
+window.previousMonth = previousMonth;
+window.nextMonth = nextMonth;
+window.goToday = goToday;
+window.showEventDetails = showEventDetails;
+window.deleteCurrentEvent = deleteCurrentEvent;
+window.testAlarm = testAlarm;
+window.dismissAlarm = dismissAlarm;
+window.snoozeAlarm = snoozeAlarm;
 
+window.getBanglaDate = getBanglaDate;
+window.formatBanglaDate = formatBanglaDate;
+window.formatBanglaShortDate = formatBanglaShortDate;
+window.formatBanglaMonthYear = formatBanglaMonthYear;
 
-window.editEvent =
-    editEvent;
-
-
-window.closeEventModal =
-    closeEventModal;
-
-
-window.previousMonth =
-    previousMonth;
-
-
-window.nextMonth =
-    nextMonth;
-
-
-window.goToday =
-    goToday;
-
-
-window.showEventDetails =
-    showEventDetails;
-
-
-window.deleteCurrentEvent =
-    deleteCurrentEvent;
-
-
-window.testAlarm =
-    testAlarm;
-
-
-window.dismissAlarm =
-    dismissAlarm;
-
-
-window.snoozeAlarm =
-    snoozeAlarm;
-
-
-/* =========================================================
-   EXPOSE BANGLA DATE FUNCTIONS
-========================================================= */
-
-window.getBanglaDate =
-    getBanglaDate;
-
-
-window.formatBanglaDate =
-    formatBanglaDate;
-
-
-window.formatBanglaShortDate =
-    formatBanglaShortDate;
-
-
-window.formatBanglaMonthYear =
-    formatBanglaMonthYear;
 
 /* =========================================================
    PAST EVENT BUTTONS
 ========================================================= */
 
-const selectAllPastEvents =
-    document.getElementById(
-        "selectAllPastEvents"
-    );
-
+const selectAllPastEvents = document.getElementById("selectAllPastEvents");
 
 if (selectAllPastEvents) {
-
-    selectAllPastEvents.addEventListener(
-        "click",
-        toggleSelectAllPastEvents
-    );
-
+    selectAllPastEvents.addEventListener("click", toggleSelectAllPastEvents);
 }
 
 
 const deleteSelectedPastEventsBtn =
-    document.getElementById(
-        "deleteSelectedPastEvents"
-    );
-
+    document.getElementById("deleteSelectedPastEvents");
 
 if (deleteSelectedPastEventsBtn) {
-
-    deleteSelectedPastEventsBtn.addEventListener(
-        "click",
-        deleteSelectedPastEvents
-    );
-
+    deleteSelectedPastEventsBtn.addEventListener("click", deleteSelectedPastEvents);
 }
 
 
 /* =========================================================
    ✅ EXPOSE toggleLanguage GLOBALLY
-   যাতে Study Analytics JS থেকে কল করা যায়
 ========================================================= */
 
 window.toggleLanguage = toggleLanguage;
@@ -6979,18 +4581,19 @@ window.toggleLanguage = toggleLanguage;
 
 /* =========================================================
    MOBILE 3-PAGE NAVIGATION SYSTEM
-   Home / Study / Me page switcher
 ========================================================= */
 
 (function initMobilePageNav() {
 
     const bottomNav = document.getElementById('mobileBottomNav');
+
     if (!bottomNav) return;
 
     const navButtons = bottomNav.querySelectorAll('.mobile-nav-btn');
     const STORAGE_KEY = 'campusCalendarCurrentPage';
 
     function setActivePage(pageName) {
+
         document.body.setAttribute('data-current-page', pageName);
 
         navButtons.forEach(function(btn) {
@@ -7006,6 +4609,7 @@ window.toggleLanguage = toggleLanguage;
         } catch (e) {}
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
+
     }
 
     navButtons.forEach(function(btn) {
@@ -7018,6 +4622,7 @@ window.toggleLanguage = toggleLanguage;
     });
 
     var lastPage = 'home';
+
     try {
         var saved = localStorage.getItem(STORAGE_KEY);
         if (saved && ['home', 'study', 'me'].indexOf(saved) !== -1) {
