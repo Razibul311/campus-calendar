@@ -5069,62 +5069,50 @@ body.dark .study-report-empty {
 }
 
 /* =========================================================
-   MODAL FIX — Mobile
-   Study Task + Event Modal-এর overflow, overlap, কাটা সমস্যার সমাধান
+   MODAL FIX v2 — Full width + centered
+   আগের modal fix override করবে
 ========================================================= */
 
 @media (max-width: 768px) {
 
     .modal-overlay {
+        padding: 0 !important;
         align-items: flex-end !important;
         justify-content: center !important;
-        padding: 0 !important;
         overflow-x: hidden !important;
     }
 
     .modal {
-        width: 100% !important;
-        max-width: 100% !important;
-        max-height: 92vh !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
         margin: 0 !important;
+        padding: 0 !important;
         border-radius: 20px 20px 0 0 !important;
         overflow-x: hidden !important;
         overflow-y: auto !important;
         box-sizing: border-box !important;
+        max-height: 92vh !important;
     }
 
     .modal-header {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        gap: 12px !important;
-        padding: 14px 16px !important;
-        flex-wrap: nowrap !important;
+        padding: 14px 18px !important;
+        gap: 10px !important;
     }
 
     .modal-header h2 {
-        flex: 1 !important;
-        min-width: 0 !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        font-size: 16px !important;
-    }
-
-    .modal-header .close-btn {
-        flex-shrink: 0 !important;
+        font-size: 17px !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
     }
 
     .modal-body {
-        padding: 14px 16px !important;
+        padding: 16px 18px !important;
         box-sizing: border-box !important;
     }
 
     .modal-body label {
-        display: block !important;
-        margin-bottom: 14px !important;
-        font-size: 12px !important;
-        line-height: 1.4 !important;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
     }
 
     .modal-body input,
@@ -5133,114 +5121,36 @@ body.dark .study-report-empty {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
-        margin-top: 6px !important;
-        padding: 10px 12px !important;
-    }
-
-    .modal-body .form-row {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-    }
-
-    .modal-body label > span {
-        display: block !important;
-        margin-bottom: 4px !important;
-    }
-
-    .modal-body small {
-        display: block !important;
-        margin-top: 4px !important;
-        margin-bottom: 8px !important;
-        font-size: 11px !important;
-        line-height: 1.4 !important;
-        color: rgb(var(--text-muted)) !important;
-    }
-
-    .modal-body input[type="range"] {
-        width: 100% !important;
-        margin: 8px 0 !important;
-    }
-
-    .task-progress-value {
-        text-align: right !important;
-        margin-top: -4px !important;
-        margin-bottom: 8px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 
     .modal-footer {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: flex-end !important;
+        padding: 12px 18px calc(12px + env(safe-area-inset-bottom)) !important;
         gap: 8px !important;
-        padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) !important;
-        flex-wrap: nowrap !important;
-        position: sticky !important;
-        bottom: 0 !important;
-        background: rgb(var(--surface)) !important;
-        border-top: 1px solid rgb(var(--border)) !important;
-        z-index: 5 !important;
-    }
-
-    .modal-footer > span:first-child {
-        display: none !important;
     }
 
     .modal-footer button {
         flex: 1 !important;
         min-width: 0 !important;
-        max-width: none !important;
-        padding: 10px 12px !important;
-        font-size: 13px !important;
-    }
-
-    .alarm-section {
-        margin-top: 14px !important;
-    }
-
-    .alarm-header {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        gap: 10px !important;
-        flex-wrap: wrap !important;
-    }
-
-    .alarm-settings {
-        margin-top: 12px !important;
-    }
-
-    .form-row {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
     }
 }
 
 @media (max-width: 380px) {
+    .modal {
+        width: 100vw !important;
+        max-width: 100vw !important;
+    }
+
     .modal-header {
         padding: 12px 14px !important;
     }
-    .modal-header h2 {
-        font-size: 15px !important;
-    }
+
     .modal-body {
-        padding: 12px 14px !important;
+        padding: 14px !important;
     }
-    .modal-body label {
-        font-size: 11px !important;
-    }
-    .modal-body input,
-    .modal-body select,
-    .modal-body textarea {
-        padding: 9px 10px !important;
-        font-size: 13px !important;
-    }
+
     .modal-footer {
         padding: 10px 14px calc(10px + env(safe-area-inset-bottom)) !important;
-    }
-    .modal-footer button {
-        font-size: 12px !important;
-        padding: 9px 10px !important;
     }
 }
