@@ -4947,21 +4947,13 @@ body.dark .study-report-empty {
     color: rgb(var(--text-muted));
 }
 
-
-
-
-
-
 /* =========================================================
-   📱 PHONE LAYOUT — FORCE ORDER
+   📱 PHONE LAYOUT — Single Column (NEW)
    Mobile (up to 768px)
 ========================================================= */
 
 @media (max-width: 768px) {
 
-    /* =====================================================
-       LAYOUT — Single Column, সব sections এক নিচে
-    ===================================================== */
     .layout {
         display: flex !important;
         flex-direction: column !important;
@@ -4969,81 +4961,14 @@ body.dark .study-report-empty {
         width: 100% !important;
     }
 
-    /* Main column + Sidebar - both full width */
     .layout > div,
     .layout > aside {
-        display: contents !important;
-        /* "contents" দিলে parent element invisible হয়ে যায়
-           কিন্তু ভিতরের সব sections সরাসরি layout-এর child হয়ে যায় */
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
     }
 
-    /* =====================================================
-       ORDER — আপনার চাওয়া sequence
-       ===================================================== */
-
-    /* 1. Calendar */
-    .calendar-card {
-        order: 1 !important;
-    }
-
-    /* 2. Bangladesh Holidays */
-    .bangladesh-holidays {
-        order: 2 !important;
-    }
-
-    /* 3. Quick Add (প্রথম side-card যেটা Quick Add) */
-    .sidebar > .side-card:nth-of-type(1) {
-        order: 3 !important;
-    }
-
-    /* 4. Upcoming Events */
-    .sidebar > .side-card:nth-of-type(2) {
-        order: 4 !important;
-    }
-
-    /* 5. Past Events */
-    .sidebar > .side-card:nth-of-type(3) {
-        order: 5 !important;
-    }
-
-    /* 6. Study Tasks */
-    .study-task-card {
-        order: 6 !important;
-    }
-
-    /* 7. Study Analytics */
-    .study-analytics-card {
-        order: 7 !important;
-    }
-
-    /* 8. CGPA Calculator */
-    .cgpa-calculator-card {
-        order: 8 !important;
-    }
-
-    /* 9. Daily Diary */
-    .daily-diary-card {
-        order: 9 !important;
-    }
-
-    /* 10. Daily Study Report */
-    .daily-study-report-card {
-        order: 10 !important;
-    }
-
-    /* 11. Weekly Study Report */
-    .weekly-study-report-card {
-        order: 11 !important;
-    }
-
-    /* 12. Completed Subjects */
-    .completed-subjects-container {
-        order: 12 !important;
-    }
-
-    /* =====================================================
-       FORCE - সব section full width
-    ===================================================== */
     .calendar-card,
     .bangladesh-holidays,
     .side-card,
@@ -5052,12 +4977,14 @@ body.dark .study-report-empty {
     .cgpa-calculator-card,
     .daily-diary-card,
     .daily-study-report-card,
-    .weekly-study-report-card {
+    .weekly-study-report-card,
+    .completed-subjects-container {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
     }
 }
+
 /* =========================================================
    BOTTOM NAVIGATION
 ========================================================= */
@@ -5138,5 +5065,182 @@ body.dark .study-report-empty {
 @media (min-width: 769px) {
     .bottom-nav {
         display: none;
+    }
+}
+
+/* =========================================================
+   MODAL FIX — Mobile
+   Study Task + Event Modal-এর overflow, overlap, কাটা সমস্যার সমাধান
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .modal-overlay {
+        align-items: flex-end !important;
+        justify-content: center !important;
+        padding: 0 !important;
+        overflow-x: hidden !important;
+    }
+
+    .modal {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 92vh !important;
+        margin: 0 !important;
+        border-radius: 20px 20px 0 0 !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    .modal-header {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 12px !important;
+        padding: 14px 16px !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .modal-header h2 {
+        flex: 1 !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        font-size: 16px !important;
+    }
+
+    .modal-header .close-btn {
+        flex-shrink: 0 !important;
+    }
+
+    .modal-body {
+        padding: 14px 16px !important;
+        box-sizing: border-box !important;
+    }
+
+    .modal-body label {
+        display: block !important;
+        margin-bottom: 14px !important;
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+    }
+
+    .modal-body input,
+    .modal-body select,
+    .modal-body textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin-top: 6px !important;
+        padding: 10px 12px !important;
+    }
+
+    .modal-body .form-row {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .modal-body label > span {
+        display: block !important;
+        margin-bottom: 4px !important;
+    }
+
+    .modal-body small {
+        display: block !important;
+        margin-top: 4px !important;
+        margin-bottom: 8px !important;
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+        color: rgb(var(--text-muted)) !important;
+    }
+
+    .modal-body input[type="range"] {
+        width: 100% !important;
+        margin: 8px 0 !important;
+    }
+
+    .task-progress-value {
+        text-align: right !important;
+        margin-top: -4px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .modal-footer {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 8px !important;
+        padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) !important;
+        flex-wrap: nowrap !important;
+        position: sticky !important;
+        bottom: 0 !important;
+        background: rgb(var(--surface)) !important;
+        border-top: 1px solid rgb(var(--border)) !important;
+        z-index: 5 !important;
+    }
+
+    .modal-footer > span:first-child {
+        display: none !important;
+    }
+
+    .modal-footer button {
+        flex: 1 !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        padding: 10px 12px !important;
+        font-size: 13px !important;
+    }
+
+    .alarm-section {
+        margin-top: 14px !important;
+    }
+
+    .alarm-header {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .alarm-settings {
+        margin-top: 12px !important;
+    }
+
+    .form-row {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .modal-header {
+        padding: 12px 14px !important;
+    }
+    .modal-header h2 {
+        font-size: 15px !important;
+    }
+    .modal-body {
+        padding: 12px 14px !important;
+    }
+    .modal-body label {
+        font-size: 11px !important;
+    }
+    .modal-body input,
+    .modal-body select,
+    .modal-body textarea {
+        padding: 9px 10px !important;
+        font-size: 13px !important;
+    }
+    .modal-footer {
+        padding: 10px 14px calc(10px + env(safe-area-inset-bottom)) !important;
+    }
+    .modal-footer button {
+        font-size: 12px !important;
+        padding: 9px 10px !important;
     }
 }
