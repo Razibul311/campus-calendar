@@ -5152,3 +5152,79 @@ body.dark .study-report-empty {
         padding-bottom: calc(75px + env(safe-area-inset-bottom)) !important;
     }
 }
+
+/* =========================================================
+   📱 MOBILE BOTTOM NAVIGATION — FINAL
+========================================================= */
+
+.mobile-bottom-nav {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .mobile-bottom-nav {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        z-index: 999999 !important;
+        background: rgb(var(--surface)) !important;
+        border-top: 1px solid rgb(var(--border)) !important;
+        padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) !important;
+        justify-content: space-around !important;
+        align-items: center !important;
+        box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.08) !important;
+        width: 100% !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .mobile-bottom-nav .mobile-nav-btn {
+        display: flex !important;
+        flex: 1 1 0% !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 3px !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        color: rgb(var(--text-muted)) !important;
+        font-family: inherit !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        line-height: 1.2 !important;
+        padding: 6px 4px !important;
+        cursor: pointer !important;
+        min-height: 52px !important;
+        width: auto !important;
+        max-width: none !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+    }
+
+    .mobile-bottom-nav .mobile-nav-btn.active {
+        color: rgb(var(--primary)) !important;
+    }
+
+    .mobile-bottom-nav .mobile-nav-icon {
+        display: block !important;
+        font-size: 22px !important;
+        line-height: 1 !important;
+    }
+
+    .mobile-bottom-nav .mobile-nav-label {
+        display: block !important;
+        font-size: 11px !important;
+        line-height: 1.2 !important;
+    }
+
+    body {
+        padding-bottom: calc(75px + env(safe-area-inset-bottom)) !important;
+    }
+}
