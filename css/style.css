@@ -6305,3 +6305,14 @@ body.dark #eventDetails .detail-value {
         font-size: 13px;
     }
 }
+/* 🔥 TEST: Force show eventDetails */
+#eventDetails {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 200px !important;
+    height: auto !important;
+    background: rgba(255, 0, 0, 0.1) !important; /* লাল ব্যাকগ্রাউন্ড — টেস্টের জন্য */
+    padding: 20px !important;
+    border: 2px dashed red !important;
+}
