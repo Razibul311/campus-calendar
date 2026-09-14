@@ -4619,7 +4619,8 @@ function showEventDetails(id) {
 
     }
 
-
+   console.log("📋 Event Details HTML:", html);
+console.log("📋 Container found:", container);
     container.innerHTML =
         html;
 
