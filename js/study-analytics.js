@@ -3734,9 +3734,9 @@ function renderSubjectStudyAnalytics() {
 
                             <span
                                 style="
-                                    font-size:0.8rem;
+                                    font-size:0.7rem;
                                     color:#64748b;
-                                    margin-left:8px;
+                                    margin-left:4px;
                                 "
                             >
                                 ${escapeAnalyticsHTML(
@@ -3744,9 +3744,9 @@ function renderSubjectStudyAnalytics() {
                                         item.totalStudyTime
                                     )
                                 )}
-                            </span>
+                           </span>
 
-                            ${item.targetTime > 0 ? `
+                           */ ${item.targetTime > 0 ? `
                                 <span
                                     style="
                                         font-size:0.7rem;
@@ -3758,7 +3758,7 @@ function renderSubjectStudyAnalytics() {
                                         formatStudyMinutes(item.targetTime)
                                     )})
                                 </span>
-                            ` : ''}
+                            ` : ''}*/
 
                         </div>
 
