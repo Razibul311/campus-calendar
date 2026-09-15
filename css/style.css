@@ -5155,20 +5155,14 @@ body.dark .study-report-empty {
     }
 }
 
-
 /* =========================================================
-   📱 MOBILE FIX v2 — SUBJECT ANALYTICS (Name Visible + No Target)
+   📱 FINAL FIX — SUBJECT ANALYTICS (Target Text Completely Hidden)
    Add this at the very end of style.css or study-task.css
    ========================================================= */
 
 @media (max-width: 600px) {
 
-    /* ১. মেইন কন্টেইনার প্যাডিং */
-    .study-analytics-card {
-        padding: 12px !important;
-    }
-
-    /* ২. সাবজেক্ট রো (Subject Row) */
+    /* ১. সাবজেক্ট রো (Subject Row) ছোট করা */
     .study-analytics-subject-row {
         display: flex !important;
         align-items: center !important;
@@ -5180,7 +5174,7 @@ body.dark .study-report-empty {
         flex-wrap: nowrap !important;
     }
 
-    /* ৩. বাম দিকের সাবজেক্ট ইনফো (নাম + সেশন) */
+    /* ২. সাবজেক্ট ইনফো (নাম + সেশন) */
     .study-analytics-subject-info {
         display: flex !important;
         align-items: center !important;
@@ -5189,33 +5183,30 @@ body.dark .study-report-empty {
         min-width: 0 !important;
     }
 
-    /* ✅ সাবজেক্টের নাম আগের মতোই ফিরিয়ে আনা হয়েছে (কাটা যাবে না) */
+    /* ✅ সাবজেক্টের নাম (Sr, DBMS, Eng) — কখনো কাটা যাবে না */
     .study-analytics-subject-info strong {
         font-size: 13px !important;
         font-weight: 700 !important;
         white-space: nowrap !important;
-        overflow: visible !important;
-        text-overflow: clip !important;
         max-width: none !important; 
         flex-shrink: 0 !important;
         color: rgb(var(--text)) !important;
+        /* ওভারফ্লো রিমুভ */
+        overflow: visible !important;
+        text-overflow: clip !important;
     }
 
-    /* সেশন কাউন্ট (যেমন: 3 sessions) */
+    /* সেশন কাউন্ট (3 sessions) */
     .study-analytics-subject-info span {
         font-size: 10px !important;
         white-space: nowrap !important;
         opacity: 0.8 !important;
         color: rgb(var(--text-muted)) !important;
+        flex-shrink: 0 !important;
     }
 
-    /* ৪. ❌ Target Time বাদ দেওয়া হলো */
-    /* Target লেখাটি লুকিয়ে ফেলা হচ্ছে */
-    .study-analytics-subject-meta span:first-child {
-        display: none !important; 
-    }
-
-    /* ৫. চেকবক্স এবং ১০০% টেক্সট */
+    /* ৩. ❌ Target Time সম্পূর্ণভাবে বাদ দেওয়া */
+    /* মেটা কন্টেইনারে যদি টার্গেট লেখা থাকে, সেটা হাইড করা */
     .study-analytics-subject-meta {
         display: flex !important;
         align-items: center !important;
@@ -5225,6 +5216,15 @@ body.dark .study-report-empty {
         flex-shrink: 0 !important;
     }
 
+    /* এখানে আমরা সরাসরি 'Target' লেখাটি খুঁজে বের করে হাইড করছি */
+    /* যদি টেক্সট 'Target' হয়, তবে সেটি ডিসপ্লে নান হয়ে যাবে */
+    .study-analytics-subject-meta span:first-child,
+    .study-analytics-subject-meta span:contains("Target"),
+    .study-analytics-subject-meta span:contains("(Target") {
+        display: none !important;
+    }
+
+    /* ৪. চেকবক্স এবং ১০০% */
     .study-analytics-subject-meta span:last-child {
         display: flex !important;
         align-items: center !important;
@@ -5233,10 +5233,10 @@ body.dark .study-report-empty {
         font-size: 10px !important;
     }
 
-    /* ৬. ডানদিকের প্রগ্রেস বার (টার্গেট বাদ দেওয়ায় জায়গা বেড়েছে, তাই বার একটু বড়) */
+    /* ৫. প্রগ্রেস বার (এখন একটু বড় করা হয়েছে কারণ টার্গেট লেখা নেই) */
     .study-analytics-subject-bar {
-        width: 60px !important;
-        min-width: 60px !important;
+        width: 70px !important;
+        min-width: 70px !important;
         height: 6px !important;
         flex-shrink: 0 !important;
         margin-left: 4px !important;
@@ -5245,34 +5245,26 @@ body.dark .study-report-empty {
         overflow: hidden !important;
     }
 
-    /* ৭. ডিলিট বাটন (X) */
+    /* ৬. ডিলিট বাটন (X) */
     .study-subject-delete-btn {
         width: 24px !important;
         height: 24px !important;
         font-size: 14px !important;
         flex-shrink: 0 !important;
-        margin-left: 2px !important;
+        margin-left: 4px !important;
         opacity: 0.6 !important;
     }
 
-    /* ৮. সিলেক্ট অল (Select All) */
+    /* ৭. সিলেক্ট অল (Select All) */
     .study-analytics-select-all-container {
         padding: 8px 10px !important;
         margin-bottom: 10px !important;
         border-radius: 8px !important;
     }
-
-    /* ৯. চেকবক্স ছোট করা */
-    input[type="checkbox"] {
-        width: 16px !important;
-        height: 16px !important;
-        margin-right: 4px !important;
-        flex-shrink: 0 !important;
-    }
 }
 
 /* =========================================================
-   📱 VERY SMALL DEVICES (Max 380px) — Extra Compact
+   📱 VERY SMALL DEVICES (Max 380px)
    ========================================================= */
 @media (max-width: 380px) {
     .study-analytics-subject-row {
@@ -5287,23 +5279,13 @@ body.dark .study-report-empty {
     .study-analytics-subject-info span {
         font-size: 9px !important;
     }
-    
+
     .study-analytics-subject-bar {
-        width: 45px !important;
-        min-width: 45px !important;
+        width: 55px !important;
+        min-width: 55px !important;
         height: 5px !important;
     }
-    
-    .study-analytics-subject-meta {
-        font-size: 8px !important;
-    }
-
-    .study-analytics-subject-meta span:last-child {
-        font-size: 9px !important;
-    }
 }
-
-
 
 
 
