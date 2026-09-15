@@ -1,6 +1,6 @@
 {
     "name": "Campus Calendar",
-    "short_name": "Campus Cal",
+    "short_name": "Campus Calender",
     "description": "Student friendly Bangladesh Calendar App with events, study tracker, diary, and CGPA calculator",
     "start_url": "./",
     "scope": "./",
