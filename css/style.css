@@ -5154,98 +5154,137 @@ body.dark .study-report-empty {
         padding: 10px 14px calc(10px + env(safe-area-inset-bottom)) !important;
     }
 }
-
 /* =========================================================
-   📱 MOBILE FIX — Smaller Progress Bar & Session Text
+   📱 MOBILE FIX — EXTRA SMALL Completion & Session Badge
    Add this at the VERY END of style.css or study-task.css
    ========================================================= */
 
 @media (max-width: 600px) {
 
-    /* ১. Progress Bar ছোট করা */
-    .study-analytics-subject-bar {
-        width: 45px !important;        /* আগে 70px ছিল */
-        min-width: 45px !important;
-        height: 5px !important;         /* আগে 6px ছিল */
-        margin-left: 2px !important;
-        border-radius: 3px !important;
-    }
-
-    /* ২. Session টেক্সট ছোট করা (যেমন: 3 sessions) */
-    .study-analytics-subject-info span {
-        font-size: 8.5px !important;     /* আগে 10px ছিল */
-        margin-left: 2px !important;
-    }
-
-    /* ৩. Session টেক্সটের ব্যাকগ্রাউন্ড প্যাডিং কমানো */
-    .study-analytics-subject-meta span {
-        padding: 1px 6px !important;     /* আগে 2px 10px ছিল */
-        font-size: 8.5px !important;
-    }
-
-    /* ৪. চেকবক্স ও ১০০% লেখা ছোট করা */
+    /* Completion ব্যাজ (40% / 100% completion) — আরও ছোট */
     .study-analytics-subject-meta span:last-child {
-        font-size: 8.5px !important;
-        gap: 1px !important;
+        font-size: 6px !important;         /* আগে 7px ছিল */
+        padding: 0px 3px !important;        /* প্যাডিং প্রায় নেই */
+        border-radius: 5px !important;
+        gap: 0px !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        max-width: 42px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        height: 14px !important;
     }
 
-    /* ৫. Delete Button (X) ছোট করা */
-    .study-subject-delete-btn {
-        width: 20px !important;
-        height: 20px !important;
-        font-size: 12px !important;
+    /* Session ব্যাজ — আরও ছোট */
+    .study-analytics-subject-meta span:first-child {
+        font-size: 6px !important;
+        padding: 0px 3px !important;
+        border-radius: 5px !important;
+        line-height: 1 !important;
+        height: 14px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+    }
+
+    /* মেটা কন্টেইনার গ্যাপ */
+    .study-analytics-subject-meta {
+        gap: 2px !important;
+        font-size: 6px !important;
+    }
+
+    /* প্রগ্রেস বার — আরও ছোট */
+    .study-analytics-subject-bar {
+        width: 30px !important;
+        min-width: 30px !important;
+        height: 3.5px !important;
         margin-left: 2px !important;
+        border-radius: 2px !important;
     }
 
-    /* ৬. সাবজেক্ট রো-এর গ্যাপ কমানো */
-    .study-analytics-subject-row {
-        gap: 4px !important;
-        padding: 8px 6px !important;
+    /* ডিলিট বাটন (X) — আরও ছোট */
+    .study-subject-delete-btn {
+        width: 15px !important;
+        height: 15px !important;
+        font-size: 9px !important;
+        margin-left: 1px !important;
     }
 
-    /* ৭. সাবজেক্ট নাম ছোট করা (প্রয়োজনে) */
+    /* সাবজেক্ট নাম */
     .study-analytics-subject-info strong {
-        font-size: 12px !important;
-        margin-right: 2px !important;
+        font-size: 11px !important;
+    }
+
+    /* সেশন টেক্সট (3 sessions) */
+    .study-analytics-subject-info span {
+        font-size: 7px !important;
+        margin-left: 1px !important;
+    }
+
+    /* সাবজেক্ট রো-এর প্যাডিং ও গ্যাপ কমানো */
+    .study-analytics-subject-row {
+        gap: 2px !important;
+        padding: 6px 4px !important;
+        margin-bottom: 4px !important;
+    }
+
+    /* সিলেক্ট অল কন্টেইনার ছোট */
+    .study-analytics-select-all-container {
+        padding: 6px 8px !important;
+        margin-bottom: 8px !important;
+        gap: 6px !important;
     }
 }
 
 /* =========================================================
-   📱 VERY SMALL DEVICES (Max 380px) — Extra Smaller
+   📱 VERY SMALL DEVICES (Max 380px) — Extra EXTRA Small
    ========================================================= */
 
 @media (max-width: 380px) {
 
-    .study-analytics-subject-bar {
-        width: 35px !important;
-        min-width: 35px !important;
-        height: 4px !important;
-    }
-
-    .study-analytics-subject-info span {
-        font-size: 7.5px !important;
-    }
-
-    .study-analytics-subject-meta span {
-        padding: 1px 4px !important;
-        font-size: 7.5px !important;
-    }
-
     .study-analytics-subject-meta span:last-child {
-        font-size: 7.5px !important;
+        font-size: 5.5px !important;
+        padding: 0px 2px !important;
+        max-width: 35px !important;
+        height: 12px !important;
+    }
+
+    .study-analytics-subject-meta span:first-child {
+        font-size: 5.5px !important;
+        padding: 0px 2px !important;
+        height: 12px !important;
+    }
+
+    .study-analytics-subject-meta {
+        gap: 1px !important;
+    }
+
+    .study-analytics-subject-bar {
+        width: 25px !important;
+        min-width: 25px !important;
+        height: 3px !important;
     }
 
     .study-subject-delete-btn {
-        width: 18px !important;
-        height: 18px !important;
-        font-size: 10px !important;
+        width: 14px !important;
+        height: 14px !important;
+        font-size: 8px !important;
     }
 
     .study-analytics-subject-info strong {
-        font-size: 11px !important;
+        font-size: 10px !important;
+    }
+
+    .study-analytics-subject-info span {
+        font-size: 6.5px !important;
+    }
+
+    .study-analytics-subject-row {
+        gap: 2px !important;
+        padding: 5px 3px !important;
     }
 }
-
 
 
 
