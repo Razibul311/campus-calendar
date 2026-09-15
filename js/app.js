@@ -7487,6 +7487,7 @@ function switchPage(pageName) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+window.switchPage = switchPage;
 /* =========================================================
    INIT
 ========================================================= */
@@ -7556,3 +7557,178 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(updateBottomNavLanguage, 300);
 });
 document.addEventListener('languageChanged', updateBottomNavLanguage);
+
+
+
+/* =========================================================
+   📱 ANDROID BACK BUTTON HANDLER
+   Study/Me page → Back → Home page
+   Home page → Back → Close app
+   ========================================================= */
+
+(function () {
+    "use strict";
+
+    let currentPage = "home";
+
+    /* =========================================================
+       PAGE SWITCH করার সময় HISTORY-তে এন্ট্রি যোগ করা
+       ========================================================= */
+
+    function pushPageHistory(pageName) {
+        try {
+            if (pageName !== "home") {
+                history.pushState(
+                    { page: pageName },
+                    "",
+                    "#" + pageName
+                );
+            } else {
+                if (window.location.hash) {
+                    history.replaceState(
+                        { page: "home" },
+                        "",
+                        window.location.pathname
+                    );
+                }
+            }
+        } catch (e) {
+            console.warn("History push failed:", e);
+        }
+    }
+
+    /* =========================================================
+       BACK BUTTON (popstate) HANDLER
+       ========================================================= */
+
+    window.addEventListener("popstate", function (event) {
+
+        const hash = window.location.hash.replace("#", "");
+        const targetPage = event.state && event.state.page
+            ? event.state.page
+            : (hash || "home");
+
+        // যদি বর্তমান পেজ Home না হয়, তাহলে Home-এ যাই
+        if (currentPage !== "home") {
+            goToHomePage();
+
+            try {
+                history.pushState(
+                    { page: "home" },
+                    "",
+                    window.location.pathname
+                );
+            } catch (e) {}
+
+            currentPage = "home";
+            return;
+        }
+
+        // Home page-এ থাকলে browser স্বাভাবিকভাবে back যাবে (app close)
+    });
+
+    /* =========================================================
+       HOME PAGE-এ যাওয়ার ফাংশন
+       ========================================================= */
+
+    function goToHomePage() {
+        // আপনার app.js-এর switchPage() ফাংশন ব্যবহার করি
+        if (typeof window.switchPage === "function") {
+            try {
+                window.switchPage("home");
+                return;
+            } catch (e) {}
+        }
+
+        // Fallback: Bottom nav-এর Home বাটন active করি
+        const navButtons = document.querySelectorAll(".bottom-nav-btn");
+        navButtons.forEach(function (btn) {
+            btn.classList.remove("active");
+            if (btn.getAttribute("data-page") === "home") {
+                btn.classList.add("active");
+            }
+        });
+    }
+
+    /* =========================================================
+       BOTTOM NAV BUTTON-এ CLICK HANDLER
+       ========================================================= */
+
+    function setupBottomNavHistory() {
+        const navButtons = document.querySelectorAll(".bottom-nav-btn");
+
+        navButtons.forEach(function (btn) {
+            btn.removeEventListener("click", handleNavClick);
+            btn.addEventListener("click", handleNavClick);
+        });
+    }
+
+    function handleNavClick(event) {
+        const page = this.getAttribute("data-page");
+
+        if (!page) return;
+
+        if (page !== currentPage) {
+            currentPage = page;
+
+            if (page !== "home") {
+                pushPageHistory(page);
+            }
+        }
+    }
+
+    /* =========================================================
+       INITIALIZATION
+       ========================================================= */
+
+    function init() {
+        setupBottomNavHistory();
+
+        const navContainer = document.getElementById("bottomNav");
+        if (navContainer) {
+            const observer = new MutationObserver(function () {
+                setupBottomNavHistory();
+            });
+            observer.observe(navContainer, {
+                childList: true,
+                subtree: true
+            });
+        }
+
+        const hash = window.location.hash.replace("#", "");
+        if (hash && hash !== "home") {
+            currentPage = hash;
+        } else {
+            currentPage = "home";
+            try {
+                history.replaceState(
+                    { page: "home" },
+                    "",
+                    window.location.pathname
+                );
+            } catch (e) {}
+        }
+
+        console.log("✅ Back button handler initialized. Current page:", currentPage);
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init, { once: true });
+    } else {
+        init();
+    }
+
+    /* =========================================================
+       EXPOSE FUNCTIONS
+       ========================================================= */
+
+    window.pushPageHistory = pushPageHistory;
+    window.goToHomePage = goToHomePage;
+    window.setCurrentPage = function (page) {
+        currentPage = page;
+    };
+    window.getCurrentPage = function () {
+        return currentPage;
+    };
+
+})();
