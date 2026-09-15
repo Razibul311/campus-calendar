@@ -5154,15 +5154,14 @@ body.dark .study-report-empty {
         padding: 10px 14px calc(10px + env(safe-area-inset-bottom)) !important;
     }
 }
-
 /* =========================================================
-   📱 FINAL FIX — SUBJECT ANALYTICS (Target Text Completely Hidden)
-   Add this at the very end of style.css or study-task.css
+   📱 FINAL FIX v3 — Target & 6m/3m Completely Hidden
+   Add this at the VERY END of style.css or study-task.css
    ========================================================= */
 
 @media (max-width: 600px) {
 
-    /* ১. সাবজেক্ট রো (Subject Row) ছোট করা */
+    /* ১. সাবজেক্ট রো (Subject Row) কে ছোট এবং ফ্লেক্সিবল করা */
     .study-analytics-subject-row {
         display: flex !important;
         align-items: center !important;
@@ -5174,7 +5173,7 @@ body.dark .study-report-empty {
         flex-wrap: nowrap !important;
     }
 
-    /* ২. সাবজেক্ট ইনফো (নাম + সেশন) */
+    /* ২. বাম দিকের সাবজেক্ট ইনফো (নাম + সেশন) */
     .study-analytics-subject-info {
         display: flex !important;
         align-items: center !important;
@@ -5183,17 +5182,14 @@ body.dark .study-report-empty {
         min-width: 0 !important;
     }
 
-    /* ✅ সাবজেক্টের নাম (Sr, DBMS, Eng) — কখনো কাটা যাবে না */
+    /* ✅ সাবজেক্টের নাম (DBMS, Eng) — কখনো কাটা যাবে না */
     .study-analytics-subject-info strong {
         font-size: 13px !important;
         font-weight: 700 !important;
         white-space: nowrap !important;
-        max-width: none !important; 
+        max-width: none !important;
         flex-shrink: 0 !important;
         color: rgb(var(--text)) !important;
-        /* ওভারফ্লো রিমুভ */
-        overflow: visible !important;
-        text-overflow: clip !important;
     }
 
     /* সেশন কাউন্ট (3 sessions) */
@@ -5205,8 +5201,21 @@ body.dark .study-report-empty {
         flex-shrink: 0 !important;
     }
 
-    /* ৩. ❌ Target Time সম্পূর্ণভাবে বাদ দেওয়া */
-    /* মেটা কন্টেইনারে যদি টার্গেট লেখা থাকে, সেটা হাইড করা */
+    /* ৩. ❌ 6m / 3m এবং (Target: ...) সম্পূর্ণভাবে লুকানো */
+    /* এখানে আমরা ২য় স্প্যানকে (যেটিতে 6m এবং Target আছে) হাইড করছি */
+    .study-analytics-subject-meta span:nth-child(2) {
+        display: none !important;
+    }
+
+    /* যদি 6m এবং (Target: একই স্প্যানে না থাকে, তবে নিচের দুটি স্প্যানও হাইড হবে */
+    .study-analytics-subject-meta span:first-child,
+    .study-analytics-subject-meta span:contains("6m"),
+    .study-analytics-subject-meta span:contains("3m"),
+    .study-analytics-subject-meta span:contains("Target") {
+        display: none !important;
+    }
+
+    /* ৪. মেটা কন্টেইনার */
     .study-analytics-subject-meta {
         display: flex !important;
         align-items: center !important;
@@ -5216,15 +5225,7 @@ body.dark .study-report-empty {
         flex-shrink: 0 !important;
     }
 
-    /* এখানে আমরা সরাসরি 'Target' লেখাটি খুঁজে বের করে হাইড করছি */
-    /* যদি টেক্সট 'Target' হয়, তবে সেটি ডিসপ্লে নান হয়ে যাবে */
-    .study-analytics-subject-meta span:first-child,
-    .study-analytics-subject-meta span:contains("Target"),
-    .study-analytics-subject-meta span:contains("(Target") {
-        display: none !important;
-    }
-
-    /* ৪. চেকবক্স এবং ১০০% */
+    /* ৫. চেকবক্স এবং ১০০% */
     .study-analytics-subject-meta span:last-child {
         display: flex !important;
         align-items: center !important;
@@ -5233,7 +5234,7 @@ body.dark .study-report-empty {
         font-size: 10px !important;
     }
 
-    /* ৫. প্রগ্রেস বার (এখন একটু বড় করা হয়েছে কারণ টার্গেট লেখা নেই) */
+    /* ৬. প্রগ্রেস বার (এখন বড় করা হয়েছে কারণ Target লেখা নেই) */
     .study-analytics-subject-bar {
         width: 70px !important;
         min-width: 70px !important;
@@ -5245,7 +5246,7 @@ body.dark .study-report-empty {
         overflow: hidden !important;
     }
 
-    /* ৬. ডিলিট বাটন (X) */
+    /* ৭. ডিলিট বাটন (X) */
     .study-subject-delete-btn {
         width: 24px !important;
         height: 24px !important;
@@ -5255,7 +5256,7 @@ body.dark .study-report-empty {
         opacity: 0.6 !important;
     }
 
-    /* ৭. সিলেক্ট অল (Select All) */
+    /* ৮. সিলেক্ট অল (Select All) */
     .study-analytics-select-all-container {
         padding: 8px 10px !important;
         margin-bottom: 10px !important;
@@ -5271,11 +5272,11 @@ body.dark .study-report-empty {
         padding: 8px 6px !important;
         gap: 4px !important;
     }
-    
+
     .study-analytics-subject-info strong {
         font-size: 12px !important;
     }
-    
+
     .study-analytics-subject-info span {
         font-size: 9px !important;
     }
@@ -5286,8 +5287,6 @@ body.dark .study-report-empty {
         height: 5px !important;
     }
 }
-
-
 
 
 
