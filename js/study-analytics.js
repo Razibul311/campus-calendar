@@ -3746,20 +3746,6 @@ function renderSubjectStudyAnalytics() {
                                 )}
                            </span>
 
-                           /* ${item.targetTime > 0 ? `
-                                <span
-                                    style="
-                                        font-size:0.7rem;
-                                        color:#94a3b8;
-                                        margin-left:8px;
-                                    "
-                                >
-                                    (Target: ${escapeAnalyticsHTML(
-                                        formatStudyMinutes(item.targetTime)
-                                    )})
-                                </span>
-                            ` : ''}*/
-
                         </div>
 
 
