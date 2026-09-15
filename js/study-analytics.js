@@ -3746,7 +3746,7 @@ function renderSubjectStudyAnalytics() {
                                 )}
                            </span>
 
-                           */ ${item.targetTime > 0 ? `
+                           /* ${item.targetTime > 0 ? `
                                 <span
                                     style="
                                         font-size:0.7rem;
