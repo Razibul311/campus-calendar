@@ -498,52 +498,68 @@ function jumpToPage() {
 }
 
     // =========================================================
-    // ZOOM IN — Mobile + Desktop (FIXED)
+    // ZOOM IN / ZOOM OUT — CONFLICT-FREE VERSION
+    // =========================================================
+    // ✅ Debounce: touchend + click একসাথে fire হলেও
+    //    শুধু একবার handle করবে
+    // ✅ Min: 0.25, Max: 4
     // =========================================================
 
-    if (zoomIn) {
-        const handleZoomIn = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
+    function attachZoomHandler(button, direction) {
+        if (!button) return;
+
+        let lastHandled = 0;
+        const DEBOUNCE_MS = 400;
+
+        function handleZoom(e) {
+            // ✅ Duplicate event block
+            const now = Date.now();
+            if (now - lastHandled < DEBOUNCE_MS) {
+                return;
+            }
+            lastHandled = now;
+
+            if (e && e.cancelable) {
+                e.preventDefault();
+            }
+            if (e) {
+                e.stopPropagation();
+            }
 
             if (!pdfDoc) return;
 
-            if (currentScale < 4) {
-                currentScale = Math.min(4, currentScale + 0.25);
-                console.log(`🔍 Zoom In: scale = ${currentScale}`);
-                renderPage(currentPage);
+            if (direction === "in") {
+                if (currentScale < 4) {
+                    currentScale = Math.min(4, currentScale + 0.25);
+                    console.log(`🔍 Zoom In: scale = ${currentScale}`);
+                    renderPage(currentPage);
+                } else {
+                    showPdfToast("Maximum zoom reached");
+                }
             } else {
-                showPdfToast("Maximum zoom reached");
+                if (currentScale > 0.25) {
+                    currentScale = Math.max(0.25, currentScale - 0.25);
+                    console.log(`🔍 Zoom Out: scale = ${currentScale}`);
+                    renderPage(currentPage);
+                } else {
+                    showPdfToast("Minimum zoom reached");
+                }
             }
-        };
+        }
 
-        zoomIn.addEventListener("click", handleZoomIn);
-        zoomIn.addEventListener("touchend", handleZoomIn, { passive: false });
+        // ✅ Mobile
+        button.addEventListener(
+            "touchend",
+            handleZoom,
+            { passive: false }
+        );
+
+        // ✅ Desktop
+        button.addEventListener("click", handleZoom);
     }
 
-    // =========================================================
-    // ZOOM OUT — Mobile + Desktop (FIXED)
-    // =========================================================
-
-    if (zoomOut) {
-        const handleZoomOut = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-
-            if (!pdfDoc) return;
-
-            if (currentScale > 0.25) {
-                currentScale = Math.max(0.5, currentScale - 0.25);
-                console.log(`🔍 Zoom Out: scale = ${currentScale}`);
-                renderPage(currentPage);
-            } else {
-                showPdfToast("Minimum zoom reached");
-            }
-        };
-
-        zoomOut.addEventListener("click", handleZoomOut);
-        zoomOut.addEventListener("touchend", handleZoomOut, { passive: false });
-    }
+    attachZoomHandler(zoomIn, "in");
+    attachZoomHandler(zoomOut, "out");
 
     if (closeBtn) {
         closeBtn.addEventListener("click", closePdf);
@@ -576,8 +592,8 @@ function jumpToPage() {
                     renderPage(currentPage);
                 }
             } else if (e.key === "-") {
-                if (currentScale > 0.5) {
-                    currentScale = Math.max(0.5, currentScale - 0.25);
+                if (currentScale > 0.25) {
+                    currentScale = Math.max(0.25, currentScale - 0.25);
                     renderPage(currentPage);
                 }
             }
