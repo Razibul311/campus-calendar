@@ -5787,8 +5787,9 @@ body.dark .pdf-reader-error p {
         margin-left: auto;
     }
 
-    .pdf-reader-body {
-        padding: 8px;
+        .pdf-reader-body {
+        padding: 4px;              /* ✅ 8px → 4px */
+        justify-content: flex-start; /* ✅ extra safety */
     }
 }
 
