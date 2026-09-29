@@ -13,7 +13,7 @@
 
     let pdfDoc = null;
     let currentPage = 1;
-    let currentScale = 1.5;
+    let currentScale = 1;
     let pdfJsLib = null;
     let isLoading = false;
     let renderTask = null;  
@@ -333,6 +333,7 @@ async function renderPage(pageNumber) {
 
             pdfDoc = await lib.getDocument({ data: arrayBuffer }).promise;
             currentPage = 1;
+            currentScale = 1;
 
             if (body) {
                 body.innerHTML = "";
