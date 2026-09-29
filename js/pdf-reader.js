@@ -191,7 +191,7 @@ async function renderPage(pageNumber) {
     // ✅ আগের render চললে সেটা cancel/abort করো
     if (renderTask) {
         try {
-            renderTask.cancel();
+            await renderTask.cancel();
         } catch (e) {}
         renderTask = null;
     }
@@ -470,22 +470,52 @@ function jumpToPage() {
     });
 }
 
+    // =========================================================
+    // ZOOM IN — Mobile + Desktop (FIXED)
+    // =========================================================
+
     if (zoomIn) {
-        zoomIn.addEventListener("click", () => {
+        const handleZoomIn = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (!pdfDoc) return;
+
             if (currentScale < 4) {
                 currentScale = Math.min(4, currentScale + 0.25);
+                console.log(`🔍 Zoom In: scale = ${currentScale}`);
                 renderPage(currentPage);
+            } else {
+                showPdfToast("Maximum zoom reached");
             }
-        });
+        };
+
+        zoomIn.addEventListener("click", handleZoomIn);
+        zoomIn.addEventListener("touchend", handleZoomIn, { passive: false });
     }
 
+    // =========================================================
+    // ZOOM OUT — Mobile + Desktop (FIXED)
+    // =========================================================
+
     if (zoomOut) {
-        zoomOut.addEventListener("click", () => {
+        const handleZoomOut = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (!pdfDoc) return;
+
             if (currentScale > 0.5) {
                 currentScale = Math.max(0.5, currentScale - 0.25);
+                console.log(`🔍 Zoom Out: scale = ${currentScale}`);
                 renderPage(currentPage);
+            } else {
+                showPdfToast("Minimum zoom reached");
             }
-        });
+        };
+
+        zoomOut.addEventListener("click", handleZoomOut);
+        zoomOut.addEventListener("touchend", handleZoomOut, { passive: false });
     }
 
     if (closeBtn) {
@@ -506,6 +536,9 @@ function jumpToPage() {
         }
 
         if (modal.classList.contains("active") && pdfDoc) {
+            // ✅ Ignore if typing in page input
+            if (document.activeElement === pageInput) return;
+
             if (e.key === "ArrowLeft") {
                 if (currentPage > 1) renderPage(currentPage - 1);
             } else if (e.key === "ArrowRight") {
