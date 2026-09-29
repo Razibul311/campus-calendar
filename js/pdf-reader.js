@@ -16,6 +16,7 @@
     let currentScale = 1.5;
     let pdfJsLib = null;
     let isLoading = false;
+    let renderTask = null;  
 
     // =========================================================
     // DOM ELEMENTS
@@ -184,38 +185,60 @@
     // =========================================================
     // RENDER PAGE
     // =========================================================
+async function renderPage(pageNumber) {
+    if (!pdfDoc) return;
 
-    async function renderPage(pageNumber) {
-        if (!pdfDoc) return;
-
+    // ✅ আগের render চললে সেটা cancel/abort করো
+    if (renderTask) {
         try {
-            const page = await pdfDoc.getPage(pageNumber);
-            const viewport = page.getViewport({ scale: currentScale });
-
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
-
-            const context = canvas.getContext("2d");
-            const renderContext = {
-                canvasContext: context,
-                viewport: viewport
-            };
-
-            await page.render(renderContext).promise;
-
-            currentPage = pageNumber;
-            updatePageInfo();
-            updateButtons();
-
-            const body = modal.querySelector(".pdf-reader-body");
-            if (body) body.scrollTop = 0;
-
-        } catch (error) {
-            console.error("❌ Failed to render page:", error);
-            showPdfToast("Failed to render page");
-        }
+            renderTask.cancel();
+        } catch (e) {}
+        renderTask = null;
     }
 
+    try {
+        const page = await pdfDoc.getPage(pageNumber);
+        const viewport = page.getViewport({ scale: currentScale });
+
+        // ✅ Canvas clear + resize
+        canvas.width = Math.floor(viewport.width);
+        canvas.height = Math.floor(viewport.height);
+
+        const context = canvas.getContext("2d");
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        const renderContext = {
+            canvasContext: context,
+            viewport: viewport
+        };
+
+        // ✅ Render task track করো
+        renderTask = page.render(renderContext);
+
+        try {
+            await renderTask.promise;
+        } catch (err) {
+            if (err && err.name === "RenderingCancelledException") {
+                console.log("ℹ️ Previous render cancelled");
+                return;
+            }
+            throw err;
+        }
+
+        renderTask = null;
+
+        currentPage = pageNumber;
+        updatePageInfo();
+        updateButtons();
+
+        const body = modal.querySelector(".pdf-reader-body");
+        if (body) body.scrollTop = 0;
+
+    } catch (error) {
+        console.error("❌ Failed to render page:", error);
+        showPdfToast("Failed to render page");
+    }
+}
     // =========================================================
     // UPDATE PAGE INFO
     // =========================================================
