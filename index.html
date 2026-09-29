@@ -358,133 +358,145 @@
 
 
 
-    <!-- =====================================================
-         TOOLBAR
-    ======================================================= -->
+<!-- =====================================================
+     TOOLBAR
+======================================================= -->
 
-    <section class="toolbar">
+<section class="toolbar">
 
+    <input
+        id="searchInput"
+        type="search"
+        placeholder="Search events..."
+        aria-label="Search events"
+    >
 
+    <select
+        id="categoryFilter"
+        aria-label="Filter events by category"
+    >
 
-        <input
-            id="searchInput"
-            type="search"
-            placeholder="Search events..."
-            aria-label="Search events"
+        <option
+            value="all"
+            id="categoryAllOption"
         >
+            All Categories
+        </option>
 
-
-
-        <select
-            id="categoryFilter"
-            aria-label="Filter events by category"
+        <option
+            value="class"
+            id="categoryClassOption"
         >
+            Class
+        </option>
 
-            <option
-                value="all"
-                id="categoryAllOption"
-            >
-                All Categories
-            </option>
-
-            <option
-                value="class"
-                id="categoryClassOption"
-            >
-                Class
-            </option>
-
-            <option
-                value="exam"
-                id="categoryExamOption"
-            >
-                Exam
-            </option>
-
-            <option
-                value="assignment"
-                id="categoryAssignmentOption"
-            >
-                Assignment
-            </option>
-
-            <option
-                value="project"
-                id="categoryProjectOption"
-            >
-                Project
-            </option>
-
-            <option
-                value="presentation"
-                id="categoryPresentationOption"
-            >
-                Presentation
-            </option>
-
-            <option
-                value="personal"
-                id="categoryPersonalOption"
-            >
-                Personal
-            </option>
-
-            <option
-                value="holiday"
-                id="categoryHolidayOption"
-            >
-                Holiday
-            </option>
-
-            <option
-                value="other"
-                id="categoryOtherOption"
-            >
-                Other
-            </option>
-
-        </select>
-
-
-
-        <button
-            id="addEventBtn"
-            class="primary-btn"
-            type="button"
+        <option
+            value="exam"
+            id="categoryExamOption"
         >
-            + Add Event
-        </button>
+            Exam
+        </option>
 
-
-
-        <button
-            id="exportBtn"
-            class="secondary-btn"
-            type="button"
+        <option
+            value="assignment"
+            id="categoryAssignmentOption"
         >
-            Export
-        </button>
+            Assignment
+        </option>
 
-
-
-        <button
-            id="importBtn"
-            class="secondary-btn"
-            type="button"
+        <option
+            value="project"
+            id="categoryProjectOption"
         >
-            Import
-        </button>
+            Project
+        </option>
 
-
-
-        <input
-            id="importFile"
-            type="file"
-            accept=".json,application/json"
-            hidden
+        <option
+            value="presentation"
+            id="categoryPresentationOption"
         >
+            Presentation
+        </option>
 
-    </section>
+        <option
+            value="personal"
+            id="categoryPersonalOption"
+        >
+            Personal
+        </option>
+
+        <option
+            value="holiday"
+            id="categoryHolidayOption"
+        >
+            Holiday
+        </option>
+
+        <option
+            value="other"
+            id="categoryOtherOption"
+        >
+            Other
+        </option>
+
+    </select>
+
+    <button
+        id="addEventBtn"
+        class="primary-btn"
+        type="button"
+    >
+        + Add Event
+    </button>
+
+    <button
+        id="exportBtn"
+        class="secondary-btn"
+        type="button"
+    >
+        Export
+    </button>
+
+    <button
+        id="importBtn"
+        class="secondary-btn"
+        type="button"
+    >
+        Import
+    </button>
+
+    <!-- =================================================
+         PDF READER BUTTON
+    ================================================== -->
+
+    <button
+        id="pdfReaderBtn"
+        class="secondary-btn pdf-upload-btn"
+        type="button"
+    >
+        📄 PDF
+    </button>
+
+    <input
+        id="pdfFileInput"
+        type="file"
+        accept=".pdf,application/pdf"
+        hidden
+    >
+
+    <!-- =================================================
+         IMPORT FILE INPUT
+    ================================================== -->
+
+    <input
+        id="importFile"
+        type="file"
+        accept=".json,application/json"
+        hidden
+    >
+
+</section>
+
 
 
 
@@ -2907,7 +2919,8 @@
 <script src="js/cgpa-calculator.js"></script>
 
 <script src="js/study-analytics.js"></script>
-
+    
+<script src="js/pdf-reader.js"></script> 
 
 
 </body>
