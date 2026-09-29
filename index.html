@@ -32,7 +32,7 @@
 
     <title>Campus Calendar</title>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
     <!-- =========================================================
          CSS
@@ -2933,7 +2933,18 @@
                 >
                     ‹
                 </button>
-                <span id="pdfPageInfo">Page 1 / 1</span>
+            <!--  Page Jump Input — নতুন -->
+                <div class="pdf-page-jump">
+                    <input
+                        id="pdfPageInput"
+                        type="number"
+                        min="1"
+                        value="1"
+                        aria-label="Page number"
+                        title="Type page number and press Enter"
+                    >
+                    <span id="pdfPageInfo">/ 1</span>
+                </div>
                 <button
                     id="pdfNextBtn"
                     class="nav-btn"
