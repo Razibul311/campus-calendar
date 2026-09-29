@@ -6063,3 +6063,48 @@ body.dark .pdf-page-jump #pdfPageInfo {
         font-size: 9px;
     }
 }
+
+
+/* =========================================================
+   PDF ZOOM BUTTONS — Mobile Touch Fix
+========================================================= */
+
+.pdf-reader-controls .nav-btn,
+.pdf-reader-modal .close-btn {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.pdf-reader-controls .nav-btn:active,
+.pdf-reader-modal .close-btn:active {
+    transform: scale(0.92);
+    transition: transform 0.1s ease;
+}
+
+.pdf-reader-body canvas {
+    touch-action: pan-x pan-y;
+}
+
+.pdf-reader-modal {
+    touch-action: manipulation;
+}
+
+@media (max-width: 768px) {
+    .pdf-reader-controls .nav-btn {
+        min-width: 44px;
+        min-height: 44px;
+        font-size: 20px;
+        -webkit-touch-callout: none;
+    }
+
+    .pdf-reader-modal .modal-header {
+        touch-action: manipulation;
+    }
+
+    .pdf-page-jump input {
+        touch-action: manipulation;
+    }
+}
