@@ -5427,9 +5427,7 @@ body.dark .study-report-empty {
 .pdf-reader-body {
     flex: 1;
 
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    display: block;              /* ✅ flex → block */
 
     overflow: auto;
 
@@ -5441,10 +5439,13 @@ body.dark .study-report-empty {
     overscroll-behavior: contain;
 
     min-height: 0;
+
+    /* ✅ canvas কে center করার জন্য */
+    text-align: center;
 }
 
 .pdf-reader-body canvas {
-    display: block;
+    display: inline-block;       /* ✅ block → inline-block */
 
     /*max-width: 100%;
     height: auto;*/
@@ -5456,6 +5457,10 @@ body.dark .study-report-empty {
     box-shadow: 0 8px 32px rgba(15, 23, 42, 0.15);
 
     transition: box-shadow 0.2s ease;
+
+    /* ✅ Canvas center থাকবে, কিন্তু scroll ঠিকমতো কাজ করবে */
+    max-width: none;
+    vertical-align: top;
 }
 
 /* ---------- LOADING SPINNER ---------- */
