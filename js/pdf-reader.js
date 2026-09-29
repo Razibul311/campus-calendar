@@ -31,6 +31,7 @@
     const closeBtn = document.getElementById("pdfCloseBtn");
     const readerBtn = document.getElementById("pdfReaderBtn");
     const fileInput = document.getElementById("pdfFileInput");
+    const pageInput = document.getElementById("pdfPageInput");
 
     // Safety check
     if (!modal || !canvas) {
@@ -220,10 +221,19 @@
     // =========================================================
 
     function updatePageInfo() {
-        if (pageInfo && pdfDoc) {
-            pageInfo.textContent = `Page ${currentPage} / ${pdfDoc.numPages}`;
-        }
+    if (!pdfDoc) return;
+
+    // Update input value
+    if (pageInput) {
+        pageInput.value = currentPage;
+        pageInput.max = pdfDoc.numPages;
     }
+
+    // Update total pages text
+    if (pageInfo) {
+        pageInfo.textContent = `/ ${pdfDoc.numPages}`;
+    }
+   }
 
     // =========================================================
     // UPDATE BUTTONS
@@ -367,6 +377,75 @@
             }
         });
     }
+
+   /* =========================================================
+   PAGE JUMP — Direct Page Navigation
+========================================================= */
+
+if (pageInput) {
+    // Enter key → jump to page
+    pageInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            jumpToPage();
+        }
+    });
+
+    // On blur → validate and reset if invalid
+    pageInput.addEventListener("blur", () => {
+        if (!pdfDoc) return;
+        const value = parseInt(pageInput.value, 10);
+        if (isNaN(value) || value < 1 || value > pdfDoc.numPages) {
+            pageInput.value = currentPage;
+        }
+    });
+
+    // On input → clamp max value
+    pageInput.addEventListener("input", () => {
+        if (!pdfDoc) return;
+        let value = parseInt(pageInput.value, 10);
+        if (!isNaN(value) && value > pdfDoc.numPages) {
+            pageInput.value = pdfDoc.numPages;
+        }
+    });
+
+    // Select all text on focus
+    pageInput.addEventListener("focus", () => {
+        pageInput.select();
+    });
+}
+
+/* =========================================================
+   JUMP TO PAGE FUNCTION
+========================================================= */
+
+function jumpToPage() {
+    if (!pdfDoc) return;
+
+    const targetPage = parseInt(pageInput?.value, 10);
+
+    if (isNaN(targetPage) || targetPage < 1) {
+        showPdfToast("Please enter a valid page number");
+        if (pageInput) pageInput.value = currentPage;
+        return;
+    }
+
+    if (targetPage > pdfDoc.numPages) {
+        showPdfToast(`This PDF has only ${pdfDoc.numPages} pages`);
+        if (pageInput) pageInput.value = pdfDoc.numPages;
+        renderPage(pdfDoc.numPages);
+        return;
+    }
+
+    if (targetPage === currentPage) {
+        if (pageInput) pageInput.blur();
+        return;
+    }
+
+    renderPage(targetPage).then(() => {
+        if (pageInput) pageInput.blur();
+    });
+}
 
     if (zoomIn) {
         zoomIn.addEventListener("click", () => {
