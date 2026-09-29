@@ -185,10 +185,11 @@
     // =========================================================
     // RENDER PAGE
     // =========================================================
+
 async function renderPage(pageNumber) {
     if (!pdfDoc) return;
 
-    // ✅ আগের render চললে সেটা cancel/abort করো
+    // ✅ আগের render cancel
     if (renderTask) {
         try {
             await renderTask.cancel();
@@ -200,20 +201,44 @@ async function renderPage(pageNumber) {
         const page = await pdfDoc.getPage(pageNumber);
         const viewport = page.getViewport({ scale: currentScale });
 
-        // ✅ Canvas clear + resize
+        // ✅ Canvas internal resolution
         canvas.width = Math.floor(viewport.width);
         canvas.height = Math.floor(viewport.height);
+
+        // ✅ CSS display size — এটাই zoom-এর key!
+        canvas.style.width = Math.floor(viewport.width) + "px";
+        canvas.style.height = Math.floor(viewport.height) + "px";
 
         const context = canvas.getContext("2d");
         context.clearRect(0, 0, canvas.width, canvas.height);
 
-        const renderContext = {
-            canvasContext: context,
-            viewport: viewport
-        };
+        // ✅ High-DPI display support
+        const outputScale = window.devicePixelRatio || 1;
+        if (outputScale > 1) {
+            canvas.width = Math.floor(viewport.width * outputScale);
+            canvas.height = Math.floor(viewport.height * outputScale);
+            canvas.style.width = Math.floor(viewport.width) + "px";
+            canvas.style.height = Math.floor(viewport.height) + "px";
 
-        // ✅ Render task track করো
-        renderTask = page.render(renderContext);
+            const transform = outputScale !== 1
+                ? [outputScale, 0, 0, outputScale, 0, 0]
+                : null;
+
+            const renderContext = {
+                canvasContext: context,
+                transform: transform,
+                viewport: viewport
+            };
+
+            renderTask = page.render(renderContext);
+        } else {
+            const renderContext = {
+                canvasContext: context,
+                viewport: viewport
+            };
+
+            renderTask = page.render(renderContext);
+        }
 
         try {
             await renderTask.promise;
@@ -231,6 +256,7 @@ async function renderPage(pageNumber) {
         updatePageInfo();
         updateButtons();
 
+        // ✅ Scroll to top after render
         const body = modal.querySelector(".pdf-reader-body");
         if (body) body.scrollTop = 0;
 
@@ -239,6 +265,7 @@ async function renderPage(pageNumber) {
         showPdfToast("Failed to render page");
     }
 }
+   
     // =========================================================
     // UPDATE PAGE INFO
     // =========================================================
