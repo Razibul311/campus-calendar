@@ -532,7 +532,7 @@ function jumpToPage() {
 
             if (!pdfDoc) return;
 
-            if (currentScale > 0.5) {
+            if (currentScale > 0.25) {
                 currentScale = Math.max(0.5, currentScale - 0.25);
                 console.log(`🔍 Zoom Out: scale = ${currentScale}`);
                 renderPage(currentPage);
