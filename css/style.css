@@ -5446,8 +5446,8 @@ body.dark .study-report-empty {
 .pdf-reader-body canvas {
     display: block;
 
-    max-width: 100%;
-    height: auto;
+    /*max-width: 100%;
+    height: auto;*/
 
     background: #ffffff;
 
